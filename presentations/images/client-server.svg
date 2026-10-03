@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- client -->
+  <rect x="20" y="70" width="240" height="190" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="140" y="110" text-anchor="middle" font-size="24" font-weight="bold" fill="#1b6ec2">Client</text>
+  <text x="140" y="142" text-anchor="middle" font-size="18" fill="#333">web browser</text>
+  <rect x="75" y="165" width="130" height="70" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <line x1="75" y1="183" x2="205" y2="183" stroke="#1b6ec2" stroke-width="2"/>
+  <circle cx="86" cy="174" r="3" fill="#1b6ec2"/>
+  <circle cx="97" cy="174" r="3" fill="#1b6ec2"/>
+  <line x1="90" y1="200" x2="190" y2="200" stroke="#bbb" stroke-width="4"/>
+  <line x1="90" y1="213" x2="170" y2="213" stroke="#bbb" stroke-width="4"/>
+  <line x1="90" y1="226" x2="180" y2="226" stroke="#bbb" stroke-width="4"/>
+
+  <!-- server -->
+  <rect x="640" y="70" width="240" height="190" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="760" y="110" text-anchor="middle" font-size="24" font-weight="bold" fill="#9b1c31">Server</text>
+  <text x="760" y="142" text-anchor="middle" font-size="18" fill="#333">web server program</text>
+  <rect x="705" y="165" width="110" height="20" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="705" y="190" width="110" height="20" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="705" y="215" width="110" height="20" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <circle cx="718" cy="175" r="3" fill="#9b1c31"/>
+  <circle cx="718" cy="200" r="3" fill="#9b1c31"/>
+  <circle cx="718" cy="225" r="3" fill="#9b1c31"/>
+
+  <!-- request -->
+  <line x1="270" y1="120" x2="628" y2="120" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="450" y="95" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">1. HTTP request</text>
+  <text x="450" y="146" text-anchor="middle" font-size="17" font-family="Menlo, Consolas, monospace" fill="#333">GET /index.html</text>
+
+  <!-- response -->
+  <line x1="630" y1="215" x2="272" y2="215" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="450" y="200" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">2. HTTP response</text>
+  <text x="450" y="241" text-anchor="middle" font-size="17" font-family="Menlo, Consolas, monospace" fill="#333">200 OK + the HTML page</text>
+
+  <!-- rendering -->
+  <text x="140" y="300" text-anchor="middle" font-size="18" fill="#333">3. The browser</text>
+  <text x="140" y="324" text-anchor="middle" font-size="18" fill="#333">shows the page</text>
+  <text x="760" y="300" text-anchor="middle" font-size="18" fill="#333">waits for the</text>
+  <text x="760" y="324" text-anchor="middle" font-size="18" fill="#333">next request</text>
+</svg>

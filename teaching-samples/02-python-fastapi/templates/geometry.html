@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Circumference and Area{% endblock %}
+
+{% block content %}
+<h1>Circumference and Area</h1>
+<br />
+<form action="/geometry" method="get">
+    <table>
+        <tr>
+            <td>Shape:</td>
+            <td>
+                {# when another shape is selected, the form is sent at once, so the page is shown again #}
+                <select name="shape" onchange="this.form.submit()">
+                    <option value="square" {% if shape == "square" %}selected{% endif %}>Square</option>
+                    <option value="rectangle" {% if shape == "rectangle" %}selected{% endif %}>Rectangle</option>
+                    <option value="circle" {% if shape == "circle" %}selected{% endif %}>Circle</option>
+                    <option value="ellipse" {% if shape == "ellipse" %}selected{% endif %}>Ellipse</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Argument:</td>
+            <td>
+                <input style="text-align:right" name="x" value="{{ x }}" />
+            </td>
+        </tr>
+        {% if shape == "rectangle" or shape == "ellipse" %}
+        <tr>
+            <td>Second argument:</td>
+            <td>
+                <input style="text-align:right" name="y" value="{{ y }}" />
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <button formaction="/geometry/calculate">Calculate</button> &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>Circumference:</td>
+            <td><input style="text-align:right" value="{{ circumference }}" readonly /></td>
+        </tr>
+        <tr>
+            <td>Area:</td>
+            <td><input style="text-align:right" value="{{ area }}" readonly /></td>
+        </tr>
+    </table>
+</form>
+<br />
+{% endblock %}

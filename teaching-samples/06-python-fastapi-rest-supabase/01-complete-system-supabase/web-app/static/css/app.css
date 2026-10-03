@@ -1,0 +1,19 @@
+/* Application-wide styles. Most of the look comes from Bootstrap; these are the few additions. */
+
+/* the titles of the columns are links that order the table */
+
+thead a:hover {
+    color: white;
+}
+
+/* the cells of a row are links to the details */
+
+td a.text-body:hover {
+    text-decoration: underline;
+}
+
+/* a form with only a button in it must not add space to the row of the table */
+
+td form {
+    margin: 0;
+}

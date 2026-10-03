@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 176" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- titles of the columns: together with a row they read as one sentence -->
+  <g font-size="15" fill="#555">
+    <text x="40" y="18">after the statement</text>
+    <text x="420" y="18" text-anchor="middle">the name</text>
+    <text x="630" y="18" text-anchor="middle">refers to the value</text>
+    <text x="800" y="18" text-anchor="middle">of the type</text>
+  </g>
+
+  <!-- lines between the rows -->
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="20" y1="28" x2="880" y2="28"/>
+    <line x1="20" y1="77" x2="880" y2="77"/>
+    <line x1="20" y1="126" x2="880" y2="126"/>
+  </g>
+
+  <!-- the statements -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#333">
+    <text x="40" y="59">count = 42</text>
+    <text x="40" y="108">count = count + 1</text>
+    <text x="40" y="157">count = "many"</text>
+  </g>
+
+  <!-- the name: the same in all three rows -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="360" y="33" width="120" height="40" rx="20"/>
+    <rect x="360" y="82" width="120" height="40" rx="20"/>
+    <rect x="360" y="131" width="120" height="40" rx="20"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="420" y="59">count</text>
+    <text x="420" y="108">count</text>
+    <text x="420" y="157">count</text>
+  </g>
+
+  <!-- arrows from the name to the value -->
+  <g stroke="#333" stroke-width="2">
+    <line x1="486" y1="53" x2="552" y2="53" marker-end="url(#arrow)"/>
+    <line x1="486" y1="102" x2="552" y2="102" marker-end="url(#arrow)"/>
+    <line x1="486" y1="151" x2="552" y2="151" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- the values -->
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="560" y="33" width="140" height="40" rx="6"/>
+    <rect x="560" y="82" width="140" height="40" rx="6"/>
+    <rect x="560" y="131" width="140" height="40" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="630" y="59">42</text>
+    <text x="630" y="108">43</text>
+    <text x="630" y="157">"many"</text>
+  </g>
+
+  <!-- the types of the values -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#2e7d32" text-anchor="middle">
+    <text x="800" y="59">int</text>
+    <text x="800" y="108">int</text>
+    <text x="800" y="157">str</text>
+  </g>
+</svg>

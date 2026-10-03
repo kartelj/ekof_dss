@@ -1,0 +1,21 @@
+{# The navigation menu. `menu` is defined in templating.py, `request` is the current request. #}
+{% set current = request.url.path %}
+
+<div class="top-row pl-3 navbar navbar-dark">
+    <a class="navbar-brand" href="/">DSS</a>
+</div>
+
+<nav class="nav flex-column">
+    <a class="nav-link {% if current == '/' %}active{% endif %}" href="/">Home</a>
+
+    {% for section, pages in menu %}
+    {# a section is shown open if the current page belongs to it #}
+    <details {% for title, address in pages %}{% if current == address or current.startswith(address + "/") %}open{% endif %}{% endfor %}>
+        <summary class="nav-link">{{ section }}</summary>
+        {% for title, address in pages %}
+        <a class="nav-link pl-5 {% if current == address or current.startswith(address + '/') %}active{% endif %}"
+            href="{{ address }}">{{ title }}</a>
+        {% endfor %}
+    </details>
+    {% endfor %}
+</nav>

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{# the component is taken from its file, and then used like a function #}
+{% from "components/actors.html" import Actors %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{{ Actors(actor) }}
+{% endblock %}

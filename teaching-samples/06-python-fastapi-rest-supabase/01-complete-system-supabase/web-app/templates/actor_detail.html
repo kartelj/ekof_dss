@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if mode == "edit" %}
+
+<h2>Edit data for {{ selected_actor.first_name }} {{ selected_actor.last_name | upper }}</h2>
+<form action="/actordetail/{{ selected_actor.id }}" method="post">
+    <table class="table table-borderless w-auto">
+        <tr>
+            <td><label class="text-danger"> id: </label></td>
+            <td><label class="text-success"> {{ selected_actor.id }} </label></td>
+        </tr>
+        <tr>
+            <td><label class="text-danger" for="first_name"> first name: </label></td>
+            <td>
+                <input class="form-control" id="first_name" name="first_name"
+                    value="{{ selected_actor.first_name or '' }}" placeholder="First name">
+            </td>
+        </tr>
+        <tr>
+            <td><label class="text-danger" for="last_name"> last name: </label></td>
+            <td>
+                <input class="form-control" id="last_name" name="last_name"
+                    value="{{ selected_actor.last_name }}" placeholder="Last name">
+            </td>
+        </tr>
+        <tr>
+            <td><label class="text-danger" for="country_id"> country: </label></td>
+            <td>
+                <select class="form-control" id="country_id" name="country_id">
+                    {% for c in countries %}
+                    <option value="{{ c.id }}" {{ "selected" if c.id == selected_actor.country_id }}>{{ c.name }} ({{ c.code }})</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label class="text-danger" for="date_of_birth"> date of birth: </label></td>
+            <td>
+                <input class="form-control" type="date" id="date_of_birth" name="date_of_birth"
+                    value="{{ selected_actor.date_of_birth or '' }}">
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-primary">Save</button>
+    <a class="btn btn-primary" href="/actordetail/{{ selected_actor.id }}">Cancel</a>
+</form>
+
+{% else %}
+
+<h2 class="text-success">
+    Details for <span class="text-primary">{{ selected_actor.first_name }} {{ selected_actor.last_name | upper }}</span>
+</h2>
+<table class="table table-borderless w-auto">
+    <tr>
+        <td>id:</td>
+        <td>{{ selected_actor.id }}</td>
+    </tr>
+    <tr>
+        <td>first name:</td>
+        <td>{{ selected_actor.first_name or "" }}</td>
+    </tr>
+    <tr>
+        <td>last name:</td>
+        <td>{{ selected_actor.last_name }}</td>
+    </tr>
+    <tr>
+        <td>country:</td>
+        <td>{% if selected_actor.country_name %}{{ selected_actor.country_name }} ({{ selected_actor.country_code }}){% endif %}</td>
+    </tr>
+    <tr>
+        <td>date of birth:</td>
+        <td>{{ selected_actor.date_of_birth.strftime("%m/%d/%Y") if selected_actor.date_of_birth }}</td>
+    </tr>
+</table>
+<a class="btn btn-primary" href="/actordetail/{{ selected_actor.id }}?mode=edit">Edit</a>
+
+{% endif %}
+{% endblock %}

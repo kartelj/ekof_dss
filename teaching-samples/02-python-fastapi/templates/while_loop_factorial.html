@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Factorial{% endblock %}
+
+{% block content %}
+<h1>Factorial</h1>
+<br />
+<form method="get">
+    <table>
+        <tr>
+            <td>Argument:</td>
+            <td>
+                <input style="text-align:right" name="num" value="{{ num }}" />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <button title="by forward counting" formaction="/while-loop-factorial/count-forward">Factorial</button> &nbsp;
+                <button title="by backward counting" formaction="/while-loop-factorial/count-backward">Factorial</button> &nbsp;
+                <button title="by decrementing" formaction="/while-loop-factorial/decrementing">Factorial</button> &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">{{ num }} !:</td>
+            <td><input style="text-align:right" value="{{ result if result is not none }}" readonly /></td>
+        </tr>
+    </table>
+</form>
+<br />
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Power{% endblock %}
+
+{% block content %}
+<h1>Power</h1>
+<br />
+<form method="get">
+    <table>
+        <tr>
+            <td>Base:</td>
+            <td>
+                <input style="text-align:right" name="base_one" value="{{ base_one }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Exponent:</td>
+            <td>
+                <input style="text-align:right" name="exponent" value="{{ exponent }}" />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <button title="by forward counting" formaction="/while-loop-power/count-forward">Power</button> &nbsp;
+                <button title="by backward counting" formaction="/while-loop-power/count-backward">Power</button> &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>{{ base_one }} powered to the {{ exponent }}:</td>
+            <td><input style="text-align:right" value="{{ result }}" readonly /></td>
+        </tr>
+    </table>
+</form>
+<br />
+{% endblock %}

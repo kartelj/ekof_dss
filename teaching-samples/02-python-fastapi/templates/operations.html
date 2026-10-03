@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Operations{% endblock %}
+
+{% block content %}
+<!--
+    Here, the buttons are created
+-->
+<form method="post" class="d-inline">
+    <div class="btn-group">
+        <button class="btn btn-primary" formaction="/operations/plus-2">+2</button>
+        <button class="btn btn-success" formaction="/operations/multiply-2">*2</button>
+        <button class="btn btn-danger" formaction="/operations/minus-2">-2</button>
+        <button class="btn btn-warning" formaction="/operations/divide-2">/2</button>
+    </div>
+</form>
+<span>{{ comparison_result }}</span>
+
+<br>
+
+<div class="container p-1 border">
+    <pre>{{ message }}</pre>
+</div>
+{% endblock %}

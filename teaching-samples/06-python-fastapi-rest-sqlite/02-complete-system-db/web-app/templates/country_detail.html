@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if mode == "edit" %}
+
+<h2>Edit data for {{ selected_country.name }} ( {{ selected_country.code | upper }} )</h2>
+<form action="/countrydetail/{{ selected_country.id }}" method="post">
+    <div>
+        <label> code: </label>
+        <input name="code" value="{{ selected_country.code }}" placeholder="Code">
+    </div>
+    <div>
+        <label> name: </label>
+        <input name="name" value="{{ selected_country.name }}" placeholder="Name">
+    </div>
+    <button>Save</button>
+    <a class="button" href="/countrydetail/{{ selected_country.id }}">Cancel</a>
+</form>
+
+{% else %}
+
+<h2>Details for {{ selected_country.name }} ( {{ selected_country.code | upper }} )</h2>
+<br />
+<div><span>id: </span>{{ selected_country.id }}</div>
+<div><span>code: </span>{{ selected_country.code }}</div>
+<div><span>name: </span>{{ selected_country.name }}</div>
+<a class="button" href="/countrydetail/{{ selected_country.id }}?mode=edit">Edit</a>
+
+{% endif %}
+{% endblock %}

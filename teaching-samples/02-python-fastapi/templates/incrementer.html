@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Incrementer{% endblock %}
+
+{% block content %}
+<h1>Incrementer</h1>
+
+<p role="status">Current count: {{ current_count }}</p>
+
+<form action="/incrementer" method="post">
+    <button class="btn btn-outline-secondary">Increase</button>
+</form>
+{% endblock %}

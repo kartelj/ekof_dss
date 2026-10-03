@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 392" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="to-genre" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#1b6ec2"/>
+    </marker>
+    <marker id="to-state" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- the table movie: its key, the title and the two foreign keys -->
+  <text x="15" y="20" font-size="18" font-weight="bold" fill="#9b1c31">movie</text>
+  <rect x="15" y="28" width="445" height="24" fill="#fbeef0"/>
+  <rect x="310" y="28" width="75" height="264" fill="#eef4fb"/>
+  <rect x="385" y="28" width="75" height="264" fill="#f1f1f1"/>
+  <rect x="15" y="28" width="445" height="264" fill="none" stroke="#9b1c31" stroke-width="2"/>
+  <g stroke="#9b1c31" stroke-width="1">
+    <line x1="15" y1="52" x2="460" y2="52"/>
+    <line x1="95" y1="28" x2="95" y2="292"/>
+    <line x1="310" y1="28" x2="310" y2="292"/>
+    <line x1="385" y1="28" x2="385" y2="292"/>
+  </g>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="15" y1="76" x2="460" y2="76"/>
+    <line x1="15" y1="100" x2="460" y2="100"/>
+    <line x1="15" y1="124" x2="460" y2="124"/>
+    <line x1="15" y1="148" x2="460" y2="148"/>
+    <line x1="15" y1="172" x2="460" y2="172"/>
+    <line x1="15" y1="196" x2="460" y2="196"/>
+    <line x1="15" y1="220" x2="460" y2="220"/>
+    <line x1="15" y1="244" x2="460" y2="244"/>
+    <line x1="15" y1="268" x2="460" y2="268"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333">
+    <text x="22" y="45">movie_id</text>
+    <text x="103" y="45">title</text>
+    <text x="316" y="45" fill="#1b6ec2">genre_id</text>
+    <text x="392" y="45" fill="#2e7d32">state_id</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <text x="22" y="69">1</text><text x="103" y="69">Raising Arizona</text><text x="316" y="69">1</text><text x="392" y="69">1</text>
+    <text x="22" y="93">2</text><text x="103" y="93">Miller's Crossing</text><text x="316" y="93">2</text><text x="392" y="93">1</text>
+    <text x="22" y="117">3</text><text x="103" y="117">Amélie</text><text x="316" y="117">3</text><text x="392" y="117">2</text>
+    <text x="22" y="141">4</text><text x="103" y="141">Fargo</text><text x="316" y="141">4</text><text x="392" y="141">1</text>
+    <text x="22" y="165">5</text><text x="103" y="165">The Big Lebowski</text><text x="316" y="165">1</text><text x="392" y="165">1</text>
+    <text x="22" y="189">6</text><text x="103" y="189">O Brother, Where Art Thou?</text><text x="316" y="189">5</text><text x="392" y="189">1</text>
+    <text x="22" y="213">7</text><text x="103" y="213">No Country for Old Men</text><text x="316" y="213">4</text><text x="392" y="213">1</text>
+    <text x="22" y="237">8</text><text x="103" y="237">Delicatessen</text><text x="316" y="237">5</text><text x="392" y="237">2</text>
+    <text x="22" y="261">9</text><text x="103" y="261">The City of Lost Children</text><text x="316" y="261">6</text><text x="392" y="261">2</text>
+    <text x="22" y="285">10</text><text x="103" y="285">Who's Singin' Over There?</text><text x="316" y="285">5</text><text x="392" y="285">3</text>
+  </g>
+
+  <!-- the table genre -->
+  <text x="560" y="20" font-size="18" font-weight="bold" fill="#1b6ec2">genre</text>
+  <rect x="560" y="28" width="325" height="24" fill="#eef4fb"/>
+  <rect x="560" y="28" width="325" height="192" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#1b6ec2" stroke-width="1">
+    <line x1="560" y1="52" x2="885" y2="52"/>
+    <line x1="640" y1="28" x2="640" y2="220"/>
+    <line x1="785" y1="28" x2="785" y2="220"/>
+  </g>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="560" y1="76" x2="885" y2="76"/>
+    <line x1="560" y1="100" x2="885" y2="100"/>
+    <line x1="560" y1="124" x2="885" y2="124"/>
+    <line x1="560" y1="148" x2="885" y2="148"/>
+    <line x1="560" y1="172" x2="885" y2="172"/>
+    <line x1="560" y1="196" x2="885" y2="196"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333">
+    <text x="567" y="45" fill="#1b6ec2">genre_id</text>
+    <text x="648" y="45">name</text>
+    <text x="792" y="45">short_name</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <text x="567" y="69">1</text><text x="648" y="69">crime comedy</text><text x="792" y="69">CRCOM</text>
+    <text x="567" y="93">2</text><text x="648" y="93">gangster</text><text x="792" y="93">GANG</text>
+    <text x="567" y="117">3</text><text x="648" y="117">romantic comedy</text><text x="792" y="117">ROMCOM</text>
+    <text x="567" y="141">4</text><text x="648" y="141">crime</text><text x="792" y="141">CRIME</text>
+    <text x="567" y="165">5</text><text x="648" y="165">comedy</text><text x="792" y="165">COM</text>
+    <text x="567" y="189">6</text><text x="648" y="189">fantasy</text><text x="792" y="189">FANT</text>
+  </g>
+  <g font-size="15" fill="#b35900">
+    <text x="567" y="213">7</text><text x="648" y="213">science fiction</text><text x="792" y="213">SCIFI</text>
+  </g>
+
+  <!-- the table state -->
+  <text x="560" y="252" font-size="18" font-weight="bold" fill="#2e7d32">state</text>
+  <rect x="560" y="260" width="325" height="24" fill="#f1f1f1"/>
+  <rect x="560" y="260" width="325" height="120" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <g stroke="#2e7d32" stroke-width="1">
+    <line x1="560" y1="284" x2="885" y2="284"/>
+    <line x1="640" y1="260" x2="640" y2="380"/>
+    <line x1="830" y1="260" x2="830" y2="380"/>
+  </g>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="560" y1="308" x2="885" y2="308"/>
+    <line x1="560" y1="332" x2="885" y2="332"/>
+    <line x1="560" y1="356" x2="885" y2="356"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333">
+    <text x="567" y="277" fill="#2e7d32">state_id</text>
+    <text x="648" y="277">name</text>
+    <text x="837" y="277">code</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <text x="567" y="301">1</text><text x="648" y="301">United States of America</text><text x="837" y="301">USA</text>
+    <text x="567" y="325">2</text><text x="648" y="325">France</text><text x="837" y="325">FRA</text>
+    <text x="567" y="349">3</text><text x="648" y="349">Yugoslavia</text><text x="837" y="349">YUG</text>
+  </g>
+  <g font-size="15" fill="#b35900">
+    <text x="567" y="373">4</text><text x="648" y="373">Italy</text><text x="837" y="373">ITA</text>
+  </g>
+
+  <!-- the foreign keys: where the values of genre_id and state_id come from -->
+  <g fill="none" stroke-width="2.5">
+    <path d="M347,28 V10 H530 V40 H556" stroke="#1b6ec2" marker-end="url(#to-genre)"/>
+    <path d="M460,40 H500 V272 H556" stroke="#2e7d32" marker-end="url(#to-state)"/>
+  </g>
+
+  <!-- notes -->
+  <g font-size="15">
+    <text x="15" y="320" fill="#1b6ec2">movie.genre_id is a foreign key: it refers to genre.genre_id</text>
+    <text x="15" y="344" fill="#2e7d32">movie.state_id is a foreign key: it refers to state.state_id</text>
+    <text x="15" y="368" fill="#b35900">no film refers to science fiction or to Italy</text>
+  </g>
+</svg>

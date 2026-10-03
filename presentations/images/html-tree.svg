@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" font-family="Arial, Helvetica, sans-serif">
+  <!-- left: the text of the file -->
+  <text x="20" y="30" font-size="18" font-weight="bold" fill="#333">The HTML file</text>
+  <rect x="10" y="45" width="320" height="262" rx="8" fill="#f1f1f1"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="24" y="72" fill="#888">&lt;!DOCTYPE html&gt;</text>
+    <text x="24" y="96">&lt;html&gt;</text>
+    <text x="24" y="120">&lt;head&gt;</text>
+    <text x="60" y="144">&lt;title&gt;Hello&lt;/title&gt;</text>
+    <text x="24" y="168">&lt;/head&gt;</text>
+    <text x="24" y="192">&lt;body&gt;</text>
+    <text x="60" y="216">&lt;h1&gt;Welcome&lt;/h1&gt;</text>
+    <text x="60" y="240">&lt;p&gt;My &lt;b&gt;first&lt;/b&gt; page.&lt;/p&gt;</text>
+    <text x="24" y="264">&lt;/body&gt;</text>
+    <text x="24" y="288">&lt;/html&gt;</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="24" y="328" width="46" height="26" rx="6" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="82" y="347" font-size="16" fill="#333">an element</text>
+  <rect x="24" y="366" width="46" height="26" rx="6" fill="#f1f1f1" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="82" y="385" font-size="16" fill="#333">the text inside an element</text>
+
+  <!-- right: the tree -->
+  <text x="634" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">The tree that the browser builds</text>
+
+  <!-- the branches -->
+  <g stroke="#888" stroke-width="1.5" fill="none">
+    <line x1="541" y1="84" x2="420" y2="125"/>
+    <line x1="541" y1="84" x2="662" y2="125"/>
+    <line x1="420" y1="159" x2="420" y2="200"/>
+    <line x1="662" y1="159" x2="560" y2="200"/>
+    <line x1="662" y1="159" x2="765" y2="200"/>
+    <line x1="420" y1="234" x2="420" y2="275"/>
+    <line x1="560" y1="234" x2="560" y2="275"/>
+    <line x1="765" y1="234" x2="680" y2="275"/>
+    <line x1="765" y1="234" x2="765" y2="275"/>
+    <line x1="765" y1="234" x2="850" y2="275"/>
+    <line x1="765" y1="309" x2="765" y2="350"/>
+  </g>
+
+  <!-- the elements -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="503" y="50" width="76" height="34" rx="6"/>
+    <rect x="382" y="125" width="76" height="34" rx="6"/>
+    <rect x="624" y="125" width="76" height="34" rx="6"/>
+    <rect x="382" y="200" width="76" height="34" rx="6"/>
+    <rect x="522" y="200" width="76" height="34" rx="6"/>
+    <rect x="727" y="200" width="76" height="34" rx="6"/>
+    <rect x="727" y="275" width="76" height="34" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="541" y="73">html</text>
+    <text x="420" y="148">head</text>
+    <text x="662" y="148">body</text>
+    <text x="420" y="223">title</text>
+    <text x="560" y="223">h1</text>
+    <text x="765" y="223">p</text>
+    <text x="765" y="298">b</text>
+  </g>
+
+  <!-- the texts -->
+  <g fill="#f1f1f1" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3">
+    <rect x="382" y="275" width="76" height="34" rx="6"/>
+    <rect x="512" y="275" width="96" height="34" rx="6"/>
+    <rect x="650" y="275" width="60" height="34" rx="6"/>
+    <rect x="815" y="275" width="70" height="34" rx="6"/>
+    <rect x="730" y="350" width="70" height="34" rx="6"/>
+  </g>
+  <g font-size="16" font-style="italic" fill="#333" text-anchor="middle">
+    <text x="420" y="297">Hello</text>
+    <text x="560" y="297">Welcome</text>
+    <text x="680" y="297">My</text>
+    <text x="850" y="297">page.</text>
+    <text x="765" y="372">first</text>
+  </g>
+
+  <!-- the root -->
+  <text x="590" y="72" font-size="15" fill="#333">the root</text>
+</svg>

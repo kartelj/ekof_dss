@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Weather forecast</h1>
+
+<p>This page demonstrates reading data from a file on the server.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for forecast in forecasts %}
+        <tr>
+            <td>{{ forecast.date }}</td>
+            <td>{{ forecast.temperature_c }}</td>
+            <td>{{ 32 + (forecast.temperature_c * 9 / 5) | round | int }}</td>
+            <td>{{ forecast.summary }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

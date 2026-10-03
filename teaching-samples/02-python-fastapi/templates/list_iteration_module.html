@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Lists - iteration{% endblock %}
+
+{% block content %}
+<h1>Lists - iteration</h1>
+<br />
+<form action="/list-iteration-module/execute" method="get">
+    <button>Do It!</button>
+</form>
+<br />
+Output:
+<br />
+<div class="output">
+    <pre>{{ message }}</pre>
+</div>
+{% endblock %}

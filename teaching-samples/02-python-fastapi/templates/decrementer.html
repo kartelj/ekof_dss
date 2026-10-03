@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Decrementer{% endblock %}
+
+{% block content %}
+<h1>Decrementer</h1>
+
+<p role="status">Current count: {{ current_count }}</p>
+
+<form action="/decrementer" method="post">
+    <button class="btn btn-danger">Decrease</button>
+</form>
+{% endblock %}

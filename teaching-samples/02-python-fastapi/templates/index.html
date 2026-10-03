@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<h1>Hello, world!</h1>
+
+<p>Welcome to your new app.</p>
+
+<p>
+    Every page of this application is made of two files: a Python file in the folder
+    <code>pages</code>, and an HTML template with the same name in the folder <code>templates</code>.
+</p>
+
+<ul>
+    {% for section, pages in menu %}
+    <li>
+        {{ section }}:
+        {% for title, address in pages %}
+        <a href="{{ address }}">{{ title }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

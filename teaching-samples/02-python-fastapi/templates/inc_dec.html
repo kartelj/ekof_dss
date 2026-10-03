@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Incrementer and decrementer{% endblock %}
+
+{% block content %}
+<h1>Incrementer and decrementer</h1>
+
+<p role="status">Current count: {{ current_count }}</p>
+
+<form method="post">
+    <div class="btn-group">
+        <button class="btn btn-outline-primary" formaction="/inc-dec/increment">Increase</button>
+        <button class="btn btn-outline-secondary" formaction="/inc-dec/decrement">Decrease</button>
+    </div>
+</form>
+{% endblock %}

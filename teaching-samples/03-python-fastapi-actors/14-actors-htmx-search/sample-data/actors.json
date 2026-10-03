@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "first_name": "Bata",
+    "last_name": "Živojinović",
+    "date_of_birth": "1933-06-05",
+    "country_code": "RS"
+  },
+  {
+    "id": 2,
+    "first_name": "Julia",
+    "last_name": "Roberts",
+    "date_of_birth": "1967-10-28",
+    "country_code": "US"
+  },
+  {
+    "id": 3,
+    "first_name": "Robert",
+    "last_name": "De Niro",
+    "date_of_birth": "1943-08-17",
+    "country_code": "US"
+  },
+  {
+    "id": 4,
+    "first_name": "Al",
+    "last_name": "Pacino",
+    "date_of_birth": "1940-04-25",
+    "country_code": "US"
+  },
+  {
+    "id": 5,
+    "first_name": "Tom",
+    "last_name": "Cruise",
+    "date_of_birth": "1962-07-03",
+    "country_code": "US"
+  },
+  {
+    "id": 6,
+    "first_name": "Morgan",
+    "last_name": "Freeman",
+    "date_of_birth": "1937-06-01",
+    "country_code": "US"
+  },
+  {
+    "id": 7,
+    "first_name": "Robert",
+    "last_name": "Downey Jr.",
+    "date_of_birth": "1965-04-04",
+    "country_code": "US"
+  },
+  {
+    "id": 8,
+    "first_name": "Brad",
+    "last_name": "Pitt",
+    "date_of_birth": "1963-12-18",
+    "country_code": "US"
+  },
+  {
+    "id": 9,
+    "first_name": "Tom",
+    "last_name": "Hanks",
+    "date_of_birth": "1956-07-09",
+    "country_code": "US"
+  },
+  {
+    "id": 10,
+    "first_name": "Jack",
+    "last_name": "Nicholson",
+    "date_of_birth": "1937-04-22",
+    "country_code": "US"
+  },
+  {
+    "id": 11,
+    "first_name": "Nicole",
+    "last_name": "Kidman",
+    "date_of_birth": "1967-06-20",
+    "country_code": "AU"
+  },
+  {
+    "id": 12,
+    "first_name": "Harrison",
+    "last_name": "Ford",
+    "date_of_birth": "1942-07-13",
+    "country_code": "US"
+  },
+  {
+    "id": 13,
+    "first_name": "Denzel",
+    "last_name": "Washington",
+    "date_of_birth": "1954-12-28",
+    "country_code": "US"
+  }
+]

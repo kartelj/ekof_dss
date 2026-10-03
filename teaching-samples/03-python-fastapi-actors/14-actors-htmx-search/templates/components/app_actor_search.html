@@ -1,0 +1,28 @@
+{#
+    The component AppActorSearch: a box for the text to search for, and the list of the actors found.
+
+    The attributes that start with hx- are instructions for the library htmx:
+      hx-get      which address to request,
+      hx-trigger  when: after the text in the box has changed and the user has paused for 0.3 seconds,
+      hx-target   where to put the answer: into the element with the id search-result.
+
+    Without htmx (for example, if JavaScript is switched off) the form still works as before:
+    the button Search sends it, and the whole page is shown again.
+#}
+{% from "components/search_result.html" import SearchResult %}
+
+{% macro AppActorSearch(search, filtered_actors) %}
+<div id="search-component">
+    <h4><label for="search-box">Actor Search</label></h4>
+
+    <form action="/dashboard" method="get">
+        <input id="search-box" name="search" value="{{ search }}" autocomplete="off"
+            hx-get="/search" hx-trigger="input changed delay:300ms" hx-target="#search-result" />
+        <button>Search</button>
+    </form>
+
+    <ul class="search-result" id="search-result">
+        {{ SearchResult(filtered_actors) }}
+    </ul>
+</div>
+{% endmacro %}

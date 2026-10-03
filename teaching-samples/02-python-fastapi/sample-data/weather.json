@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2026-10-05",
+    "temperature_c": 1,
+    "summary": "Freezing"
+  },
+  {
+    "date": "2026-10-06",
+    "temperature_c": 14,
+    "summary": "Bracing"
+  },
+  {
+    "date": "2026-10-07",
+    "temperature_c": -13,
+    "summary": "Freezing"
+  },
+  {
+    "date": "2026-10-08",
+    "temperature_c": -16,
+    "summary": "Balmy"
+  },
+  {
+    "date": "2026-10-09",
+    "temperature_c": -2,
+    "summary": "Chilly"
+  }
+]

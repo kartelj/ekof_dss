@@ -1,0 +1,14 @@
+{# The menu: links to the pages. The link of the page that is shown gets the class "active". #}
+{% set current = request.url.path %}
+
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link {{ 'active' if current == '/dashboard' }}" href="/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ 'active' if current.startswith('/actor') }}" href="/actors">Actors</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ 'active' if current.startswith('/countr') }}" href="/countries">Countries</a>
+    </li>
+</ul>

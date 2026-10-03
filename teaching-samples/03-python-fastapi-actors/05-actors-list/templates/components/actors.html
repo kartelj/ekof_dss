@@ -1,0 +1,47 @@
+{#
+    The component Actors shows the list of all the actors,
+    and below it the details of one actor with the form for changing them.
+#}
+{% macro Actors(actors, actor) %}
+<h2>My favorite actors</h2>
+<ul class="actors">
+    {# the block between for and endfor is repeated for every element of the list #}
+    {% for a in actors %}
+    <li>
+        <span class="badge">{{ a.id }}</span> {{ a.first_name }} &nbsp; {{ a.last_name }}
+        - {{ a.date_of_birth.strftime("%d.%m.%Y") if a.date_of_birth }} ( {{ a.country_code }} )
+    </li>
+    {% else %}
+    {# this part is used when the list is empty #}
+    <li><em>There are no actors.</em></li>
+    {% endfor %}
+</ul>
+
+<h2>Details for {{ actor.first_name }} {{ actor.last_name | upper }}</h2>
+<br />
+<div><span>id: </span>{{ actor.id }}</div>
+<div><span>first name: </span>{{ actor.first_name }}</div>
+<div><span>last name: </span>{{ actor.last_name }}</div>
+<div><span>country: </span>{{ actor.country_code }}</div>
+<div><span>date of birth: </span>{{ actor.date_of_birth.strftime("%m/%d/%Y") if actor.date_of_birth }}</div>
+<br />
+<form action="/actor" method="post">
+    <div>
+        <label> first name: </label>
+        <input name="first_name" value="{{ actor.first_name }}" placeholder="First name">
+    </div>
+    <div>
+        <label> last name: </label>
+        <input name="last_name" value="{{ actor.last_name }}" placeholder="Last name">
+    </div>
+    <div>
+        <label> country: </label>
+        <input name="country_code" value="{{ actor.country_code }}" placeholder="Country code">
+    </div>
+    <div>
+        <label> date of birth: </label>
+        <input type="date" name="date_of_birth" value="{{ actor.date_of_birth or '' }}">
+    </div>
+    <button>Save</button>
+</form>
+{% endmacro %}

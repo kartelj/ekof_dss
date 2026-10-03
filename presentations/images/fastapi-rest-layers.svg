@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 272" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: crimson inside the program and for HTTP, green for SQL; "end" points forward, "start" points back -->
+    <marker id="ly-red-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="ly-red-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="ly-green-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="ly-green-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- the service: one program, three layers -->
+  <rect x="168" y="6" width="604" height="188" rx="14" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="184" y="30" font-size="16" font-weight="bold" fill="#9b1c31">The RESTful service (the folder rest-service)</text>
+
+  <!-- the client -->
+  <rect x="8" y="64" width="90" height="100" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="53" y="98" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">Client</text>
+  <text x="53" y="124" text-anchor="middle" font-size="15" fill="#333">another</text>
+  <text x="53" y="144" text-anchor="middle" font-size="15" fill="#333">program</text>
+
+  <!-- layer 1: the router -->
+  <rect x="184" y="44" width="156" height="136" rx="10" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <text x="262" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">Router</text>
+  <text x="262" y="92" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">routers/</text>
+  <text x="262" y="120" text-anchor="middle" font-size="15" fill="#333">knows HTTP:</text>
+  <text x="262" y="141" text-anchor="middle" font-size="15" fill="#333">paths, methods,</text>
+  <text x="262" y="162" text-anchor="middle" font-size="15" fill="#333">status codes</text>
+
+  <!-- layer 2: the repository -->
+  <rect x="414" y="44" width="158" height="136" rx="10" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <text x="493" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">Repository</text>
+  <text x="493" y="92" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">repositories/</text>
+  <text x="493" y="120" text-anchor="middle" font-size="15" fill="#333">knows the database:</text>
+  <text x="493" y="141" text-anchor="middle" font-size="15" fill="#333">reads and writes</text>
+  <text x="493" y="162" text-anchor="middle" font-size="15" fill="#333">the rows</text>
+
+  <!-- layer 3: the models -->
+  <rect x="622" y="44" width="134" height="136" rx="10" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <text x="689" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">Models</text>
+  <text x="689" y="92" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">models/</text>
+  <text x="689" y="120" text-anchor="middle" font-size="15" fill="#333">Actor, Country:</text>
+  <text x="689" y="141" text-anchor="middle" font-size="15" fill="#333">classes mapped</text>
+  <text x="689" y="162" text-anchor="middle" font-size="15" fill="#333">to the tables</text>
+
+  <!-- the database -->
+  <text x="850" y="50" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">Database</text>
+  <path d="M812,76 v66 a38,12 0 0 0 76,0 v-66" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="850" cy="76" rx="38" ry="12" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="850" y="122" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">SQLite</text>
+
+  <!-- client <-> router -->
+  <line x1="108" y1="114" x2="174" y2="114" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#ly-red-start)" marker-end="url(#ly-red-end)"/>
+  <text x="133" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">JSON</text>
+
+  <!-- router <-> repository -->
+  <line x1="350" y1="114" x2="404" y2="114" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#ly-red-start)" marker-end="url(#ly-red-end)"/>
+  <text x="377" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">calls</text>
+
+  <!-- repository -> models -->
+  <line x1="580" y1="114" x2="612" y2="114" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#ly-red-end)"/>
+
+  <!-- models <-> database -->
+  <line x1="766" y1="114" x2="802" y2="114" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#ly-green-start)" marker-end="url(#ly-green-end)"/>
+  <text x="792" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">SQL</text>
+
+  <!-- which shape of the data travels where -->
+  <path d="M53,206 v8 h434 v-8" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="270" y="238" text-anchor="middle" font-size="16" font-weight="bold" fill="#1b6ec2">ActorDTO - the data as the clients see it</text>
+  <text x="270" y="261" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">id, ..., country_code, country_name</text>
+
+  <path d="M499,206 v8 h351 v-8" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <text x="674" y="238" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">Actor - a row of the table actor</text>
+  <text x="674" y="261" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">actor_id, ..., country_id</text>
+</svg>

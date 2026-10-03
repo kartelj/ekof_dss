@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the browser -->
+  <rect x="15" y="10" width="170" height="280" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="100" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <!-- the button that is pressed -->
+  <rect x="52" y="58" width="96" height="32" rx="5" fill="#fff" stroke="#777" stroke-width="1.5"/>
+  <text x="100" y="80" text-anchor="middle" font-size="16" fill="#333">Increase</text>
+  <!-- the page that is shown at the end -->
+  <text x="100" y="232" text-anchor="middle" font-size="15" fill="#333">shows the new page:</text>
+  <text x="100" y="256" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">Current count: 43</text>
+
+  <!-- the server -->
+  <rect x="655" y="10" width="230" height="280" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="770" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#9b1c31">Server</text>
+
+  <rect x="672" y="54" width="196" height="100" rx="8" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="770" y="80" text-anchor="middle" font-size="15" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#2e7d32">increment_count()</text>
+  <text x="770" y="107" text-anchor="middle" font-size="16" fill="#333">changes the value:</text>
+  <text x="770" y="130" text-anchor="middle" font-size="16" fill="#333">42 becomes 43</text>
+
+  <rect x="672" y="176" width="196" height="100" rx="8" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="770" y="202" text-anchor="middle" font-size="15" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#2e7d32">show()</text>
+  <text x="770" y="229" text-anchor="middle" font-size="16" fill="#333">builds the page;</text>
+  <text x="770" y="252" text-anchor="middle" font-size="16" fill="#333">changes nothing</text>
+
+  <!-- the four messages -->
+  <g stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="187" y1="74" x2="653" y2="74"/>
+    <line x1="653" y1="132" x2="187" y2="132"/>
+    <line x1="187" y1="196" x2="653" y2="196"/>
+    <line x1="653" y1="254" x2="187" y2="254"/>
+  </g>
+
+  <g font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="420" y="64"><tspan font-family="Arial, Helvetica, sans-serif" font-size="17">1.</tspan> POST /incrementer</text>
+    <text x="420" y="122"><tspan font-family="Arial, Helvetica, sans-serif" font-size="17">2.</tspan> 303 See Other + Location: /incrementer</text>
+    <text x="420" y="186"><tspan font-family="Arial, Helvetica, sans-serif" font-size="17">3.</tspan> GET /incrementer</text>
+    <text x="420" y="244"><tspan font-family="Arial, Helvetica, sans-serif" font-size="17">4.</tspan> 200 OK + HTML</text>
+  </g>
+
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="420" y="94">the button is pressed: the form is sent</text>
+    <text x="420" y="152">"done - now ask for the page at this address"</text>
+    <text x="420" y="216">the browser sends this request by itself</text>
+    <text x="420" y="274">the page with the new value</text>
+  </g>
+</svg>

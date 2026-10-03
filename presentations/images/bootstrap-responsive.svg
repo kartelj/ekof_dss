@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 290" font-family="Arial, Helvetica, sans-serif">
+  <!-- the same page (a header, three blocks of content, a footer) on three screens of different width -->
+
+  <!-- wide screen: the three blocks are side by side -->
+  <rect x="20" y="12" width="440" height="216" rx="8" fill="#fff" stroke="#555" stroke-width="3"/>
+  <rect x="34" y="26" width="412" height="30" rx="3" fill="#fbeef0" stroke="#9b1c31" stroke-width="1.5"/>
+  <text x="240" y="46" text-anchor="middle" font-size="15" fill="#9b1c31">header</text>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="1.5">
+    <rect x="34" y="64" width="132" height="112" rx="3"/>
+    <rect x="174" y="64" width="132" height="112" rx="3"/>
+    <rect x="314" y="64" width="132" height="112" rx="3"/>
+  </g>
+  <g font-size="24" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="100" y="128">1</text>
+    <text x="240" y="128">2</text>
+    <text x="380" y="128">3</text>
+  </g>
+  <rect x="34" y="184" width="412" height="30" rx="3" fill="#f1f1f1" stroke="#888" stroke-width="1.5"/>
+  <text x="240" y="204" text-anchor="middle" font-size="15" fill="#555">footer</text>
+
+  <!-- tablet: two blocks in the first line, the third one below them -->
+  <rect x="520" y="12" width="190" height="216" rx="12" fill="#fff" stroke="#555" stroke-width="3"/>
+  <rect x="534" y="26" width="162" height="30" rx="3" fill="#fbeef0" stroke="#9b1c31" stroke-width="1.5"/>
+  <text x="615" y="46" text-anchor="middle" font-size="15" fill="#9b1c31">header</text>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="1.5">
+    <rect x="534" y="64" width="77" height="52" rx="3"/>
+    <rect x="619" y="64" width="77" height="52" rx="3"/>
+    <rect x="534" y="124" width="162" height="52" rx="3"/>
+  </g>
+  <g font-size="24" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="572" y="99">1</text>
+    <text x="657" y="99">2</text>
+    <text x="615" y="159">3</text>
+  </g>
+  <rect x="534" y="184" width="162" height="30" rx="3" fill="#f1f1f1" stroke="#888" stroke-width="1.5"/>
+  <text x="615" y="204" text-anchor="middle" font-size="15" fill="#555">footer</text>
+
+  <!-- phone: all the blocks one under the other -->
+  <rect x="770" y="12" width="110" height="216" rx="14" fill="#fff" stroke="#555" stroke-width="3"/>
+  <rect x="782" y="26" width="86" height="24" rx="3" fill="#fbeef0" stroke="#9b1c31" stroke-width="1.5"/>
+  <text x="825" y="43" text-anchor="middle" font-size="15" fill="#9b1c31">header</text>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="1.5">
+    <rect x="782" y="57" width="86" height="36" rx="3"/>
+    <rect x="782" y="100" width="86" height="36" rx="3"/>
+    <rect x="782" y="143" width="86" height="36" rx="3"/>
+  </g>
+  <g font-size="22" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="825" y="83">1</text>
+    <text x="825" y="126">2</text>
+    <text x="825" y="169">3</text>
+  </g>
+  <rect x="782" y="186" width="86" height="28" rx="3" fill="#f1f1f1" stroke="#888" stroke-width="1.5"/>
+  <text x="825" y="205" text-anchor="middle" font-size="15" fill="#555">footer</text>
+
+  <!-- what is shown -->
+  <g text-anchor="middle" font-size="18" font-weight="bold" fill="#333">
+    <text x="240" y="256">wide screen</text>
+    <text x="615" y="256">tablet</text>
+    <text x="825" y="256">phone</text>
+  </g>
+  <g text-anchor="middle" font-size="16" fill="#333">
+    <text x="240" y="279">three columns</text>
+    <text x="615" y="279">two columns</text>
+    <text x="825" y="279">one column</text>
+  </g>
+</svg>

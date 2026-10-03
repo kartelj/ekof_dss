@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>All enlisted actors</h2>
+<ul class="actors">
+    {% for a in actors %}
+    <li>
+        {# a click on an actor leads to the page with its details #}
+        <a href="/actordetail/{{ a.id }}">
+            <span class="badge">{{ a.id }}</span> {{ a.first_name }} &nbsp; {{ a.last_name }}
+            - {{ a.date_of_birth.strftime("%d.%m.%Y") if a.date_of_birth }} ( {{ a.country_code }} )
+        </a>
+    </li>
+    {% else %}
+    <li><em>There are no actors.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

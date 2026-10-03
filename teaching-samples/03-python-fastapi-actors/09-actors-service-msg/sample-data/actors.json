@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "first_name": "Bata",
+    "last_name": "Živojinović",
+    "date_of_birth": "1933-06-05",
+    "country_code": "RS"
+  },
+  {
+    "id": 2,
+    "date_of_birth": "1967-10-28",
+    "first_name": "Julia",
+    "last_name": "Roberts",
+    "country_code": "US"
+  },
+  {
+    "country_code": "US",
+    "id": 3,
+    "first_name": "Robert",
+    "last_name": "De Niro",
+    "date_of_birth": "1943-08-17"
+  },
+  {
+    "id": 4,
+    "first_name": "Al",
+    "last_name": "Pacino",
+    "date_of_birth": "1940-04-25",
+    "country_code": "US"
+  },
+  {
+    "id": 5,
+    "first_name": "Tom",
+    "last_name": "Cruise",
+    "date_of_birth": "1962-07-03",
+    "country_code": "US"
+  },
+  {
+    "id": 7,
+    "first_name": "Franco",
+    "last_name": "Nero",
+    "date_of_birth": "1941-11-23",
+    "country_code": "IT"
+  }
+]

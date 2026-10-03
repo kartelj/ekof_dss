@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if mode == "edit" %}
+
+<h2>Edit data for {{ selected_actor.first_name }} {{ selected_actor.last_name | upper }}</h2>
+<form action="/actordetail/{{ selected_actor.id }}" method="post">
+    <div>
+        <label> first name: </label>
+        <input name="first_name" value="{{ selected_actor.first_name }}" placeholder="First name">
+    </div>
+    <div>
+        <label> last name: </label>
+        <input name="last_name" value="{{ selected_actor.last_name }}" placeholder="Last name">
+    </div>
+    <div>
+        <label> country: </label>
+        <select name="country_id">
+            {% for c in countries %}
+            <option value="{{ c.id }}" {{ "selected" if c.id == selected_actor.country_id }}>{{ c.name }} ({{ c.code }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label> date of birth: </label>
+        <input type="date" name="date_of_birth" value="{{ selected_actor.date_of_birth or '' }}">
+    </div>
+    <button>Save</button>
+    <a class="button" href="/actordetail/{{ selected_actor.id }}">Cancel</a>
+</form>
+
+{% else %}
+
+<h2>Details for {{ selected_actor.first_name }} {{ selected_actor.last_name | upper }}</h2>
+<br />
+<div><span>id: </span>{{ selected_actor.id }}</div>
+<div><span>first name: </span>{{ selected_actor.first_name }}</div>
+<div><span>last name: </span>{{ selected_actor.last_name }}</div>
+<div><span>country: </span>{{ selected_actor.country_name }} ({{ selected_actor.country_code }})</div>
+<div><span>date of birth: </span>{{ selected_actor.date_of_birth.strftime("%m/%d/%Y") if selected_actor.date_of_birth }}</div>
+<a class="button" href="/actordetail/{{ selected_actor.id }}?mode=edit">Edit</a>
+
+{% endif %}
+{% endblock %}

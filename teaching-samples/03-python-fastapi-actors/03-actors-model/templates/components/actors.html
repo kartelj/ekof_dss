@@ -1,0 +1,15 @@
+{#
+    The component Actors shows the details of one actor.
+    The parameter actor is an object of the class Actor: its attributes are reached with a dot.
+    "| upper" is a filter: it changes the value in front of it (here into upper case).
+#}
+{% macro Actors(actor) %}
+<h2>
+    Details for {{ actor.first_name }} {{ actor.last_name | upper }}
+</h2>
+<div><span>id: </span>{{ actor.id }}</div>
+<div><span>first name: </span>{{ actor.first_name }}</div>
+<div><span>last name: </span>{{ actor.last_name }}</div>
+<div><span>country: </span>{{ actor.country_code }}</div>
+<div><span>date of birth: </span>{{ actor.date_of_birth.strftime("%m/%d/%Y") if actor.date_of_birth }}</div>
+{% endmacro %}

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 190" font-family="Arial, Helvetica, sans-serif">
+  <!-- the address, one coloured piece per part; textLength keeps the pieces aligned in every font -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="22" font-weight="bold">
+    <text x="20" y="50" textLength="65" lengthAdjust="spacingAndGlyphs" fill="#9b1c31">https</text>
+    <text x="85" y="50" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#888">://</text>
+    <text x="124" y="50" textLength="195" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">www.example.com</text>
+    <text x="319" y="50" textLength="13" lengthAdjust="spacingAndGlyphs" fill="#888">:</text>
+    <text x="332" y="50" textLength="52" lengthAdjust="spacingAndGlyphs" fill="#b35900">8000</text>
+    <text x="384" y="50" textLength="299" lengthAdjust="spacingAndGlyphs" fill="#2e7d32">/courses/dss/index.html</text>
+    <text x="683" y="50" textLength="13" lengthAdjust="spacingAndGlyphs" fill="#888">?</text>
+    <text x="696" y="50" textLength="91" lengthAdjust="spacingAndGlyphs" fill="#6a1b9a">lang=en</text>
+    <text x="787" y="50" textLength="13" lengthAdjust="spacingAndGlyphs" fill="#888">#</text>
+    <text x="800" y="50" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#555">topics</text>
+  </g>
+
+  <!-- brackets under the pieces -->
+  <g fill="none" stroke-width="2">
+    <path d="M20,62 v8 h65 v-8" stroke="#9b1c31"/>
+    <path d="M124,62 v8 h195 v-8" stroke="#1b6ec2"/>
+    <path d="M332,62 v8 h52 v-8" stroke="#b35900"/>
+    <path d="M384,62 v8 h299 v-8" stroke="#2e7d32"/>
+    <path d="M696,62 v8 h91 v-8" stroke="#6a1b9a"/>
+    <path d="M800,62 v8 h78 v-8" stroke="#555"/>
+  </g>
+
+  <!-- names of the parts -->
+  <g font-size="18" font-weight="bold" text-anchor="middle">
+    <text x="52" y="96" fill="#9b1c31">scheme</text>
+    <text x="221" y="96" fill="#1b6ec2">host</text>
+    <text x="358" y="96" fill="#b35900">port</text>
+    <text x="533" y="96" fill="#2e7d32">path</text>
+    <text x="741" y="96" fill="#6a1b9a">query</text>
+    <text x="839" y="96" fill="#555">fragment</text>
+  </g>
+
+  <!-- what each part means -->
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="52" y="120">protocol</text>
+    <text x="221" y="120">which computer</text>
+    <text x="358" y="120">which</text>
+    <text x="358" y="138">program</text>
+    <text x="533" y="120">which resource on that server</text>
+    <text x="741" y="120">extra values</text>
+    <text x="741" y="138">name=value</text>
+    <text x="839" y="120">place on</text>
+    <text x="839" y="138">the page</text>
+  </g>
+</svg>

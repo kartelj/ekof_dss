@@ -1,0 +1,10 @@
+{# The component SearchResult: the items of the list of the actors found. #}
+{% macro SearchResult(filtered_actors) %}
+{% for actor in filtered_actors %}
+<li>
+    <a href="/actordetail/{{ actor.id }}">
+        {{ actor.first_name }} {{ actor.last_name | upper }} ({{ actor.country_code }})
+    </a>
+</li>
+{% endfor %}
+{% endmacro %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Top Actors</h2>
+    <div class="actors-menu">
+        {% for actor in actors %}
+        <a href="/actordetail/{{ actor.id }}">
+            {{ actor.first_name }} {{ actor.last_name | upper }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

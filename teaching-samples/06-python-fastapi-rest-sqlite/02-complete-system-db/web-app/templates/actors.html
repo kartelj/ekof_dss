@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>All enlisted actors</h2>
+
+<form class="add-actor" action="/actors" method="post">
+    <label>First name:
+        <input name="first_name" />
+    </label>
+    <label>Last name:
+        <input name="last_name" />
+    </label>
+    {# the user chooses a country from the list; the form sends the id of the chosen country #}
+    <select name="country_id">
+        {% for c in countries %}
+        <option value="{{ c.id }}">{{ c.code }} - {{ c.name }}</option>
+        {% endfor %}
+    </select>
+    <button>Add</button>
+</form>
+
+<ul class="actors">
+    {% for a in actors %}
+    <li>
+        {# a click on an actor leads to the page with its details #}
+        <a href="/actordetail/{{ a.id }}">
+            <span class="badge">{{ a.id }}</span> {{ a.first_name }} &nbsp; {{ a.last_name }}
+            - {{ a.date_of_birth.strftime("%d.%m.%Y") if a.date_of_birth }} ( {{ a.country_code }} )
+        </a>
+        <form action="/actors/{{ a.id }}/delete" method="post">
+            <button class="delete" title="delete actor">x</button>
+        </form>
+    </li>
+    {% else %}
+    <li><em>There are no actors.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

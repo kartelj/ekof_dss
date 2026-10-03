@@ -1,0 +1,22 @@
+{#
+    The component AppActorSearch: a box for the text to search for, and the list of the actors found.
+    The form uses the method GET, so the text travels in the address: /dashboard?search=tom
+#}
+{% macro AppActorSearch(search, filtered_actors) %}
+<div class="mt-4">
+    <h2 class="bg-primary text-white p-2"><label class="mb-0" for="search-box">Actor Search</label></h2>
+
+    <form class="form-inline" action="/dashboard" method="get">
+        <input id="search-box" class="form-control mr-2" name="search" value="{{ search }}" />
+        <button class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="list-group mt-2 search-result">
+        {% for actor in filtered_actors %}
+        <a class="list-group-item list-group-item-action" href="/actordetail/{{ actor.id }}">
+            {{ actor.first_name }} {{ actor.last_name | upper }} ({{ actor.country_code }})
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}

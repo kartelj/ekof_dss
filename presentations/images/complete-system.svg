@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 205" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: crimson for HTTP, green for SQL; "end" points forward, "start" points back -->
+    <marker id="cs-http-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="cs-http-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="cs-sql-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="cs-sql-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- the browser -->
+  <rect x="8" y="8" width="132" height="140" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="74" y="40" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <rect x="34" y="60" width="80" height="58" rx="5" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <line x1="34" y1="75" x2="114" y2="75" stroke="#1b6ec2" stroke-width="2"/>
+  <circle cx="44" cy="67.5" r="2.5" fill="#1b6ec2"/>
+  <circle cx="53" cy="67.5" r="2.5" fill="#1b6ec2"/>
+  <line x1="46" y1="88" x2="102" y2="88" stroke="#bbb" stroke-width="4"/>
+  <line x1="46" y1="99" x2="90" y2="99" stroke="#bbb" stroke-width="4"/>
+  <line x1="46" y1="110" x2="97" y2="110" stroke="#bbb" stroke-width="4"/>
+  <text x="74" y="175" text-anchor="middle" font-size="15" fill="#333">shows the pages</text>
+  <text x="74" y="197" text-anchor="middle" font-size="15" fill="#333">to a person</text>
+
+  <!-- the web application -->
+  <rect x="232" y="8" width="200" height="140" rx="12" fill="#f1f1f1" stroke="#6a1b9a" stroke-width="2"/>
+  <text x="332" y="40" text-anchor="middle" font-size="19" font-weight="bold" fill="#6a1b9a">Web application</text>
+  <text x="332" y="68" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">localhost:8000</text>
+  <text x="332" y="100" text-anchor="middle" font-size="15" fill="#333">pages, templates,</text>
+  <text x="332" y="124" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">RestActorService</text>
+  <text x="332" y="175" text-anchor="middle" font-size="15" fill="#333">the folder web-app</text>
+  <text x="332" y="197" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">start it second</text>
+
+  <!-- the RESTful service -->
+  <rect x="524" y="8" width="200" height="140" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="624" y="40" text-anchor="middle" font-size="19" font-weight="bold" fill="#9b1c31">RESTful service</text>
+  <text x="624" y="68" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">localhost:8001</text>
+  <text x="624" y="100" text-anchor="middle" font-size="15" fill="#333">routers, repositories,</text>
+  <text x="624" y="124" text-anchor="middle" font-size="15" fill="#333">models, DTOs</text>
+  <text x="624" y="175" text-anchor="middle" font-size="15" fill="#333">the folder rest-service</text>
+  <text x="624" y="197" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">start it first</text>
+
+  <!-- the database -->
+  <text x="846" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">Database</text>
+  <path d="M806,56 v72 a40,12 0 0 0 80,0 v-72" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="846" cy="56" rx="40" ry="12" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="846" y="104" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">SQLite</text>
+  <text x="846" y="175" text-anchor="middle" font-size="15" fill="#333">the file</text>
+  <text x="846" y="197" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, monospace" fill="#333">actors.db</text>
+
+  <!-- browser <-> web application -->
+  <line x1="150" y1="82" x2="222" y2="82" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#cs-http-start)" marker-end="url(#cs-http-end)"/>
+  <text x="186" y="68" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">HTML</text>
+  <text x="186" y="108" text-anchor="middle" font-size="15" fill="#333">over HTTP</text>
+
+  <!-- web application <-> RESTful service -->
+  <line x1="442" y1="82" x2="514" y2="82" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#cs-http-start)" marker-end="url(#cs-http-end)"/>
+  <text x="478" y="68" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">JSON</text>
+  <text x="478" y="108" text-anchor="middle" font-size="15" fill="#333">over HTTP</text>
+
+  <!-- RESTful service <-> database -->
+  <line x1="734" y1="82" x2="796" y2="82" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#cs-sql-start)" marker-end="url(#cs-sql-end)"/>
+  <text x="765" y="68" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">SQL</text>
+</svg>

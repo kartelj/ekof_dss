@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>All countries</h2>
+
+<form class="add-actor" action="/countries" method="post">
+    <label>Country code:
+        <input name="country_code" size="4" />
+    </label>
+    <label>Country name:
+        <input name="country_name" />
+    </label>
+    <button>Add</button>
+</form>
+
+<ul class="actors">
+    {% for c in countries %}
+    <li>
+        <a href="/countrydetail/{{ c.id }}">
+            <span class="badge">{{ c.id }}</span> {{ c.code }} &nbsp; {{ c.name }}
+        </a>
+        <form action="/countries/{{ c.id }}/delete" method="post">
+            <button class="delete" title="delete country">x</button>
+        </form>
+    </li>
+    {% else %}
+    <li><em>There are no countries.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

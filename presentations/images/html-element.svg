@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 255" font-family="Arial, Helvetica, sans-serif">
+  <!-- the element, one coloured piece per part; textLength keeps the pieces aligned in every font -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="24" font-weight="bold">
+    <text x="126" y="122" textLength="28.8" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">&lt;p</text>
+    <text x="169.2" y="122" textLength="72" lengthAdjust="spacingAndGlyphs" fill="#b35900">title</text>
+    <text x="241.2" y="122" textLength="14.4" lengthAdjust="spacingAndGlyphs" fill="#888">=</text>
+    <text x="255.6" y="122" textLength="158.4" lengthAdjust="spacingAndGlyphs" fill="#2e7d32">"Databases"</text>
+    <text x="414" y="122" textLength="14.4" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">&gt;</text>
+    <text x="428.4" y="122" textLength="288" lengthAdjust="spacingAndGlyphs" fill="#333">The relational model</text>
+    <text x="716.4" y="122" textLength="57.6" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">&lt;/p&gt;</text>
+  </g>
+
+  <!-- above: the attribute -->
+  <path d="M169,50 v-8 h245 v8" fill="none" stroke="#6a1b9a" stroke-width="2"/>
+  <text x="291.5" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#6a1b9a">attribute</text>
+  <text x="205" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#b35900">name</text>
+  <text x="335" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">value</text>
+
+  <!-- below: start tag, content, end tag -->
+  <g fill="none" stroke-width="2">
+    <path d="M126,136 v8 h299 v-8" stroke="#1b6ec2"/>
+    <path d="M432,136 v8 h281 v-8" stroke="#333"/>
+    <path d="M720,136 v8 h54 v-8" stroke="#1b6ec2"/>
+  </g>
+  <g font-size="18" font-weight="bold" text-anchor="middle">
+    <text x="275.5" y="170" fill="#1b6ec2">start tag</text>
+    <text x="572.5" y="170" fill="#333">content</text>
+    <text x="747" y="170" fill="#1b6ec2">end tag</text>
+  </g>
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="275.5" y="191">opens the element</text>
+    <text x="572.5" y="191">character data</text>
+    <text x="747" y="191">closes it</text>
+  </g>
+
+  <!-- the whole element -->
+  <path d="M126,206 v8 h648 v-8" fill="none" stroke="#9b1c31" stroke-width="2"/>
+  <text x="450" y="242" text-anchor="middle" font-size="20" font-weight="bold" fill="#9b1c31">element</text>
+</svg>

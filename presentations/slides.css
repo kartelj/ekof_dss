@@ -1,0 +1,147 @@
+/* The look of the lecture slides (on top of the "white" theme of reveal.js). */
+
+:root {
+    --dss-crimson: #9b1c31;
+    --dss-ink: #222;
+    --r-main-font-size: 30px;
+    --r-main-color: var(--dss-ink);
+    --r-heading-color: var(--dss-ink);
+    --r-link-color: #1b6ec2;
+    --r-heading-text-transform: none;
+}
+
+.reveal .slides {
+    text-align: left;
+}
+
+/* the title of the lecture (first and last slide) */
+
+.reveal h1 {
+    font-size: 1.9em;
+    line-height: 1.25;
+    color: #fff;
+    background-color: var(--dss-crimson);
+    text-align: center;
+    padding: 1em .8em;
+    margin: 2.2em 0 .8em 0;
+}
+
+.reveal h1 + p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* the title of a slide: a band across the top */
+
+.reveal h2 {
+    font-size: 1.35em;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--dss-crimson);
+    padding: .35em .6em;
+    margin: 0 0 .7em 0;
+}
+
+.reveal h3 {
+    font-size: 1.05em;
+    color: var(--dss-crimson);
+    margin: .6em 0 .3em 0;
+}
+
+.reveal p,
+.reveal li {
+    line-height: 1.35;
+}
+
+.reveal ul,
+.reveal ol {
+    display: block;
+    margin: 0 0 .5em 1.3em;
+}
+
+.reveal li {
+    margin-bottom: .3em;
+}
+
+.reveal li li {
+    font-size: .9em;
+}
+
+/* code */
+
+.reveal code {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .85em;
+    background-color: #f1f1f1;
+    padding: .05em .25em;
+    border-radius: 3px;
+}
+
+/* code in the title of a slide: the letters of the title, without the grey box */
+
+.reveal h1 code,
+.reveal h2 code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.reveal pre {
+    width: 100%;
+    font-size: .58em;
+    box-shadow: none;
+    margin: .5em 0;
+}
+
+.reveal pre code {
+    font-size: 1em;
+    line-height: 1.35;
+    max-height: 520px;
+    padding: .8em 1em;
+    border-radius: 6px;
+    background-color: #272822;
+}
+
+/* tables and pictures */
+
+.reveal table {
+    font-size: .8em;
+    margin: .5em 0;
+}
+
+.reveal table th {
+    background-color: #f1f1f1;
+}
+
+.reveal img {
+    display: block;
+    margin: .3em auto;
+    max-height: 480px;
+    border: 0;
+    box-shadow: none;
+}
+
+.reveal blockquote {
+    width: 92%;
+    font-style: normal;
+    box-shadow: none;
+    border-left: 6px solid var(--dss-crimson);
+    background-color: #f7f7f7;
+    padding: .4em .8em;
+    margin: .6em 0;
+}
+
+/* the number of the slide: bottom left, so that it is not under the navigation arrows */
+
+.reveal .slide-number {
+    left: 8px;
+    right: auto;
+    font-size: 14px;
+    background-color: transparent;
+    color: #777;
+}
+
+.reveal .slide-number a {
+    color: #777;
+}

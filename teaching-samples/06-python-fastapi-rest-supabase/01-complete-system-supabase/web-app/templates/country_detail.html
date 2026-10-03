@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if mode == "edit" %}
+
+<h2>Edit data for {{ selected_country.name }} ( {{ selected_country.code | upper }} )</h2>
+<form action="/countrydetail/{{ selected_country.id }}" method="post">
+    <table class="table table-borderless w-auto">
+        <tr>
+            <td><label class="text-danger" for="code"> code: </label></td>
+            <td><input class="form-control" id="code" name="code" value="{{ selected_country.code }}" placeholder="Code"></td>
+        </tr>
+        <tr>
+            <td><label class="text-danger" for="name"> name: </label></td>
+            <td><input class="form-control" id="name" name="name" value="{{ selected_country.name }}" placeholder="Name"></td>
+        </tr>
+    </table>
+    <button class="btn btn-primary">Save</button>
+    <a class="btn btn-primary" href="/countrydetail/{{ selected_country.id }}">Cancel</a>
+</form>
+
+{% else %}
+
+<h2 class="text-success">
+    Details for <span class="text-primary">{{ selected_country.name }} ( {{ selected_country.code | upper }} )</span>
+</h2>
+<table class="table table-borderless w-auto">
+    <tr>
+        <td>id:</td>
+        <td>{{ selected_country.id }}</td>
+    </tr>
+    <tr>
+        <td>code:</td>
+        <td>{{ selected_country.code }}</td>
+    </tr>
+    <tr>
+        <td>name:</td>
+        <td>{{ selected_country.name }}</td>
+    </tr>
+</table>
+<a class="btn btn-primary" href="/countrydetail/{{ selected_country.id }}?mode=edit">Edit</a>
+
+{% endif %}
+{% endblock %}

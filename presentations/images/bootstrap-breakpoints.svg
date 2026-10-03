@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 214" font-family="Arial, Helvetica, sans-serif">
+  <!-- three columns with the class col-sm-4, in a narrow and in a wide browser window -->
+
+  <!-- narrow window: the columns are stacked -->
+  <text x="170" y="20" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">narrower than 576px</text>
+  <text x="170" y="42" text-anchor="middle" font-size="16" fill="#333">every column takes the full width</text>
+  <rect x="60" y="54" width="220" height="150" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <line x1="60" y1="72" x2="280" y2="72" stroke="#555" stroke-width="2"/>
+  <circle cx="72" cy="63" r="3" fill="#555"/>
+  <circle cx="83" cy="63" r="3" fill="#555"/>
+  <circle cx="94" cy="63" r="3" fill="#555"/>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="1.5">
+    <rect x="70" y="80" width="200" height="34" rx="3"/>
+    <rect x="70" y="120" width="200" height="34" rx="3"/>
+    <rect x="70" y="160" width="200" height="34" rx="3"/>
+  </g>
+  <g font-size="18" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="170" y="103">A</text>
+    <text x="170" y="143">B</text>
+    <text x="170" y="183">C</text>
+  </g>
+
+  <!-- wide window: the columns are side by side -->
+  <text x="620" y="20" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">576px or wider</text>
+  <text x="620" y="42" text-anchor="middle" font-size="16" fill="#333">three columns side by side, one third each</text>
+  <rect x="380" y="54" width="480" height="150" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <line x1="380" y1="72" x2="860" y2="72" stroke="#555" stroke-width="2"/>
+  <circle cx="392" cy="63" r="3" fill="#555"/>
+  <circle cx="403" cy="63" r="3" fill="#555"/>
+  <circle cx="414" cy="63" r="3" fill="#555"/>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="1.5">
+    <rect x="390" y="80" width="148" height="114" rx="3"/>
+    <rect x="546" y="80" width="148" height="114" rx="3"/>
+    <rect x="702" y="80" width="148" height="114" rx="3"/>
+  </g>
+  <g font-size="18" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="464" y="143">A</text>
+    <text x="620" y="143">B</text>
+    <text x="776" y="143">C</text>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vanity Fair</title>
+    <link rel="icon" href="/static/favicon.svg">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body>
+    {% from "components/app_messages.html" import AppMessages %}
+
+    <div class="content">
+        <h1>Vanity Fair</h1>
+        {% include "nav_menu.html" %}
+        {% block content %}{% endblock %}
+        {{ AppMessages() }}
+    </div>
+</body>
+
+</html>

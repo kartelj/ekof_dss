@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vanity Fair</title>
+    <link rel="icon" href="/static/favicon.svg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body>
+    {% from "components/app_messages.html" import AppMessages %}
+
+    <div class="container my-3">
+        <h1 class="text-primary">Vanity Fair</h1>
+        {% include "nav_menu.html" %}
+
+        <div class="my-4">
+            {% block content %}{% endblock %}
+        </div>
+
+        {{ AppMessages() }}
+    </div>
+</body>
+
+</html>

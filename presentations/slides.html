@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Developing Software Solutions</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/theme/white.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="slides.css">
+</head>
+
+<body>
+    <!--
+        Shows one lecture as slides. The lecture is a Markdown file from this folder,
+        and its name is given in the address:   slides.html?deck=01-02-html
+
+        Keys:  arrows / space - next and previous slide,   Esc - overview of all slides,
+               F - full screen,   S - speaker notes.
+        Printing to PDF: add &print-pdf to the address and print the page from the browser.
+    -->
+    <div class="reveal">
+        <div class="slides">
+            <section id="deck" data-separator="^\r?\n---\r?\n" data-separator-notes="^Note:"></section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/notes.js"></script>
+    <script>
+        // the name of the lecture comes from the address; only letters, digits, - and _ are accepted
+        const deck = new URLSearchParams(window.location.search).get("deck");
+        if (!deck || !/^[\w-]+$/.test(deck)) {
+            window.location.replace("index.html");
+        } else {
+            document.getElementById("deck").setAttribute("data-markdown", deck + ".md");
+            Reveal.initialize({
+                width: 1280,
+                height: 720,
+                margin: 0.04,
+                center: false,
+                hash: true,
+                slideNumber: "c/t",
+                transition: "none",
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            }).then(() => {
+                // the title of the first slide becomes the title of the browser tab
+                const heading = document.querySelector(".reveal h1");
+                if (heading) {
+                    document.title = heading.textContent + " - Developing Software Solutions";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

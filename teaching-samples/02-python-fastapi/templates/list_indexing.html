@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Lists - indexing{% endblock %}
+
+{% block content %}
+<h1>Lists - indexing</h1>
+<br />
+<form action="/list-indexing/execute" method="get">
+    <button>Do It!</button>
+</form>
+<br />
+Output:
+<br />
+<div class="output">
+    <pre>{{ message }}</pre>
+</div>
+{% endblock %}

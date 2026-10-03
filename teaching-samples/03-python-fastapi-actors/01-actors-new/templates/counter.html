@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Counter</h1>
+
+<p>Current count: {{ current_count }}</p>
+
+<form action="/counter" method="post">
+    <button class="btn btn-primary">Click me</button>
+</form>
+{% endblock %}

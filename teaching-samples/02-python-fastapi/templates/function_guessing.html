@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}Guessing Game{% endblock %}
+
+{% block content %}
+<h1>Guessing Game</h1>
+<br />
+<form action="/function-guessing/start" method="post">
+    <table>
+        <tr>
+            <td>Lower limit:</td>
+            <td>
+                <input style="text-align:right" name="lower" value="{{ lower_limit }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Upper limit:</td>
+            <td>
+                <input style="text-align:right" name="upper" value="{{ upper_limit }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Maximum guesses:</td>
+            <td>
+                <input style="text-align:right" name="guesses" value="{{ max_guesses }}" />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <button>Start Game</button> &nbsp;
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% if guess_section_visible %}
+<form action="/function-guessing/check" method="post">
+    <table>
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <input style="text-align:right" name="guess" value="{{ new_guess }}" autofocus /> &nbsp;
+                <button>Check</button> &nbsp;
+            </td>
+        </tr>
+    </table>
+</form>
+{% endif %}
+
+<pre>{{ message }}</pre>
+<br />
+{% endblock %}

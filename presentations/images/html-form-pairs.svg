@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 288" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the three steps -->
+  <g font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="197" y="24">1. The author of the page writes</text>
+    <text x="525" y="24">2. The user types</text>
+    <text x="775" y="24">3. The browser sends</text>
+  </g>
+
+  <!-- 1. the HTML -->
+  <rect x="10" y="40" width="374" height="38" rx="6" fill="#f1f1f1"/>
+  <rect x="10" y="90" width="374" height="38" rx="6" fill="#f1f1f1"/>
+  <rect x="10" y="140" width="374" height="38" rx="6" fill="#f1f1f1"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="22" y="64">&lt;input type="text" name="<tspan fill="#1b6ec2" font-weight="bold">first_name</tspan>"&gt;</text>
+    <text x="22" y="114">&lt;input type="text" name="<tspan fill="#1b6ec2" font-weight="bold">last_name</tspan>"&gt;</text>
+    <text x="22" y="164">&lt;input type="submit"&gt;</text>
+  </g>
+
+  <!-- 2. the form on the screen -->
+  <rect x="440" y="42" width="170" height="34" rx="3" fill="#fff" stroke="#888" stroke-width="1.5"/>
+  <rect x="440" y="92" width="170" height="34" rx="3" fill="#fff" stroke="#888" stroke-width="1.5"/>
+  <rect x="440" y="143" width="92" height="32" rx="5" fill="#f1f1f1" stroke="#888" stroke-width="1.5"/>
+  <g font-size="17" font-weight="bold" fill="#2e7d32">
+    <text x="452" y="65">Holly</text>
+    <text x="452" y="115">Hunter</text>
+  </g>
+  <text x="486" y="165" text-anchor="middle" font-size="16" fill="#333">Submit</text>
+
+  <!-- 3. the pairs -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle">
+    <text x="775" y="65"><tspan fill="#1b6ec2">first_name</tspan><tspan fill="#888">=</tspan><tspan fill="#2e7d32">Holly</tspan></text>
+    <text x="775" y="115"><tspan fill="#1b6ec2">last_name</tspan><tspan fill="#888">=</tspan><tspan fill="#2e7d32">Hunter</tspan></text>
+  </g>
+  <text x="775" y="165" text-anchor="middle" font-size="16"><tspan fill="#1b6ec2" font-weight="bold">name</tspan><tspan fill="#333"> = </tspan><tspan fill="#2e7d32" font-weight="bold">value</tspan></text>
+
+  <!-- arrows -->
+  <g stroke="#9b1c31" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="392" y1="59" x2="432" y2="59"/>
+    <line x1="392" y1="109" x2="432" y2="109"/>
+    <line x1="392" y1="159" x2="432" y2="159"/>
+    <line x1="620" y1="59" x2="680" y2="59"/>
+    <line x1="620" y1="109" x2="680" y2="109"/>
+  </g>
+
+  <!-- the result -->
+  <rect x="10" y="196" width="880" height="84" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="450" y="223" text-anchor="middle" font-size="17" fill="#333">The pairs are joined with &amp; and sent to the address given in the attribute action:</text>
+  <text x="450" y="260" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="20" font-weight="bold"><tspan fill="#333">/process-form</tspan><tspan fill="#888">?</tspan><tspan fill="#1b6ec2">first_name</tspan><tspan fill="#888">=</tspan><tspan fill="#2e7d32">Holly</tspan><tspan fill="#888">&amp;</tspan><tspan fill="#1b6ec2">last_name</tspan><tspan fill="#888">=</tspan><tspan fill="#2e7d32">Hunter</tspan></text>
+</svg>

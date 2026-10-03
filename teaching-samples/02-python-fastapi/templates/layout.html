@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}DSS{% endblock %}</title>
+    <link rel="icon" href="/static/favicon.svg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="sidebar">
+            {% include "nav_menu.html" %}
+        </div>
+
+        <main>
+            <div class="top-row px-4">
+                <a href="https://fastapi.tiangolo.com/" target="_blank">About</a>
+            </div>
+
+            <article class="content px-4">
+                {# every page fills this block with its own content #}
+                {% block content %}{% endblock %}
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Form</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+
+    <p>One form with two buttons. Each button sends the form to its own address.</p>
+
+    <form method="post">
+        First number:
+        <br />
+        <input type="text" name="x" value="3" />
+        <br /> Second number:
+        <br />
+        <input type="text" name="y" value="8" />
+        <br /> Unit:
+        <br />
+        <input type="text" name="unit" value="meters" readonly />
+        <br />
+        <br />
+        <button formaction="/process-form?operation=minimum">Minimum</button>
+        <button formaction="/process-form?operation=maximum">Maximum</button>
+    </form>
+
+    <hr />
+
+    <p>The attribute formaction of a button replaces the attribute action of the form.</p>
+
+    <p>A field with the attribute readonly can not be changed by the user, but its value is sent with the form.</p>
+
+</body>
+
+</html>

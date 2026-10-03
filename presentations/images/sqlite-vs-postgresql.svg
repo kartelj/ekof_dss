@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: green for reading and writing a file, crimson for SQL sent over the network -->
+    <marker id="file-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="file-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="net-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="net-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== left half: embedded ===================== -->
+  <text x="215" y="30" text-anchor="middle" font-size="22" font-weight="bold" fill="#1b6ec2">Embedded: SQLite</text>
+  <text x="215" y="54" text-anchor="middle" font-size="16" fill="#333">the DBMS is a part of our program</text>
+
+  <!-- our computer -->
+  <rect x="30" y="72" width="370" height="300" rx="12" fill="#f1f1f1" stroke="#888" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="46" y="95" font-size="15" fill="#555">our computer</text>
+
+  <!-- the program, with the library inside it -->
+  <rect x="65" y="106" width="300" height="126" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="215" y="131" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">Our Python program</text>
+  <rect x="105" y="144" width="220" height="72" rx="8" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="215" y="173" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">SQLite</text>
+  <text x="215" y="198" text-anchor="middle" font-size="15" fill="#333">a library: the module sqlite3</text>
+
+  <!-- the library reads and writes the file -->
+  <line x1="215" y1="240" x2="215" y2="280" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#file-start)" marker-end="url(#file-end)"/>
+  <text x="230" y="256" font-size="15" fill="#333">reads and writes</text>
+  <text x="230" y="274" font-size="15" fill="#333">the file</text>
+
+  <!-- the database file -->
+  <path d="M125,288 H287 L305,306 V360 H125 Z" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <path d="M287,288 V306 H305" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <text x="215" y="320" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">VanityFair02.db</text>
+  <text x="215" y="345" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">the database: one file</text>
+
+  <text x="215" y="402" text-anchor="middle" font-size="16" fill="#333">to connect: the name of the file</text>
+
+  <!-- the line between the two halves -->
+  <line x1="440" y1="12" x2="440" y2="410" stroke="#bbb" stroke-width="2" stroke-dasharray="7 5"/>
+
+  <!-- ===================== right half: client-server ===================== -->
+  <text x="678" y="30" text-anchor="middle" font-size="22" font-weight="bold" fill="#9b1c31">Client-server: PostgreSQL</text>
+  <text x="678" y="54" text-anchor="middle" font-size="16" fill="#333">the DBMS is a separate program: the server</text>
+
+  <!-- the clients -->
+  <text x="543" y="92" text-anchor="middle" font-size="15" fill="#555">clients, on any computer</text>
+  <rect x="466" y="102" width="154" height="56" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="543" y="136" text-anchor="middle" font-size="16" font-weight="bold" fill="#1b6ec2">Python program</text>
+  <rect x="466" y="180" width="154" height="56" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="543" y="214" text-anchor="middle" font-size="16" font-weight="bold" fill="#1b6ec2">REST service</text>
+  <rect x="466" y="258" width="154" height="56" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="543" y="292" text-anchor="middle" font-size="16" font-weight="bold" fill="#1b6ec2">a tool: psql</text>
+
+  <!-- statements go to the server, results come back -->
+  <line x1="630" y1="130" x2="740" y2="130" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#net-start)" marker-end="url(#net-end)"/>
+  <line x1="630" y1="208" x2="740" y2="208" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#net-start)" marker-end="url(#net-end)"/>
+  <line x1="630" y1="286" x2="740" y2="286" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#net-start)" marker-end="url(#net-end)"/>
+  <text x="685" y="163" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">SQL over</text>
+  <text x="685" y="183" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">the network</text>
+
+  <!-- the server, with the databases inside it -->
+  <rect x="750" y="72" width="135" height="300" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="817" y="102" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">PostgreSQL</text>
+  <text x="817" y="125" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">server</text>
+  <text x="817" y="158" text-anchor="middle" font-size="15" fill="#333">users and</text>
+  <text x="817" y="177" text-anchor="middle" font-size="15" fill="#333">privileges</text>
+  <path d="M767,218 v78 a50,13 0 0 0 100,0 v-78" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="817" cy="218" rx="50" ry="13" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="817" y="270" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">databases</text>
+  <text x="817" y="342" text-anchor="middle" font-size="15" fill="#333">always running</text>
+
+  <text x="678" y="402" text-anchor="middle" font-size="16" fill="#333">to connect: host, port, database, user, password</text>
+</svg>

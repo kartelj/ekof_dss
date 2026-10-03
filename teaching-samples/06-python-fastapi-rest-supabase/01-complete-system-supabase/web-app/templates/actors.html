@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{#
+    The title of a column is a link that orders the table by that column.
+    A second click on the same title reverses the order.
+#}
+{% macro SortLink(title, column) %}
+<a class="text-white" href="/actors?sort={{ column }}{{ '&descending=true' if sort == column and not descending }}">
+    {{ title }}{{ " ▲" if sort == column and not descending }}{{ " ▼" if sort == column and descending }}
+</a>
+{% endmacro %}
+
+{% block content %}
+<h2 class="bg-primary text-white p-2">All enlisted actors</h2>
+
+{# This form is empty: the fields in the first row of the table belong to it through their attribute form="add-actor" #}
+<form id="add-actor" action="/actors" method="post"></form>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>{{ SortLink("Id", "id") }}</th>
+            <th>{{ SortLink("First name", "first_name") }}</th>
+            <th>{{ SortLink("Last name", "last_name") }}</th>
+            <th colspan="2">{{ SortLink("Country name", "country_name") }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input class="form-control" name="first_name" form="add-actor" />
+            </td>
+            <td>
+                <input class="form-control" name="last_name" form="add-actor" />
+            </td>
+            <td>
+                <select class="form-control" name="country_id" form="add-actor">
+                    {% for c in countries %}
+                    <option value="{{ c.id }}">{{ c.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td class="text-center">
+                <button class="btn btn-primary" form="add-actor">Add</button>
+            </td>
+        </tr>
+        {% for a in actors %}
+        <tr>
+            <td>
+                <a href="/actordetail/{{ a.id }}"><span class="badge badge-primary">{{ a.id }}</span></a>
+            </td>
+            <td>
+                <a class="text-body" href="/actordetail/{{ a.id }}">{{ a.first_name or "" }}</a>
+            </td>
+            <td>
+                <a class="text-body" href="/actordetail/{{ a.id }}">{{ a.last_name }}</a>
+            </td>
+            <td>
+                <a class="text-body" href="/actordetail/{{ a.id }}">{{ a.country_name or "" }}</a>
+            </td>
+            <td class="text-center">
+                <form action="/actors/{{ a.id }}/delete" method="post">
+                    <button class="btn btn-outline-danger btn-sm" title="delete actor">x</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

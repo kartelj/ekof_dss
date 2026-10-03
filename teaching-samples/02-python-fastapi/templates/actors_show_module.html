@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Actors{% endblock %}
+
+{% block content %}
+<h1>Actors</h1>
+<br />
+<table>
+    <tr>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>IMDB score</td>
+    </tr>
+    {% for act in film_crew %}
+    <tr>
+        <td>{{ act.first_name }}</td>
+        <td>{{ act.last_name }}</td>
+        <td>{{ act.imdb_mark }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br />
+<form action="/actors-show-module/average-imdb" method="get">
+    <button>Average IMDB</button>
+</form>
+<br />
+{% if show_result %}
+<p> Average IMDB is: {{ avg_imdb }} </p>
+{% endif %}
+{% endblock %}

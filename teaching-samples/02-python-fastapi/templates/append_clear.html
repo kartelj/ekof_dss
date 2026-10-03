@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Append and clear{% endblock %}
+
+{% block content %}
+<h1>Append and clear</h1>
+<br />
+{# both buttons belong to the same form; the attribute formaction tells where each of them sends the form #}
+<form method="post">
+    <table>
+        <tr>
+            <td>Input:</td>
+            <td><input name="text" value="{{ user_input }}" /></td>
+        </tr>
+        <tr>
+            <td style="text-align:center" colspan="2">
+                <button formaction="/append-clear/write">Write</button>
+                <button formaction="/append-clear/clear">Clear</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+Output:
+<br />
+<div class="output">
+    <pre>{{ message }}</pre>
+</div>
+{% endblock %}

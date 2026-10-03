@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 248" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- The end of a relationship line in the crow's foot notation.
+         The line comes from the left; the box of the entity begins at x = 0. -->
+    <g id="one-and-only-one">
+      <line x1="-12" y1="-11" x2="-12" y2="11"/>
+      <line x1="-23" y1="-11" x2="-23" y2="11"/>
+    </g>
+    <g id="zero-or-many">
+      <path d="M-20,0 L0,-12 M-20,0 L0,12" fill="none"/>
+      <circle cx="-30" cy="0" r="7.5" fill="#fff"/>
+    </g>
+  </defs>
+
+  <!-- table country -->
+  <rect x="50" y="30" width="280" height="140" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <path d="M50,72 V36 Q50,30 56,30 H324 Q330,30 330,36 V72 Z" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="190" y="58" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">country</text>
+  <g font-size="15" font-weight="bold">
+    <text x="62" y="96.5" fill="#9b1c31">PK</text>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333">
+    <text x="106" y="96.5">country_id</text>
+    <text x="106" y="126.5">name</text>
+    <text x="106" y="156.5">code</text>
+  </g>
+
+  <!-- table actor -->
+  <rect x="570" y="30" width="280" height="200" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <path d="M570,72 V36 Q570,30 576,30 H844 Q850,30 850,36 V72 Z" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="710" y="58" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">actor</text>
+  <g font-size="15" font-weight="bold">
+    <text x="582" y="96.5" fill="#9b1c31">PK</text>
+    <text x="582" y="186.5" fill="#2e7d32">FK</text>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333">
+    <text x="626" y="96.5">actor_id</text>
+    <text x="626" y="126.5">last_name</text>
+    <text x="626" y="156.5">first_name</text>
+    <text x="626" y="186.5">country_id</text>
+    <text x="626" y="216.5">date_of_birth</text>
+  </g>
+
+  <!-- the relationship: from country.country_id to actor.country_id -->
+  <path d="M330,91 H450 V181 H570" fill="none" stroke="#333" stroke-width="2.5"/>
+  <g stroke="#333" stroke-width="2.5">
+    <use href="#one-and-only-one" transform="translate(330,91) scale(-1,1)"/>
+    <use href="#zero-or-many" transform="translate(570,181)"/>
+  </g>
+  <g font-size="16" fill="#555">
+    <text x="338" y="71">one and only one</text>
+    <text x="562" y="215" text-anchor="end">zero or many</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="15">
+    <text x="50" y="216" font-weight="bold" fill="#9b1c31">PK</text>
+    <text x="80" y="216" fill="#333">primary key</text>
+    <text x="50" y="240" font-weight="bold" fill="#2e7d32">FK</text>
+    <text x="80" y="240" fill="#333">foreign key</text>
+  </g>
+</svg>

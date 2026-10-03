@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 226" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- the class: one description -->
+  <text x="130" y="22" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">one class: the description</text>
+  <rect x="20" y="38" width="220" height="172" rx="10" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="130" y="68" text-anchor="middle" font-size="20" font-weight="bold" fill="#2e7d32">class Actor</text>
+  <line x1="20" y1="84" x2="240" y2="84" stroke="#2e7d32" stroke-width="2"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" fill="#333">
+    <text x="40" y="118">first_name</text>
+    <text x="40" y="152">last_name</text>
+    <text x="40" y="186">imdb_mark</text>
+  </g>
+
+  <!-- creating an object -->
+  <text x="295" y="126" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">Actor(...)</text>
+  <line x1="252" y1="146" x2="338" y2="146" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="295" y="174" text-anchor="middle" font-size="16" fill="#333">creates</text>
+
+  <!-- the objects: every one has its own values -->
+  <text x="615" y="22" text-anchor="middle" font-size="17" font-weight="bold" fill="#9b1c31">many objects (instances): each with its own values</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="435" y="68">movie_star_1</text>
+    <text x="615" y="68">movie_star_2</text>
+    <text x="795" y="68">movie_star_3</text>
+  </g>
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="350" y="84" width="170" height="126" rx="10"/>
+    <rect x="530" y="84" width="170" height="126" rx="10"/>
+    <rect x="710" y="84" width="170" height="126" rx="10"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" fill="#333">
+    <text x="370" y="118">"John"</text>
+    <text x="370" y="152">"Goodman"</text>
+    <text x="370" y="186">9.7</text>
+
+    <text x="550" y="118">"Robert"</text>
+    <text x="550" y="152">"De Niro"</text>
+    <text x="550" y="186">9.4</text>
+
+    <text x="730" y="118">"Kevin"</text>
+    <text x="730" y="152">"Spacey"</text>
+    <text x="730" y="186">9.6</text>
+  </g>
+</svg>

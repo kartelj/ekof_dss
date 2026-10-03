@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 290" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: crimson for HTTP, green for SQL; "end" points forward, "start" points back -->
+    <marker id="http-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="http-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="sql-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="sql-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- client 1: an application in the browser -->
+  <rect x="15" y="10" width="270" height="76" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <rect x="32" y="28" width="50" height="40" rx="4" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <line x1="32" y1="40" x2="82" y2="40" stroke="#1b6ec2" stroke-width="2"/>
+  <circle cx="40" cy="34" r="2.5" fill="#1b6ec2"/>
+  <circle cx="48" cy="34" r="2.5" fill="#1b6ec2"/>
+  <line x1="40" y1="50" x2="74" y2="50" stroke="#bbb" stroke-width="3"/>
+  <line x1="40" y1="58" x2="66" y2="58" stroke="#bbb" stroke-width="3"/>
+  <text x="98" y="43" font-size="17" font-weight="bold" fill="#1b6ec2">Browser application</text>
+  <text x="98" y="66" font-size="15" fill="#333">JavaScript in a web page</text>
+
+  <!-- client 2: an application on a phone -->
+  <rect x="15" y="107" width="270" height="76" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <rect x="43" y="118" width="28" height="54" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <line x1="50" y1="131" x2="64" y2="131" stroke="#bbb" stroke-width="3"/>
+  <line x1="50" y1="139" x2="60" y2="139" stroke="#bbb" stroke-width="3"/>
+  <line x1="50" y1="147" x2="64" y2="147" stroke="#bbb" stroke-width="3"/>
+  <line x1="52" y1="164" x2="62" y2="164" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="98" y="140" font-size="17" font-weight="bold" fill="#1b6ec2">Mobile application</text>
+  <text x="98" y="163" font-size="15" fill="#333">on a phone or a tablet</text>
+
+  <!-- client 3: a program on another server -->
+  <rect x="15" y="204" width="270" height="76" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <rect x="32" y="218" width="50" height="13" rx="3" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <rect x="32" y="235" width="50" height="13" rx="3" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <rect x="32" y="252" width="50" height="13" rx="3" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <circle cx="40" cy="224.5" r="2.5" fill="#1b6ec2"/>
+  <circle cx="40" cy="241.5" r="2.5" fill="#1b6ec2"/>
+  <circle cx="40" cy="258.5" r="2.5" fill="#1b6ec2"/>
+  <text x="98" y="237" font-size="17" font-weight="bold" fill="#1b6ec2">Another server</text>
+  <text x="98" y="260" font-size="15" fill="#333">e.g. a web application</text>
+
+  <!-- the conversations: requests go right, responses come back -->
+  <line x1="295" y1="48" x2="470" y2="48" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#http-start)" marker-end="url(#http-end)"/>
+  <line x1="295" y1="145" x2="470" y2="145" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#http-start)" marker-end="url(#http-end)"/>
+  <line x1="295" y1="242" x2="470" y2="242" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#http-start)" marker-end="url(#http-end)"/>
+  <text x="382.5" y="132" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">JSON over HTTP</text>
+
+  <!-- the service -->
+  <rect x="480" y="10" width="200" height="270" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="580" y="64" text-anchor="middle" font-size="22" font-weight="bold" fill="#9b1c31">REST service</text>
+  <text x="580" y="110" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#333">/api/actors</text>
+  <text x="580" y="136" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, monospace" fill="#333">/api/countries</text>
+  <rect x="525" y="176" width="110" height="18" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="525" y="200" width="110" height="18" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="525" y="224" width="110" height="18" rx="4" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <circle cx="538" cy="185" r="3" fill="#9b1c31"/>
+  <circle cx="538" cy="209" r="3" fill="#9b1c31"/>
+  <circle cx="538" cy="233" r="3" fill="#9b1c31"/>
+
+  <!-- the service and the database -->
+  <line x1="690" y1="145" x2="765" y2="145" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#sql-start)" marker-end="url(#sql-end)"/>
+  <text x="727.5" y="132" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">SQL</text>
+
+  <!-- the database -->
+  <path d="M775,105 v80 a50,14 0 0 0 100,0 v-80" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="825" cy="105" rx="50" ry="14" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="825" y="160" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">Database</text>
+  <text x="825" y="226" text-anchor="middle" font-size="15" fill="#333">actors, countries</text>
+</svg>

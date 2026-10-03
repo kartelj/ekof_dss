@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% from "components/app_actor_search.html" import AppActorSearch %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Top Actors</h2>
+    <div class="actors-menu">
+        {% for actor in actors %}
+        <a href="/actordetail/{{ actor.id }}">
+            {{ actor.first_name }} {{ actor.last_name | upper }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{{ AppActorSearch(search, filtered_actors) }}
+{% endblock %}

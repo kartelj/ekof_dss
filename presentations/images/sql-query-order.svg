@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="Arial, Helvetica, sans-serif">
+  <!-- the two headings -->
+  <text x="20" y="27" font-size="19" font-weight="bold" fill="#333">The order of writing</text>
+  <text x="442" y="27" font-size="19" font-weight="bold" fill="#333">The order of evaluation</text>
+
+  <!-- left: the query as it is written; the number tells when the clause is evaluated -->
+  <rect x="15" y="42" width="395" height="286" rx="8" fill="#f1f1f1"/>
+  <g font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">
+    <circle cx="42" cy="66" r="13" fill="#9b1c31"/><text x="42" y="71">5</text>
+    <circle cx="42" cy="104" r="13" fill="#1b6ec2"/><text x="42" y="109">1</text>
+    <circle cx="42" cy="142" r="13" fill="#2e7d32"/><text x="42" y="147">2</text>
+    <circle cx="42" cy="180" r="13" fill="#b35900"/><text x="42" y="185">3</text>
+    <circle cx="42" cy="218" r="13" fill="#6a1b9a"/><text x="42" y="223">4</text>
+    <circle cx="42" cy="256" r="13" fill="#333"/><text x="42" y="261">6</text>
+    <circle cx="42" cy="294" r="13" fill="#555"/><text x="42" y="299">7</text>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" fill="#333">
+    <text x="66" y="72"><tspan font-weight="bold" fill="#9b1c31">SELECT</tspan> states, COUNT(*) AS films</text>
+    <text x="66" y="110"><tspan font-weight="bold" fill="#1b6ec2">FROM</tspan> movie</text>
+    <text x="66" y="148"><tspan font-weight="bold" fill="#2e7d32">WHERE</tspan> year &lt; 2000</text>
+    <text x="66" y="186"><tspan font-weight="bold" fill="#b35900">GROUP BY</tspan> states</text>
+    <text x="66" y="224"><tspan font-weight="bold" fill="#6a1b9a">HAVING</tspan> COUNT(*) &gt;= 2</text>
+    <text x="66" y="262"><tspan font-weight="bold">ORDER BY</tspan> films DESC</text>
+    <text x="66" y="300"><tspan font-weight="bold" fill="#555">LIMIT</tspan> 1;</text>
+  </g>
+
+  <!-- right: the clauses in the order in which they are evaluated -->
+  <line x1="462" y1="66" x2="462" y2="294" stroke="#bbb" stroke-width="2"/>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="485" y1="85" x2="885" y2="85"/>
+    <line x1="485" y1="123" x2="885" y2="123"/>
+    <line x1="485" y1="161" x2="885" y2="161"/>
+    <line x1="485" y1="199" x2="885" y2="199"/>
+    <line x1="485" y1="237" x2="885" y2="237"/>
+    <line x1="485" y1="275" x2="885" y2="275"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">
+    <circle cx="462" cy="66" r="13" fill="#1b6ec2"/><text x="462" y="71">1</text>
+    <circle cx="462" cy="104" r="13" fill="#2e7d32"/><text x="462" y="109">2</text>
+    <circle cx="462" cy="142" r="13" fill="#b35900"/><text x="462" y="147">3</text>
+    <circle cx="462" cy="180" r="13" fill="#6a1b9a"/><text x="462" y="185">4</text>
+    <circle cx="462" cy="218" r="13" fill="#9b1c31"/><text x="462" y="223">5</text>
+    <circle cx="462" cy="256" r="13" fill="#333"/><text x="462" y="261">6</text>
+    <circle cx="462" cy="294" r="13" fill="#555"/><text x="462" y="299">7</text>
+  </g>
+  <g font-size="17" font-weight="bold">
+    <text x="486" y="72" fill="#1b6ec2">FROM</text>
+    <text x="486" y="110" fill="#2e7d32">WHERE</text>
+    <text x="486" y="148" fill="#b35900">GROUP BY</text>
+    <text x="486" y="186" fill="#6a1b9a">HAVING</text>
+    <text x="486" y="224" fill="#9b1c31">SELECT</text>
+    <text x="486" y="262" fill="#333">ORDER BY</text>
+    <text x="486" y="300" fill="#555">LIMIT</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <text x="600" y="71">all the rows of the table</text>
+    <text x="600" y="109">only the films before 2000</text>
+    <text x="600" y="147">one group for every state</text>
+    <text x="600" y="185">only groups of 2 or more</text>
+    <text x="600" y="223">the columns of the result</text>
+    <text x="600" y="261">the largest number first</text>
+    <text x="600" y="299">only the first row</text>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333" text-anchor="end">
+    <text x="885" y="71">10 rows</text>
+    <text x="885" y="109">7 rows</text>
+    <text x="885" y="147">3 groups</text>
+    <text x="885" y="185">2 groups</text>
+    <text x="885" y="223">2 rows</text>
+    <text x="885" y="261">2 rows, sorted</text>
+    <text x="885" y="299">1 row</text>
+  </g>
+</svg>

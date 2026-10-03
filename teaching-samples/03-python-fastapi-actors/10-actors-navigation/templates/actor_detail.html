@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Details for {{ selected_actor.first_name }} {{ selected_actor.last_name | upper }}</h2>
+<br />
+<div><span>id: </span>{{ selected_actor.id }}</div>
+<div><span>first name: </span>{{ selected_actor.first_name }}</div>
+<div><span>last name: </span>{{ selected_actor.last_name }}</div>
+<div><span>country: </span>{{ selected_actor.country_code }}</div>
+<div><span>date of birth: </span>{{ selected_actor.date_of_birth.strftime("%m/%d/%Y") if selected_actor.date_of_birth }}</div>
+<br />
+<form action="/actordetail/{{ selected_actor.id }}" method="post">
+    <div>
+        <label> first name: </label>
+        <input name="first_name" value="{{ selected_actor.first_name }}" placeholder="First name">
+    </div>
+    <div>
+        <label> last name: </label>
+        <input name="last_name" value="{{ selected_actor.last_name }}" placeholder="Last name">
+    </div>
+    <div>
+        <label> country: </label>
+        <input name="country_code" value="{{ selected_actor.country_code }}" placeholder="Country code">
+    </div>
+    <div>
+        <label> date of birth: </label>
+        <input type="date" name="date_of_birth" value="{{ selected_actor.date_of_birth or '' }}">
+    </div>
+    <button>Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: crimson for HTTP, green for SQL; "end" points forward, "start" points back -->
+    <marker id="http-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="http-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="sql-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="sql-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- our program, on our computer -->
+  <text x="132" y="44" text-anchor="middle" font-size="15" fill="#555">our computer</text>
+  <rect x="15" y="60" width="235" height="190" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="132" y="92" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">Our Python program</text>
+  <text x="132" y="122" text-anchor="middle" font-size="15" fill="#333">plain HTTP requests,</text>
+  <text x="132" y="142" text-anchor="middle" font-size="15" fill="#333">or the Supabase client</text>
+  <rect x="40" y="166" width="185" height="62" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="132" y="191" text-anchor="middle" font-size="16" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">.env</text>
+  <text x="132" y="214" text-anchor="middle" font-size="15" fill="#333">address and secret key</text>
+
+  <!-- requests go to the Data API, answers come back -->
+  <line x1="262" y1="155" x2="458" y2="155" stroke="#9b1c31" stroke-width="2.5" marker-start="url(#http-start)" marker-end="url(#http-end)"/>
+  <text x="360" y="118" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">HTTPS requests</text>
+  <text x="360" y="140" text-anchor="middle" font-size="15" fill="#333">the key is in the headers</text>
+  <text x="360" y="182" text-anchor="middle" font-size="15" fill="#333">the answers are JSON</text>
+
+  <!-- the project in the cloud -->
+  <rect x="470" y="14" width="418" height="302" rx="12" fill="#f1f1f1" stroke="#888" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="486" y="40" font-size="15" fill="#555">a Supabase project, in the cloud</text>
+
+  <!-- the Data API -->
+  <rect x="488" y="60" width="170" height="190" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="573" y="92" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">Data API</text>
+  <text x="573" y="116" text-anchor="middle" font-size="15" fill="#333">a RESTful service</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="573" y="156">/rest/v1/actor</text>
+    <text x="573" y="180">/rest/v1/country</text>
+  </g>
+  <text x="573" y="226" text-anchor="middle" font-size="15" fill="#333">checks the key</text>
+  <text x="573" y="276" text-anchor="middle" font-size="15" fill="#333">every table</text>
+  <text x="573" y="295" text-anchor="middle" font-size="15" fill="#333">has an address</text>
+
+  <!-- the Data API and the database -->
+  <line x1="668" y1="155" x2="742" y2="155" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#sql-start)" marker-end="url(#sql-end)"/>
+  <text x="705" y="140" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">SQL</text>
+
+  <!-- the database -->
+  <path d="M752,82 v146 a60,15 0 0 0 120,0 v-146" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="812" cy="82" rx="60" ry="15" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="812" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#2e7d32">PostgreSQL</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="812" y="166">actor</text>
+    <text x="812" y="190">country</text>
+  </g>
+  <text x="812" y="276" text-anchor="middle" font-size="15" fill="#333">the tables</text>
+  <text x="812" y="295" text-anchor="middle" font-size="15" fill="#333">and the data</text>
+</svg>

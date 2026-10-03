@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 class="bg-primary text-white p-2">All countries</h2>
+
+{# This form is empty: the fields in the first row of the table belong to it through their attribute form="add-country" #}
+<form id="add-country" action="/countries" method="post"></form>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th colspan="2">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input class="form-control" name="country_code" size="4" form="add-country" />
+            </td>
+            <td>
+                <input class="form-control" name="country_name" form="add-country" />
+            </td>
+            <td class="text-center">
+                <button class="btn btn-primary" form="add-country">Add</button>
+            </td>
+        </tr>
+        {% for c in countries %}
+        <tr>
+            <td>
+                <a href="/countrydetail/{{ c.id }}"><span class="badge badge-primary">{{ c.id }}</span></a>
+            </td>
+            <td>
+                <a class="text-body" href="/countrydetail/{{ c.id }}">{{ c.code }}</a>
+            </td>
+            <td>
+                <a class="text-body" href="/countrydetail/{{ c.id }}">{{ c.name }}</a>
+            </td>
+            <td class="text-center">
+                <form action="/countries/{{ c.id }}/delete" method="post">
+                    <button class="btn btn-outline-danger btn-sm" title="delete country">x</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

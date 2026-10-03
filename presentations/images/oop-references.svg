@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- titles of the columns -->
+  <g font-size="15" fill="#555" text-anchor="middle">
+    <text x="80" y="18">the names</text>
+    <text x="436" y="18">refer to the objects</text>
+    <text x="800" y="18">a list refers to them too</text>
+  </g>
+
+  <!-- the names -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="40" y="40" width="80" height="38" rx="19"/>
+    <rect x="40" y="88" width="80" height="38" rx="19"/>
+    <rect x="40" y="166" width="80" height="38" rx="19"/>
+    <rect x="750" y="40" width="100" height="38" rx="19"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="80" y="65">a</text>
+    <text x="80" y="113">b</text>
+    <text x="80" y="191">c</text>
+    <text x="800" y="65">crew</text>
+  </g>
+
+  <!-- the two objects of the class Actor -->
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="250" y="32" width="372" height="92" rx="10"/>
+    <rect x="250" y="140" width="372" height="92" rx="10"/>
+  </g>
+  <g font-size="16" font-weight="bold" fill="#9b1c31">
+    <text x="268" y="56">an object of the class Actor</text>
+    <text x="268" y="164">another object of the class Actor</text>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="268" y="84">first_name = "Robert"</text>
+    <text x="268" y="108">last_name = "De Niro"</text>
+    <text x="474" y="84" font-weight="bold" fill="#b35900">imdb_mark = 9.9</text>
+
+    <text x="268" y="192">first_name = "Robert"</text>
+    <text x="268" y="216">last_name = "De Niro"</text>
+    <text x="474" y="192">imdb_mark = 9.4</text>
+  </g>
+
+  <!-- the list: its elements are references as well -->
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="750" y="112" width="100" height="36"/>
+    <rect x="750" y="148" width="100" height="36"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333" text-anchor="middle">
+    <text x="800" y="136">[0]</text>
+    <text x="800" y="172">[1]</text>
+  </g>
+
+  <!-- the references -->
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="124" y1="60" x2="244" y2="66" marker-end="url(#arrow)"/>
+    <line x1="124" y1="106" x2="244" y2="94" marker-end="url(#arrow)"/>
+    <line x1="124" y1="185" x2="244" y2="186" marker-end="url(#arrow)"/>
+    <line x1="800" y1="80" x2="800" y2="108" marker-end="url(#arrow)"/>
+    <line x1="748" y1="130" x2="628" y2="90" marker-end="url(#arrow)"/>
+    <line x1="748" y1="166" x2="628" y2="182" marker-end="url(#arrow)"/>
+  </g>
+</svg>

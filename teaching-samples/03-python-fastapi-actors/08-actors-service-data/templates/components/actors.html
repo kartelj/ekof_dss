@@ -1,0 +1,22 @@
+{#
+    The component Actors shows the list of all the actors.
+    The details of the selected actor are shown by another component, ActorDetail.
+#}
+{% from "components/actor_detail.html" import ActorDetail %}
+
+{% macro Actors(actors, selected_actor) %}
+<h2>My favorite actors</h2>
+<ul class="actors">
+    {% for a in actors %}
+    <li class="{{ 'selected' if a == selected_actor }}">
+        <a href="/?selected={{ a.id }}">
+            <span class="badge">{{ a.id }}</span> {{ a.first_name }} &nbsp; {{ a.last_name }}
+            - {{ a.date_of_birth.strftime("%d.%m.%Y") if a.date_of_birth }} ( {{ a.country_code }} )
+        </a>
+    </li>
+    {% else %}
+    <li><em>There are no actors.</em></li>
+    {% endfor %}
+</ul>
+{{ ActorDetail(selected_actor) }}
+{% endmacro %}

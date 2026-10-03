@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# virtual environments
+.venv/
+venv/
+
+# settings with secrets (e.g. the Supabase key) - copy .env.example to .env
+.env
+
+# SQLite databases are created by the samples themselves
+*.db
+*.db-journal
+*.sqlite3
+
+# editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

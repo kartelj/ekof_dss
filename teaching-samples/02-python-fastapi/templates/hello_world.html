@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Sequence{% endblock %}
+
+{% block content %}
+<h1>Sequence</h1>
+<br />
+<form action="/hello-world" method="post">
+    <button>Do It!</button>
+</form>
+<br />
+Output:
+<br />
+<div class="output">
+    <pre>{{ message }}</pre>
+</div>
+{% endblock %}

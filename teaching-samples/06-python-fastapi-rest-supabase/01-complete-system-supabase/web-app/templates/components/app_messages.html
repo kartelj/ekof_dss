@@ -1,0 +1,16 @@
+{#
+    The component AppMessages shows the messages of the application.
+    It has no parameters: it takes the messages from the messaging service,
+    which is available in every template (see templating.py).
+#}
+{% macro AppMessages() %}
+<div class="messages border-top pt-3">
+    <h2>Messages</h2>
+    <form action="/messages/clear" method="post">
+        <button class="btn btn-primary btn-sm mb-2">Clear</button>
+    </form>
+    {% for msg in messaging_service.get() %}
+    <div class="text-info"><small>{{ msg }}</small></div>
+    {% endfor %}
+</div>
+{% endmacro %}

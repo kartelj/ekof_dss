@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 180" font-family="Arial, Helvetica, sans-serif">
+  <!-- the rule, one coloured piece per part; textLength keeps the pieces aligned in every font (16 units per character) -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="26" font-weight="bold">
+    <text x="138" y="90" textLength="32" lengthAdjust="spacingAndGlyphs" fill="#9b1c31">h1</text>
+    <text x="186" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#6a1b9a">{</text>
+    <text x="218" y="90" textLength="80" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">color</text>
+    <text x="298" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#888">:</text>
+    <text x="330" y="90" textLength="112" lengthAdjust="spacingAndGlyphs" fill="#2e7d32">darkred</text>
+    <text x="442" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#888">;</text>
+    <text x="474" y="90" textLength="144" lengthAdjust="spacingAndGlyphs" fill="#1b6ec2">font-size</text>
+    <text x="618" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#888">:</text>
+    <text x="650" y="90" textLength="64" lengthAdjust="spacingAndGlyphs" fill="#2e7d32">30px</text>
+    <text x="714" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#888">;</text>
+    <text x="746" y="90" textLength="16" lengthAdjust="spacingAndGlyphs" fill="#6a1b9a">}</text>
+  </g>
+
+  <!-- brackets: the declaration block above the rule, the other parts under it -->
+  <g fill="none" stroke-width="2">
+    <path d="M186,54 v-8 h576 v8" stroke="#6a1b9a"/>
+    <path d="M138,104 v8 h32 v-8" stroke="#9b1c31"/>
+    <path d="M218,104 v8 h80 v-8" stroke="#1b6ec2"/>
+    <path d="M330,104 v8 h112 v-8" stroke="#2e7d32"/>
+    <path d="M474,104 v8 h256 v-8" stroke="#b35900"/>
+  </g>
+
+  <!-- names of the parts -->
+  <g font-size="18" font-weight="bold" text-anchor="middle">
+    <text x="474" y="34" fill="#6a1b9a">declaration block</text>
+    <text x="154" y="138" fill="#9b1c31">selector</text>
+    <text x="258" y="138" fill="#1b6ec2">property</text>
+    <text x="386" y="138" fill="#2e7d32">value</text>
+    <text x="602" y="138" fill="#b35900">declaration</text>
+  </g>
+
+  <!-- what each part means -->
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="154" y="162">which elements</text>
+    <text x="258" y="162">what to set</text>
+    <text x="386" y="162">to which value</text>
+    <text x="602" y="162">one property with its value</text>
+  </g>
+</svg>

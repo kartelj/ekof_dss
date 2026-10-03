@@ -1,0 +1,11 @@
+{% set current = request.url.path %}
+
+<div class="top-row pl-3 navbar navbar-dark">
+    <a class="navbar-brand" href="/">01-actors-new</a>
+</div>
+
+<nav class="nav flex-column">
+    <a class="nav-link {% if current == '/' %}active{% endif %}" href="/">Home</a>
+    <a class="nav-link {% if current == '/counter' %}active{% endif %}" href="/counter">Counter</a>
+    <a class="nav-link {% if current == '/fetch-data' %}active{% endif %}" href="/fetch-data">Fetch data</a>
+</nav>

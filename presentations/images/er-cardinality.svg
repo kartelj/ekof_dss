@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 326" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- The end of a relationship line in the crow's foot notation.
+         The line comes from the left; the box of the entity begins at x = 0. -->
+    <g id="one-and-only-one">
+      <line x1="-12" y1="-11" x2="-12" y2="11"/>
+      <line x1="-23" y1="-11" x2="-23" y2="11"/>
+    </g>
+    <g id="zero-or-one">
+      <line x1="-12" y1="-11" x2="-12" y2="11"/>
+      <circle cx="-30" cy="0" r="7.5" fill="#fff"/>
+    </g>
+    <g id="one-or-many">
+      <path d="M-20,0 L0,-12 M-20,0 L0,12" fill="none"/>
+      <line x1="-29" y1="-11" x2="-29" y2="11"/>
+    </g>
+    <g id="zero-or-many">
+      <path d="M-20,0 L0,-12 M-20,0 L0,12" fill="none"/>
+      <circle cx="-30" cy="0" r="7.5" fill="#fff"/>
+    </g>
+  </defs>
+
+  <!-- headings of the columns -->
+  <g font-size="17" font-weight="bold" fill="#555">
+    <text x="40" y="32">Symbol at the end of the line</text>
+    <text x="330" y="32">How to read it</text>
+    <text x="570" y="32">Minimum</text>
+    <text x="770" y="32">Maximum</text>
+  </g>
+  <line x1="30" y1="46" x2="870" y2="46" stroke="#999" stroke-width="2"/>
+
+  <!-- one and only one -->
+  <line x1="60" y1="80" x2="200" y2="80" stroke="#333" stroke-width="2.5"/>
+  <rect x="200" y="59" width="80" height="42" rx="4" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#9b1c31" stroke-width="3">
+    <use href="#one-and-only-one" transform="translate(200,80)"/>
+  </g>
+  <text x="330" y="87" font-size="21" font-weight="bold" fill="#333">one and only one</text>
+  <text x="570" y="86" font-size="19" fill="#333">one - mandatory</text>
+  <text x="770" y="86" font-size="19" fill="#333">one</text>
+  <line x1="30" y1="109" x2="870" y2="109" stroke="#ddd" stroke-width="1.5"/>
+
+  <!-- zero or one -->
+  <line x1="60" y1="138" x2="200" y2="138" stroke="#333" stroke-width="2.5"/>
+  <rect x="200" y="117" width="80" height="42" rx="4" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#9b1c31" stroke-width="3">
+    <use href="#zero-or-one" transform="translate(200,138)"/>
+  </g>
+  <text x="330" y="145" font-size="21" font-weight="bold" fill="#333">zero or one</text>
+  <text x="570" y="144" font-size="19" fill="#333">zero - optional</text>
+  <text x="770" y="144" font-size="19" fill="#333">one</text>
+  <line x1="30" y1="167" x2="870" y2="167" stroke="#ddd" stroke-width="1.5"/>
+
+  <!-- one or many -->
+  <line x1="60" y1="196" x2="200" y2="196" stroke="#333" stroke-width="2.5"/>
+  <rect x="200" y="175" width="80" height="42" rx="4" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#9b1c31" stroke-width="3">
+    <use href="#one-or-many" transform="translate(200,196)"/>
+  </g>
+  <text x="330" y="203" font-size="21" font-weight="bold" fill="#333">one or many</text>
+  <text x="570" y="202" font-size="19" fill="#333">one - mandatory</text>
+  <text x="770" y="202" font-size="19" fill="#333">many</text>
+  <line x1="30" y1="225" x2="870" y2="225" stroke="#ddd" stroke-width="1.5"/>
+
+  <!-- zero or many -->
+  <line x1="60" y1="254" x2="200" y2="254" stroke="#333" stroke-width="2.5"/>
+  <rect x="200" y="233" width="80" height="42" rx="4" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#9b1c31" stroke-width="3">
+    <use href="#zero-or-many" transform="translate(200,254)"/>
+  </g>
+  <text x="330" y="261" font-size="21" font-weight="bold" fill="#333">zero or many</text>
+  <text x="570" y="260" font-size="19" fill="#333">zero - optional</text>
+  <text x="770" y="260" font-size="19" fill="#333">many</text>
+
+  <line x1="30" y1="284" x2="870" y2="284" stroke="#999" stroke-width="2"/>
+  <text x="40" y="311" font-size="17" fill="#333">The mark next to the box is the <tspan font-weight="bold">maximum</tspan>; the mark further away is the <tspan font-weight="bold">minimum</tspan>.</text>
+</svg>
