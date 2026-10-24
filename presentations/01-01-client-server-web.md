@@ -124,34 +124,138 @@ The first part of the course uses static content. From the second part on, we wr
 
 ---
 
+## The course on your computer
+
+From now on every lecture has exercises, and we do them on our own computers. Once, at the start, we need:
+
+1. **the course** - the lectures, the samples and the exercises, in one folder;
+2. **Python** - the language of the course; it also runs the web server of the samples;
+3. **Visual Studio Code** - the editor in which we open that folder;
+4. **the packages** of the course - installed once, into the folder of the course.
+
+Then, at every lecture: open the folder in VS Code, open a terminal, and start the server of the samples.
+
+The next five slides show how, step by step.
+
+---
+
+## 1. Download the course
+
+<div class="columns"><div>
+
+1. Open `github.com/kartelj/ekof_dss`.
+2. Click the green button **Code**, and then **Download ZIP**.
+3. Unzip the file `ekof_dss-main.zip`:
+   - Windows: right click - *Extract All...*
+   - macOS: double click.
+4. Move the folder `ekof_dss-main` to a place where you will find it again, e.g. *Documents*.
+
+No account on GitHub is needed.
+
+</div><div>
+
+![The page of the course on GitHub. The menu of the green button Code is open, and its last item is Download ZIP.](images/web-github-download-zip.png)
+
+</div></div>
+
+Note:
+When the course changes, download the ZIP again - and first copy your own files (e.g. the folder wwwroot/my) out of the old folder. Who knows git can clone the repository instead (git clone https://github.com/kartelj/ekof_dss.git) and get the changes with git pull.
+
+---
+
+## 2. Install Python and Visual Studio Code
+
+- **Python 3.12 or newer** - `python.org`, the page *Downloads*.<br>
+  On Windows tick **Add python.exe to PATH** in the first window of the installer.
+- **Visual Studio Code** - `code.visualstudio.com`.<br>
+  In VS Code open *Extensions* (the icon with four squares on the left) and install **Python** (by Microsoft).
+- Check Python in a terminal:
+
+```text
+python --version
+Python 3.13.16
+```
+
+On macOS the command is `python3`. Any version from 3.12 on is fine.
+
+---
+
+## 3. Open the folder in VS Code
+
+- *File - Open Folder...* and choose the folder `ekof_dss-main` - the one with `README.md` and `requirements.txt` in it. If VS Code asks whether you trust the authors: *Yes*.
+- *Terminal - New Terminal*: a terminal opens at the bottom of the window, already in the folder of the course.
+
+![The window of Visual Studio Code with the folder ekof_dss-main open: on the left its folders and files, in the middle the file README.md, and below the terminal, in which the server of the samples has been started.](images/web-vscode-course.svg)
+
+---
+
+## 4. The packages of the course - once
+
+In the terminal of VS Code:
+
+```text
+python -m venv .venv
+.venv\Scripts\activate                (macOS:  source .venv/bin/activate)
+pip install -r requirements.txt
+```
+
+- The first line makes the folder `.venv`, a place for the packages of this course (on macOS: `python3 -m venv .venv`).
+- The second line *activates* it: the line of the terminal now begins with `(.venv)`. **Activate it again in every new terminal.**
+- The third line installs the packages, such as FastAPI. It takes a minute or two, and only once.
+
+Windows: if PowerShell answers *running scripts is disabled on this system*, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, and activate again.
+
+---
+
+## 5. Start the server of the samples
+
+```text
+cd teaching-samples/01-html-css-bootstrap
+python main.py
+```
+
+<div class="columns"><div>
+
+- Open `http://localhost:8000`: the folders of the samples.
+- The terminal writes one line for every request that the server receives.
+- `Ctrl+C` in the terminal stops the server.
+
+**At every lecture:** open the folder in VS Code, *New Terminal*, activate, `cd`, `python main.py`.
+
+</div><div>
+
+![The browser at localhost:8000 shows the list of the folders of the samples: 01-html, 02-css and 03-bootstrap](images/web-samples-home.png)
+
+</div></div>
+
+---
+
 <!-- .slide: class="exercise" -->
-## Exercise 1: a web server of your own
+## Exercise 1: the course on your computer
 
-1. Make a new folder, for example `myweb`, and in it a text file `hello.txt` with one sentence.
-2. In a terminal, in that folder: `python -m http.server 8000` (on macOS `python3`).
-3. Open `http://localhost:8000`, and then click `hello.txt`.
-4. Look at the terminal: which requests has the server received, with which status codes?
-5. Open `http://localhost:8001`. What happens, and why?
-6. Is the list of files static or dynamic content? And `hello.txt`?
+Go through the steps 1 to 5. You are done when:
 
-The browser first shows *Directory listing for /* with `hello.txt`, then your sentence. Stop the server with `Ctrl+C`. *About 10 minutes.*
+1. `http://localhost:8000` shows the folders `01-html`, `02-css` and `03-bootstrap`;
+2. a click on `01-html`, then `01-basic-elements`, then `04-headers.html` shows a page with a big heading;
+3. the terminal shows a line with `GET` and `200 OK` for every click.
+
+Then stop the server with `Ctrl+C`, and reload the page. What does the browser say now, and why? *About 15 minutes.*
 
 <details><summary>Solution</summary>
 
-```text
-"GET / HTTP/1.1" 200 -
-"GET /favicon.ico HTTP/1.1" 404 -
-"GET /hello.txt HTTP/1.1" 200 -
-```
+| The terminal says | What to do |
+|---|---|
+| `python` is not recognized, or *command not found* | Windows: install Python again, with *Add python.exe to PATH*; macOS: `python3` |
+| `No module named 'uvicorn'` (or `'fastapi'`) | the line does not begin with `(.venv)`: activate the environment; or run the `pip install` of step 4 |
+| `can't open file '...main.py'` | the terminal is not in the folder of the sample: `cd teaching-samples/01-html-css-bootstrap` |
+| `address already in use` | a server is already running at port 8000, e.g. in another terminal: stop it with `Ctrl+C` |
 
-- Three requests: the list of files, the little icon of the site - the browser asks for it by itself, and there is none, so `404` - and the file.
-- At port 8001 the browser cannot connect at all (*This site can't be reached*): no program listens there. That is not a `404` - there is nobody to answer.
-- The list is **dynamic**: the server writes it at the moment of the request, from the files in the folder. Add a file and reload - it appears. `hello.txt` is **static**: it is sent exactly as it is stored.
+- After `Ctrl+C` the browser says *This site can't be reached* (*localhost refused to connect*): no program listens at port 8000 any more. A client needs a server to talk to.
 
 </details>
 
 Note:
-At the start of every line, the server also writes the address of the client (::1 or 127.0.0.1) and the time. If port 8000 is taken, any other port works, e.g. 8080.
+Give this exercise time: everything after it depends on it. Students who are done can help their neighbours. The most frequent problems on Windows are a Python without PATH and PowerShell refusing the activation.
 
 ---
 
@@ -256,19 +360,17 @@ content-type: text/html; charset=utf-8
 
 </div></div>
 
-1. To which server, and to which port, does the request go?
-2. What does the client want to do, and with which resource?
-3. What does the body of the request contain? Why has a `GET` for a page usually no body?
-4. Did it work? What has the server sent back, and how long is it?
+1. Which **method** does the client use, and which **resource** does it ask for?
+2. Where are the values that were typed into the form?
+3. Did it work? How do you know?
 
-Write the answers down, then compare. *About 10 minutes.*
+Write the answers down, then compare. *About 5 minutes.*
 
 <details><summary>Solution</summary>
 
-1. To `localhost`, port `8000` - the header `Host`.
-2. `POST`: it sends data to the resource `/process-form`, which should do something with it.
-3. Two pairs *name=value*, `first_name=Holly` and `last_name=Hunter` - the values typed into a form. `Content-Length` is their length: 33 characters. A `GET` only asks for something, so it has nothing to send.
-4. Yes - `200 OK`. The body is an HTML page (`text/html`), 1742 bytes long.
+1. `POST`, the resource `/process-form` - the first line of the request.
+2. In the **body** of the request, after the empty line: `first_name=Holly` and `last_name=Hunter`.
+3. Yes: the status line says `200 OK`, and the body of the response is an HTML page (`text/html`).
 
 </details>
 
@@ -380,16 +482,11 @@ INFO:     127.0.0.1:52144 - "GET /01-html/ HTTP/1.1" 200 OK
 
 ## Try it
 
-The samples for the first part of the course are in the folder `teaching-samples/01-html-css-bootstrap`.
+The server of the samples is running (step 5). Open the developer tools (F12), the tab *Network*.
 
 <div class="columns"><div>
 
-```text
-cd teaching-samples/01-html-css-bootstrap
-python main.py
-```
-
-Then open `http://localhost:8000` and:
+Open `http://localhost:8000` and:
 
 1. browse to one of the HTML samples and find its request in the *Network* tab;
 2. change one letter in the address and look at the status code;
@@ -406,27 +503,24 @@ Then open `http://localhost:8000` and:
 <!-- .slide: class="exercise" -->
 ## Exercise 4: count the requests
 
-The server of the samples is running. Open the developer tools, the tab *Network*, and then these addresses:
+The server of the samples is running, the tab *Network* is open. Open these two pages:
 
 1. `http://localhost:8000/01-html/03-images/03-img-out-of-current-dir/index.html` -
-   how many requests does the page make, and of which types?
+   how many requests does the page make? How many of them are pictures?
 2. `http://localhost:8000/01-html/03-images/04-img-broken/index.html` -
    which status codes do you see? What does the page show instead of the pictures?
-3. `http://localhost:8000/01-html` - without the `/` at the end.
-   Which two requests are made, with which status codes?
 
 Compare with the lines in the terminal of the server. *About 10 minutes.*
 
 <details><summary>Solution</summary>
 
-1. Five: the page itself (`text/html`) and four pictures (`image/jpeg`): `images/lake.jpg`, `images/mountain.jpg`, `images/caste.jpg` and `../lake2.jpg`. The terminal also shows `/favicon.ico` - the little icon of the site; our server answers it with `204 No Content`.
-2. `200` for the page, and `404 Not Found` for all four pictures: their names are wrong. Instead of each picture, the page shows a small icon of a broken picture and a word: *Lake*, *Mountain*, *Castle*, *Lake 2*.
-3. `GET /01-html` gets `307 Temporary Redirect` with the header `location: /01-html/`. The browser then asks for `GET /01-html/` and gets `200 OK` - the list of the folder. A `3xx`: *look elsewhere*.
+1. Five requests: the page itself (type *document*) and four pictures (type *jpeg*). The browser asks for every picture separately, after it has read the page.
+2. `200` for the page, and `404 Not Found` for the four pictures: their names are wrong. Instead of each picture the page shows the icon of a broken picture, and a word: *Lake*, *Mountain*, *Castle*, *Lake 2*.
 
 </details>
 
 Note:
-If the pictures come from the cache of the browser after a reload (Network shows "memory cache"), tick Disable cache in the tab Network and reload again.
+If the pictures come from the cache of the browser after a reload (Network shows "memory cache"), tick Disable cache in the tab Network and reload again. The terminal also shows /favicon.ico - the little icon of the site, which the browser asks for by itself.
 
 ---
 
@@ -441,29 +535,18 @@ If the pictures come from the cache of the browser after a reload (Network shows
 ---
 
 <!-- .slide: class="exercise" -->
-## Assignment: one conversation, in detail
+## Assignment: watch the conversation
 
-The server of the samples is running. With `curl -v`, the tab *Network* and the terminal of the server, find out - and write down - the following:
+The server of the samples is running; the developer tools are open on the tab *Network*.
+For every step write down the **method**, the **address**, the **status code** and the **type** of each request:
 
-1. `curl -v` for `/01-html/01-basic-elements/04-headers.html`: the request line, the status line, `content-type` and `content-length`. Compare the length with the size of the file.
-2. The same for the picture `/01-html/03-images/lake2.jpg` - add `-o lake.jpg`, so that the picture goes into a file.
-3. `curl -v` for `/01-html`: what does curl show, and what does the browser do with the same address? Then try `curl -v -L`.
-4. A wrong address: the status, the type and the text of the body.
+1. Open `/01-html/01-basic-elements/04-headers.html`.
+2. Open `/01-html/03-images/03-img-out-of-current-dir/index.html`. How many requests are pictures?
+3. Change one letter in the address of step 1. What does the page show now?
+4. Open `/01-html/06-forms/01-form-text-submit.html`, type your name, and click the button. Where are your values?
+5. Stop the server with `Ctrl+C`, and reload the page. What happens?
 
-*The assignment continues on the next slide.*
-
----
-
-<!-- .slide: class="exercise" -->
-## Assignment: one conversation, in detail (2)
-
-5. Send the form of `01-html/06-forms/01-form-text-submit.html`. Find its request in *Network*: the method, the address, the status. Where are your values?
-6. Reload `03-img-out-of-current-dir/index.html` three times. Which requests reach the server each time?
-7. `curl -v https://example.com`: which port is used, and which version of HTTP?
-
-For every answer, write which line of the output, or which column of *Network*, shows it.
-
-*About 40 minutes altogether.*
+For every step, also find the lines in the terminal of the server. *About 30 minutes.*
 
 Answers: [exercises/01-01-client-server-web](https://github.com/kartelj/ekof_dss/tree/main/exercises/01-01-client-server-web)
 

@@ -15,6 +15,7 @@ What to take is described in tools/screenshots/<lecture>.json - a list of shots 
     }
 
 Instead of "sample" and "path", a shot can have
+    "url": "https://..."     a page of another site (the address bar shows it without https://)
     "html": "<p>...</p>"     a piece of HTML, shown on an empty page ("bootstrap": true adds Bootstrap 4.5.2);
                              the picture is as high as the piece
     "terminal": "$ ..."      text, shown in a terminal window
@@ -53,6 +54,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from playwright.sync_api import Error as PlaywrightError
+from playwright.sync_api import TimeoutError as PlaywrightTimeout
 from playwright.sync_api import Page, sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -170,7 +172,11 @@ def do_steps(page: Page, steps: list[dict]) -> None:
             page.check(step["check"])
         elif "click" in step:
             page.click(step["click"])
-            page.wait_for_load_state("networkidle")
+            try:
+                page.wait_for_load_state("networkidle", timeout=5000)
+            except PlaywrightTimeout:
+                pass  # big sites keep loading in the background
+            page.wait_for_timeout(300)
         elif "hover" in step:
             page.hover(step["hover"])
         elif "press" in step:
@@ -197,6 +203,10 @@ def take(browser, samples: Samples, shot: dict) -> bytes:
     try:
         if "sample" in shot:
             page.goto(samples.address(shot["sample"]) + shot.get("path", "/"), wait_until="networkidle")
+        if "url" in shot:
+            # big sites keep loading in the background, so "networkidle" never comes
+            page.goto(shot["url"], wait_until="load")
+            page.wait_for_timeout(2000)
         if "html" in shot:
             head = '<meta charset="utf-8">' + (BOOTSTRAP if shot.get("bootstrap") else "")
             body = f'<div id="snippet" style="padding: 12px">{shot["html"]}</div>'
@@ -216,9 +226,13 @@ def take(browser, samples: Samples, shot: dict) -> bytes:
         context.close()
 
     image = f'<img src="data:image/png;base64,{base64.b64encode(picture).decode()}" width="{png_width(picture) // SCALE}">'
-    if not shot.get("frame", "sample" in shot and "element" not in shot and "html" not in shot):
+    if not shot.get("frame", ("sample" in shot or "url" in shot) and "element" not in shot and "html" not in shot):
         return frame(browser, f'<div class="shot plain">{image}</div>', width)
-    address = html.escape(shot.get("address", shown_address(url, shot.get("port", 8000))))
+    if "url" in shot:
+        default = url.removeprefix("https://")
+    else:
+        default = shown_address(url, shot.get("port", 8000))
+    address = html.escape(shot.get("address", default))
     bar = f'<div class="bar"><span class="dots"><i></i><i></i><i></i></span><div class="address">{address}</div></div>'
     return frame(browser, f'<div class="shot">{bar}{image}</div>', width)
 

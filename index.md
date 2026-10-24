@@ -116,9 +116,11 @@ The second half of the lecture [RESTful services with FastAPI](presentations/06-
 
 ## Working with the course
 
-**Getting started.** The course needs Python 3.12 or newer. The [README](README.md) explains how to install the
-packages of the course, and how to start the samples: every sample is started with `python main.py` in its folder
-(the programs of module 02 with `python` and the name of the file).
+**Getting started.** Download the course - on GitHub the green button **Code**, then **Download ZIP** - and unzip
+it; install Python 3.12 or newer and Visual Studio Code; open the folder of the course in VS Code, and in its
+terminal install the packages of the course, once. The first lecture shows every step on its slides
+(*The course on your computer*), and the [README](README.md) lists them too. Every sample is then started with
+`python main.py` in its folder (the programs of module 02 with `python` and the name of the file).
 
 **The lectures as slides.** On GitHub a lecture is shown as one long page; as slides, the lectures are on the
 web site of the course: [kartelj.github.io/ekof_dss/presentations](https://kartelj.github.io/ekof_dss/presentations/).

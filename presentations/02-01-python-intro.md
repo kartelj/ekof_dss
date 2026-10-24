@@ -22,6 +22,8 @@ Every "Sample:" line on the following slides names a file of the folder 02-pytho
 
 ## Installing Python
 
+You have done this in the first lecture (*The course on your computer*). A reminder:
+
 - Download Python from `python.org` (the page *Downloads*). The course needs **Python 3.12 or newer**.
 - **Windows**: in the first window of the installer, tick *Add python.exe to PATH*.
 - **macOS**: use the installer from `python.org`. The `python3` that comes with the developer tools of macOS may be older.
@@ -926,10 +928,10 @@ pip install -r requirements.txt
 ![pip installs packages such as FastAPI, Jinja2 and SQLModel from the Python Package Index into the folder .venv - the virtual environment inside the folder of the course, next to requirements.txt and teaching-samples](images/python-venv.svg)
 
 Note:
-The commands are typed in the root folder of the course, where requirements.txt is. The samples of this module need no packages; from module 03 on they do.
+The commands are typed in the root folder of the course, where requirements.txt is. The programs of this module need no packages; the server of the samples of module 01 and everything from module 03 on do.
 An active environment is shown at the beginning of the prompt: (.venv).
 If Windows PowerShell refuses to run the activation script, the command Set-ExecutionPolicy -Scope CurrentUser RemoteSigned allows it.
-The README of the course repeats these steps.
+The students did these steps in the first lecture (The course on your computer); this slide explains what they mean. The README of the course repeats them.
 
 ---
 

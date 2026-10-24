@@ -37,11 +37,17 @@ checks that all the samples work, `tools/take_screenshots.py` takes the screensh
 
 ## Getting started
 
-You need **Python 3.12 or newer** (`python --version` shows which one you have;
-you can download Python from [python.org](https://www.python.org/downloads/)).
+The first lecture shows these steps on slides (*The course on your computer*).
 
-Open a terminal in the folder of the course, create a virtual environment - a private
-place for the packages of the course - and install the packages:
+1. **Download the course**: on [github.com/kartelj/ekof_dss](https://github.com/kartelj/ekof_dss) click the
+   green button **Code**, then **Download ZIP**, and unzip the file (Windows: right click - *Extract All...*,
+   macOS: double click). Who knows git can clone the repository instead, and get the changes with `git pull`.
+2. **Install Python 3.12 or newer** from [python.org](https://www.python.org/downloads/) (on Windows tick
+   *Add python.exe to PATH*), and [Visual Studio Code](https://code.visualstudio.com) with its extension *Python*.
+3. **Open the folder** `ekof_dss-main` in VS Code (*File - Open Folder...*), and open a terminal
+   (*Terminal - New Terminal*).
+4. **Install the packages**, once: create a virtual environment - a private place for the packages of the
+   course - and install them:
 
 ```text
 python -m venv .venv
@@ -50,7 +56,8 @@ pip install -r requirements.txt
 ```
 
 The environment has to be activated (the second line) in every new terminal.
-On some systems the command is `python3` instead of `python`.
+On some systems the command is `python3` instead of `python`. If Windows PowerShell refuses to run the
+activation, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
 
 ## Running the samples
 

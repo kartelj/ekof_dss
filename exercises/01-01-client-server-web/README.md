@@ -1,124 +1,94 @@
 # Assignment of the lecture *Introduction to web applications and the HTTP protocol* - answers
 
-The task was to watch the conversation between a client and the server of the samples with
-`curl -v`, with the tab *Network* of the developer tools, and in the terminal of the server.
-Start the server first:
+The task: watch the conversation between the browser and the server of the samples - in the tab *Network*
+of the developer tools (F12), and in the terminal of the server. Start the server first (the slides
+*The course on your computer* show how):
 
 ```text
 cd teaching-samples/01-html-css-bootstrap
 python main.py
 ```
 
-The answers below were written with this server. Your dates, sizes of headers and the order of some
-lines may differ; the methods, status codes and types are the same.
+The answers below were written with this server and Chrome. In *Network* the column *Type* shows the type
+of each request; *Status* its status code.
 
 ## 1. An HTML page
+
+`http://localhost:8000/01-html/01-basic-elements/04-headers.html`
+
+| Method | Address | Status | Type |
+|---|---|---|---|
+| `GET` | `/01-html/01-basic-elements/04-headers.html` | `200` | document |
+
+In the terminal of the server:
+
+```text
+INFO:     127.0.0.1:57186 - "GET /01-html/01-basic-elements/04-headers.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57186 - "GET /favicon.ico HTTP/1.1" 204 No Content
+```
+
+The second line is the little icon of the site, which the browser asks for by itself. The samples have
+none, and the server answers `204 No Content`. (*Network* usually does not show it.)
+
+## 2. A page with pictures
+
+`http://localhost:8000/01-html/03-images/03-img-out-of-current-dir/index.html`
+
+| Method | Address | Status | Type |
+|---|---|---|---|
+| `GET` | `/01-html/03-images/03-img-out-of-current-dir/index.html` | `200` | document |
+| `GET` | `/01-html/03-images/03-img-out-of-current-dir/images/lake.jpg` | `200` | jpeg |
+| `GET` | `/01-html/03-images/03-img-out-of-current-dir/images/mountain.jpg` | `200` | jpeg |
+| `GET` | `/01-html/03-images/03-img-out-of-current-dir/images/caste.jpg` | `200` | jpeg |
+| `GET` | `/01-html/03-images/lake2.jpg` | `200` | jpeg |
+
+Five requests, four of them pictures: the browser first gets the page, reads it, and then asks for every
+picture that the page mentions - each in a request of its own.
+
+If you reload the page, the pictures may come from the *cache* of the browser (the column *Size* says
+*memory cache*), and the server sees only the page. Tick *Disable cache* in the tab *Network* to see all
+five requests again.
+
+## 3. A wrong address
+
+`http://localhost:8000/01-html/01-basic-elements/04-heders.html`
+
+| Method | Address | Status | Type |
+|---|---|---|---|
+| `GET` | `/01-html/01-basic-elements/04-heders.html` | `404` | document |
+
+The page shows the answer of the server: `{"detail":"There is nothing at this address."}`.
+`404 Not Found` - the conversation worked, but there is no resource at this address.
+
+## 4. A form
+
+`http://localhost:8000/01-html/06-forms/01-form-text-submit.html`, with the name *Ana Jovanovic*:
+
+| Method | Address | Status | Type |
+|---|---|---|---|
+| `GET` | `/process-form?first_name=Ana&last_name=Jovanovic` | `200` | document |
+
+The values are in the **address**, after the `?`: `first_name=Ana` and `last_name=Jovanovic`, each pair
+*name=value*, joined by `&`. The form sends them with `GET`, so they travel in the address; the page that
+comes back shows them too.
+
+## 5. The server is stopped
+
+After `Ctrl+C` in the terminal of the server, a reload of the page gives *This site can't be reached* -
+*localhost refused to connect* (`ERR_CONNECTION_REFUSED`). In *Network* the request is marked as *(failed)*.
+
+No program listens at port 8000 any more, so there is nobody to answer - not even with a `404`.
+A client needs a server to talk to. Start it again with `python main.py`, and the page is back.
+
+## Bonus: the same with curl
+
+In a second terminal (*Terminal - New Terminal*), `curl -v` shows the whole conversation of step 1,
+the headers included:
 
 ```text
 curl -v http://localhost:8000/01-html/01-basic-elements/04-headers.html
 ```
 
-```text
-> GET /01-html/01-basic-elements/04-headers.html HTTP/1.1
-> Host: localhost:8000
-> User-Agent: curl/8.7.1
-> Accept: */*
->
-< HTTP/1.1 200 OK
-< date: Sat, 24 Oct 2026 06:36:36 GMT
-< server: uvicorn
-< content-type: text/html; charset=utf-8
-< accept-ranges: bytes
-< content-length: 309
-< last-modified: Fri, 02 Oct 2026 10:15:02 GMT
-< etag: "d9d7602d131818161f5e62153f7fa5a6"
-<
-<!DOCTYPE html>
-...
-```
-
-- The request line: `GET /01-html/01-basic-elements/04-headers.html HTTP/1.1`.
-- The status line: `HTTP/1.1 200 OK`.
-- `content-type: text/html; charset=utf-8` - an HTML page, written in UTF-8.
-- `content-length` is exactly the size of the file on the disk (309 bytes here): a static file is
-  sent as it is.
-
-## 2. A picture
-
-```text
-curl -v http://localhost:8000/01-html/03-images/lake2.jpg -o lake.jpg
-```
-
-- `200 OK`, `content-type: image/jpeg`, `content-length: 53834` - again the size of the file.
-- Without `-o`, curl would write the bytes of the picture into the terminal. The browser knows from
-  `content-type` that it has received a picture, and shows it.
-
-## 3. An address without the slash at the end
-
-```text
-curl -v http://localhost:8000/01-html
-```
-
-```text
-< HTTP/1.1 307 Temporary Redirect
-< content-length: 0
-< location: /01-html/
-```
-
-- The server answers with a `3xx` - *look elsewhere* - and says where: the header `location`.
-- curl only shows this answer. The browser reads `location` and at once sends a second request,
-  `GET /01-html/`, which gets `200 OK` and the list of the folder. In *Network* both requests are seen.
-- `curl -v -L` follows the redirect as the browser does: it reports
-  `Issue another request to this URL: 'http://localhost:8000/01-html/'` and gets `200 OK`.
-- Why the server does it: the relative links of a page work only if the address of a folder
-  ends with `/`.
-
-## 4. A wrong address
-
-```text
-curl -v http://localhost:8000/01-html/01-basic-elements/04-heders.html
-```
-
-```text
-< HTTP/1.1 404 Not Found
-< content-length: 46
-< content-type: application/json
-<
-{"detail":"There is nothing at this address."}
-```
-
-- `404 Not Found`; the body is not HTML but a short text in the format JSON (`application/json`),
-  which the browser shows as it is. We will meet JSON again with RESTful services.
-
-## 5. A form
-
-Open `http://localhost:8000/01-html/06-forms/01-form-text-submit.html`, type a first and a last name,
-and click *Submit*. In *Network*:
-
-- method `GET`, status `200`;
-- the address: `/process-form?first_name=Ana&last_name=Jovanovi%C4%87` - the values travel in the
-  **query** of the address, as pairs `name=value` joined with `&`; letters such as `ć` are encoded.
-
-## 6. Reloading a page
-
-Open `http://localhost:8000/01-html/03-images/03-img-out-of-current-dir/index.html` and reload it
-three times. The terminal of the server shows:
-
-- the first time, five requests: the page and its four pictures (and `/favicon.ico`, the little
-  icon of the site, which our server answers with `204 No Content`);
-- after that, only the page (and `/favicon.ico`): the browser keeps the pictures in its *cache*
-  and does not ask for them again. With *Disable cache* ticked in *Network*, all five come every time.
-
-Every reload is a new conversation, and the server answers each request on its own, without
-remembering the earlier ones: HTTP is stateless.
-
-## 7. A real site
-
-```text
-curl -v https://example.com
-```
-
-- `Connected to example.com (...) port 443` - `https` without a port in the address uses 443.
-- The lines start with `HTTP/2` (`> GET / HTTP/2`, `< HTTP/2 200`): a newer version of the
-  protocol, with the same methods, status codes and headers. The connection is encrypted, so curl
-  also reports the steps of the encryption (the lines with `TLS`).
+The lines that begin with `>` were sent by curl, the lines with `<` are the answer of the server:
+`HTTP/1.1 200 OK`, `content-type: text/html; charset=utf-8`, and `content-length` - exactly the size
+of the file on the disk, because a static file is sent as it is.

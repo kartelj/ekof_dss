@@ -18,5 +18,22 @@
         "path": "/",
         "width": 560,
         "height": 250
+    },
+    {
+        "file": "web-github-download-zip.png",
+        "url": "https://github.com/kartelj/ekof_dss",
+        "width": 760,
+        "height": 600,
+        "steps": [
+            {
+                "click": "button:has-text('Code') >> nth=0"
+            },
+            {
+                "hover": "text=Download ZIP"
+            },
+            {
+                "wait": 500
+            }
+        ]
     }
 ]

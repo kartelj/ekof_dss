@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="267" viewBox="0 0 900 240" font-family="Arial, Helvetica, sans-serif">
+  <!-- the window of the editor -->
+  <rect x="1" y="1" width="898" height="238" rx="8" fill="#fff" stroke="#999" stroke-width="2"/>
+  <path d="M1,27 v-18 a8,8 0 0 1 8,-8 h882 a8,8 0 0 1 8,8 v18 z" fill="#e9e9e9"/>
+  <line x1="1" y1="27" x2="899" y2="27" stroke="#ccc"/>
+  <text x="450" y="19" text-anchor="middle" font-size="15" fill="#555">README.md - ekof_dss-main - Visual Studio Code</text>
+
+  <!-- the explorer: the folder of the course -->
+  <rect x="2" y="28" width="229" height="188" fill="#f3f3f3"/>
+  <line x1="231" y1="27" x2="231" y2="216" stroke="#ddd"/>
+  <text x="16" y="49" font-size="15" font-weight="bold" fill="#555">EXPLORER</text>
+  <text x="16" y="70" font-size="15" font-weight="bold" fill="#333">▾ EKOF_DSS-MAIN</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="28" y="90">▸ .venv</text>
+    <text x="28" y="108">▸ exercises</text>
+    <text x="28" y="126">▸ presentations</text>
+    <text x="28" y="144">▸ teaching-samples</text>
+    <text x="28" y="162">▸ tests</text>
+    <text x="44" y="180">README.md</text>
+    <text x="44" y="198">requirements.txt</text>
+  </g>
+
+  <!-- the editor: a file of the course -->
+  <rect x="232" y="28" width="667" height="25" fill="#ececec"/>
+  <rect x="232" y="28" width="120" height="25" fill="#fff"/>
+  <text x="250" y="46" font-size="15" fill="#333">README.md</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15">
+    <text x="250" y="74" fill="#1b6ec2"># Developing Software Solutions - Python edition</text>
+    <text x="250" y="96" fill="#333">Lectures and teaching samples for the course ...</text>
+  </g>
+  <text x="884" y="118" text-anchor="end" font-size="15" font-style="italic" fill="#9b1c31">File - Open Folder: the folder ekof_dss-main</text>
+
+  <!-- the terminal: Terminal - New Terminal -->
+  <line x1="232" y1="126" x2="899" y2="126" stroke="#ccc"/>
+  <text x="250" y="144" font-size="15" font-weight="bold" fill="#555">TERMINAL</text>
+  <line x1="250" y1="149" x2="324" y2="149" stroke="#555"/>
+  <text x="884" y="144" text-anchor="end" font-size="15" font-style="italic" fill="#9b1c31">Terminal - New Terminal</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="14" fill="#333">
+    <text x="250" y="167"><tspan fill="#2e7d32">(.venv)</tspan> $ cd teaching-samples/01-html-css-bootstrap</text>
+    <text x="250" y="186"><tspan fill="#2e7d32">(.venv)</tspan> $ python main.py</text>
+    <text x="250" y="205">INFO:     Uvicorn running on http://127.0.0.1:8000</text>
+  </g>
+
+  <!-- the status bar: the chosen Python -->
+  <path d="M1,217 h898 v14 a8,8 0 0 1 -8,8 h-882 a8,8 0 0 1 -8,-8 z" fill="#1b6ec2"/>
+  <text x="884" y="233" text-anchor="end" font-size="15" fill="#fff"><tspan fill="#d6e6f7" font-style="italic">the Python of the course: </tspan>3.13.16 ('.venv': venv)</text>
+</svg>
