@@ -62,7 +62,8 @@ pip install -r requirements.txt
 The environment has to be activated (the second line) in every new terminal.
 On some systems the command is `python3` instead of `python`. If Windows PowerShell refuses to run the
 activation, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. The programs of module 02
-need no packages.
+need no packages. The `requirements.txt` of an archive names only the packages that its module uses, without
+versions: pip installs their newest versions that work with your Python.
 
 The whole course - lectures, all the samples and the solutions - is this repository: on GitHub the green button
 **Code**, then **Download ZIP**, or `git clone`. The samples are then in the folder `teaching-samples`.
@@ -151,7 +152,8 @@ python tests/smoke_test.py
 ```
 
 starts every sample (in a temporary copy) and requests its pages. Use it after changing
-the samples, or after changing the versions of the packages in `requirements.txt`.
+the samples. `requirements.txt` has no versions, so it is also worth running when new versions of the
+packages come out.
 
 It also checks that the archives of `downloads/` hold the current samples. After changing a sample,
 make the archives again, and commit them together with the change:

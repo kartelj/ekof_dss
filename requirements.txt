@@ -1,14 +1,17 @@
-# Python packages used by the teaching samples (Python 3.12 or newer).
+# All the Python packages of the course - for working with the whole repository (Python 3.12 or newer).
+# A student needs only the requirements.txt of the archive of a module: it names the packages of that module.
 #
 #   python -m venv .venv
 #   source .venv/bin/activate        (Windows: .venv\Scripts\activate)
 #   pip install -r requirements.txt
+#
+# No versions: pip installs the newest versions that work with your Python.
 
-fastapi==0.142.2            # web framework: pages and RESTful services
-uvicorn[standard]==0.54.0   # web server that runs FastAPI applications
-jinja2==3.1.6               # HTML templates
-python-multipart==0.0.32    # reading the data of HTML forms
-httpx2==2.13.1              # HTTP client: calling RESTful services from Python
-sqlmodel==0.0.47            # working with a relational database through Python classes
-supabase==2.31.0            # client for the Supabase cloud database
-python-dotenv==1.2.4        # reading settings from the .env file
+fastapi            # web framework: pages and RESTful services
+uvicorn            # web server that runs FastAPI applications
+jinja2             # HTML templates
+python-multipart   # reading the data of HTML forms
+httpx2             # HTTP client: calling RESTful services from Python
+sqlmodel           # working with a relational database through Python classes
+supabase           # client for the Supabase cloud database
+python-dotenv      # reading settings from the .env file

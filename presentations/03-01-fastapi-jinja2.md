@@ -51,8 +51,7 @@ pip install -r requirements.txt
 - A **virtual environment** (the folder `.venv`) keeps the packages of one project apart from the rest of the computer. It is created once, and activated in every new terminal.
 
 Note:
-The commands are typed in the folder of the samples of the module - 03-python-fastapi, from the archive 03-python-fastapi.zip of the course page - where the file requirements.txt is: once for every folder, as in the first lecture. It lists the packages with their exact versions, so everybody gets the same ones. Python 3.12 or newer is needed.
-The file also installs python-multipart, which FastAPI needs for reading the data of forms, and the packages for the later parts of the course.
+The commands are typed in the folder of the samples of the module - 03-python-fastapi, from the archive 03-python-fastapi.zip of the course page - where the file requirements.txt is: once for every folder, as in the first lecture. It names the packages that the samples of the module need: FastAPI, Uvicorn, Jinja2, and python-multipart, which FastAPI needs for reading the data of forms. It has no versions: pip installs the newest versions that work with our Python (3.12 or newer).
 On macOS and Linux the first command is often python3. After the activation, python works everywhere.
 A framework is a library that does the common work of one kind of programs. We do not call it: it calls our functions at the right moment.
 

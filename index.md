@@ -43,7 +43,7 @@ After the course, students are able to
 | 07 | The complete system: web application + RESTful service + database | - | [07-python-fastapi-rest-sqlite](teaching-samples/07-python-fastapi-rest-sqlite/), [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/) | [07-python-fastapi-rest-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-sqlite.zip), [07-python-fastapi-rest-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-supabase.zip) |
 
 **Download** the archive of a module when the module starts: unzipped, it is one folder with everything that the
-module needs - its samples and the list of the packages of the course. The column *Samples* shows the same files
+module needs - its samples and the list of the packages that they use. The column *Samples* shows the same files
 here, on GitHub.
 
 ### 01 - The web

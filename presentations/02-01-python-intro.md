@@ -923,7 +923,7 @@ pip install -r requirements.txt
 
 - A **package** is a library that does not come with Python: FastAPI, Jinja2, SQLModel ... `pip` installs packages from the Python Package Index.
 - A **virtual environment** - the folder `.venv` - keeps the packages of one project apart from the rest of the computer.
-- `requirements.txt` lists the packages of the course, with their exact versions. The environment is created once for every folder of a module, and activated in every new terminal.
+- `requirements.txt` names the packages of a module; pip installs their newest versions. The environment is made once for every folder, and activated in every new terminal.
 
 ![pip installs packages such as FastAPI, Jinja2 and SQLModel from the Python Package Index into the folder .venv - the virtual environment inside the folder of a module, e.g. 03-python-fastapi, next to requirements.txt and the files of the samples](images/python-venv.svg)
 
