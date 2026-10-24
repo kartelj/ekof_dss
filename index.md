@@ -11,6 +11,10 @@ lecture shows its slides as one page, and on the web site of the course,
 A folder of samples shows its files and its description.
 How to run the samples and how to show the lectures on your own computer is explained at the end of this page.
 
+## Instructor
+
+Aleksandar Kartelj, [aleksandar.kartelj@gmail.com](mailto:aleksandar.kartelj@gmail.com)
+
 ## Aim and objectives
 
 The objective of the course is to develop and broaden student competences in the basic components of
@@ -113,6 +117,56 @@ The second half of the lecture [RESTful services with FastAPI](presentations/06-
 
 - Samples: [07-python-fastapi-rest-sqlite](teaching-samples/07-python-fastapi-rest-sqlite/),
   [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/)
+
+## How the course is passed
+
+The course is passed with two homeworks and a project during the semester, and a final exam.
+
+| Part | What it is | Modules | Points |
+|---|---|---|---|
+| Homework 1 | a personal web presentation: a small site about yourself, made with HTML, CSS and Bootstrap, in a GitHub repository of your own and published with GitHub Pages | 01 | 15 |
+| Homework 2 | a web application made with FastAPI and Jinja2 templates | 02 - 04 | 15 |
+| Project | a complete system - a web application, a RESTful service and a database - in a GitHub repository | 05 - 07 | 30 |
+| Final exam | in the computer room of the Faculty, at the computer | the whole course | 40 |
+
+The exercises in the lectures and the assignments at their end are for practice: they are not graded, and their
+solutions are public.
+
+The homeworks and the project are the pre-exam obligations, together 60 points; the final exam brings the other 40.
+The final grade comes from the sum of the points, out of 100:
+
+| Points | 0 - 50 | 51 - 60 | 61 - 70 | 71 - 80 | 81 - 90 | 91 - 100 |
+|---|---|---|---|---|---|---|
+| Grade | 5 (failed) | 6 | 7 | 8 | 9 | 10 |
+
+## Literature
+
+The lectures, the samples and the exercises of the course are its main material. These books and pages go further.
+
+**Books**
+
+- Jon Duckett: *HTML and CSS: Design and Build Websites*, Wiley, 2011 - module 01.
+- Eric Matthes: *Python Crash Course*, 3rd edition, No Starch Press, 2023 - modules 02 and 03.
+- Bill Lubanovic: *FastAPI: Modern Python Web Development*, O'Reilly, 2023 - modules 03, 04 and 06.
+- Alan Beaulieu: *Learning SQL*, 3rd edition, O'Reilly, 2020 - module 05.
+- Leonard Richardson, Mike Amundsen, Sam Ruby: *RESTful Web APIs*, O'Reilly, 2013 - module 06.
+
+**Free on the web**
+
+- The web: [MDN - Learn web development](https://developer.mozilla.org/en-US/docs/Learn_web_development) (HTML and CSS),
+  [MDN - HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP),
+  [Bootstrap 4.5 documentation](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
+- Python: [The Python Tutorial](https://docs.python.org/3/tutorial/),
+  Al Sweigart: [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) (a whole book, free to read online),
+  [Python in Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial)
+- Web applications and services: [FastAPI tutorial](https://fastapi.tiangolo.com/tutorial/),
+  [Jinja templates](https://jinja.palletsprojects.com/en/stable/templates/), [htmx](https://htmx.org/docs/),
+  [SQLModel](https://sqlmodel.tiangolo.com/)
+- Databases: [SQLite](https://www.sqlite.org/docs.html), [PostgreSQL](https://www.postgresql.org/docs/),
+  [Supabase](https://supabase.com/docs)
+- REST, from its source: Roy Fielding,
+  [Representational State Transfer](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+  (chapter 5 of his dissertation, 2000) - for the curious
 
 ## Working with the course
 
