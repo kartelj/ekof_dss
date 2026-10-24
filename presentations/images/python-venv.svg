@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="167" viewBox="0 0 900 150" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the Python Package Index, on the internet -->
+  <rect x="6" y="14" width="218" height="122" rx="16" fill="#fdf3e7" stroke="#b35900" stroke-width="2"/>
+  <text x="115" y="44" text-anchor="middle" font-size="17" font-weight="bold" fill="#b35900">Python Package Index</text>
+  <text x="115" y="68" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">pypi.org</text>
+  <text x="115" y="98" text-anchor="middle" font-size="15" fill="#333">FastAPI, Jinja2, SQLModel</text>
+  <text x="115" y="120" text-anchor="middle" font-size="15" fill="#333">and many more</text>
+
+  <!-- pip copies the packages into the environment -->
+  <line x1="228" y1="88" x2="368" y2="88" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="296" y="76" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="bold" fill="#333">pip install</text>
+  <text x="296" y="110" text-anchor="middle" font-size="15" fill="#555">the packages</text>
+
+  <!-- the folder of the course -->
+  <rect x="372" y="2" width="522" height="146" rx="10" fill="#fff" stroke="#555" stroke-width="2"/>
+  <text x="386" y="23" font-size="15" fill="#555">the folder of the course</text>
+
+  <rect x="386" y="34" width="290" height="104" rx="8" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="400" y="60" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#1b6ec2">.venv</text>
+  <text x="460" y="60" font-size="15" fill="#333">- the virtual environment</text>
+  <text x="400" y="86" font-size="15" fill="#555">made by <tspan font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">python -m venv .venv</tspan></text>
+  <text x="400" y="118" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">fastapi  jinja2  sqlmodel ...</text>
+
+  <g fill="#fff" stroke="#555" stroke-width="1.5">
+    <rect x="690" y="34" width="190" height="56" rx="6"/>
+    <rect x="690" y="98" width="190" height="40" rx="6"/>
+  </g>
+  <text x="785" y="57" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">requirements.txt</text>
+  <text x="785" y="79" text-anchor="middle" font-size="15" fill="#555">which packages</text>
+  <text x="785" y="123" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">teaching-samples/</text>
+</svg>

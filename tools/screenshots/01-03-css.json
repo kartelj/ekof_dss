@@ -1,0 +1,55 @@
+[
+    {
+        "file": "css-page-without.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><h2>Actors</h2><ul><li>Frances McDormand</li><li>John Goodman</li></ul><p><a href=\"#\">More actors</a></p>",
+        "width": 560
+    },
+    {
+        "file": "css-page-with.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><style>body { font-family: Arial, sans-serif; color: #333; background-color: #fdf6e3; } h2 { color: darkred; border-bottom: 3px solid darkred; } ul { list-style-type: square; } a { color: darkred; text-decoration: none; font-weight: bold; }</style><h2>Actors</h2><ul><li>Frances McDormand</li><li>John Goodman</li></ul><p><a href=\"#\">More actors</a></p>",
+        "width": 560
+    },
+    {
+        "file": "css-inline-styles.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><h2>I have no style attribute applied to me</h2><h2 style=\"color:red\">I am red</h2><h2 style=\"color:#16C947\">I am a kind of green, like grass</h2>",
+        "width": 560
+    },
+    {
+        "file": "css-internal-style.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><style>body { background-color: lightgrey; color: darkgreen; } h1 { color: darkred; }</style><h1>This is heading</h1><p>This is the first paragraph.</p><h2>This is subsection heading</h2><p>This is the fourth paragraph.</p>",
+        "width": 560
+    },
+    {
+        "file": "css-selectors.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><style>p { color: rgb(170, 84, 141); } #dark-one { color: black; } .important { color: black; background-color: yellow; }</style><p>This is the second paragraph.</p><p id=\"dark-one\">This is the third paragraph.</p><p class=\"important\">This is the fourth paragraph.</p>",
+        "width": 560
+    },
+    {
+        "file": "css-hover.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/02-css/02-style-in-document/05-style-links.html",
+        "width": 560,
+        "height": 130,
+        "steps": [
+            {
+                "hover": "a >> nth=1"
+            }
+        ],
+        "address": "localhost:8000/02-css/.../05-style-links.html"
+    },
+    {
+        "file": "css-font-families.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><p style=\"font-size: 28px; display: flex; justify-content: space-around\"><span style=\"font-family: serif\">serif</span><span style=\"font-family: sans-serif\">sans-serif</span><span style=\"font-family: monospace\">monospace</span></p><p style=\"font-size: 17px; display: flex; justify-content: space-around; color: #555\"><span style=\"font-family: serif\">Times New Roman</span><span style=\"font-family: sans-serif\">Arial, Helvetica</span><span style=\"font-family: monospace\">Courier New</span></p>",
+        "width": 560
+    },
+    {
+        "file": "css-font-sizes.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; }</style><style>div { font-size: 20px; } .a { font-size: 24px; } .b { font-size: 1.5em; } .c { font-size: 150%; } .d { font-size: 1.5rem; }</style><div>div: 20px &nbsp; <span class=\"a\">.a 24px</span> &nbsp; <span class=\"b\">.b 30px</span> &nbsp; <span class=\"c\">.c 30px</span> &nbsp; <span class=\"d\">.d 24px</span></div>",
+        "width": 580
+    },
+    {
+        "file": "css-list-styles.png",
+        "html": "<style>#snippet > :nth-child(1 of :not(style)) { margin-top: 0; } #snippet > :last-child { margin-bottom: 0; } #snippet ul, #snippet ol { margin: 6px 0 0; } #snippet code { font-size: 16px; }</style><div style=\"display: flex; gap: 20px; font-size: 19px\"><div><code>square</code><ul style=\"list-style-type:square\"><li>Coffee</li><li>Tea</li><li>Milk</li></ul></div><div><code>circle</code><ul style=\"list-style-type:circle\"><li>Coffee</li><li>Tea</li><li>Milk</li></ul></div><div><code>upper-roman</code><ol style=\"list-style-type:upper-roman\"><li>Coffee</li><li>Tea</li><li>Milk</li></ol></div><div><code>lower-alpha</code><ol style=\"list-style-type:lower-alpha\"><li>Coffee</li><li>Tea</li><li>Milk</li></ol></div></div>",
+        "width": 600
+    }
+]

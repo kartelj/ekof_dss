@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 362" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- the three ways, in the order in which the mistake is noticed -->
+  <g font-size="18" font-weight="bold" text-anchor="middle">
+    <text x="145" y="24" fill="#2e7d32">a protocol</text>
+    <text x="450" y="24" fill="#9b1c31">an abstract base class</text>
+    <text x="755" y="24" fill="#b35900">duck typing</text>
+  </g>
+  <rect x="5" y="38" width="280" height="132" rx="8" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="310" y="38" width="280" height="132" rx="8" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="615" y="38" width="280" height="132" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="17" y="64">class HasArea(Protocol):</text>
+    <text x="53" y="86">def area(self): ...</text>
+    <text x="17" y="118">def material_cost(</text>
+    <text x="71" y="140">thing: HasArea, ...)</text>
+
+    <text x="322" y="64">class Shape(ABC):</text>
+    <text x="358" y="86">@abstractmethod</text>
+    <text x="358" y="108">def area(self): ...</text>
+    <text x="322" y="140">class Circle(Shape):</text>
+    <text x="358" y="162" fill="#888"># no area()</text>
+
+    <text x="627" y="64">def material_cost(</text>
+    <text x="681" y="86">thing, ...):</text>
+    <text x="663" y="108">return thing.area()</text>
+    <text x="699" y="130">* price_per_m2</text>
+  </g>
+
+  <!-- the mistake, and what happens -->
+  <g font-size="15" fill="#555" text-anchor="middle">
+    <text x="145" y="196">the mistake</text>
+    <text x="450" y="196">the mistake</text>
+    <text x="755" y="196">the mistake</text>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <text x="145" y="220">material_cost("abc", 15)</text>
+    <text x="450" y="220">Circle(1)</text>
+    <text x="755" y="220">material_cost("abc", 15)</text>
+  </g>
+  <g font-size="16" font-weight="bold" text-anchor="middle">
+    <text x="145" y="246" fill="#2e7d32">reported by a type checker</text>
+    <text x="450" y="246" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#9b1c31">TypeError</text>
+    <text x="755" y="246" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#b35900">AttributeError</text>
+  </g>
+
+  <!-- when -->
+  <g stroke="#999" stroke-width="2" stroke-dasharray="5 4">
+    <line x1="145" y1="258" x2="145" y2="306"/>
+    <line x1="450" y1="258" x2="450" y2="306"/>
+    <line x1="755" y1="258" x2="755" y2="306"/>
+  </g>
+  <line x1="10" y1="316" x2="886" y2="316" stroke="#555" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="145" cy="316" r="8" fill="#2e7d32"/>
+  <circle cx="450" cy="316" r="8" fill="#9b1c31"/>
+  <circle cx="755" cy="316" r="8" fill="#b35900"/>
+  <g font-size="16" text-anchor="middle" fill="#333">
+    <text x="145" y="346">before the program runs</text>
+    <text x="450" y="346">when the object is created</text>
+    <text x="755" y="346">when the method is called</text>
+  </g>
+</svg>

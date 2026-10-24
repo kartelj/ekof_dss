@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- our program: SQLite is a library inside it -->
+  <rect x="4" y="4" width="660" height="252" rx="12" fill="#f7f7f7" stroke="#555" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#555">our Python program</text>
+  <text x="20" y="48" font-size="15" fill="#555">(SQLite runs inside it)</text>
+
+  <!-- the connection -->
+  <rect x="20" y="102" width="170" height="60" rx="8" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="105" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">connection</text>
+  <text x="105" y="150" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">connect()</text>
+
+  <!-- reading: execute gives a cursor, the cursor gives the rows -->
+  <rect x="290" y="28" width="140" height="60" rx="8" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="360" y="54" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">cursor</text>
+  <text x="360" y="76" text-anchor="middle" font-size="15" fill="#333">the result</text>
+  <rect x="530" y="28" width="120" height="60" rx="8" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="590" y="54" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">rows</text>
+  <text x="590" y="76" text-anchor="middle" font-size="15" fill="#333">a list</text>
+
+  <path d="M190,114 C240,114 240,58 286,58" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="432" y1="58" x2="526" y2="58" stroke="#555" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="480" y="48" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">fetchall()</text>
+  <text x="290" y="110" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">execute("SELECT ...")</text>
+
+  <!-- changing: execute makes a change, commit makes it permanent -->
+  <rect x="290" y="180" width="200" height="60" rx="8" fill="#fff" stroke="#b35900" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="390" y="206" text-anchor="middle" font-size="18" font-weight="bold" fill="#b35900">a change</text>
+  <text x="390" y="228" text-anchor="middle" font-size="15" fill="#333">not permanent yet</text>
+  <path d="M190,150 C240,150 240,210 286,210" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="290" y="168" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">execute("INSERT ...")</text>
+
+  <path d="M492,210 C600,210 640,172 726,166" fill="none" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="560" y="236" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" fill="#2e7d32">commit()</text>
+
+  <!-- the file is open while the connection lives -->
+  <line x1="190" y1="132" x2="726" y2="132" stroke="#9b1c31" stroke-width="2" stroke-dasharray="3 5"/>
+  <text x="560" y="124" font-size="15" fill="#9b1c31">the file is open</text>
+
+  <!-- the database file -->
+  <path d="M730,96 V196 A75,16 0 0,0 880,196 V96" fill="#f1f1f1" stroke="#555" stroke-width="2"/>
+  <ellipse cx="805" cy="96" rx="75" ry="16" fill="#f1f1f1" stroke="#555" stroke-width="2"/>
+  <text x="805" y="152" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" fill="#333">actors.db</text>
+  <text x="805" y="242" text-anchor="middle" font-size="15" fill="#555">the database: a file</text>
+</svg>

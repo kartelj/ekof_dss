@@ -1,0 +1,16 @@
+[
+    {
+        "file": "oop-actors-page.png",
+        "sample": "03-python-fastapi",
+        "path": "/actors-show",
+        "steps": [{"click": "text=Average IMDB"}],
+        "width": 820, "height": 420
+    },
+    {
+        "file": "oop-weather-page.png",
+        "sample": "03-python-fastapi",
+        "path": "/fetch-data",
+        "width": 850, "height": 400,
+        "element": "article", "frame": true
+    }
+]

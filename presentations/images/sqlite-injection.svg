@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 290" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- 1. the value is pasted into the text of the statement -->
+  <text x="10" y="22" font-size="17" font-weight="bold" fill="#9b1c31">1. pasted into the text of the statement</text>
+  <rect x="10" y="34" width="604" height="40" rx="6" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <rect x="398.4" y="40" width="192.0" height="28" fill="#fdf3e7" stroke="#b35900" stroke-width="1.5"/>
+  <text x="24" y="60" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333" textLength="576.0" lengthAdjust="spacingAndGlyphs">SELECT title FROM movie WHERE title = &#x27;nothing&#x27; OR &#x27;a&#x27; = &#x27;a&#x27;</text>
+  <g stroke="#9b1c31" stroke-width="2" fill="none">
+    <path d="M314.0,80 v8 H473.2 v-8"/>
+    <path d="M515.6,80 v8 H598.0 v-8"/>
+  </g>
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="394" y="108">false for every film</text>
+    <text x="557" y="108">always true</text>
+  </g>
+  <text x="494" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#9b1c31">OR</text>
+  <text x="640.0" y="52" font-size="17" font-weight="bold" fill="#9b1c31">10 rows</text>
+  <text x="640.0" y="74" font-size="15" fill="#333">every film of the table</text>
+  <text x="10" y="138" font-size="15" fill="#555">The quote in the value ends the text of the statement; the rest of the value becomes SQL.</text>
+
+  <!-- 2. the value is sent as a parameter -->
+  <text x="10" y="172" font-size="17" font-weight="bold" fill="#2e7d32">2. sent as a parameter</text>
+  <rect x="10" y="184" width="402" height="40" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="24" y="210" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333" textLength="374.4" lengthAdjust="spacingAndGlyphs">SELECT title FROM movie WHERE title = ?</text>
+  <rect x="285.6" y="244" width="216.0" height="36" rx="6" fill="#fdf3e7" stroke="#b35900" stroke-width="2"/>
+  <text x="297.6" y="268" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333" textLength="192.0" lengthAdjust="spacingAndGlyphs">nothing&#x27; OR &#x27;a&#x27; = &#x27;a</text>
+  <line x1="393.6" y1="242" x2="393.6" y2="228" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <text x="271.6" y="267" text-anchor="end" font-size="15" fill="#333">one value, sent apart:</text>
+  <text x="640.0" y="202" font-size="17" font-weight="bold" fill="#2e7d32">0 rows</text>
+  <text x="640.0" y="224" font-size="15" fill="#333">no film has this title</text>
+</svg>

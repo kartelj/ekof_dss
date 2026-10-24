@@ -23,6 +23,12 @@ One page usually needs many requests: one for the HTML, and one for every image,
 
 ---
 
+## One page, many requests
+
+![The browser asks for index.html and gets the HTML page. The HTML mentions three more files, so the browser sends three more requests: for style.css, logo.png and script.js, and gets each of them in its own response.](images/web-page-requests.svg)
+
+---
+
 ## The protocol: HTTP
 
 - HTTP stands for **HyperText Transfer Protocol**.
@@ -82,9 +88,17 @@ python -m http.server 8000
 
 and open `http://localhost:8000` in the browser.
 
+<div class="columns"><div>
+
 - `localhost` is the name by which every computer calls **itself**.
 - `8000` is the **port**: one computer can run several server programs, and the port tells which one we want.
 - Only you can see this site. That is exactly what we want during development.
+
+</div><div>
+
+![One computer, localhost, runs the browser and two server programs. The browser opens localhost:8000, and its request goes to the program that listens at port 8000, not to the one at port 8001.](images/web-localhost.svg)
+
+</div></div>
 
 ---
 
@@ -104,11 +118,19 @@ The first part of the course uses static content. From the second part on, we wr
 
 ---
 
+## Where does the response come from?
+
+![Static content: for GET /about.html the server sends the file about.html exactly as it is on the disk, the same file for everybody. Dynamic content: for GET /basket a program on the server reads the data from a database and writes the HTML of a page made just now, for the user Ana.](images/web-static-dynamic.svg)
+
+---
+
 ## The request - response cycle
 
 - The client always speaks first; the server only answers.
 - One request, one response - then the conversation is over.
 - HTTP is **stateless**: the server does not remember earlier requests. Every request has to carry everything the server needs in order to answer it.
+
+![Three conversations one after the other: request 1 and response 1, request 2 and response 2, request 3 and response 3. Each request stands on its own: the server does not remember the earlier ones.](images/http-stateless.svg)
 
 Note:
 Statelessness comes back twice in the course: when we keep the state of a page on the server, and as one of the REST constraints.
@@ -165,6 +187,14 @@ Last-Modified: Fri, 02 Oct 2026 10:15:02 GMT
 
 ---
 
+## Request and response have the same shape
+
+Both are plain text: a first line, the headers, an empty line, and the body.
+
+![A request and a response side by side. The request: the request line POST /process-form HTTP/1.1, the headers Host and Content-Type, an empty line, and the body with the values of a form. The response: the status line HTTP/1.1 200 OK, the headers Content-Type and Content-Length, an empty line, and the body with the HTML page.](images/http-message.svg)
+
+---
+
 ## Status codes
 
 The first digit tells the kind of the answer.
@@ -187,6 +217,8 @@ The first digit tells the kind of the answer.
 http://localhost:8000/01-html/01-basic-elements/04-headers.html    200 OK
 http://localhost:8000/01-html/01-basic-elements/04-heders.html     404 Not Found
 ```
+
+<img src="images/http-404.png" alt="The browser at the address with the mistake shows the answer of the server: There is nothing at this address." width="960">
 
 - A 404 is a perfectly valid answer: the conversation between the client and the server worked, only the resource is missing.
 
@@ -224,9 +256,19 @@ INFO:     127.0.0.1:52144 - "GET /01-html/ HTTP/1.1" 200 OK
 
 ---
 
+## curl shows the whole conversation
+
+`>` - what the client has sent, `<` - what the server has answered, `*` - what curl itself reports.
+
+![The output of curl -v in a terminal: the request line and the headers of the request, marked with >, then the status line 200 OK and the headers of the response, marked with <, and then the beginning of the HTML page.](images/http-curl.png)
+
+---
+
 ## Try it
 
 The samples for the first part of the course are in the folder `teaching-samples/01-html-css-bootstrap`.
+
+<div class="columns"><div>
 
 ```text
 cd teaching-samples/01-html-css-bootstrap
@@ -238,6 +280,12 @@ Then open `http://localhost:8000` and:
 1. browse to one of the HTML samples and find its request in the *Network* tab;
 2. change one letter in the address and look at the status code;
 3. look at the terminal - which requests has the server received?
+
+</div><div>
+
+![The browser at localhost:8000 shows the list of the folders of the samples: 01-html, 02-css and 03-bootstrap](images/web-samples-home.png)
+
+</div></div>
 
 ---
 

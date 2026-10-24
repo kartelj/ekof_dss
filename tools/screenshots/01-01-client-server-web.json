@@ -1,0 +1,22 @@
+[
+    {
+        "file": "http-404.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/01-html/01-basic-elements/04-heders.html",
+        "width": 760,
+        "height": 80
+    },
+    {
+        "file": "http-curl.png",
+        "title": "Terminal",
+        "width": 760,
+        "terminal": "$ curl -v http://localhost:8000/01-html/01-basic-elements/04-headers.html\n* Connected to localhost (127.0.0.1) port 8000\n> GET /01-html/01-basic-elements/04-headers.html HTTP/1.1\n> Host: localhost:8000\n> User-Agent: curl/8.7.1\n> Accept: */*\n>\n* Request completely sent off\n< HTTP/1.1 200 OK\n< date: Fri, 23 Oct 2026 15:55:26 GMT\n< server: uvicorn\n< content-type: text/html; charset=utf-8\n< accept-ranges: bytes\n< content-length: 309\n< last-modified: Fri, 02 Oct 2026 10:15:02 GMT\n< etag: \"b06ebe6024961b6aff5dd41fd0769b24\"\n<\n<!DOCTYPE html>\n<html>\n..."
+    },
+    {
+        "file": "web-samples-home.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/",
+        "width": 560,
+        "height": 250
+    }
+]

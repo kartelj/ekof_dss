@@ -1,0 +1,83 @@
+[
+    {
+        "file": "swagger-weatherforecast.png",
+        "sample": "06-python-rest-sqlite/01-rest-service-new",
+        "path": "/docs",
+        "address": "localhost:8001/docs",
+        "width": 640,
+        "height": 430,
+        "steps": [
+            {"click": "#operations-default-get_weather_forecast_weatherforecast_get .opblock-summary"},
+            {"wait": 500}
+        ]
+    },
+    {
+        "file": "swagger-actordata.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "width": 520,
+        "steps": [
+            {"click": "section.models article[data-json-schema-level='0']:has(> .json-schema-2020-12-head strong:text-is('ActorData')) .json-schema-2020-12-accordion >> nth=0"},
+            {"wait": 500}
+        ],
+        "element": "section.models article[data-json-schema-level='0']:has(> .json-schema-2020-12-head strong:text-is('ActorData'))"
+    },
+    {
+        "file": "swagger-422.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "width": 560,
+        "steps": [
+            {"click": "#operations-actors-post_actor_api_actors_post .opblock-summary"},
+            {"click": "#operations-actors-post_actor_api_actors_post .try-out__btn"},
+            {"fill": "#operations-actors-post_actor_api_actors_post textarea.body-param__text", "value": "{\"last_name\": \"Streep\", \"first_name\": \"Meril\", \"country_id\": \"USA\", \"date_of_birth\": \"1949-06-22\"}"},
+            {"click": "#operations-actors-post_actor_api_actors_post .execute"},
+            {"wait": 800}
+        ],
+        "element": "#operations-actors-post_actor_api_actors_post .live-responses-table"
+    },
+    {
+        "file": "swagger-try-parameters.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "width": 520,
+        "steps": [
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .opblock-summary"},
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .try-out__btn"},
+            {"fill": "#operations-actors-get_actor_api_actors__actor_id__get input[placeholder='actor_id']", "value": "3"}
+        ],
+        "element": "#operations-actors-get_actor_api_actors__actor_id__get .opblock-section"
+    },
+    {
+        "file": "swagger-try-response.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "width": 600,
+        "steps": [
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .opblock-summary"},
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .try-out__btn"},
+            {"fill": "#operations-actors-get_actor_api_actors__actor_id__get input[placeholder='actor_id']", "value": "3"},
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .execute"},
+            {"wait": 800}
+        ],
+        "element": "#operations-actors-get_actor_api_actors__actor_id__get .live-responses-table"
+    },
+    {
+        "file": "rest-system-actors.png",
+        "sample": "07-python-fastapi-rest-sqlite/02-complete-system-db/web-app",
+        "path": "/actors",
+        "width": 640,
+        "height": 520
+    },
+    {
+        "file": "rest-system-409.png",
+        "sample": "07-python-fastapi-rest-sqlite/02-complete-system-db/web-app",
+        "path": "/countries",
+        "width": 440,
+        "steps": [
+            {"click": "button.clear"},
+            {"click": "button.delete >> nth=0"}
+        ],
+        "element": "div.messages"
+    }
+]

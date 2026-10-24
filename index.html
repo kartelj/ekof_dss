@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         h1,
-        h2 {
+        h2,
+        h3 {
             color: #9b1c31;
         }
 
@@ -18,111 +19,63 @@
             margin-top: 2rem;
         }
 
-        td:first-child {
-            white-space: nowrap;
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        table {
+            margin-bottom: 1rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: .3rem .6rem;
+        }
+
+        pre {
+            background-color: #f1f1f1;
+            padding: .6rem 1rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="container my-4">
-
-        <h1>Developing Software Solutions</h1>
-        <p class="lead">Python edition</p>
-
-        <h2>Aim and objectives</h2>
-        <p>
-            The objective of this course is to develop and broaden student competences in the basic components of
-            information systems development, in development concepts in Python, in service oriented solutions and in
-            modern software architectures.
-        </p>
-        <p>
-            Students will be able to explain the basic components of information systems development; to build
-            dynamic web sites, applications and services with FastAPI, an open-source web framework for Python; to use
-            a programming model organized around objects; to apply modular programming; and to implement
-            a service oriented architecture.
-        </p>
-
-        <h2>Topics</h2>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th>Part</th>
-                    <th>Lectures</th>
-                    <th>Samples</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Web</td>
-                    <td>
-                        <a href="presentations/slides.html?deck=01-01-client-server-web">Web and the HTTP protocol</a><br>
-                        <a href="presentations/slides.html?deck=01-02-html">HTML</a><br>
-                        <a href="presentations/slides.html?deck=01-03-css">CSS</a><br>
-                        <a href="presentations/slides.html?deck=01-04-bootstrap">Bootstrap</a>
-                    </td>
-                    <td>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/01-html-css-bootstrap">01-html-css-bootstrap</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Python and web applications</td>
-                    <td>
-                        <a href="presentations/slides.html?deck=02-01-fastapi-jinja2">FastAPI and Jinja2</a><br>
-                        <a href="presentations/slides.html?deck=02-02-python-procedural">Language Python</a><br>
-                        <a href="presentations/slides.html?deck=02-03-python-oop">Object-oriented Python</a>
-                    </td>
-                    <td>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/02-python-fastapi">02-python-fastapi</a><br>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/03-python-fastapi-actors">03-python-fastapi-actors</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Databases</td>
-                    <td>
-                        <a href="presentations/slides.html?deck=04-01-relational-model">Relational model</a><br>
-                        <a href="presentations/slides.html?deck=04-02-sql">Language SQL</a><br>
-                        <a href="presentations/slides.html?deck=04-03-sqlite-postgresql">SQLite and PostgreSQL</a>
-                    </td>
-                    <td>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/04-python-db-sqlite">04-python-db-sqlite</a><br>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/04-python-db-supabase">04-python-db-supabase</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>RESTful services</td>
-                    <td>
-                        <a href="presentations/slides.html?deck=05-01-restful-api">REST APIs</a><br>
-                        <a href="presentations/slides.html?deck=05-02-fastapi-rest">RESTful services with FastAPI</a>
-                    </td>
-                    <td>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/05-python-rest-sqlite">05-python-rest-sqlite</a><br>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/05-python-rest-supabase">05-python-rest-supabase</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>The complete system</td>
-                    <td></td>
-                    <td>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/06-python-fastapi-rest-sqlite">06-python-fastapi-rest-sqlite</a><br>
-                        <a href="https://github.com/kartelj/ekof_dss/tree/main/teaching-samples/06-python-fastapi-rest-supabase">06-python-fastapi-rest-supabase</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Repository</h2>
-        <p>
-            The lectures and the samples are in the repository
-            <a href="https://github.com/kartelj/ekof_dss">github.com/kartelj/ekof_dss</a>.
-            Its <code>README.md</code> explains how to install Python and the packages, and how to run the samples.
-        </p>
-        <p>
-            The course is a Python edition of the course taught with C#, Blazor, ASP.NET and SQL Server:
-            <a href="https://github.com/ekof-dss">github.com/ekof-dss</a>.
-        </p>
-
+    <!--
+        The course page for the web (GitHub Pages, or python -m http.server in this folder).
+        The text is index.md, the same file that GitHub shows; here a lecture opens as slides,
+        and the samples open on GitHub.
+    -->
+    <div class="container my-4" id="course">
+        <p>Loading the course page ... (if it does not appear, read it on
+            <a href="https://github.com/kartelj/ekof_dss/blob/main/index.md">GitHub</a>)</p>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script>
+        const REPOSITORY = "https://github.com/kartelj/ekof_dss/";
+
+        fetch("index.md")
+            .then(response => response.text())
+            .then(text => {
+                const course = document.getElementById("course");
+                course.innerHTML = marked.parse(text);
+                for (const link of course.querySelectorAll("a[href]")) {
+                    const address = link.getAttribute("href");
+                    if (/^[a-z]+:/i.test(address) || address.startsWith("#")) {
+                        continue;  // addresses of other sites stay as they are
+                    }
+                    // a lecture opens as slides; everything else (samples, README, LICENSE) on GitHub
+                    const lecture = address.match(/^presentations\/([\w-]+)\.md$/);
+                    if (lecture) {
+                        link.href = "presentations/slides.html?deck=" + lecture[1];
+                    } else {
+                        link.href = REPOSITORY + (address.endsWith("/") ? "tree/main/" : "blob/main/") + address;
+                    }
+                }
+            });
+    </script>
 </body>
 
 </html>

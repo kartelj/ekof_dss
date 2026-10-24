@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" font-family="Arial, Helvetica, sans-serif">
+  <!-- four panels, one for every data model -->
+  <g fill="#fff" stroke="#ccc" stroke-width="1.5">
+    <rect x="2" y="2" width="212" height="246" rx="10"/>
+    <rect x="231" y="2" width="212" height="246" rx="10"/>
+    <rect x="460" y="2" width="212" height="246" rx="10"/>
+    <rect x="689" y="2" width="209" height="246" rx="10"/>
+  </g>
+  <g font-size="19" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="108" y="30">Hierarchical</text>
+    <text x="337" y="30">Network</text>
+    <text x="566" y="30">Relational</text>
+    <text x="793" y="30">Document</text>
+  </g>
+
+  <!-- hierarchical: a tree, every record has one parent -->
+  <g stroke="#1b6ec2" stroke-width="2">
+    <line x1="108" y1="72" x2="58" y2="112"/>
+    <line x1="108" y1="72" x2="158" y2="112"/>
+    <line x1="58" y1="134" x2="30" y2="174"/>
+    <line x1="58" y1="134" x2="86" y2="174"/>
+    <line x1="158" y1="134" x2="130" y2="174"/>
+    <line x1="158" y1="134" x2="186" y2="174"/>
+  </g>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="88" y="50" width="40" height="22" rx="4"/>
+    <rect x="38" y="112" width="40" height="22" rx="4"/>
+    <rect x="138" y="112" width="40" height="22" rx="4"/>
+    <rect x="12" y="174" width="36" height="22" rx="4"/>
+    <rect x="68" y="174" width="36" height="22" rx="4"/>
+    <rect x="112" y="174" width="36" height="22" rx="4"/>
+    <rect x="168" y="174" width="36" height="22" rx="4"/>
+  </g>
+  <text x="108" y="230" text-anchor="middle" font-size="15" fill="#555">one parent</text>
+
+  <!-- network: a web, a record can have several parents -->
+  <g stroke="#1b6ec2" stroke-width="2">
+    <line x1="290" y1="72" x2="268" y2="112"/>
+    <line x1="290" y1="72" x2="337" y2="112"/>
+    <line x1="384" y1="72" x2="337" y2="112"/>
+    <line x1="384" y1="72" x2="406" y2="112"/>
+    <line x1="268" y1="134" x2="302" y2="174"/>
+    <line x1="337" y1="134" x2="302" y2="174"/>
+    <line x1="337" y1="134" x2="372" y2="174"/>
+    <line x1="406" y1="134" x2="372" y2="174"/>
+  </g>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="270" y="50" width="40" height="22" rx="4"/>
+    <rect x="364" y="50" width="40" height="22" rx="4"/>
+    <rect x="248" y="112" width="40" height="22" rx="4"/>
+    <rect x="317" y="112" width="40" height="22" rx="4"/>
+    <rect x="386" y="112" width="40" height="22" rx="4"/>
+    <rect x="282" y="174" width="40" height="22" rx="4"/>
+    <rect x="352" y="174" width="40" height="22" rx="4"/>
+  </g>
+  <text x="337" y="230" text-anchor="middle" font-size="15" fill="#555">several parents</text>
+
+  <!-- relational: tables, connected by equal values -->
+  <g font-size="15" fill="#333">
+    <rect x="472" y="48" width="188" height="24" fill="#fbeef0"/>
+    <rect x="583" y="97" width="76" height="22" fill="#e3f1e4"/>
+    <rect x="472" y="48" width="188" height="72" fill="none" stroke="#9b1c31" stroke-width="2"/>
+    <line x1="472" y1="72" x2="660" y2="72" stroke="#9b1c31"/>
+    <line x1="472" y1="96" x2="660" y2="96" stroke="#9b1c31"/>
+    <line x1="582" y1="48" x2="582" y2="120" stroke="#9b1c31"/>
+    <text x="478" y="66" font-weight="bold">title</text>
+    <text x="588" y="66" font-weight="bold">genre_id</text>
+    <text x="478" y="90">Fargo</text>
+    <text x="588" y="90">4</text>
+    <text x="478" y="114">Delicatessen</text>
+    <text x="588" y="114" font-weight="bold" fill="#2e7d32">5</text>
+
+    <rect x="490" y="142" width="152" height="24" fill="#eef4fb"/>
+    <rect x="491" y="191" width="76" height="22" fill="#e3f1e4"/>
+    <rect x="490" y="142" width="152" height="72" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+    <line x1="490" y1="166" x2="642" y2="166" stroke="#1b6ec2"/>
+    <line x1="490" y1="190" x2="642" y2="190" stroke="#1b6ec2"/>
+    <line x1="568" y1="142" x2="568" y2="214" stroke="#1b6ec2"/>
+    <text x="496" y="160" font-weight="bold">genre_id</text>
+    <text x="574" y="160" font-weight="bold">name</text>
+    <text x="496" y="184">4</text>
+    <text x="574" y="184">crime</text>
+    <text x="496" y="208" font-weight="bold" fill="#2e7d32">5</text>
+    <text x="574" y="208">comedy</text>
+  </g>
+  <text x="566" y="238" text-anchor="middle" font-size="15" fill="#555">equal values, no links</text>
+
+  <!-- document: one whole document -->
+  <rect x="701" y="46" width="185" height="170" rx="6" fill="#fdf3e7" stroke="#b35900" stroke-width="2"/>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="711" y="70">{</text>
+    <text x="719" y="92">"title": "Fargo",</text>
+    <text x="719" y="114">"year": 1996,</text>
+    <text x="719" y="136">"actors": [</text>
+    <text x="735" y="158">"Steve Buscemi",</text>
+    <text x="735" y="180">...</text>
+    <text x="719" y="202">] }</text>
+  </g>
+  <text x="793" y="238" text-anchor="middle" font-size="15" fill="#555">read in one piece</text>
+</svg>

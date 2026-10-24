@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-request" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="arrow-response" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+    <marker id="arrow-inner" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- ============ static content ============ -->
+  <rect x="10" y="10" width="160" height="180" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="90" y="95" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <text x="90" y="120" text-anchor="middle" font-size="16" fill="#333">anybody</text>
+
+  <line x1="172" y1="70" x2="418" y2="70" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+  <text x="295" y="58" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">GET /about.html</text>
+  <line x1="420" y1="140" x2="174" y2="140" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+  <text x="297" y="128" text-anchor="middle" font-size="16" fill="#333">the same file for everybody</text>
+
+  <rect x="420" y="10" width="470" height="180" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="436" y="38" font-size="20" font-weight="bold" fill="#9b1c31">Static: the server sends a stored file</text>
+  <!-- the file on the disk -->
+  <path d="M560,62 h62 l20,20 v90 h-82 z" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <path d="M622,62 v20 h20" fill="none" stroke="#9b1c31" stroke-width="2"/>
+  <line x1="572" y1="102" x2="628" y2="102" stroke="#bbb" stroke-width="4"/>
+  <line x1="572" y1="117" x2="618" y2="117" stroke="#bbb" stroke-width="4"/>
+  <line x1="572" y1="132" x2="626" y2="132" stroke="#bbb" stroke-width="4"/>
+  <line x1="572" y1="147" x2="610" y2="147" stroke="#bbb" stroke-width="4"/>
+  <text x="660" y="105" font-size="17" fill="#333">about.html,</text>
+  <text x="660" y="128" font-size="17" fill="#333">exactly as it is</text>
+  <text x="660" y="151" font-size="17" fill="#333">on the disk</text>
+
+  <!-- ============ dynamic content ============ -->
+  <rect x="10" y="230" width="160" height="180" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="90" y="315" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <text x="90" y="340" text-anchor="middle" font-size="16" fill="#333">Ana</text>
+
+  <line x1="172" y1="290" x2="418" y2="290" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+  <text x="295" y="278" text-anchor="middle" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">GET /basket</text>
+  <line x1="420" y1="360" x2="174" y2="360" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+  <text x="297" y="348" text-anchor="middle" font-size="16" fill="#333">a page made just now, for Ana</text>
+
+  <rect x="420" y="230" width="470" height="180" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="436" y="258" font-size="20" font-weight="bold" fill="#9b1c31">Dynamic: a program creates the response</text>
+  <!-- the program -->
+  <rect x="440" y="280" width="200" height="110" rx="8" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="540" y="310" text-anchor="middle" font-size="18" font-weight="bold" fill="#2e7d32">a program</text>
+  <text x="540" y="335" text-anchor="middle" font-size="16" fill="#333">reads the data,</text>
+  <text x="540" y="357" text-anchor="middle" font-size="16" fill="#333">writes the HTML</text>
+  <text x="540" y="379" text-anchor="middle" font-size="16" fill="#333">of the page</text>
+  <!-- the database -->
+  <line x1="642" y1="335" x2="722" y2="335" stroke="#555" stroke-width="2.5" marker-end="url(#arrow-inner)"/>
+  <line x1="722" y1="350" x2="644" y2="350" stroke="#555" stroke-width="2.5" marker-end="url(#arrow-inner)"/>
+  <path d="M730,300 v76 a64,16 0 0 0 128,0 v-76" fill="#fff" stroke="#b35900" stroke-width="2"/>
+  <ellipse cx="794" cy="300" rx="64" ry="16" fill="#fff" stroke="#b35900" stroke-width="2"/>
+  <text x="794" y="345" text-anchor="middle" font-size="18" font-weight="bold" fill="#b35900">database</text>
+</svg>

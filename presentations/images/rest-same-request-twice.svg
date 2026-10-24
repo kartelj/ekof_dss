@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, Helvetica, sans-serif">
+  <!-- the names of the columns -->
+  <g font-size="15" font-weight="bold" fill="#555">
+    <text x="20" y="24">The request, sent twice</text>
+    <text x="405" y="24" text-anchor="middle">After the first request</text>
+    <text x="645" y="24" text-anchor="middle">After the second request</text>
+    <text x="832" y="24" text-anchor="middle">The data</text>
+  </g>
+
+  <!-- GET -->
+  <rect x="20" y="48" width="72" height="26" rx="5" fill="#1b6ec2"/>
+  <text x="56" y="66" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">GET</text>
+  <text x="102" y="67" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">/api/actors/14</text>
+  <g font-size="16" fill="#333" text-anchor="middle">
+    <rect x="295" y="40" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="405" y="64">actor 14: Streep Meril</text>
+    <text x="405" y="86" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">200</tspan></text>
+    <rect x="535" y="40" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="645" y="64">actor 14: Streep Meril</text>
+    <text x="645" y="86" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">200</tspan></text>
+    <text x="832" y="64" font-weight="bold" fill="#2e7d32">the same</text>
+    <text x="832" y="86" font-size="15" fill="#555">safe, idempotent</text>
+  </g>
+
+  <!-- PUT -->
+  <rect x="20" y="114" width="72" height="26" rx="5" fill="#b35900"/>
+  <text x="56" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">PUT</text>
+  <text x="102" y="133" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">/api/actors/14</text>
+  <text x="20" y="157" font-size="15" fill="#555">with the first name Meryl</text>
+  <g font-size="16" fill="#333" text-anchor="middle">
+    <rect x="295" y="106" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="405" y="130">actor 14: Streep Meryl</text>
+    <text x="405" y="152" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">204</tspan></text>
+    <rect x="535" y="106" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="645" y="130">actor 14: Streep Meryl</text>
+    <text x="645" y="152" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">204</tspan></text>
+    <text x="832" y="130" font-weight="bold" fill="#2e7d32">the same</text>
+    <text x="832" y="152" font-size="15" fill="#555">idempotent</text>
+  </g>
+
+  <!-- DELETE -->
+  <rect x="20" y="180" width="72" height="26" rx="5" fill="#9b1c31"/>
+  <text x="56" y="198" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">DELETE</text>
+  <text x="102" y="199" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">/api/actors/14</text>
+  <g font-size="16" fill="#333" text-anchor="middle">
+    <rect x="295" y="172" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="405" y="196">no actor 14</text>
+    <text x="405" y="218" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">204</tspan></text>
+    <rect x="535" y="172" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="645" y="196">no actor 14</text>
+    <text x="645" y="218" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">404</tspan></text>
+    <text x="832" y="196" font-weight="bold" fill="#2e7d32">the same</text>
+    <text x="832" y="218" font-size="15" fill="#555">idempotent</text>
+  </g>
+
+  <!-- POST -->
+  <rect x="20" y="246" width="72" height="26" rx="5" fill="#2e7d32"/>
+  <text x="56" y="264" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">POST</text>
+  <text x="102" y="265" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">/api/actors</text>
+  <text x="20" y="289" font-size="15" fill="#555">with Meryl Streep</text>
+  <g font-size="16" fill="#333" text-anchor="middle">
+    <rect x="295" y="238" width="220" height="56" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="405" y="262">actor 14: Streep Meryl</text>
+    <text x="405" y="284" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">201</tspan></text>
+    <rect x="535" y="238" width="220" height="56" rx="8" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="645" y="262">actors 14 and 15: Streep</text>
+    <text x="645" y="284" font-size="15" fill="#555">answer <tspan font-family="Menlo, Consolas, 'Courier New', monospace">201</tspan></text>
+    <text x="832" y="262" font-weight="bold" fill="#9b1c31">different</text>
+    <text x="832" y="284" font-size="15" fill="#555">not idempotent</text>
+  </g>
+</svg>

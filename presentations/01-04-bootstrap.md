@@ -115,6 +115,8 @@ A **container** is the outermost box of a page. It keeps the content away from t
 | `container` | changes in steps with the window: 540, 720, 960 or 1140 pixels, centred |
 | `container-fluid` | always the full width of the window |
 
+<img src="images/bootstrap-containers.png" alt="A window 800 pixels wide: the container is 720 pixels wide and centred, the container-fluid takes the full width of the window" width="760">
+
 In a window narrower than 576 pixels both take the full width.
 
 Samples: `03-bootstrap/02-containers/01-container.html`, `02-container-fluid.html`
@@ -156,6 +158,8 @@ Sample: `03-bootstrap/02-containers/04-container-margin.html`
 
 ## Rows and columns
 
+<div class="columns"><div>
+
 ```html
 <div class="container">
     <div class="row">
@@ -168,6 +172,12 @@ Sample: `03-bootstrap/02-containers/04-container-margin.html`
     </div>
 </div>
 ```
+
+</div><div>
+
+![The two rows in the browser, with a border around every column: two equal halves, then one third and two thirds](images/bootstrap-rows-columns.png)
+
+</div></div>
 
 - A `row` goes into a container, columns go into a row, and the content goes into the columns.
 - `col` - an **automatic** column: the columns of a row share its width equally.
@@ -263,6 +273,24 @@ More samples: 02-containers/05-container-background-text.html and 06-links/01-li
 
 ---
 
+## Text and colours in the browser
+
+<div class="columns"><div>
+
+The code of the slide *Headings and text*:
+
+![The code of the slide Headings and text, shown in the browser: a grey jumbotron with the large, light heading Movies; the heading Actors followed by the smaller grey text in alphabetical order; the word highlight on a light yellow background](images/bootstrap-headings.png)
+
+</div><div>
+
+The contextual colours, `text-` and `bg-`:
+
+![The six contextual colours: on the left as the colour of the text, from text-primary to text-info; on the right as the colour of the background, from bg-primary to bg-info, mostly with white text](images/bootstrap-colours.png)
+
+</div></div>
+
+---
+
 ## Images
 
 | Class | Effect |
@@ -308,6 +336,24 @@ Samples: `03-bootstrap/07-tables/01-table.html` ... `04-table-responsive.html`
 
 ---
 
+## Images and tables in the browser
+
+<div class="columns"><div>
+
+`rounded`, `rounded-circle` and `img-thumbnail`:
+
+![The same picture of a castle three times: with slightly rounded corners, cut to a circle, and as a thumbnail with a thin border](images/bootstrap-images.png)
+
+</div><div>
+
+The table of the previous slide:
+
+![The table in the browser: a dark header row, a grey striped first row, and a green second row](images/bootstrap-table.png)
+
+</div></div>
+
+---
+
 ## Alerts and badges
 
 ```html
@@ -349,6 +395,24 @@ Samples: `03-bootstrap/08-advanced-elements/02-alerts.html`, `05-badges.html`
 - `btn-group` joins buttons into one block.
 
 Samples: `03-bootstrap/08-advanced-elements/03-buttons.html`, `04-button-groups.html`
+
+---
+
+## Alerts, badges and buttons in the browser
+
+<div class="columns"><div>
+
+The code of the slide *Alerts and badges*:
+
+![A green alert that says the actor has been saved, a red alert with a bold link back to the form, and the heading Messages with a blue badge showing the number 4](images/bootstrap-alerts-badges.png)
+
+</div><div>
+
+The code of the slide *Buttons and button groups*:
+
+![A blue button Save, a small red outlined button Delete and a grey link Back to the list that looks like a button; below them, the three buttons Day, Week and Month joined into one block](images/bootstrap-buttons.png)
+
+</div></div>
 
 ---
 
@@ -407,6 +471,24 @@ Also 13-navs.html (plain navs, alignment, vertical nav) and 15-nav-pils.html.
 
 ---
 
+## Cards, tabs and pagination in the browser
+
+<div class="columns"><div>
+
+The code of the slide *Cards and list groups*:
+
+![The card John Goodman with a short text and a blue button See profile; next to it, the list group with the active item Raising Arizona in blue and the item The Big Lebowski](images/bootstrap-card-list-group.png)
+
+</div><div>
+
+The code of the slide *Navs, tabs and pagination*:
+
+![Two tabs, Actors (the active one) and Directors; below them the pagination Previous, 1, 2, Next, with the active page 1 in blue and Previous greyed out](images/bootstrap-tabs-pagination.png)
+
+</div></div>
+
+---
+
 ## Navbars
 
 ```html
@@ -430,6 +512,28 @@ Also 13-navs.html (plain navs, alignment, vertical nav) and 15-nav-pils.html.
 - Below 768px the links are hidden; the `navbar-toggler` button shows them.
 
 Sample: `03-bootstrap/08-advanced-elements/16-navbars.html`
+
+---
+
+## A navbar on a wide and on a narrow screen
+
+The navbar of the previous slide in a window 800 pixels wide:
+
+<img src="images/bootstrap-navbar-wide.png" alt="A dark navbar across the window: the name Movies and the links Actors and Directors in one line" width="800">
+
+<div class="columns"><div>
+
+380 pixels wide: only the `navbar-toggler` button is shown.
+
+<img src="images/bootstrap-navbar-narrow.png" alt="The same navbar in a narrow window: the name Movies and a button with three lines on the right; the links are hidden" width="560">
+
+</div><div>
+
+After a click on the button, the links appear one under the other.
+
+<img src="images/bootstrap-navbar-open.png" alt="The narrow navbar after a click on the button: the links Actors and Directors are shown under the name Movies" width="560">
+
+</div></div>
 
 ---
 
@@ -542,6 +646,28 @@ Sample: `03-bootstrap/08-advanced-elements/23-form-validation-after.html`
 
 Note:
 In the second sample the colours appear only after the first attempt to send the form: the form has the attribute novalidate, and a short script adds was-validated at that moment.
+
+---
+
+## Forms in the browser
+
+<div class="columns"><div>
+
+A stacked form - the slide *Forms*:
+
+![The stacked form: the label Email above a text field as wide as the form, the label Password above a second field, and a blue button Send](images/bootstrap-form.png)
+
+</div><div>
+
+An inline form and a form in a grid:
+
+![The inline form: the label City, a text field and a blue button Search in one line; below it, the second form with two text fields side by side, each half of the width](images/bootstrap-form-inline-grid.png)
+
+Validation - empty, and filled in:
+
+![The form of the slide Validation twice. Empty, the field has a red border and the red message Please fill out this field. With a name typed in, it has a green border with a tick and the green message Looks good.](images/bootstrap-validation.png)
+
+</div></div>
 
 ---
 

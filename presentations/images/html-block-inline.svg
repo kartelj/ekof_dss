@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="Arial, Helvetica, sans-serif">
+  <!-- the page in the browser window -->
+  <rect x="4" y="4" width="580" height="352" rx="8" fill="#fff" stroke="#999" stroke-width="2"/>
+
+  <!-- block elements: each one on a new line, as wide as the page -->
+  <g fill="none" stroke="#9b1c31" stroke-width="2" stroke-dasharray="7 4">
+    <rect x="20" y="20" width="548" height="52"/>
+    <rect x="20" y="88" width="548" height="112"/>
+    <rect x="20" y="216" width="548" height="124"/>
+  </g>
+  <g font-size="14" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#9b1c31">
+    <text x="564" y="36" text-anchor="end">&lt;h2&gt;</text>
+    <text x="564" y="104" text-anchor="end">&lt;p&gt;</text>
+    <text x="564" y="232" text-anchor="end">&lt;ul&gt;</text>
+  </g>
+  <text x="32" y="55" font-size="24" font-weight="bold" fill="#222">Block and inline</text>
+
+  <!-- inline elements: inside the line of the text -->
+  <g fill="#fdf3e7" stroke="#b35900" stroke-width="2">
+    <rect x="114" y="116" width="50" height="30" rx="3"/>
+    <rect x="94" y="158" width="62" height="30" rx="3"/>
+    <rect x="200" y="158" width="68" height="30" rx="3"/>
+  </g>
+  <g font-size="19" fill="#222">
+    <text x="32" y="137">A word in</text>
+    <text x="120" y="137" font-weight="bold">bold</text>
+    <text x="170" y="137">stays in the line of the text,</text>
+    <text x="32" y="179">and so</text>
+    <text x="100" y="179" fill="#1b6ec2" text-decoration="underline">a link</text>
+    <text x="162" y="179">and</text>
+    <text x="206" y="179" fill="#c00">a span</text>
+    <text x="274" y="179">do.</text>
+  </g>
+
+  <!-- the list, whose items are block elements too -->
+  <g fill="none" stroke="#9b1c31" stroke-width="1.5" stroke-dasharray="4 4">
+    <rect x="52" y="248" width="500" height="36"/>
+    <rect x="52" y="292" width="500" height="36"/>
+  </g>
+  <g font-size="19" fill="#222">
+    <circle cx="66" cy="266" r="3.5" fill="#222"/>
+    <text x="80" y="273">Coffee</text>
+    <circle cx="66" cy="310" r="3.5" fill="#222"/>
+    <text x="80" y="317">Tea</text>
+  </g>
+  <g font-size="14" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#9b1c31">
+    <text x="546" y="271" text-anchor="end">&lt;li&gt;</text>
+    <text x="546" y="315" text-anchor="end">&lt;li&gt;</text>
+  </g>
+
+  <!-- the explanation -->
+  <rect x="604" y="40" width="16" height="16" fill="none" stroke="#9b1c31" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="630" y="54" font-size="20" font-weight="bold" fill="#9b1c31">block</text>
+  <g font-size="17" fill="#333">
+    <text x="604" y="84">starts on a new line, and</text>
+    <text x="604" y="106">takes the whole width:</text>
+    <text x="604" y="128" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16">h1 p ul li pre div</text>
+  </g>
+
+  <rect x="604" y="196" width="16" height="16" fill="#fdf3e7" stroke="#b35900" stroke-width="2"/>
+  <text x="630" y="210" font-size="20" font-weight="bold" fill="#b35900">inline</text>
+  <g font-size="17" fill="#333">
+    <text x="604" y="240">stays in the line, and is</text>
+    <text x="604" y="262">as wide as its content:</text>
+    <text x="604" y="284" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16">a b em img span</text>
+  </g>
+</svg>

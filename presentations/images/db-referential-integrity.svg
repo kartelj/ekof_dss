@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrow-crimson" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the table actor -->
+  <text x="20" y="26" font-size="19" font-weight="bold" fill="#1b6ec2">actor</text>
+  <rect x="20" y="36" width="320" height="32" fill="#eef4fb"/>
+  <rect x="20" y="36" width="320" height="128" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#1b6ec2" stroke-width="1">
+    <line x1="20" y1="68" x2="340" y2="68"/>
+    <line x1="20" y1="100" x2="340" y2="100"/>
+    <line x1="20" y1="132" x2="340" y2="132"/>
+    <line x1="100" y1="36" x2="100" y2="164"/>
+    <line x1="235" y1="36" x2="235" y2="164"/>
+  </g>
+  <g font-size="16" fill="#333">
+    <g font-weight="bold">
+      <text x="28" y="58">actor_id</text>
+      <text x="108" y="58">last_name</text>
+      <text x="243" y="58" fill="#2e7d32">country_id</text>
+    </g>
+    <text x="28" y="90">1</text>
+    <text x="108" y="90">Živojinović</text>
+    <text x="243" y="90">2</text>
+    <text x="28" y="122">2</text>
+    <text x="108" y="122">Roberts</text>
+    <text x="243" y="122">1</text>
+    <text x="28" y="154">3</text>
+    <text x="108" y="154">De Niro</text>
+    <text x="243" y="154">1</text>
+  </g>
+
+  <!-- the table country -->
+  <text x="520" y="26" font-size="19" font-weight="bold" fill="#1b6ec2">country</text>
+  <rect x="520" y="36" width="370" height="32" fill="#eef4fb"/>
+  <rect x="520" y="100" width="370" height="32" fill="#fbeef0"/>
+  <rect x="520" y="36" width="370" height="96" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+  <g stroke="#1b6ec2" stroke-width="1">
+    <line x1="520" y1="68" x2="890" y2="68"/>
+    <line x1="520" y1="100" x2="890" y2="100"/>
+    <line x1="620" y1="36" x2="620" y2="132"/>
+    <line x1="835" y1="36" x2="835" y2="132"/>
+  </g>
+  <g font-size="16" fill="#333">
+    <g font-weight="bold">
+      <text x="528" y="58">country_id</text>
+      <text x="628" y="58">name</text>
+      <text x="843" y="58">code</text>
+    </g>
+    <text x="528" y="90">1</text>
+    <text x="628" y="90">United States of America</text>
+    <text x="843" y="90">US</text>
+    <text x="528" y="122">2</text>
+    <text x="628" y="122">Serbia</text>
+    <text x="843" y="122">RS</text>
+  </g>
+
+  <!-- every country_id of actor points to a row of country -->
+  <g stroke="#2e7d32" stroke-width="2.5" fill="none" marker-end="url(#arrow-green)">
+    <path d="M340,84 C420,84 440,116 518,116"/>
+    <path d="M340,116 C420,116 440,84 518,84"/>
+    <path d="M340,148 C430,148 440,92 518,86"/>
+  </g>
+
+  <!-- refused: an actor of a country that does not exist -->
+  <rect x="20" y="176" width="320" height="32" fill="#fff" stroke="#9b1c31" stroke-width="2" stroke-dasharray="7 5"/>
+  <g font-size="16" fill="#333">
+    <text x="28" y="198">4</text>
+    <text x="108" y="198">Nero</text>
+    <text x="243" y="198" font-weight="bold" fill="#9b1c31">9</text>
+  </g>
+  <path d="M340,192 C420,192 440,180 500,180" fill="none" stroke="#9b1c31" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrow-crimson)"/>
+  <text x="520" y="187" font-size="24" font-weight="bold" fill="#9b1c31">?</text>
+  <text x="20" y="236" font-size="17" font-weight="bold" fill="#9b1c31">INSERT refused</text>
+  <text x="20" y="260" font-size="16" fill="#333">there is no country with</text>
+  <text x="20" y="282" font-size="16" fill="#333">the country_id 9</text>
+
+  <!-- refused: deleting a country that is still in use -->
+  <rect x="521" y="101" width="368" height="30" fill="none" stroke="#9b1c31" stroke-width="3"/>
+  <path d="M700,133 V168" fill="none" stroke="#9b1c31" stroke-width="2.5"/>
+  <text x="560" y="192" font-size="17" font-weight="bold" fill="#9b1c31">DELETE of Serbia refused</text>
+  <text x="560" y="218" font-size="16" fill="#333">the actor Živojinović</text>
+  <text x="560" y="240" font-size="16" fill="#333">still refers to it</text>
+</svg>

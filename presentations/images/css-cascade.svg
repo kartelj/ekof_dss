@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- the inline style: wins -->
+  <rect x="20" y="14" width="580" height="80" rx="10" fill="#eef7ef" stroke="#2e7d32" stroke-width="3"/>
+  <text x="40" y="44" font-size="18" font-weight="bold" fill="#2e7d32">inline style</text>
+  <text x="40" y="76" font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">&lt;p style="color:black"&gt;</text>
+  <text x="400" y="46" font-size="16" font-weight="bold" fill="#2e7d32">wins: the most specific</text>
+  <text x="400" y="68" font-size="16" font-weight="bold" fill="#2e7d32">declaration</text>
+
+  <!-- the rule with an element selector: loses -->
+  <rect x="20" y="110" width="580" height="80" rx="10" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <text x="40" y="140" font-size="18" font-weight="bold" fill="#9b1c31">element selector</text>
+  <text x="40" y="172" font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#999" text-decoration="line-through">p { color: rgb(170, 42, 141); }</text>
+  <text x="400" y="142" font-size="16" fill="#9b1c31">loses: less specific</text>
+  <text x="400" y="164" font-size="16" fill="#9b1c31">than an inline style</text>
+
+  <!-- the inherited value: not used -->
+  <rect x="20" y="206" width="580" height="80" rx="10" fill="#f7f7f7" stroke="#555" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="40" y="236" font-size="18" font-weight="bold" fill="#555">inherited from &lt;body&gt;</text>
+  <text x="40" y="268" font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#999">body { color: darkgreen; }</text>
+  <text x="400" y="238" font-size="16" fill="#555">not used: a rule</text>
+  <text x="400" y="260" font-size="16" fill="#555">already sets the colour</text>
+
+  <!-- the result -->
+  <line x1="602" y1="54" x2="656" y2="54" stroke="#2e7d32" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="660" y="14" width="220" height="80" rx="6" fill="#fff" stroke="#bbb" stroke-width="2"/>
+  <text x="676" y="47" font-size="20" font-family="'Times New Roman', Times, serif" fill="#000">This is the third</text>
+  <text x="676" y="73" font-size="20" font-family="'Times New Roman', Times, serif" fill="#000">paragraph.</text>
+  <text x="770" y="118" text-anchor="middle" font-size="16" fill="#333">the paragraph is black</text>
+
+  <!-- the steps of the cascade -->
+  <rect x="660" y="150" width="220" height="136" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="676" y="180" font-size="18" font-weight="bold" fill="#9b1c31">The cascade</text>
+  <text x="676" y="212" font-size="16" font-weight="bold" fill="#2e7d32">1. specificity: decides</text>
+  <text x="676" y="240" font-size="16" fill="#555">2. order: not needed</text>
+  <text x="676" y="268" font-size="16" fill="#555">3. inheritance: not needed</text>
+</svg>

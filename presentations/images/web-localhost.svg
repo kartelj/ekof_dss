@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- one computer -->
+  <rect x="4" y="4" width="592" height="322" rx="14" fill="#f7f7f7" stroke="#555" stroke-width="2"/>
+  <text x="300" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#333">your computer = localhost</text>
+
+  <!-- the browser -->
+  <rect x="24" y="60" width="210" height="160" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="129" y="92" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <rect x="40" y="110" width="178" height="30" rx="15" fill="#fff" stroke="#1b6ec2" stroke-width="1.5"/>
+  <text x="129" y="131" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">localhost:8000</text>
+  <line x1="56" y1="166" x2="202" y2="166" stroke="#bbb" stroke-width="4"/>
+  <line x1="56" y1="181" x2="172" y2="181" stroke="#bbb" stroke-width="4"/>
+  <line x1="56" y1="196" x2="188" y2="196" stroke="#bbb" stroke-width="4"/>
+
+  <!-- the server programs, each at its own port -->
+  <rect x="366" y="60" width="210" height="76" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="471" y="91" text-anchor="middle" font-size="18" font-weight="bold" fill="#9b1c31">a server program</text>
+  <text x="471" y="117" text-anchor="middle" font-size="16" fill="#333">listens at port 8000</text>
+
+  <rect x="366" y="152" width="210" height="76" rx="10" fill="#fff" stroke="#999" stroke-width="2"/>
+  <text x="471" y="183" text-anchor="middle" font-size="18" font-weight="bold" fill="#777">another program</text>
+  <text x="471" y="209" text-anchor="middle" font-size="16" fill="#777">listens at port 8001</text>
+
+  <!-- the request goes to the program at port 8000 -->
+  <line x1="236" y1="98" x2="362" y2="98" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="299" y="86" text-anchor="middle" font-size="15" fill="#333">request</text>
+
+  <text x="300" y="268" text-anchor="middle" font-size="17" fill="#333">The client and the server are on the same computer.</text>
+  <text x="300" y="294" text-anchor="middle" font-size="17" fill="#333">The port chooses the program that gets the request.</text>
+</svg>

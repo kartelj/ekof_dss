@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 140" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- the names of the two rows -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" text-anchor="end">
+    <text x="88" y="54" fill="#1b6ec2">n</text>
+    <text x="88" y="116" fill="#9b1c31">total</text>
+  </g>
+
+  <!-- odd n: added to the total -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="106" y="30" width="52" height="36" rx="4"/>
+    <rect x="242" y="30" width="52" height="36" rx="4"/>
+    <rect x="378" y="30" width="52" height="36" rx="4"/>
+    <rect x="514" y="30" width="52" height="36" rx="4"/>
+    <rect x="650" y="30" width="52" height="36" rx="4"/>
+  </g>
+  <!-- even n: continue skips them -->
+  <g fill="#f1f1f1" stroke="#bbb" stroke-width="2">
+    <rect x="174" y="30" width="52" height="36" rx="4"/>
+    <rect x="310" y="30" width="52" height="36" rx="4"/>
+    <rect x="446" y="30" width="52" height="36" rx="4"/>
+    <rect x="582" y="30" width="52" height="36" rx="4"/>
+  </g>
+  <!-- after break: never reached -->
+  <g fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="5 4">
+    <rect x="718" y="30" width="52" height="36" rx="4"/>
+    <rect x="786" y="30" width="52" height="36" rx="4"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" text-anchor="middle">
+    <g fill="#333">
+      <text x="132" y="54">1</text>
+      <text x="268" y="54">3</text>
+      <text x="404" y="54">5</text>
+      <text x="540" y="54">7</text>
+      <text x="676" y="54">9</text>
+    </g>
+    <g fill="#999">
+      <text x="200" y="54">2</text>
+      <text x="336" y="54">4</text>
+      <text x="472" y="54">6</text>
+      <text x="608" y="54">8</text>
+    </g>
+    <g fill="#bbb">
+      <text x="744" y="54">10</text>
+      <text x="812" y="54">11</text>
+      <text x="862" y="54">...</text>
+    </g>
+  </g>
+  <g font-size="15" font-style="italic" fill="#888" text-anchor="middle">
+    <text x="200" y="20">continue</text>
+    <text x="336" y="20">continue</text>
+    <text x="472" y="20">continue</text>
+    <text x="608" y="20">continue</text>
+    <text x="790" y="20">not reached</text>
+  </g>
+
+  <!-- the total after every odd n -->
+  <g stroke="#555" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="132" y1="66" x2="132" y2="88"/>
+    <line x1="268" y1="66" x2="268" y2="88"/>
+    <line x1="404" y1="66" x2="404" y2="88"/>
+    <line x1="540" y1="66" x2="540" y2="88"/>
+    <line x1="676" y1="66" x2="676" y2="88"/>
+  </g>
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="106" y="90" width="52" height="36" rx="6"/>
+    <rect x="242" y="90" width="52" height="36" rx="6"/>
+    <rect x="378" y="90" width="52" height="36" rx="6"/>
+    <rect x="514" y="90" width="52" height="36" rx="6"/>
+    <rect x="650" y="90" width="52" height="36" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="132" y="114">1</text>
+    <text x="268" y="114">4</text>
+    <text x="404" y="114">9</text>
+    <text x="540" y="114">16</text>
+    <text x="676" y="114">25</text>
+  </g>
+
+  <!-- break: the loop ends -->
+  <line x1="710" y1="26" x2="710" y2="134" stroke="#9b1c31" stroke-width="4"/>
+  <text x="720" y="106" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" fill="#9b1c31">break</text>
+  <text x="720" y="126" font-size="15" fill="#9b1c31">25 is more than 20</text>
+</svg>

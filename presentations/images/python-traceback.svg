@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 196" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- the message, as the terminal shows it -->
+  <rect x="40" y="8" width="620" height="180" rx="6" fill="#272822"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#f8f8f2">
+    <text x="56" y="42">Traceback (most recent call last):</text>
+    <text x="75" y="80">File <tspan fill="#e6db74">".../02-python-intro/03_input.py"</tspan>, <tspan font-weight="bold" fill="#66d9ef">line 8</tspan>, in &lt;module&gt;</text>
+    <text x="94" y="108">quantity = int(input("How many notebooks? "))</text>
+    <text x="56" y="160"><tspan font-weight="bold" fill="#f92672">ValueError</tspan>: invalid literal for int() with base 10: 'three'</text>
+  </g>
+
+  <!-- read from the bottom up -->
+  <line x1="20" y1="182" x2="20" y2="16" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="12" y="98" transform="rotate(-90 12 98)" text-anchor="middle" font-size="15" font-style="italic" fill="#555">read from the bottom up</text>
+
+  <!-- 2. where it happened -->
+  <path d="M668,62 h8 v54 h-8" fill="none" stroke="#1b6ec2" stroke-width="2"/>
+  <g font-size="15" fill="#1b6ec2">
+    <text x="688" y="76" font-weight="bold">2. where it happened:</text>
+    <text x="688" y="96">the file, the line number</text>
+    <text x="688" y="116">and the line itself</text>
+  </g>
+
+  <!-- 1. what went wrong -->
+  <path d="M668,142 h8 v28 h-8" fill="none" stroke="#9b1c31" stroke-width="2"/>
+  <g font-size="15" fill="#9b1c31">
+    <text x="688" y="152" font-weight="bold">1. what went wrong:</text>
+    <text x="688" y="172">the error and its cause</text>
+  </g>
+</svg>

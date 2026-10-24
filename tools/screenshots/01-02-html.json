@@ -1,0 +1,116 @@
+[
+    {
+        "file": "html-skeleton.png",
+        "width": 400,
+        "html": "<h1>Welcome</h1>\n<p>My <b>first</b> page.</p>"
+    },
+    {
+        "file": "html-headings.png",
+        "width": 760,
+        "html": "<h1>Developing Software Solutions</h1>\n<h2>Web pages</h2>\n<h3>HTML</h3>\n<h3>CSS</h3>\n<h2>Programming</h2>"
+    },
+    {
+        "file": "html-paragraphs.png",
+        "width": 486,
+        "html": "<p>This paragraph is written in three\n   lines of the file, but the browser\n   shows it as one flowing text.</p>\n<p>This paragraph<br>has exactly one line break.</p>\n<hr>"
+    },
+    {
+        "file": "html-text-elements.png",
+        "width": 560,
+        "html": "<p>My favourite colour is <del>blue</del> <ins>red</ins>. Water is H<sub>2</sub>O.</p>",
+        "element": "p"
+    },
+    {
+        "file": "html-lists.png",
+        "width": 390,
+        "html": "<ul>\n    <li>Coffee</li>\n    <li>Tea</li>\n</ul>\n<ol type=\"A\">\n    <li>Coffee</li>\n    <li>Tea</li>\n</ol>"
+    },
+    {
+        "file": "html-nested-lists.png",
+        "width": 390,
+        "html": "<dl>\n    <dt>Coffee</dt>\n    <dd>a drink made from roasted beans</dd>\n</dl>\n<ul>\n    <li>Tea\n        <ol>\n            <li>Black tea</li>\n            <li>Green tea</li>\n        </ol>\n    </li>\n</ul>"
+    },
+    {
+        "file": "html-table.png",
+        "width": 320,
+        "html": "<table border=\"1\">\n    <caption>Results of the test</caption>\n    <tr> <th>First name</th> <th>Last name</th> <th>Points</th> </tr>\n    <tr> <td>John</td> <td>Malkovich</td> <td>84</td> </tr>\n    <tr> <td>Robert</td> <td>De Niro</td> <td>94</td> </tr>\n</table>"
+    },
+    {
+        "file": "html-merged-cells.png",
+        "width": 330,
+        "html": "<table border=\"1\">\n    <tr> <th>Name</th> <th colspan=\"2\">Phone</th> </tr>\n    <tr> <td>John Malkovich</td> <td>555 77 854</td> <td>555 77 855</td> </tr>\n</table>\n<table border=\"1\">\n    <tr> <th>Name:</th> <td>John Malkovich</td> </tr>\n    <tr> <th rowspan=\"2\">Phone:</th> <td>555 77 854</td> </tr>\n    <tr> <td>555 77 855</td> </tr>\n</table>"
+    },
+    {
+        "file": "html-radio-checkbox.png",
+        "width": 400,
+        "html": "<input type=\"radio\" name=\"gender\" value=\"male\" checked> Man\n<input type=\"radio\" name=\"gender\" value=\"female\"> Woman\n\n<input type=\"checkbox\" name=\"havebike\" value=\"true\"> I have a bike\n<input type=\"checkbox\" name=\"havecar\" value=\"yes\"> I have a car"
+    },
+    {
+        "file": "html-select-textarea.png",
+        "width": 360,
+        "html": "<select name=\"cars\">\n    <option value=\"volvo\">Volvo</option>\n    <option value=\"fiat\" selected>Fiat</option>\n</select>\n<textarea name=\"message\" rows=\"10\" cols=\"30\">The cat was playing in the garden.</textarea>"
+    },
+    {
+        "file": "html-buttons.png",
+        "width": 260,
+        "html": "<input type=\"submit\" value=\"Send\">\n<button>Send</button>\n<button type=\"button\" onclick=\"alert('Hello World!')\">Click me!</button>"
+    },
+    {
+        "file": "html-form-filled.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/01-html/06-forms/01-form-text-submit.html",
+        "width": 560,
+        "height": 190,
+        "steps": [
+            {
+                "fill": "input[name=first_name]",
+                "value": "Holly"
+            },
+            {
+                "fill": "input[name=last_name]",
+                "value": "Hunter"
+            }
+        ]
+    },
+    {
+        "file": "html-process-form-get.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/01-html/06-forms/01-form-text-submit.html",
+        "width": 640,
+        "height": 300,
+        "steps": [
+            {
+                "fill": "input[name=first_name]",
+                "value": "Holly"
+            },
+            {
+                "fill": "input[name=last_name]",
+                "value": "Hunter"
+            },
+            {
+                "click": "input[type=submit]"
+            }
+        ],
+        "full_page": true
+    },
+    {
+        "file": "html-formaction-form.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/01-html/06-forms/07-form-formaction-readonly.html",
+        "width": 560,
+        "height": 330
+    },
+    {
+        "file": "html-process-form-post.png",
+        "sample": "01-html-css-bootstrap",
+        "path": "/01-html/06-forms/07-form-formaction-readonly.html",
+        "width": 640,
+        "height": 300,
+        "steps": [
+            {
+                "click": "text=Maximum"
+            }
+        ],
+        "full_page": true
+    }
+]

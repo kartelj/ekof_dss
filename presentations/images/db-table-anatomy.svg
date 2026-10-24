@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 270" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-blue" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+  </defs>
+
+  <!-- the name of the table, and the names of its columns -->
+  <text x="20" y="36" font-size="20" font-weight="bold" fill="#9b1c31">table movie</text>
+  <text x="672" y="36" text-anchor="end" font-size="16" fill="#555">the names of the columns</text>
+
+  <!-- the table: a header and three rows -->
+  <rect x="20" y="48" width="652" height="34" fill="#f1f1f1"/>
+  <rect x="20" y="150" width="652" height="34" fill="#fbeef0"/>
+  <rect x="105" y="48" width="185" height="136" fill="#1b6ec2" fill-opacity="0.12"/>
+  <rect x="20" y="48" width="652" height="136" fill="none" stroke="#333" stroke-width="2"/>
+  <g stroke="#333" stroke-width="1">
+    <line x1="20" y1="82" x2="672" y2="82"/>
+    <line x1="20" y1="116" x2="672" y2="116"/>
+    <line x1="20" y1="150" x2="672" y2="150"/>
+    <line x1="105" y1="48" x2="105" y2="184"/>
+    <line x1="290" y1="48" x2="290" y2="184"/>
+    <line x1="430" y1="48" x2="430" y2="184"/>
+    <line x1="505" y1="48" x2="505" y2="184"/>
+    <line x1="560" y1="48" x2="560" y2="184"/>
+  </g>
+  <g font-size="16" fill="#333">
+    <g font-weight="bold">
+      <text x="28" y="71">movie_id</text>
+      <text x="113" y="71">title</text>
+      <text x="298" y="71">genre</text>
+      <text x="438" y="71">states</text>
+      <text x="513" y="71">year</text>
+      <text x="568" y="71">imdb_score</text>
+    </g>
+    <text x="28" y="105">1</text>
+    <text x="113" y="105">Raising Arizona</text>
+    <text x="298" y="105">crime comedy</text>
+    <text x="438" y="105">USA</text>
+    <text x="513" y="105">1987</text>
+    <text x="568" y="105">7.3</text>
+    <text x="28" y="139">2</text>
+    <text x="113" y="139">Miller's Crossing</text>
+    <text x="298" y="139">gangster</text>
+    <text x="438" y="139">USA</text>
+    <text x="513" y="139">1990</text>
+    <text x="568" y="139">7.7</text>
+    <text x="28" y="173">3</text>
+    <text x="113" y="173">Amélie</text>
+    <text x="298" y="173">romantic comedy</text>
+    <text x="438" y="173">France</text>
+    <text x="513" y="173">2001</text>
+    <text x="568" y="173">8.3</text>
+  </g>
+
+  <!-- column, row, field -->
+  <rect x="105" y="48" width="185" height="136" fill="none" stroke="#1b6ec2" stroke-width="3.5"/>
+  <rect x="20" y="150" width="652" height="34" fill="none" stroke="#9b1c31" stroke-width="3.5"/>
+  <rect x="563" y="119" width="106" height="28" rx="5" fill="none" stroke="#2e7d32" stroke-width="3.5"/>
+
+  <line x1="197" y1="188" x2="197" y2="214" stroke="#1b6ec2" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="197" y="238" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b6ec2">column (attribute)</text>
+  <text x="197" y="261" text-anchor="middle" font-size="16" fill="#333">one property: the title</text>
+
+  <line x1="672" y1="133" x2="700" y2="122" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="708" y="120" font-size="18" font-weight="bold" fill="#2e7d32">field</text>
+  <text x="708" y="142" font-size="16" fill="#333">one value: 7.7</text>
+
+  <line x1="672" y1="167" x2="700" y2="182" stroke="#9b1c31" stroke-width="2.5"/>
+  <text x="708" y="188" font-size="18" font-weight="bold" fill="#9b1c31">row (record)</text>
+  <text x="708" y="210" font-size="16" fill="#333">one film: Amélie</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="arrow-small" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- the place of the call -->
+  <rect x="8" y="8" width="352" height="284" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="184" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b6ec2">The place of the call</text>
+  <text x="24" y="102" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333">print(price_with_vat(<tspan font-weight="bold" fill="#9b1c31">1000</tspan>, <tspan font-weight="bold" fill="#9b1c31">10</tspan>))</text>
+  <text x="184" y="160" text-anchor="middle" font-size="15" font-style="italic" fill="#555">... waits until the function returns ...</text>
+  <text x="24" y="206" font-size="15" fill="#555">the call is replaced by its result:</text>
+  <text x="24" y="236" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#333">print(<tspan font-weight="bold" fill="#2e7d32">1100.0</tspan>)</text>
+  <text x="24" y="270" font-size="15" fill="#555">the terminal shows <tspan font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">1100.0</tspan></text>
+
+  <!-- the function -->
+  <rect x="468" y="8" width="424" height="284" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="680" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#9b1c31">The function</text>
+  <text x="480" y="74" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333"><tspan fill="#1b6ec2">def</tspan> price_with_vat(net_price, vat_rate=20):</text>
+
+  <!-- the parameters get the values of the arguments -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="484" y="92" width="110" height="34" rx="17"/>
+    <rect x="684" y="92" width="110" height="34" rx="17"/>
+  </g>
+  <g fill="#fff" stroke="#9b1c31" stroke-width="2">
+    <rect x="618" y="92" width="58" height="34" rx="6"/>
+    <rect x="818" y="92" width="58" height="34" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="bold" text-anchor="middle">
+    <text x="539" y="114" fill="#1b6ec2">net_price</text>
+    <text x="739" y="114" fill="#1b6ec2">vat_rate</text>
+    <text x="647" y="114" fill="#333">1000</text>
+    <text x="847" y="114" fill="#333">10</text>
+  </g>
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow-small)">
+    <line x1="596" y1="109" x2="614" y2="109"/>
+    <line x1="796" y1="109" x2="814" y2="109"/>
+  </g>
+  <text x="484" y="150" font-size="15" fill="#555">vat_rate is given, so its default value 20 is not used</text>
+
+  <!-- the body is executed -->
+  <text x="480" y="192" font-size="15" font-weight="bold" fill="#333">2. the body is executed</text>
+  <text x="480" y="218" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333"><tspan fill="#1b6ec2">return</tspan> net_price * (1 + vat_rate / 100)</text>
+  <text x="543" y="244" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#555">= 1000 * (1 + 10 / 100) = <tspan font-weight="bold" fill="#2e7d32">1100.0</tspan></text>
+
+  <!-- 1. the arguments go to the function -->
+  <line x1="362" y1="96" x2="466" y2="96" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="414" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">1. arguments</text>
+  <text x="414" y="120" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">1000, 10</text>
+
+  <!-- 3. the result comes back -->
+  <line x1="466" y1="236" x2="364" y2="236" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="414" y="220" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">3. return</text>
+  <text x="414" y="260" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#2e7d32">1100.0</text>
+</svg>

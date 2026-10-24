@@ -1,0 +1,49 @@
+[
+    {
+        "file": "fastapi-smallest-app.png",
+        "sample": "04-python-fastapi-actors/02-actors-display",
+        "path": "/",
+        "width": 560, "height": 170
+    },
+    {
+        "file": "fastapi-geometry-circle.png",
+        "sample": "03-python-fastapi",
+        "path": "/geometry?shape=circle",
+        "element": "article"
+    },
+    {
+        "file": "fastapi-geometry-rectangle.png",
+        "sample": "03-python-fastapi",
+        "path": "/geometry?shape=rectangle",
+        "element": "article"
+    },
+    {
+        "file": "fastapi-get-form.png",
+        "sample": "03-python-fastapi",
+        "path": "/min-max",
+        "steps": [
+            {"fill": "input[name=x]", "value": "0"},
+            {"fill": "input[name=y]", "value": "-1.5"},
+            {"fill": "input[name=z]", "value": "1.5"},
+            {"fill": "input[name=w]", "value": "2"},
+            {"fill": "input[name=t]", "value": "-0.7"},
+            {"click": "text=Determine Minimum"}
+        ],
+        "width": 850, "height": 520,
+        "element": "article", "frame": true
+    },
+    {
+        "file": "fastapi-invalid-input.png",
+        "sample": "03-python-fastapi",
+        "path": "/min-max/minimum?x=abc&y=-1.5&z=1.5&w=2&t=-0.7",
+        "width": 850, "height": 280,
+        "element": "article", "frame": true
+    },
+    {
+        "file": "fastapi-htmx-search.png",
+        "sample": "04-python-fastapi-actors/14-actors-htmx-search",
+        "path": "/dashboard",
+        "steps": [{"fill": "#search-box", "value": "tom"}, {"wait": 1200}],
+        "width": 700, "height": 520
+    }
+]

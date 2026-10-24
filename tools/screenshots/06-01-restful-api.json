@@ -1,0 +1,33 @@
+[
+    {
+        "file": "rest-browser-json.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/api/actors",
+        "port": 8001,
+        "width": 460,
+        "height": 270
+    },
+    {
+        "file": "swagger-actors-operations.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "port": 8001,
+        "width": 520,
+        "element": ".opblock-tag-section >> nth=0",
+        "frame": true
+    },
+    {
+        "file": "swagger-404.png",
+        "sample": "06-python-rest-sqlite/02-rest-service-actors-db",
+        "path": "/docs",
+        "width": 640,
+        "steps": [
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .opblock-summary"},
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .try-out__btn"},
+            {"fill": "#operations-actors-get_actor_api_actors__actor_id__get input[placeholder='actor_id']", "value": "99"},
+            {"click": "#operations-actors-get_actor_api_actors__actor_id__get .execute"},
+            {"wait": 800}
+        ],
+        "element": "#operations-actors-get_actor_api_actors__actor_id__get .live-responses-table"
+    }
+]

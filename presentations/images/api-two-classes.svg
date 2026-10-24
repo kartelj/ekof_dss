@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 92" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="flow-end" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <g font-size="16" font-weight="bold" fill="#555">
+    <text x="4" y="30">request</text>
+    <text x="4" y="76">answer</text>
+  </g>
+
+  <!-- the boxes of both rows: the JSON, the data that travels, the row, the table -->
+  <g font-size="16" font-weight="bold" text-anchor="middle">
+    <rect x="80" y="8" width="70" height="32" rx="6" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+    <text x="115" y="30" fill="#1b6ec2">JSON</text>
+    <rect x="190" y="8" width="120" height="32" rx="6" fill="#fdf3e8" stroke="#b35900" stroke-width="2"/>
+    <text x="250" y="30" fill="#b35900" font-family="Menlo, Consolas, 'Courier New', monospace">ActorData</text>
+    <rect x="660" y="8" width="80" height="32" rx="6" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="700" y="30" fill="#9b1c31" font-family="Menlo, Consolas, 'Courier New', monospace">Actor</text>
+    <rect x="780" y="8" width="90" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <text x="825" y="30" fill="#2e7d32">table</text>
+
+    <rect x="80" y="54" width="70" height="32" rx="6" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+    <text x="115" y="76" fill="#1b6ec2">JSON</text>
+    <rect x="190" y="54" width="120" height="32" rx="6" fill="#fdf3e8" stroke="#b35900" stroke-width="2"/>
+    <text x="250" y="76" fill="#b35900" font-family="Menlo, Consolas, 'Courier New', monospace">ActorData</text>
+    <rect x="660" y="54" width="80" height="32" rx="6" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="700" y="76" fill="#9b1c31" font-family="Menlo, Consolas, 'Courier New', monospace">Actor</text>
+    <rect x="780" y="54" width="90" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <text x="825" y="76" fill="#2e7d32">table</text>
+  </g>
+
+  <!-- the request: from left to right -->
+  <g stroke="#555" stroke-width="2.5">
+    <line x1="150" y1="24" x2="188" y2="24" marker-end="url(#flow-end)"/>
+    <line x1="310" y1="28" x2="658" y2="28" marker-end="url(#flow-end)"/>
+    <line x1="740" y1="24" x2="778" y2="24" marker-end="url(#flow-end)"/>
+    <!-- the answer: from right to left -->
+    <line x1="190" y1="70" x2="152" y2="70" marker-end="url(#flow-end)"/>
+    <line x1="660" y1="74" x2="312" y2="74" marker-end="url(#flow-end)"/>
+    <line x1="780" y1="70" x2="742" y2="70" marker-end="url(#flow-end)"/>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <text x="484" y="20">Actor.model_validate(data)</text>
+    <text x="486" y="66">ActorData.model_validate(actor)</text>
+  </g>
+</svg>

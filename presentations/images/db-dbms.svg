@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="167" viewBox="0 0 900 150" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto-start-reverse">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- the programs that use the data -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="4" y="4" width="200" height="38" rx="8"/>
+    <rect x="4" y="56" width="200" height="38" rx="8"/>
+    <rect x="4" y="108" width="200" height="38" rx="8"/>
+  </g>
+  <g font-size="17" fill="#1b6ec2" text-anchor="middle">
+    <text x="104" y="29">a web application</text>
+    <text x="104" y="81">a Python program</text>
+    <text x="104" y="133">the shell sqlite3</text>
+  </g>
+
+  <!-- requests and results -->
+  <g stroke="#555" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)">
+    <line x1="208" y1="26" x2="344" y2="58"/>
+    <line x1="208" y1="75" x2="344" y2="75"/>
+    <line x1="208" y1="124" x2="344" y2="92"/>
+  </g>
+  <text x="276" y="17" text-anchor="middle" font-size="15" fill="#555">SQL, results</text>
+
+  <!-- the DBMS -->
+  <rect x="350" y="14" width="210" height="122" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="455" y="58" text-anchor="middle" font-size="26" font-weight="bold" fill="#9b1c31">DBMS</text>
+  <text x="455" y="88" text-anchor="middle" font-size="16" fill="#333">reads and changes</text>
+  <text x="455" y="110" text-anchor="middle" font-size="16" fill="#333">the data</text>
+
+  <line x1="566" y1="75" x2="660" y2="75" stroke="#555" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <!-- the files of the databases -->
+  <rect x="668" y="2" width="228" height="146" rx="10" fill="#fff" stroke="#555" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="782" y="22" text-anchor="middle" font-size="15" fill="#555">files on a disk</text>
+  <defs>
+    <g id="database">
+      <path d="M0,5 V25 A20,5 0 0,0 40,25 V5" fill="#f1f1f1" stroke="#555" stroke-width="2"/>
+      <ellipse cx="20" cy="5" rx="20" ry="5" fill="#f1f1f1" stroke="#555" stroke-width="2"/>
+    </g>
+  </defs>
+  <use href="#database" x="682" y="32"/>
+  <use href="#database" x="682" y="70"/>
+  <use href="#database" x="682" y="108"/>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="730" y="53">VanityFair01.db</text>
+    <text x="730" y="91">VanityFair02.db</text>
+    <text x="730" y="129">actors.db</text>
+  </g>
+</svg>

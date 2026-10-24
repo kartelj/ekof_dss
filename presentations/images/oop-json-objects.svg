@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 470" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- 1. the text of the file -->
+  <rect x="8" y="8" width="564" height="110" rx="10" fill="#f7f7f7" stroke="#777" stroke-width="2"/>
+  <text x="24" y="33" font-size="16" font-weight="bold" fill="#555">1. text, in the file sample-data/weather.json</text>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="24" y="60">[{"date": "2026-10-05", "temperature_c": 1,</text>
+    <text x="42" y="82">"summary": "Freezing"},</text>
+    <text x="33" y="104">{"date": "2026-10-06", ...}, ...]</text>
+  </g>
+
+  <line x1="60" y1="120" x2="60" y2="156" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="82" y="144" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">json.loads(text)</text>
+
+  <!-- 2. lists and dictionaries -->
+  <rect x="8" y="160" width="564" height="110" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="24" y="185" font-size="16" font-weight="bold" fill="#1b6ec2">2. a list of dictionaries: keys and values</text>
+  <g stroke="#b9d3ee" stroke-width="1">
+    <line x1="20" y1="218" x2="560" y2="218"/>
+    <line x1="20" y1="242" x2="560" y2="242"/>
+    <line x1="210" y1="196" x2="210" y2="264"/>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="24" y="212">"date"</text>
+    <text x="24" y="236">"temperature_c"</text>
+    <text x="24" y="260">"summary"</text>
+    <text x="224" y="212">"2026-10-05"</text>
+    <text x="224" y="236">1</text>
+    <text x="224" y="260">"Freezing"</text>
+  </g>
+  <g font-size="15" fill="#555">
+    <text x="400" y="212">a text</text>
+    <text x="400" y="236">a number</text>
+    <text x="400" y="260">a text</text>
+  </g>
+
+  <line x1="60" y1="272" x2="60" y2="308" stroke="#333" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="82" y="296" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">WeatherForecast(...)</text>
+  <text x="276" y="296" font-size="15" fill="#555">for every dictionary</text>
+
+  <!-- 3. objects -->
+  <rect x="8" y="312" width="564" height="150" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="24" y="337" font-size="16" font-weight="bold" fill="#9b1c31">3. a list of objects of the class WeatherForecast</text>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="24" y="366">date = date(2026, 10, 5)</text>
+    <text x="24" y="392">temperature_c = 1</text>
+    <text x="24" y="418">summary = "Freezing"</text>
+    <text x="24" y="444" fill="#b35900" font-weight="bold">temperature_f → 34</text>
+  </g>
+  <g font-size="15" fill="#555">
+    <text x="400" y="366">a date</text>
+    <text x="400" y="392">a number</text>
+    <text x="400" y="418">a text</text>
+    <text x="400" y="444" fill="#b35900">a property</text>
+  </g>
+</svg>

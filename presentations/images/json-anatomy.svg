@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 275" font-family="Arial, Helvetica, sans-serif">
+  <!-- the JSON text: an array of three objects; every token has its own x, so the pointers stay in place with any monospace font -->
+  <rect x="20" y="20" width="510" height="195" rx="8" fill="#f7f7f7" stroke="#bbb" stroke-width="2"/>
+  <g font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#777">
+    <text y="60"><tspan x="40" fill="#9b1c31" font-weight="bold">[</tspan></text>
+    <text y="94">
+      <tspan x="60.5" fill="#1b6ec2" font-weight="bold">{</tspan><tspan x="70.7" fill="#333">"actor_id"</tspan><tspan x="173">:</tspan><tspan x="193.5" fill="#2e7d32">1</tspan><tspan x="203.7">,</tspan><tspan x="224.1" fill="#333">"last_name"</tspan><tspan x="336.7">:</tspan><tspan x="357.1" fill="#b35900">"Živojinović"</tspan><tspan x="490.1" fill="#1b6ec2" font-weight="bold">}</tspan><tspan x="500.3">,</tspan>
+    </text>
+    <text y="128">
+      <tspan x="60.5" fill="#1b6ec2" font-weight="bold">{</tspan><tspan x="70.7" fill="#333">"actor_id"</tspan><tspan x="173">:</tspan><tspan x="193.5" fill="#2e7d32">2</tspan><tspan x="203.7">,</tspan><tspan x="224.1" fill="#333">"last_name"</tspan><tspan x="336.7">:</tspan><tspan x="357.1" fill="#b35900">"Roberts"</tspan><tspan x="449.2" fill="#1b6ec2" font-weight="bold">}</tspan><tspan x="459.4">,</tspan>
+    </text>
+    <text y="162">
+      <tspan x="60.5" fill="#1b6ec2" font-weight="bold">{</tspan><tspan x="70.7" fill="#333">"actor_id"</tspan><tspan x="173">:</tspan><tspan x="193.5" fill="#2e7d32">3</tspan><tspan x="203.7">,</tspan><tspan x="224.1" fill="#333">"last_name"</tspan><tspan x="336.7">:</tspan><tspan x="357.1" fill="#b35900">"De Niro"</tspan><tspan x="449.2" fill="#1b6ec2" font-weight="bold">}</tspan>
+    </text>
+    <text y="196"><tspan x="40" fill="#9b1c31" font-weight="bold">]</tspan></text>
+  </g>
+
+  <!-- the array -->
+  <line x1="552" y1="55" x2="60" y2="55" stroke="#9b1c31" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <circle cx="58" cy="55" r="3.5" fill="#9b1c31"/>
+  <text x="560" y="60" font-size="19" font-weight="bold" fill="#9b1c31">[ ]  an array</text>
+  <text x="560" y="83" font-size="15" fill="#333">values in order, separated by commas</text>
+
+  <!-- an object -->
+  <line x1="552" y1="122" x2="472" y2="122" stroke="#1b6ec2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <circle cx="470" cy="122" r="3.5" fill="#1b6ec2"/>
+  <text x="560" y="127" font-size="19" font-weight="bold" fill="#1b6ec2">{ }  an object: one actor</text>
+  <text x="560" y="150" font-size="15" fill="#333">pairs "name": value, separated by commas</text>
+
+  <!-- the other values -->
+  <text x="560" y="194" font-size="15" fill="#333">A value can also be <tspan font-family="Menlo, Consolas, 'Courier New', monospace">true</tspan>,</text>
+  <text x="560" y="215" font-size="15" fill="#333"><tspan font-family="Menlo, Consolas, 'Courier New', monospace">false</tspan>, <tspan font-family="Menlo, Consolas, 'Courier New', monospace">null</tspan>, an object or an array.</text>
+
+  <!-- the parts of one pair: pointers from below -->
+  <g stroke-width="1.5" stroke-dasharray="5,4">
+    <line x1="198.6" y1="236" x2="198.6" y2="172" stroke="#2e7d32"/>
+    <line x1="280.5" y1="236" x2="280.5" y2="172" stroke="#333"/>
+    <line x1="403.1" y1="236" x2="403.1" y2="172" stroke="#b35900"/>
+  </g>
+  <circle cx="198.6" cy="170" r="3.5" fill="#2e7d32"/>
+  <circle cx="280.5" cy="170" r="3.5" fill="#333"/>
+  <circle cx="403.1" cy="170" r="3.5" fill="#b35900"/>
+  <g font-size="16" font-weight="bold" text-anchor="middle">
+    <text x="190" y="256" fill="#2e7d32">a number</text>
+    <text x="285" y="256" fill="#333">a name</text>
+    <text x="403" y="256" fill="#b35900">a string</text>
+  </g>
+</svg>

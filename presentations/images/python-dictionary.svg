@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 84" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- the name of the dictionary -->
+  <text x="10" y="48" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333">price_list</text>
+  <path d="M138,4 q-10,0 -10,10 v17 q0,10 -8,11 q8,1 8,11 v17 q0,10 10,10" fill="none" stroke="#555" stroke-width="2"/>
+
+  <!-- the keys -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="160" y="4" width="160" height="34" rx="17"/>
+    <rect x="160" y="46" width="160" height="34" rx="17"/>
+    <rect x="540" y="4" width="160" height="34" rx="17"/>
+  </g>
+  <rect x="540" y="46" width="160" height="34" rx="17" fill="#edf7ee" stroke="#2e7d32" stroke-width="2"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" text-anchor="middle">
+    <text x="240" y="27" fill="#1b6ec2">"notebook"</text>
+    <text x="240" y="69" fill="#1b6ec2">"pen"</text>
+    <text x="620" y="27" fill="#1b6ec2">"backpack"</text>
+    <text x="620" y="69" fill="#2e7d32">"calculator"</text>
+  </g>
+
+  <!-- from a key to its value -->
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="324" y1="21" x2="370" y2="21"/>
+    <line x1="324" y1="63" x2="370" y2="63"/>
+    <line x1="704" y1="21" x2="750" y2="21"/>
+    <line x1="704" y1="63" x2="750" y2="63"/>
+  </g>
+
+  <!-- the values -->
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="374" y="4" width="90" height="34" rx="6"/>
+    <rect x="374" y="46" width="90" height="34" rx="6"/>
+    <rect x="754" y="4" width="90" height="34" rx="6"/>
+    <rect x="754" y="46" width="90" height="34" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="419" y="27">1250</text>
+    <text x="419" y="69">150</text>
+    <text x="799" y="27">4500</text>
+    <text x="799" y="69">2300</text>
+  </g>
+
+  <!-- what the program changed -->
+  <g font-size="15" font-style="italic">
+    <text x="474" y="69" fill="#555">was 120</text>
+    <text x="854" y="69" fill="#2e7d32">new</text>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 84" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- the names of the two rows -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" text-anchor="end">
+    <text x="92" y="24" fill="#1b6ec2">price</text>
+    <text x="92" y="72" fill="#9b1c31">total</text>
+  </g>
+
+  <!-- the elements of the list, one after another -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="200" y="2" width="110" height="32"/>
+    <rect x="340" y="2" width="110" height="32"/>
+    <rect x="480" y="2" width="110" height="32"/>
+    <rect x="620" y="2" width="110" height="32"/>
+    <rect x="760" y="2" width="110" height="32"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="255" y="24">1250</text>
+    <text x="395" y="24">899</text>
+    <text x="535" y="24">2400</text>
+    <text x="675" y="24">650</text>
+    <text x="815" y="24">1100</text>
+  </g>
+
+  <!-- each element is added to the total -->
+  <g stroke="#555" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="255" y1="34" x2="255" y2="48"/>
+    <line x1="395" y1="34" x2="395" y2="48"/>
+    <line x1="535" y1="34" x2="535" y2="48"/>
+    <line x1="675" y1="34" x2="675" y2="48"/>
+    <line x1="815" y1="34" x2="815" y2="48"/>
+  </g>
+
+  <!-- the total after every repetition -->
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="2">
+    <rect x="110" y="50" width="60" height="32" rx="6"/>
+    <rect x="200" y="50" width="110" height="32" rx="6"/>
+    <rect x="340" y="50" width="110" height="32" rx="6"/>
+    <rect x="480" y="50" width="110" height="32" rx="6"/>
+    <rect x="620" y="50" width="110" height="32" rx="6"/>
+    <rect x="760" y="50" width="110" height="32" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="140" y="72">0</text>
+    <text x="255" y="72">1250</text>
+    <text x="395" y="72">2149</text>
+    <text x="535" y="72">4549</text>
+    <text x="675" y="72">5199</text>
+    <text x="815" y="72">6299</text>
+  </g>
+  <g stroke="#555" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="170" y1="66" x2="198" y2="66"/>
+    <line x1="310" y1="66" x2="338" y2="66"/>
+    <line x1="450" y1="66" x2="478" y2="66"/>
+    <line x1="590" y1="66" x2="618" y2="66"/>
+    <line x1="730" y1="66" x2="758" y2="66"/>
+  </g>
+</svg>

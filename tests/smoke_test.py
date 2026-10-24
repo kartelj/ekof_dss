@@ -6,7 +6,7 @@ A quick check that every sample of the course still works.
 The samples are copied to a temporary folder and run there, so nothing in the
 repository is changed. For every web application and RESTful service the test
 requests all the addresses that need no parameters and expects an answer without
-an error. The web applications of module 06 are tested together with their
+an error. The web applications of module 07 are tested together with their
 RESTful service, which is started on a free port.
 
 The Supabase samples are tested only if SUPABASE_URL and SUPABASE_SECRET_KEY are
@@ -68,10 +68,13 @@ def free_port() -> int:
         return s.getsockname()[1]
 
 
-def run(folder: Path, arguments: list[str], env: dict | None = None) -> tuple[bool, str]:
-    """Runs Python in the given folder; returns whether it succeeded, and the last line it printed."""
+def run(folder: Path, arguments: list[str], env: dict | None = None, typed: str = "") -> tuple[bool, str]:
+    """
+    Runs Python in the given folder; returns whether it succeeded, and the last line it printed.
+    `typed` is what the user would type (one answer per line), for programs that call input().
+    """
     result = subprocess.run(
-        [sys.executable, *arguments], cwd=folder, env=env, capture_output=True, text=True, timeout=300
+        [sys.executable, *arguments], cwd=folder, env=env, input=typed, capture_output=True, text=True, timeout=300
     )
     output = (result.stdout + result.stderr).strip().splitlines()
     return result.returncode == 0, output[-1] if output else ""
@@ -107,19 +110,37 @@ def main() -> int:
         def record(folder: Path, ok: bool, details: str) -> None:
             results.append((str(folder.relative_to(samples)), "ok" if ok else "FAILED", details))
 
+        # --- the programs of the introduction to Python, with the answers they ask for
+        intro = samples / "02-python-intro"
+        for script, typed in [
+            ("01_hello.py", ""),
+            ("02_variables.py", ""),
+            ("03_input.py", "Ana\n3\n1250\n"),
+            ("04_if.py", "77\n"),
+            ("05_loops.py", ""),
+            ("06_lists.py", ""),
+            ("07_dictionaries.py", "pen\n"),
+            ("08_functions.py", ""),
+            ("09_modules.py", ""),
+            ("10_errors.py", "abc\n"),
+            ("11_shopping_list.py", "a\nnotebook\n1250\na\npen\n12,5\n120\ns\nx\nq\n"),
+        ]:
+            ok, details = run(intro, [script], typed=typed)
+            results.append((f"02-python-intro/{script}", "ok" if ok else "FAILED", "" if ok else details))
+
         # --- programs that are not web applications
         for script in [
-            "04-python-db-sqlite/database/create_databases.py",
-            "04-python-db-sqlite/01-sqlite-with-sql/main.py",
-            "04-python-db-sqlite/02-sqlite-with-model/main.py",
+            "05-python-db-sqlite/database/create_databases.py",
+            "05-python-db-sqlite/01-sqlite-with-sql/main.py",
+            "05-python-db-sqlite/02-sqlite-with-model/main.py",
         ]:
             path = samples / script
             ok, details = run(path.parent, [path.name])
             results.append((script, "ok" if ok else "FAILED", "" if ok else details))
 
         for script in [
-            "04-python-db-supabase/01-supabase-with-request/main.py",
-            "04-python-db-supabase/02-supabase-with-model/main.py",
+            "05-python-db-supabase/01-supabase-with-request/main.py",
+            "05-python-db-supabase/02-supabase-with-model/main.py",
         ]:
             if has_supabase:
                 path = samples / script

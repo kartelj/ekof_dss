@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- 1. the newsletter keeps the functions in a list -->
+  <text x="10" y="22" font-size="16" font-weight="bold" fill="#333">1. <tspan font-family="Menlo, Consolas, 'Courier New', monospace">subscribe(...)</tspan> stores a function in the list</text>
+  <rect x="10" y="40" width="320" height="150" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="28" y="66" font-size="17" font-weight="bold" fill="#9b1c31">news: a Newsletter object</text>
+  <line x1="10" y1="80" x2="330" y2="80" stroke="#9b1c31" stroke-width="2"/>
+  <text x="28" y="140" font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">listeners</text>
+  <g fill="#fff" stroke="#9b1c31" stroke-width="2">
+    <rect x="200" y="98" width="90" height="36"/>
+    <rect x="200" y="134" width="90" height="36"/>
+  </g>
+  <g font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <text x="245" y="122">[0]</text>
+    <text x="245" y="158">[1]</text>
+  </g>
+
+  <!-- the two functions: objects as well -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="520" y="30" width="370" height="82" rx="10"/>
+    <rect x="520" y="130" width="370" height="82" rx="10"/>
+  </g>
+  <g font-size="17" font-weight="bold" fill="#1b6ec2">
+    <text x="538" y="58">a function: <tspan font-family="Menlo, Consolas, 'Courier New', monospace">show</tspan></text>
+    <text x="538" y="158">a function without a name: <tspan font-family="Menlo, Consolas, 'Courier New', monospace">lambda</tspan></text>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="538" y="92">print("New edition:", title)</text>
+    <text x="538" y="192">print("Archived:", title)</text>
+  </g>
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="292" y1="116" x2="514" y2="74" marker-end="url(#arrow)"/>
+    <line x1="292" y1="152" x2="514" y2="170" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- 2. publishing calls every stored function -->
+  <text x="10" y="236" font-size="16" font-weight="bold" fill="#333">2. <tspan font-family="Menlo, Consolas, 'Courier New', monospace">news.publish("October")</tspan></text>
+  <text x="10" y="262" font-size="15" fill="#555">calls every function of the list,</text>
+  <text x="10" y="284" font-size="15" fill="#555">one after another:</text>
+  <line x1="300" y1="270" x2="514" y2="270" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="407" y="260" text-anchor="middle" font-size="15" fill="#555">in the terminal</text>
+  <rect x="520" y="236" width="370" height="70" rx="8" fill="#f7f7f7" stroke="#777" stroke-width="2"/>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="538" y="264">New edition: October</text>
+    <text x="538" y="290">Archived: October</text>
+  </g>
+</svg>

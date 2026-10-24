@@ -122,6 +122,30 @@
     box-shadow: none;
 }
 
+/* two columns side by side, e.g. the code on the left and the page it makes on the right:
+       <div class="columns"><div>
+       (markdown, with an empty line before and after it)
+       </div><div>
+       (markdown)
+       </div></div>
+   on GitHub the columns are shown one under the other */
+
+.reveal .columns {
+    display: flex;
+    gap: 1.2em;
+    align-items: flex-start;
+}
+
+.reveal .columns > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.reveal .columns img {
+    max-width: 100%;
+    margin-top: .5em;
+}
+
 .reveal blockquote {
     width: 92%;
     font-style: normal;

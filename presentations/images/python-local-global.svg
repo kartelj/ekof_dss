@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 268" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- the three moments -->
+  <g font-size="15" fill="#555" text-anchor="middle">
+    <text x="235" y="20">1. at the start</text>
+    <text x="500" y="20">2. during the call</text>
+    <text x="765" y="20">3. after the call</text>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="235" y="42">vat_rate = 20</text>
+    <text x="500" y="42">price_with_vat(500)</text>
+    <text x="765" y="42">print(vat)</text>
+  </g>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="368" y1="6" x2="368" y2="262"/>
+    <line x1="632" y1="6" x2="632" y2="262"/>
+  </g>
+
+  <!-- the names of the rows -->
+  <text x="8" y="94" font-size="17" font-weight="bold" fill="#1b6ec2">global</text>
+  <text x="8" y="114" font-size="15" fill="#555">while the</text>
+  <text x="8" y="132" font-size="15" fill="#555">program runs</text>
+  <text x="8" y="190" font-size="17" font-weight="bold" fill="#9b1c31">local</text>
+  <text x="8" y="210" font-size="15" fill="#555">only during</text>
+  <text x="8" y="228" font-size="15" fill="#555">the call</text>
+
+  <!-- the global variable: the same in all three moments -->
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="135" y="80" width="110" height="36" rx="18"/>
+    <rect x="400" y="80" width="110" height="36" rx="18"/>
+    <rect x="665" y="80" width="110" height="36" rx="18"/>
+  </g>
+  <g fill="#fff" stroke="#9b1c31" stroke-width="2">
+    <rect x="279" y="80" width="56" height="36" rx="6"/>
+    <rect x="544" y="80" width="56" height="36" rx="6"/>
+    <rect x="809" y="80" width="56" height="36" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle">
+    <g fill="#1b6ec2">
+      <text x="190" y="103">vat_rate</text>
+      <text x="455" y="103">vat_rate</text>
+      <text x="720" y="103">vat_rate</text>
+    </g>
+    <g fill="#333">
+      <text x="307" y="103">20</text>
+      <text x="572" y="103">20</text>
+      <text x="837" y="103">20</text>
+    </g>
+  </g>
+
+  <!-- the local variables: only while the function runs -->
+  <text x="235" y="200" text-anchor="middle" font-size="15" font-style="italic" fill="#888">no local variables</text>
+  <rect x="384" y="146" width="232" height="114" rx="8" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <g fill="#eef4fb" stroke="#1b6ec2" stroke-width="2">
+    <rect x="400" y="160" width="110" height="36" rx="18"/>
+    <rect x="400" y="210" width="110" height="36" rx="18"/>
+  </g>
+  <g fill="#fff" stroke="#9b1c31" stroke-width="2">
+    <rect x="534" y="160" width="70" height="36" rx="6"/>
+    <rect x="534" y="210" width="70" height="36" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle">
+    <text x="455" y="183" fill="#1b6ec2">price</text>
+    <text x="455" y="233" fill="#1b6ec2">vat</text>
+    <text x="569" y="183" fill="#333">500</text>
+    <text x="569" y="233" fill="#333">100.0</text>
+  </g>
+
+  <rect x="650" y="146" width="232" height="114" rx="8" fill="none" stroke="#bbb" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="766" y="186" text-anchor="middle" font-size="15" font-style="italic" fill="#888">price and vat are gone</text>
+  <text x="766" y="226" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" fill="#9b1c31">NameError</text>
+
+  <!-- arrows from the names to the values -->
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="247" y1="98" x2="275" y2="98"/>
+    <line x1="512" y1="98" x2="540" y2="98"/>
+    <line x1="777" y1="98" x2="805" y2="98"/>
+    <line x1="512" y1="178" x2="530" y2="178"/>
+    <line x1="512" y1="228" x2="530" y2="228"/>
+  </g>
+</svg>

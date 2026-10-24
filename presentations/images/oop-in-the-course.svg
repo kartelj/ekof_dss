@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="184" viewBox="0 0 900 166" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#333"/>
+    </marker>
+    <marker id="derived" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto">
+      <path d="M1,1 L18,9 L1,17 z" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <!-- a page knows only the abstract service -->
+  <rect x="8" y="10" width="150" height="64" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="83" y="36" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b6ec2">a page</text>
+  <text x="83" y="60" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">show(...)</text>
+  <line x1="160" y1="42" x2="294" y2="42" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="227" y="32" text-anchor="middle" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">get_actors()</text>
+
+  <!-- the service: an abstract class and its derived classes -->
+  <rect x="296" y="10" width="230" height="64" rx="10" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="411" y="36" text-anchor="middle" font-size="16" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#2e7d32">ActorService</text>
+  <text x="411" y="60" text-anchor="middle" font-size="15" fill="#555">an abstract class</text>
+  <g fill="#f1f1f1" stroke="#2e7d32" stroke-width="2">
+    <rect x="236" y="98" width="168" height="36" rx="8"/>
+    <rect x="418" y="98" width="168" height="36" rx="8"/>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#2e7d32" text-anchor="middle">
+    <text x="320" y="121">FileActorService</text>
+    <text x="502" y="121">RestActorService</text>
+  </g>
+  <g font-size="15" fill="#555" text-anchor="middle">
+    <text x="320" y="156">the actors from a file</text>
+    <text x="502" y="156">from a RESTful service</text>
+  </g>
+  <g stroke="#2e7d32" stroke-width="2">
+    <line x1="320" y1="96" x2="370" y2="78" marker-end="url(#derived)"/>
+    <line x1="502" y1="96" x2="452" y2="78" marker-end="url(#derived)"/>
+  </g>
+
+  <!-- the models -->
+  <line x1="528" y1="42" x2="644" y2="42" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="586" y="32" text-anchor="middle" font-size="15" fill="#333">returns</text>
+  <rect x="646" y="6" width="246" height="156" rx="10" fill="#fff" stroke="#9b1c31" stroke-width="2"/>
+  <text x="769" y="34" text-anchor="middle" font-size="15" font-weight="bold" fill="#9b1c31">objects of the data class Actor</text>
+  <g fill="#fbeef0" stroke="#9b1c31" stroke-width="1.5">
+    <rect x="664" y="48" width="210" height="30" rx="5"/>
+    <rect x="664" y="86" width="210" height="30" rx="5"/>
+    <rect x="664" y="124" width="210" height="30" rx="5"/>
+  </g>
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="676" y="68">Actor(id=1, ...)</text>
+    <text x="676" y="106">Actor(id=2, ...)</text>
+    <text x="676" y="144">Actor(id=3, ...)</text>
+  </g>
+</svg>

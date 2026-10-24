@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 372" font-family="Arial, Helvetica, sans-serif">
+  <!-- the tree: every class is derived from the class above it, one step to the left -->
+  <g stroke="#999" stroke-width="1.5" fill="none">
+    <path d="M32,34 V52 H56"/>
+    <path d="M32,34 V82 H56"/>
+    <path d="M68,94 V112 H92"/>
+    <path d="M104,124 V142 H128"/>
+    <path d="M68,94 V172 H92"/>
+    <path d="M104,184 V202 H128"/>
+    <path d="M104,184 V232 H128"/>
+    <path d="M68,94 V262 H92"/>
+    <path d="M68,94 V292 H92"/>
+    <path d="M68,94 V322 H92"/>
+    <path d="M68,94 V352 H92"/>
+  </g>
+  <g>
+    <rect x="20" y="10" width="141" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="56" y="40" width="180" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="56" y="70" width="103" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="100" width="160" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="128" y="130" width="180" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="160" width="122" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="128" y="190" width="93" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="128" y="220" width="112" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="250" width="112" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="280" width="103" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="310" width="151" height="24" rx="5" fill="#f1f1f1" stroke="#2e7d32" stroke-width="1.5"/>
+    <rect x="92" y="340" width="228" height="24" rx="5" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2.5"/>
+  </g>
+  <g font-size="16" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <text x="28" y="27">BaseException</text>
+    <text x="64" y="57">KeyboardInterrupt</text>
+    <text x="64" y="87">Exception</text>
+    <text x="100" y="117">ArithmeticError</text>
+    <text x="136" y="147">ZeroDivisionError</text>
+    <text x="100" y="177">LookupError</text>
+    <text x="136" y="207">KeyError</text>
+    <text x="136" y="237">IndexError</text>
+    <text x="100" y="267">ValueError</text>
+    <text x="100" y="297">TypeError</text>
+    <text x="100" y="327">AttributeError</text>
+    <text x="100" y="357" fill="#1b6ec2" font-weight="bold">InsufficientFundsError</text>
+  </g>
+
+  <!-- what the except parts catch -->
+  <text x="252" y="57" font-size="15" fill="#555">the key Ctrl+C: not an Exception</text>
+  <text x="334" y="357" font-size="15" font-weight="bold" fill="#1b6ec2">our own class</text>
+
+  <path d="M282,162 h10 V242 h-10" stroke="#9b1c31" stroke-width="2" fill="none"/>
+  <text x="304" y="198" font-size="15" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#9b1c31">except LookupError:</text>
+  <text x="304" y="220" font-size="15" fill="#333">catches these three</text>
+
+  <path d="M500,72 h10 V362 h-10" stroke="#9b1c31" stroke-width="2" fill="none"/>
+  <text x="524" y="196" font-size="16" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#9b1c31">except Exception:</text>
+  <g font-size="15" fill="#333">
+    <text x="524" y="222">catches an object of every class</text>
+    <text x="524" y="244">in this part of the tree -</text>
+    <text x="524" y="266">our own class as well</text>
+  </g>
+</svg>

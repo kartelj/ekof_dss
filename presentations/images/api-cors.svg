@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="http-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the browser: a page of one origin, whose JavaScript asks a service of another origin -->
+  <rect x="15" y="15" width="370" height="175" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="32" y="46" font-size="20" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <text x="125" y="46" font-size="15" fill="#333">with a page from localhost:8000</text>
+  <rect x="32" y="62" width="336" height="58" rx="6" fill="#fff" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="46" y="85" font-size="15" fill="#333">The JavaScript of the page asks for</text>
+  <text x="46" y="108" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">localhost:8001/api/actors</text>
+  <text x="32" y="150" font-size="15" fill="#333">The browser gives it the answer only if</text>
+  <text x="32" y="172" font-size="15" fill="#333">the service <tspan font-weight="bold">allows</tspan> the origin of the page.</text>
+
+  <!-- a program on a server: no browser, no check -->
+  <rect x="15" y="215" width="370" height="95" rx="12" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="32" y="244" font-size="20" font-weight="bold" fill="#1b6ec2">Web application</text>
+  <text x="32" y="268" font-size="15" fill="#333">Python on the server, with <tspan font-family="Menlo, Consolas, 'Courier New', monospace">httpx2</tspan></text>
+  <text x="32" y="292" font-size="15" fill="#333">No browser - no check: it gets every answer.</text>
+
+  <!-- the service -->
+  <rect x="680" y="15" width="205" height="295" rx="12" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <g text-anchor="middle">
+    <text x="782" y="140" font-size="21" font-weight="bold" fill="#9b1c31">RESTful</text>
+    <text x="782" y="166" font-size="21" font-weight="bold" fill="#9b1c31">service</text>
+    <text x="782" y="194" font-size="15" fill="#333">localhost:8001</text>
+    <text x="782" y="222" font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">CORSMiddleware</text>
+  </g>
+
+  <!-- the conversation of the browser -->
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <line x1="387" y1="62" x2="678" y2="62" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+    <text x="532" y="53" font-weight="bold">GET /api/actors</text>
+    <text x="532" y="83">Origin: http://localhost:8000</text>
+
+    <line x1="678" y1="140" x2="389" y2="140" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+    <text x="532" y="131" font-weight="bold">200 OK</text>
+    <text x="532" y="161" fill="#2e7d32">access-control-allow-origin: *</text>
+
+    <!-- the conversation of the web application -->
+    <line x1="387" y1="245" x2="678" y2="245" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+    <text x="532" y="236" font-weight="bold">GET /api/actors</text>
+    <line x1="678" y1="288" x2="389" y2="288" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+    <text x="532" y="279" font-weight="bold">200 OK</text>
+  </g>
+</svg>

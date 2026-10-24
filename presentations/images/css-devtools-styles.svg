@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrow-crimson" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="arrow-blue" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+    <marker id="arrow-orange" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#b35900"/>
+    </marker>
+  </defs>
+
+  <!-- the pane Styles of the developer tools (simplified) -->
+  <rect x="10" y="10" width="540" height="390" rx="6" fill="#fff" stroke="#c4c4c4" stroke-width="2"/>
+  <rect x="11" y="11" width="538" height="34" fill="#f3f3f3"/>
+  <line x1="11" y1="45" x2="549" y2="45" stroke="#d4d4d4" stroke-width="1.5"/>
+  <text x="30" y="34" font-size="15" font-weight="bold" fill="#1b6ec2">Styles</text>
+  <rect x="24" y="42" width="60" height="3" fill="#1b6ec2"/>
+  <text x="110" y="34" font-size="15" fill="#555">Computed</text>
+  <text x="210" y="34" font-size="15" fill="#555">Layout</text>
+  <text x="290" y="34" font-size="15" fill="#555">Event Listeners</text>
+
+  <g font-size="15" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">
+    <!-- the style attribute -->
+    <text x="26" y="72">element.style {</text>
+    <text x="50" y="93"><tspan fill="#9b1c31">background-color</tspan>: lightsalmon;</text>
+    <text x="26" y="114">}</text>
+
+    <!-- the style element of the page -->
+    <text x="26" y="150">p {</text>
+    <text x="50" y="171" fill="#999" text-decoration="line-through">background-color: yellow;</text>
+    <text x="26" y="192">}</text>
+
+    <!-- the linked file -->
+    <text x="26" y="228">p {</text>
+    <text x="50" y="249" fill="#999" text-decoration="line-through">background-color: darkgrey;</text>
+    <text x="50" y="270"><tspan fill="#9b1c31">color</tspan>: darkgreen;</text>
+    <text x="26" y="291">}</text>
+
+    <!-- the built-in rule of the browser -->
+    <text x="26" y="327">p {</text>
+    <text x="50" y="348"><tspan fill="#9b1c31">display</tspan>: block;</text>
+    <text x="50" y="369"><tspan fill="#9b1c31">margin-block-start</tspan>: 1em;</text>
+    <text x="26" y="390">}</text>
+  </g>
+
+  <!-- where the rules come from -->
+  <g font-size="14" fill="#555" text-anchor="end">
+    <text x="536" y="150" text-decoration="underline">index.html:9</text>
+    <text x="536" y="228" text-decoration="underline">my-style.css:9</text>
+    <text x="536" y="327" font-style="italic" fill="#777">user agent stylesheet</text>
+  </g>
+  <g stroke="#e4e4e4" stroke-width="1.5">
+    <line x1="11" y1="128" x2="549" y2="128"/>
+    <line x1="11" y1="206" x2="549" y2="206"/>
+    <line x1="11" y1="305" x2="549" y2="305"/>
+  </g>
+
+  <!-- explanations -->
+  <line x1="594" y1="88" x2="340" y2="88" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <text x="604" y="84" font-size="17" font-weight="bold" fill="#2e7d32">the style attribute:</text>
+  <text x="604" y="106" font-size="16" fill="#333">the strongest, at the top</text>
+
+  <line x1="594" y1="166" x2="296" y2="166" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#arrow-crimson)"/>
+  <text x="604" y="162" font-size="17" font-weight="bold" fill="#9b1c31">crossed out:</text>
+  <text x="604" y="184" font-size="16" fill="#333">lost against a stronger one</text>
+
+  <line x1="594" y1="224" x2="546" y2="224" stroke="#1b6ec2" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="604" y="230" font-size="17" font-weight="bold" fill="#1b6ec2">the file and the line</text>
+  <text x="604" y="252" font-size="16" fill="#333">where the rule is written</text>
+
+  <line x1="594" y1="322" x2="546" y2="322" stroke="#b35900" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+  <text x="604" y="328" font-size="17" font-weight="bold" fill="#b35900">user agent stylesheet:</text>
+  <text x="604" y="350" font-size="16" fill="#333">the built-in rules</text>
+  <text x="604" y="370" font-size="16" fill="#333">of the browser</text>
+</svg>

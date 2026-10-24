@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L12,5 L0,10 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- the indexes of the columns -->
+  <text x="110" y="20" text-anchor="end" font-size="15" fill="#555">column</text>
+  <g font-size="17" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="165" y="20">0</text>
+    <text x="255" y="20">1</text>
+    <text x="345" y="20">2</text>
+  </g>
+
+  <!-- the rows: each one is a list -->
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" text-anchor="end">
+    <text x="110" y="54" fill="#1b6ec2">sales[0]</text>
+    <text x="110" y="94" fill="#1b6ec2" font-weight="bold">sales[1]</text>
+    <text x="110" y="134" fill="#1b6ec2">sales[2]</text>
+  </g>
+  <g stroke="#1b6ec2" stroke-width="2">
+    <rect x="120" y="28" width="270" height="40" fill="#fff"/>
+    <rect x="120" y="68" width="270" height="40" fill="#eef4fb"/>
+    <rect x="120" y="108" width="270" height="40" fill="#fff"/>
+    <line x1="210" y1="28" x2="210" y2="148"/>
+    <line x1="300" y1="28" x2="300" y2="148"/>
+  </g>
+  <!-- one cell: row 1, column 2 -->
+  <rect x="301" y="69" width="88" height="38" fill="#fbeef0" stroke="#9b1c31" stroke-width="3"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="165" y="54">120</text>
+    <text x="255" y="54">135</text>
+    <text x="345" y="54">150</text>
+    <text x="165" y="94">80</text>
+    <text x="255" y="94">95</text>
+    <text x="345" y="94">70</text>
+    <text x="165" y="134">200</text>
+    <text x="255" y="134">210</text>
+    <text x="345" y="134">190</text>
+  </g>
+
+  <line x1="392" y1="88" x2="428" y2="88" stroke="#9b1c31" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="436" y="84" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="17" font-weight="bold" fill="#9b1c31">sales[1][2]</text>
+  <text x="436" y="106" font-size="15" fill="#555">row 1, column 2</text>
+</svg>

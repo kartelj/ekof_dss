@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="249" viewBox="0 0 900 224" font-family="Arial, Helvetica, sans-serif">
+  <!-- the window of the editor -->
+  <rect x="1" y="1" width="898" height="222" rx="8" fill="#fff" stroke="#999" stroke-width="2"/>
+  <path d="M1,27 v-18 a8,8 0 0 1 8,-8 h882 a8,8 0 0 1 8,8 v18 z" fill="#e9e9e9"/>
+  <line x1="1" y1="27" x2="899" y2="27" stroke="#ccc"/>
+  <text x="450" y="19" text-anchor="middle" font-size="15" fill="#555">01_hello.py - 02-python-intro - Visual Studio Code</text>
+
+  <!-- the explorer: the files of the open folder -->
+  <rect x="2" y="28" width="229" height="172" fill="#f3f3f3"/>
+  <line x1="231" y1="27" x2="231" y2="200" stroke="#ddd"/>
+  <text x="16" y="49" font-size="15" font-weight="bold" fill="#555">EXPLORER</text>
+  <text x="16" y="71" font-size="15" fill="#333">▾ 02-python-intro</text>
+  <rect x="2" y="78" width="229" height="21" fill="#dde8f5"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="36" y="93">01_hello.py</text>
+    <text x="36" y="114">02_variables.py</text>
+    <text x="36" y="135">03_input.py</text>
+    <text x="36" y="156">04_if.py</text>
+  </g>
+  <text x="16" y="189" font-size="15" font-style="italic" fill="#9b1c31">File - Open Folder</text>
+
+  <!-- the editor: the file of the program -->
+  <rect x="232" y="28" width="667" height="25" fill="#ececec"/>
+  <rect x="232" y="28" width="140" height="25" fill="#fff"/>
+  <text x="250" y="46" font-size="15" fill="#333">01_hello.py</text>
+  <path d="M862,33 L862,48 L875,40.5 z" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <text x="852" y="46" text-anchor="end" font-size="15" font-style="italic" fill="#9b1c31">run</text>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15">
+    <g fill="#999" text-anchor="end">
+      <text x="262" y="74">1</text>
+      <text x="262" y="94">2</text>
+      <text x="262" y="114">3</text>
+    </g>
+    <text x="278" y="74" fill="#2e7d32"># A line that begins with # is a comment: Python skips it.</text>
+    <text x="278" y="94" fill="#333"><tspan fill="#1b6ec2">print</tspan>(<tspan fill="#b35900">"Hello, world!"</tspan>)</text>
+    <text x="278" y="114" fill="#333"><tspan fill="#1b6ec2">print</tspan>(<tspan fill="#b35900">"2 + 3 ="</tspan>, 2 + 3)</text>
+  </g>
+  <text x="884" y="114" text-anchor="end" font-size="15" font-style="italic" fill="#9b1c31">the editor: a plain text file .py</text>
+
+  <!-- the terminal: View - Terminal -->
+  <line x1="232" y1="123" x2="899" y2="123" stroke="#ccc"/>
+  <text x="250" y="141" font-size="15" font-weight="bold" fill="#555">TERMINAL</text>
+  <line x1="250" y1="146" x2="324" y2="146" stroke="#555"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">
+    <text x="250" y="162">$ python 01_hello.py</text>
+    <text x="250" y="179">Hello, world!</text>
+    <text x="250" y="196">2 + 3 = 5</text>
+  </g>
+  <text x="884" y="162" text-anchor="end" font-size="15" font-style="italic" fill="#9b1c31">the terminal: View - Terminal</text>
+
+  <!-- the status bar: the chosen Python -->
+  <path d="M1,201 h898 v14 a8,8 0 0 1 -8,8 h-882 a8,8 0 0 1 -8,-8 z" fill="#1b6ec2"/>
+  <text x="884" y="217" text-anchor="end" font-size="15" fill="#fff"><tspan fill="#d6e6f7" font-style="italic">the chosen Python: </tspan>Python 3.13.16</text>
+</svg>

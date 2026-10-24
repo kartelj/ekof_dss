@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 366" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- before the loop -->
+  <rect x="60" y="6" width="280" height="56" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="200" y="29">balance = deposit</text>
+    <text x="200" y="51">years = 0</text>
+  </g>
+  <line x1="200" y1="62" x2="200" y2="94" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- the condition, checked before every repetition -->
+  <path d="M60,124 l20,-28 h240 l20,28 l-20,28 h-240 z" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="200" y="129" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="bold" fill="#1b6ec2">balance &lt; 2 * deposit</text>
+
+  <!-- True: the block is executed -->
+  <line x1="200" y1="152" x2="200" y2="196" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="210" y="180" font-size="15" font-weight="bold" fill="#2e7d32">True</text>
+  <rect x="50" y="198" width="300" height="60" rx="6" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="200" y="223">balance = balance * (1 + rate)</text>
+    <text x="200" y="245">years = years + 1</text>
+  </g>
+
+  <!-- ... and the condition is checked again -->
+  <polyline points="50,228 18,228 18,124 58,124" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="12" y="176" transform="rotate(-90 12 176)" text-anchor="middle" font-size="15" font-style="italic" fill="#555">repeat</text>
+
+  <!-- False: the loop ends -->
+  <polyline points="340,124 470,124 470,290" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="405" y="116" text-anchor="middle" font-size="15" font-weight="bold" fill="#9b1c31">False</text>
+  <rect x="360" y="292" width="220" height="64" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <text x="470" y="319" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">print(...)</text>
+  <text x="470" y="342" text-anchor="middle" font-size="15" fill="#555">after the loop</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 316" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#555"/>
+    </marker>
+    <marker id="arrow-red" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+  </defs>
+
+  <!-- before try -->
+  <rect x="34" y="6" width="222" height="36" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <text x="145" y="29" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">text = input(...)</text>
+  <line x1="145" y1="42" x2="145" y2="64" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- the block try -->
+  <rect x="20" y="66" width="250" height="152" rx="8" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="34" y="90" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" fill="#1b6ec2">try:</text>
+  <g fill="#fff" stroke="#555" stroke-width="1.5">
+    <rect x="34" y="102" width="222" height="36" rx="6"/>
+    <rect x="34" y="150" width="222" height="36" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333" text-anchor="middle">
+    <text x="145" y="125">number = int(text)</text>
+    <text x="145" y="173">print(...)</text>
+  </g>
+  <text x="145" y="208" text-anchor="middle" font-size="15" font-style="italic" fill="#555">skipped after an error</text>
+
+  <!-- the block except -->
+  <rect x="370" y="96" width="220" height="96" rx="8" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="382" y="122" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="bold" fill="#9b1c31">except ValueError:</text>
+  <rect x="384" y="138" width="192" height="36" rx="6" fill="#fff" stroke="#555" stroke-width="1.5"/>
+  <text x="480" y="161" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">print(...)</text>
+
+  <!-- int(text) fails: on to except -->
+  <line x1="256" y1="120" x2="368" y2="120" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+  <text x="314" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#9b1c31">ValueError</text>
+
+  <!-- both ways lead on -->
+  <line x1="145" y1="218" x2="145" y2="268" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="155" y="248" font-size="15" font-weight="bold" fill="#2e7d32">no error</text>
+  <line x1="480" y1="192" x2="480" y2="268" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="34" y="270" width="556" height="40" rx="6" fill="#fff" stroke="#555" stroke-width="2"/>
+  <text x="312" y="295" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">print("The program goes on.")</text>
+</svg>

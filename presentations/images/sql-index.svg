@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 372" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrow-orange" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#b35900"/>
+    </marker>
+  </defs>
+
+  <!-- the two queries -->
+  <rect x="20" y="6" width="18" height="18" fill="#cfe8d1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="46" y="21" font-size="17" fill="#333"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold" fill="#2e7d32">WHERE genre_id = 5</tspan> - SEARCH: the index leads to 3 rows</text>
+  <rect x="20" y="34" width="18" height="18" fill="#fdf3e7" stroke="#b35900" stroke-width="2"/>
+  <text x="46" y="49" font-size="17" fill="#333"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold" fill="#b35900">WHERE year = 1995</tspan> - SCAN: all 10 rows are read</text>
+
+  <!-- the index: the pairs (genre_id, movie_id), sorted by genre_id -->
+  <text x="20" y="88" font-size="17" font-weight="bold" fill="#2e7d32">the index ix_movie_genre_id</text>
+  <rect x="20" y="98" width="160" height="26" fill="#edf6ee"/>
+  <rect x="20" y="268" width="160" height="24" fill="#cfe8d1"/>
+  <rect x="20" y="292" width="160" height="24" fill="#cfe8d1"/>
+  <rect x="20" y="316" width="160" height="24" fill="#cfe8d1"/>
+  <g stroke="#2e7d32" stroke-width="1">
+    <line x1="20" y1="124" x2="180" y2="124"/>
+    <line x1="20" y1="148" x2="180" y2="148"/>
+    <line x1="20" y1="172" x2="180" y2="172"/>
+    <line x1="20" y1="196" x2="180" y2="196"/>
+    <line x1="20" y1="220" x2="180" y2="220"/>
+    <line x1="20" y1="244" x2="180" y2="244"/>
+    <line x1="20" y1="268" x2="180" y2="268"/>
+    <line x1="20" y1="292" x2="180" y2="292"/>
+    <line x1="20" y1="316" x2="180" y2="316"/>
+    <line x1="20" y1="340" x2="180" y2="340"/>
+    <line x1="100" y1="98" x2="100" y2="364"/>
+  </g>
+  <rect x="20" y="98" width="160" height="266" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <g font-size="15" fill="#333">
+    <text x="27" y="116" font-weight="bold">genre_id</text>
+    <text x="107" y="116" font-weight="bold">movie_id</text>
+    <text x="27" y="141">1</text>
+    <text x="107" y="141">1</text>
+    <text x="27" y="165">1</text>
+    <text x="107" y="165">5</text>
+    <text x="27" y="189">2</text>
+    <text x="107" y="189">2</text>
+    <text x="27" y="213">3</text>
+    <text x="107" y="213">3</text>
+    <text x="27" y="237">4</text>
+    <text x="107" y="237">4</text>
+    <text x="27" y="261">4</text>
+    <text x="107" y="261">7</text>
+    <text x="27" y="285" font-weight="bold">5</text>
+    <text x="107" y="285" font-weight="bold">6</text>
+    <text x="27" y="309" font-weight="bold">5</text>
+    <text x="107" y="309" font-weight="bold">8</text>
+    <text x="27" y="333" font-weight="bold">5</text>
+    <text x="107" y="333" font-weight="bold">10</text>
+    <text x="27" y="357">6</text>
+    <text x="107" y="357">9</text>
+  </g>
+
+  <!-- the table movie, in the order in which its rows were inserted -->
+  <text x="330" y="88" font-size="17" font-weight="bold" fill="#9b1c31">the table movie</text>
+  <rect x="330" y="98" width="429" height="26" fill="#fbeef0"/>
+  <rect x="330" y="244" width="429" height="24" fill="#cfe8d1"/>
+  <rect x="330" y="292" width="429" height="24" fill="#cfe8d1"/>
+  <rect x="330" y="340" width="429" height="24" fill="#cfe8d1"/>
+  <g stroke="#9b1c31" stroke-width="1">
+    <line x1="330" y1="124" x2="759" y2="124"/>
+    <line x1="330" y1="148" x2="759" y2="148"/>
+    <line x1="330" y1="172" x2="759" y2="172"/>
+    <line x1="330" y1="196" x2="759" y2="196"/>
+    <line x1="330" y1="220" x2="759" y2="220"/>
+    <line x1="330" y1="244" x2="759" y2="244"/>
+    <line x1="330" y1="268" x2="759" y2="268"/>
+    <line x1="330" y1="292" x2="759" y2="292"/>
+    <line x1="330" y1="316" x2="759" y2="316"/>
+    <line x1="330" y1="340" x2="759" y2="340"/>
+    <line x1="414" y1="98" x2="414" y2="364"/>
+    <line x1="624" y1="98" x2="624" y2="364"/>
+    <line x1="704" y1="98" x2="704" y2="364"/>
+  </g>
+  <rect x="330" y="98" width="429" height="266" fill="none" stroke="#9b1c31" stroke-width="2"/>
+  <g font-size="15" fill="#333">
+    <text x="337" y="116" font-weight="bold">movie_id</text>
+    <text x="421" y="116" font-weight="bold">title</text>
+    <text x="631" y="116" font-weight="bold">genre_id</text>
+    <text x="711" y="116" font-weight="bold">year</text>
+    <text x="337" y="141">1</text>
+    <text x="421" y="141">Raising Arizona</text>
+    <text x="631" y="141">1</text>
+    <text x="711" y="141">1987</text>
+    <text x="337" y="165">2</text>
+    <text x="421" y="165">Miller&#x27;s Crossing</text>
+    <text x="631" y="165">2</text>
+    <text x="711" y="165">1990</text>
+    <text x="337" y="189">3</text>
+    <text x="421" y="189">Amélie</text>
+    <text x="631" y="189">3</text>
+    <text x="711" y="189">2001</text>
+    <text x="337" y="213">4</text>
+    <text x="421" y="213">Fargo</text>
+    <text x="631" y="213">4</text>
+    <text x="711" y="213">1996</text>
+    <text x="337" y="237">5</text>
+    <text x="421" y="237">The Big Lebowski</text>
+    <text x="631" y="237">1</text>
+    <text x="711" y="237">1998</text>
+    <text x="337" y="261" font-weight="bold">6</text>
+    <text x="421" y="261" font-weight="bold">O Brother, Where Art Thou?</text>
+    <text x="631" y="261" font-weight="bold">5</text>
+    <text x="711" y="261" font-weight="bold">2000</text>
+    <text x="337" y="285">7</text>
+    <text x="421" y="285">No Country for Old Men</text>
+    <text x="631" y="285">4</text>
+    <text x="711" y="285">2007</text>
+    <text x="337" y="309" font-weight="bold">8</text>
+    <text x="421" y="309" font-weight="bold">Delicatessen</text>
+    <text x="631" y="309" font-weight="bold">5</text>
+    <text x="711" y="309" font-weight="bold">1991</text>
+    <text x="337" y="333">9</text>
+    <text x="421" y="333">The City of Lost Children</text>
+    <text x="631" y="333">6</text>
+    <text x="711" y="333" font-weight="bold" fill="#b35900">1995</text>
+    <text x="337" y="357" font-weight="bold">10</text>
+    <text x="421" y="357" font-weight="bold">Who&#x27;s Singin&#x27; Over There?</text>
+    <text x="631" y="357" font-weight="bold">5</text>
+    <text x="711" y="357" font-weight="bold">1980</text>
+  </g>
+
+  <!-- SEARCH: from the index straight to the rows -->
+  <path d="M180,280.0 C250,280.0 260,256.0 327,256.0" fill="none" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <path d="M180,304.0 C250,304.0 260,304.0 327,304.0" fill="none" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <path d="M180,328.0 C250,328.0 260,352.0 327,352.0" fill="none" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+  <!-- SCAN: every row, from the first to the last -->
+  <line x1="777" y1="128" x2="777" y2="362" stroke="#b35900" stroke-width="3" marker-end="url(#arrow-orange)"/>
+  <text x="791" y="224" font-size="15" fill="#333">every row</text>
+  <text x="791" y="244" font-size="15" fill="#333">is read,</text>
+  <text x="791" y="264" font-size="15" fill="#333">from the first</text>
+  <text x="791" y="284" font-size="15" fill="#333">to the last</text>
+</svg>

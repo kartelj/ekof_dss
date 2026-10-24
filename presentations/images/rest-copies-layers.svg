@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 285" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- arrow heads: crimson for HTTP, green for SQL; "end" points forward, "start" points back -->
+    <marker id="http-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="sql-end" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="sql-start" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="4" refY="6" orient="auto">
+      <path d="M16,0 L0,6 L16,12 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <!-- the names of the columns -->
+  <g font-size="16" font-weight="bold" fill="#555" text-anchor="middle">
+    <text x="112" y="22">Clients</text>
+    <text x="370" y="22">Layers</text>
+    <text x="640" y="22">Copies of the service</text>
+    <text x="832" y="22">Database</text>
+  </g>
+
+  <!-- the clients, each with its request -->
+  <rect x="10" y="45" width="205" height="80" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="25" y="70" font-size="18" font-weight="bold" fill="#1b6ec2">Client A</text>
+  <text x="105" y="70" font-size="15" fill="#333">in a browser</text>
+  <text x="25" y="108" font-size="14" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">GET /api/actors/3</text>
+
+  <rect x="10" y="175" width="205" height="80" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="25" y="200" font-size="18" font-weight="bold" fill="#1b6ec2">Client B</text>
+  <text x="105" y="200" font-size="15" fill="#333">on a phone</text>
+  <text x="25" y="238" font-size="14" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">DELETE /api/actors/14</text>
+
+  <!-- layer 1: HTTPS -->
+  <rect x="260" y="40" width="92" height="230" rx="10" fill="#fdf3e8" stroke="#b35900" stroke-width="2"/>
+  <g text-anchor="middle" fill="#333" font-size="15">
+    <text x="306" y="135" font-size="18" font-weight="bold" fill="#b35900">HTTPS</text>
+    <text x="306" y="160">encrypts</text>
+    <text x="306" y="179">the traffic</text>
+  </g>
+
+  <!-- layer 2: the load balancer -->
+  <rect x="380" y="40" width="102" height="230" rx="10" fill="#fdf3e8" stroke="#b35900" stroke-width="2"/>
+  <g text-anchor="middle" fill="#333" font-size="15">
+    <text x="431" y="125" font-size="18" font-weight="bold" fill="#b35900">Load</text>
+    <text x="431" y="147" font-size="18" font-weight="bold" fill="#b35900">balancer</text>
+    <text x="431" y="172">divides the</text>
+    <text x="431" y="191">requests</text>
+  </g>
+
+  <!-- three copies of one service -->
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <rect x="560" y="40" width="160" height="62" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="640" y="66" font-size="18" font-weight="bold" fill="#9b1c31">Service</text>
+    <text x="640" y="89">copy 1</text>
+    <rect x="560" y="124" width="160" height="62" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="640" y="150" font-size="18" font-weight="bold" fill="#9b1c31">Service</text>
+    <text x="640" y="173">copy 2</text>
+    <rect x="560" y="208" width="160" height="62" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+    <text x="640" y="234" font-size="18" font-weight="bold" fill="#9b1c31">Service</text>
+    <text x="640" y="257">copy 3</text>
+  </g>
+
+  <!-- the way of request A: through both layers to copy 1 -->
+  <line x1="217" y1="85" x2="258" y2="85" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+  <line x1="354" y1="85" x2="378" y2="85" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+  <line x1="484" y1="85" x2="558" y2="72" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+
+  <!-- the way of request B: through both layers to copy 3 -->
+  <line x1="217" y1="215" x2="258" y2="215" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+  <line x1="354" y1="215" x2="378" y2="215" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+  <line x1="484" y1="215" x2="558" y2="240" stroke="#9b1c31" stroke-width="2.5" marker-end="url(#http-end)"/>
+
+  <!-- all the copies use the same database -->
+  <line x1="722" y1="72" x2="782" y2="140" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#sql-start)" marker-end="url(#sql-end)"/>
+  <line x1="722" y1="155" x2="780" y2="155" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#sql-start)" marker-end="url(#sql-end)"/>
+  <line x1="722" y1="240" x2="782" y2="172" stroke="#2e7d32" stroke-width="2.5" marker-start="url(#sql-start)" marker-end="url(#sql-end)"/>
+
+  <!-- the database -->
+  <path d="M790,120 v70 a42,12 0 0 0 84,0 v-70" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <ellipse cx="832" cy="120" rx="42" ry="12" fill="#f1f1f1" stroke="#2e7d32" stroke-width="2"/>
+  <text x="832" y="165" text-anchor="middle" font-size="15" fill="#2e7d32" font-weight="bold">actors</text>
+</svg>

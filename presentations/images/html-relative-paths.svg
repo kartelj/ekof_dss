@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="arrow-blue" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+    <marker id="arrow-orange" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#b35900"/>
+    </marker>
+    <!-- a folder and a file -->
+    <path id="folder" d="M0,4 h9 l3,4 h12 v14 h-24 z" fill="#f3d27a" stroke="#b38a1e" stroke-width="1.2"/>
+    <path id="file" d="M2,0 h12 l6,6 v18 h-18 z" fill="#fff" stroke="#777" stroke-width="1.2"/>
+  </defs>
+
+  <!-- the lines of the tree -->
+  <g stroke="#bbb" stroke-width="1.5" fill="none">
+    <path d="M32,44 V121 M32,77 H58 M32,121 H58"/>
+    <path d="M72,132 V253 M72,165 H98 M72,209 H98 M72,253 H98"/>
+    <path d="M112,264 V297 M112,297 H138"/>
+  </g>
+
+  <!-- the folders and the files -->
+  <use href="#folder" x="20" y="20"/>
+  <use href="#file" x="60" y="65"/>
+  <use href="#folder" x="60" y="108"/>
+  <use href="#file" x="100" y="153"/>
+  <use href="#file" x="100" y="197"/>
+  <use href="#folder" x="100" y="240"/>
+  <use href="#file" x="140" y="285"/>
+  <g font-size="19" fill="#333">
+    <text x="52" y="40" font-weight="bold">site/</text>
+    <text x="88" y="84">lake2.jpg</text>
+    <text x="92" y="128" font-weight="bold">gallery/</text>
+    <text x="128" y="172" font-weight="bold" fill="#9b1c31">index.html</text>
+    <text x="236" y="172" font-size="16" fill="#9b1c31">- the page</text>
+    <text x="128" y="216">building.jpg</text>
+    <text x="132" y="260" font-weight="bold">images/</text>
+    <text x="168" y="304">lake.jpg</text>
+  </g>
+
+  <!-- from the page to the three images -->
+  <g fill="none" stroke-width="2.5">
+    <path d="M330,158 C400,110 300,77 186,77" stroke="#b35900" marker-end="url(#arrow-orange)"/>
+    <path d="M326,172 C350,192 310,209 248,209" stroke="#2e7d32" marker-end="url(#arrow-green)"/>
+    <path d="M334,176 C390,230 350,297 250,297" stroke="#1b6ec2" marker-end="url(#arrow-blue)"/>
+  </g>
+
+  <!-- the addresses, as they are written in the page -->
+  <g font-size="18" font-family="Menlo, Consolas, 'Courier New', monospace">
+    <text x="470" y="84" fill="#b35900">src="../lake2.jpg"</text>
+    <text x="470" y="216" fill="#2e7d32">src="building.jpg"</text>
+    <text x="470" y="304" fill="#1b6ec2">src="images/lake.jpg"</text>
+  </g>
+  <g font-size="16" fill="#555">
+    <text x="470" y="106">one folder up (..), then the file</text>
+    <text x="470" y="238">in the same folder as the page</text>
+    <text x="470" y="326">into the sub-folder images, then the file</text>
+  </g>
+</svg>

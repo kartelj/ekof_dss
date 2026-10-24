@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-request" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="arrow-response" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+  </defs>
+
+  <!-- the two sides, and their lines in time (time goes down) -->
+  <rect x="40" y="8" width="220" height="48" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="150" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1b6ec2">Browser</text>
+  <rect x="640" y="8" width="220" height="48" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="750" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#9b1c31">Server</text>
+  <line x1="150" y1="56" x2="150" y2="412" stroke="#1b6ec2" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="750" y1="56" x2="750" y2="412" stroke="#9b1c31" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <g font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <!-- 1: the page itself -->
+    <text x="450" y="84">1. GET /index.html</text>
+    <line x1="152" y1="94" x2="746" y2="94" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <text x="450" y="122">200 OK + the HTML page</text>
+    <line x1="748" y1="132" x2="154" y2="132" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+  </g>
+
+  <!-- the browser reads the HTML -->
+  <rect x="170" y="148" width="400" height="34" rx="6" fill="#fff" stroke="#bbb" stroke-width="1.5"/>
+  <text x="182" y="171" font-size="16" fill="#555" font-style="italic">the HTML mentions three more files ...</text>
+
+  <g font-size="17" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <!-- 2, 3, 4: the files that the HTML mentions -->
+    <text x="450" y="210">2. GET /style.css</text>
+    <line x1="152" y1="218" x2="746" y2="218" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <text x="450" y="241">200 OK + the style sheet</text>
+    <line x1="748" y1="249" x2="154" y2="249" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+
+    <text x="450" y="281">3. GET /logo.png</text>
+    <line x1="152" y1="289" x2="746" y2="289" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <text x="450" y="312">200 OK + the image</text>
+    <line x1="748" y1="320" x2="154" y2="320" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+
+    <text x="450" y="352">4. GET /script.js</text>
+    <line x1="152" y1="360" x2="746" y2="360" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <text x="450" y="383">200 OK + the script</text>
+    <line x1="748" y1="391" x2="154" y2="391" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+  </g>
+
+  <!-- the note on the left -->
+  <text x="138" y="250" text-anchor="end" font-size="17" fill="#333">every file:</text>
+  <text x="138" y="272" text-anchor="end" font-size="17" fill="#333">a request</text>
+  <text x="138" y="294" text-anchor="end" font-size="17" fill="#333">of its own</text>
+</svg>

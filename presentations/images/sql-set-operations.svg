@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 270" font-family="Arial, Helvetica, sans-serif">
+  <!-- A: the genre_id of the American films, B: of the French films.
+       In every panel the coloured part is the result. -->
+  <defs>
+    <clipPath id="clip-b-2"><circle cx="495" cy="128" r="72"/></clipPath>
+  </defs>
+
+  <g font-size="19" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333" text-anchor="middle">
+    <text x="150" y="24">UNION</text>
+    <text x="450" y="24">INTERSECT</text>
+    <text x="750" y="24">EXCEPT</text>
+  </g>
+
+  <!-- UNION: everything that is in A or in B -->
+  <circle cx="105" cy="128" r="72" fill="#1b6ec2" fill-opacity="0.25"/>
+  <circle cx="195" cy="128" r="72" fill="#1b6ec2" fill-opacity="0.25"/>
+
+  <!-- INTERSECT: only what is in both -->
+  <circle cx="405" cy="128" r="72" fill="#1b6ec2" fill-opacity="0.35" clip-path="url(#clip-b-2)"/>
+
+  <!-- EXCEPT: what is in A, but not in B -->
+  <circle cx="705" cy="128" r="72" fill="#1b6ec2" fill-opacity="0.35"/>
+  <circle cx="795" cy="128" r="72" fill="#fff"/>
+
+  <!-- the outlines of the circles -->
+  <g fill="none" stroke="#1b6ec2" stroke-width="2.5">
+    <circle cx="105" cy="128" r="72"/>
+    <circle cx="195" cy="128" r="72"/>
+    <circle cx="405" cy="128" r="72"/>
+    <circle cx="495" cy="128" r="72"/>
+    <circle cx="705" cy="128" r="72"/>
+    <circle cx="795" cy="128" r="72"/>
+  </g>
+  <g font-size="17" font-weight="bold" fill="#1b6ec2" text-anchor="middle">
+    <text x="78" y="50">A</text>
+    <text x="222" y="50">B</text>
+    <text x="378" y="50">A</text>
+    <text x="522" y="50">B</text>
+    <text x="678" y="50">A</text>
+    <text x="822" y="50">B</text>
+  </g>
+
+  <!-- the values: 1, 2, 4 only in A; 5 in both; 3, 6 only in B -->
+  <g font-size="19" fill="#333" text-anchor="middle">
+    <text x="80" y="110">1</text>
+    <text x="80" y="135">2</text>
+    <text x="80" y="160">4</text>
+    <text x="150" y="135">5</text>
+    <text x="220" y="122">3</text>
+    <text x="220" y="147">6</text>
+
+    <text x="380" y="110">1</text>
+    <text x="380" y="135">2</text>
+    <text x="380" y="160">4</text>
+    <text x="450" y="135">5</text>
+    <text x="520" y="122">3</text>
+    <text x="520" y="147">6</text>
+
+    <text x="680" y="110">1</text>
+    <text x="680" y="135">2</text>
+    <text x="680" y="160">4</text>
+    <text x="750" y="135">5</text>
+    <text x="820" y="122">3</text>
+    <text x="820" y="147">6</text>
+  </g>
+
+  <!-- the results -->
+  <g font-size="17" text-anchor="middle" fill="#333">
+    <text x="150" y="228">in A or in B</text>
+    <text x="450" y="228">in A and in B</text>
+    <text x="750" y="228">in A, not in B</text>
+  </g>
+  <g font-size="18" font-weight="bold" font-family="Menlo, Consolas, 'Courier New', monospace" text-anchor="middle" fill="#1b6ec2">
+    <text x="150" y="256">1, 2, 3, 4, 5, 6</text>
+    <text x="450" y="256">5</text>
+    <text x="750" y="256">1, 2, 4</text>
+  </g>
+</svg>

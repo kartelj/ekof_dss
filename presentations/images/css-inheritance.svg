@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 196" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-green" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#006400"/>
+    </marker>
+    <marker id="arrow-blue" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#142abf"/>
+    </marker>
+  </defs>
+
+  <!-- the tree: grey lines where the element has a rule of its own, arrows where the colour is inherited -->
+  <line x1="400" y1="48" x2="150" y2="76" stroke="#bbb" stroke-width="2"/>
+  <line x1="500" y1="48" x2="750" y2="76" stroke="#bbb" stroke-width="2"/>
+  <line x1="450" y1="48" x2="450" y2="74" stroke="#006400" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <line x1="720" y1="120" x2="684" y2="146" stroke="#142abf" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <line x1="780" y1="120" x2="816" y2="146" stroke="#142abf" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <!-- body -->
+  <rect x="320" y="4" width="260" height="44" rx="8" fill="#fff" stroke="#006400" stroke-width="2"/>
+  <text x="450" y="32" text-anchor="middle" font-size="17" fill="#006400"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;body&gt;</tspan> color: darkgreen</text>
+
+  <!-- the children of body -->
+  <rect x="20" y="76" width="260" height="44" rx="8" fill="#fff" stroke="#8b0000" stroke-width="2"/>
+  <text x="150" y="104" text-anchor="middle" font-size="17" fill="#8b0000"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;h1&gt;</tspan> own rule: dark red</text>
+
+  <rect x="320" y="76" width="260" height="44" rx="8" fill="#eef7ef" stroke="#006400" stroke-width="2"/>
+  <text x="450" y="104" text-anchor="middle" font-size="17" fill="#006400"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;h2&gt;</tspan> no rule: dark green</text>
+
+  <rect x="620" y="76" width="260" height="44" rx="8" fill="#fff" stroke="#142abf" stroke-width="2"/>
+  <text x="750" y="104" text-anchor="middle" font-size="17" fill="#142abf"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;ul&gt;</tspan> own rule: blue</text>
+
+  <!-- the items of the list -->
+  <rect x="620" y="148" width="120" height="44" rx="8" fill="#eef4fb" stroke="#142abf" stroke-width="2"/>
+  <text x="680" y="176" text-anchor="middle" font-size="17" fill="#142abf"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;li&gt;</tspan> blue</text>
+  <rect x="760" y="148" width="120" height="44" rx="8" fill="#eef4fb" stroke="#142abf" stroke-width="2"/>
+  <text x="820" y="176" text-anchor="middle" font-size="17" fill="#142abf"><tspan font-family="Menlo, Consolas, 'Courier New', monospace" font-weight="bold">&lt;li&gt;</tspan> blue</text>
+
+  <!-- legend -->
+  <line x1="24" y1="160" x2="74" y2="160" stroke="#006400" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="88" y="166" font-size="16" fill="#333">the colour is inherited from the parent element</text>
+  <line x1="24" y1="186" x2="74" y2="186" stroke="#bbb" stroke-width="2"/>
+  <text x="88" y="192" font-size="16" fill="#333">a rule of its own sets the colour</text>
+</svg>

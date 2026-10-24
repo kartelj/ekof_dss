@@ -1,0 +1,18 @@
+[
+    {
+        "file": "python-factorial-page.png",
+        "sample": "03-python-fastapi",
+        "path": "/while-loop-factorial",
+        "steps": [{"fill": "input[name=num]", "value": "10"}, {"click": "button >> nth=0"}],
+        "width": 800,
+        "height": 450,
+        "element": "article",
+        "frame": true
+    },
+    {
+        "file": "python-factorial-terminal.png",
+        "terminal": "$ python main.py\nINFO:     Will watch for changes in these directories: ['.../teaching-samples/03-python-fastapi']\nINFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)\nINFO:     Started reloader process [16981] using WatchFiles\nINFO:     Started server process [16984]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nfactorial_by_count_forward\nArgument: 10\nResult: 3628800\n\nINFO:     127.0.0.1:57321 - \"GET /while-loop-factorial/count-forward?num=10 HTTP/1.1\" 200 OK",
+        "title": "Terminal - 03-python-fastapi",
+        "width": 600
+    }
+]

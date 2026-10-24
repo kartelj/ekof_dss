@@ -1,0 +1,6 @@
+# Packages for the tools of the course (not needed by the students):
+#
+#   pip install -r tools/requirements.txt
+
+-r ../requirements.txt
+playwright==1.64.1          # drives a web browser: takes the screenshots of the lectures

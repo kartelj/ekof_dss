@@ -1,0 +1,8 @@
+[
+    {
+        "file": "python-shopping-list-terminal.png",
+        "terminal": "$ python 11_shopping_list.py\n\n[a]dd, [s]how, [q]uit: a\nName: Notebook\nPrice: 1250\n\n[a]dd, [s]how, [q]uit: a\nName: Pen\nPrice: 12,5\nThat is not a number. Decimals are written with a point: 12.5\nPrice: 12.5\n\n[a]dd, [s]how, [q]uit: s\nNotebook           1250.00\nPen                  12.50\nTotal              1262.50\n\n[a]dd, [s]how, [q]uit: q\nGoodbye.",
+        "title": "Terminal - 02-python-intro",
+        "width": 600
+    }
+]

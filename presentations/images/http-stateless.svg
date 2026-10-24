@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 0 970 300" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-request" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#9b1c31"/>
+    </marker>
+    <marker id="arrow-response" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="12" refX="14" refY="6" orient="auto">
+      <path d="M0,0 L16,6 L0,12 z" fill="#1b6ec2"/>
+    </marker>
+    <marker id="arrow-time" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L14,6 L0,12 z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- the client -->
+  <rect x="10" y="8" width="880" height="48" rx="10" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1b6ec2">Client</text>
+
+  <!-- the server -->
+  <rect x="10" y="194" width="880" height="48" rx="10" fill="#fbeef0" stroke="#9b1c31" stroke-width="2"/>
+  <text x="450" y="226" text-anchor="middle" font-size="22" font-weight="bold" fill="#9b1c31">Server</text>
+
+  <!-- three conversations, one after the other -->
+  <g font-size="16" fill="#333">
+    <line x1="125" y1="58" x2="125" y2="190" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <line x1="175" y1="192" x2="175" y2="60" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+    <text x="115" y="130" text-anchor="end">request 1</text>
+    <text x="185" y="130">response 1</text>
+
+    <line x1="425" y1="58" x2="425" y2="190" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <line x1="475" y1="192" x2="475" y2="60" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+    <text x="415" y="130" text-anchor="end">request 2</text>
+    <text x="485" y="130">response 2</text>
+
+    <line x1="725" y1="58" x2="725" y2="190" stroke="#9b1c31" stroke-width="3" marker-end="url(#arrow-request)"/>
+    <line x1="775" y1="192" x2="775" y2="60" stroke="#1b6ec2" stroke-width="3" marker-end="url(#arrow-response)"/>
+    <text x="715" y="130" text-anchor="end">request 3</text>
+    <text x="785" y="130">response 3</text>
+  </g>
+
+  <!-- the end of each conversation -->
+  <line x1="300" y1="70" x2="300" y2="180" stroke="#bbb" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="600" y1="70" x2="600" y2="180" stroke="#bbb" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <!-- time -->
+  <line x1="40" y1="270" x2="860" y2="270" stroke="#999" stroke-width="2" marker-end="url(#arrow-time)"/>
+  <text x="40" y="292" font-size="16" fill="#555">time</text>
+  <text x="450" y="292" text-anchor="middle" font-size="16" fill="#555">each request stands on its own: the server does not remember the earlier ones</text>
+</svg>
