@@ -5,9 +5,10 @@ of the developer tools (F12), and in the terminal of the server. Start the serve
 *The course on your computer* show how):
 
 ```text
-cd teaching-samples/01-html-css-bootstrap
 python main.py
 ```
+
+in the folder `01-html-css-bootstrap` - the archive `01-html-css-bootstrap.zip` from the page of the course.
 
 The answers below were written with this server and Chrome. In *Network* the column *Type* shows the type
 of each request; *Status* its status code.

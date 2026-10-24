@@ -13,7 +13,7 @@ of the lecture *Introduction to REST APIs* ([06-01-restful-api](../06-01-restful
 | `DELETE /api/movies/11` | `204`, or `404` |
 | `GET /api/genres/5/movies` (the bonus) | `200` and the films of the genre, or `404` |
 
-The files - built like the sample `teaching-samples/06-python-rest-sqlite/02-rest-service-actors-db`:
+The files - built like the sample `06-python-rest-sqlite/02-rest-service-actors-db`:
 
 - `main.py` - creates the application, includes the routers, turns `IntegrityError` into `409`
 - `database.py` - the engine, the session, and the data of the first start (7 genres, 10 films)

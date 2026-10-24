@@ -13,8 +13,8 @@ The assignment of the lecture [Introduction to CSS](../../presentations/01-03-cs
 
 ## How to open it
 
-Copy the two files into your folder of the samples, `teaching-samples/01-html-css-bootstrap/wwwroot/my`,
-start the server of the samples (`python main.py` in `teaching-samples/01-html-css-bootstrap`) and open
+Copy the two files into your folder of the samples, `01-html-css-bootstrap/wwwroot/my`,
+start the server of the samples (`python main.py` in the folder `01-html-css-bootstrap`) and open
 `http://localhost:8000/my/film.html`.
 
 Or look at it on the web site of the course:

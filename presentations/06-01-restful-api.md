@@ -624,6 +624,7 @@ Start the service first (see below). Then use one of three tools.
 Sample: `06-python-rest-sqlite/02-rest-service-actors-db` - start it with `python main.py`.
 
 Note:
+The archive of the samples of this module is 06-python-rest-sqlite.zip on the page of the course: unzip it, open the folder in VS Code, install the packages once (as in the first lecture), then cd 02-rest-service-actors-db and python main.py.
 The service keeps its terminal busy. Type the curl commands in a second terminal.
 
 The page /docs loads its scripts from the internet, so it needs a connection.
@@ -746,7 +747,7 @@ Design a REST API for the films of the database VanityFair02, and write it down 
 *About 40 minutes.* The next lecture builds this API. A solution: [exercises/06-01-restful-api](https://github.com/kartelj/ekof_dss/tree/main/exercises/06-01-restful-api)
 
 Note:
-The films of VanityFair02 are in teaching-samples/05-python-db-sqlite/database/VanityFair02/insert-table-data.sql. Fargo has the id 4, it is 98 minutes long, and its genre is 4 (crime).
+The films of VanityFair02 are in 05-python-db-sqlite/database/VanityFair02/insert-table-data.sql. Fargo has the id 4, it is 98 minutes long, and its genre is 4 (crime).
 
 ---
 

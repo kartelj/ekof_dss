@@ -17,9 +17,9 @@
   <text x="296" y="76" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="bold" fill="#333">pip install</text>
   <text x="296" y="110" text-anchor="middle" font-size="15" fill="#555">the packages</text>
 
-  <!-- the folder of the course -->
+  <!-- the folder of a module -->
   <rect x="372" y="2" width="522" height="146" rx="10" fill="#fff" stroke="#555" stroke-width="2"/>
-  <text x="386" y="23" font-size="15" fill="#555">the folder of the course</text>
+  <text x="386" y="23" font-size="15" fill="#555">the folder of a module, e.g. <tspan font-family="Menlo, Consolas, 'Courier New', monospace" fill="#333">03-python-fastapi</tspan></text>
 
   <rect x="386" y="34" width="290" height="104" rx="8" fill="#eef4fb" stroke="#1b6ec2" stroke-width="2"/>
   <text x="400" y="60" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="18" font-weight="bold" fill="#1b6ec2">.venv</text>
@@ -33,5 +33,5 @@
   </g>
   <text x="785" y="57" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">requirements.txt</text>
   <text x="785" y="79" text-anchor="middle" font-size="15" fill="#555">which packages</text>
-  <text x="785" y="123" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">teaching-samples/</text>
+  <text x="785" y="123" text-anchor="middle" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#333">main.py  pages/ ...</text>
 </svg>

@@ -31,23 +31,27 @@ The structure of the course is the same, with one addition: a short introduction
 | RESTful services | `06-01-restful-api`, `06-02-fastapi-rest` | `06-python-rest-sqlite`, `06-python-rest-supabase` |
 | The complete system | | `07-python-fastapi-rest-sqlite`, `07-python-fastapi-rest-supabase` |
 
-Other files: `index.md` is the home page of the course, `requirements.txt` lists the Python
+Other files: `index.md` is the home page of the course, `downloads/` holds one ZIP archive of the samples
+for every module, `exercises/` the solutions of the assignments, `requirements.txt` lists the Python
 packages, `.env.example` shows the settings of the Supabase samples, `tests/smoke_test.py`
-checks that all the samples work, `tools/take_screenshots.py` takes the screenshots of the lectures.
+checks that all the samples work, `tools/make_zips.py` makes the archives of `downloads/`,
+and `tools/take_screenshots.py` takes the screenshots of the lectures.
 
 ## Getting started
 
 The first lecture shows these steps on slides (*The course on your computer*).
 
-1. **Download the course**: on [github.com/kartelj/ekof_dss](https://github.com/kartelj/ekof_dss) click the
-   green button **Code**, then **Download ZIP**, and unzip the file (Windows: right click - *Extract All...*,
-   macOS: double click). Who knows git can clone the repository instead, and get the changes with `git pull`.
-2. **Install Python 3.12 or newer** from [python.org](https://www.python.org/downloads/) (on Windows tick
+1. **Install Python 3.12 or newer** from [python.org](https://www.python.org/downloads/) (on Windows tick
    *Add python.exe to PATH*), and [Visual Studio Code](https://code.visualstudio.com) with its extension *Python*.
-3. **Open the folder** `ekof_dss-main` in VS Code (*File - Open Folder...*), and open a terminal
-   (*Terminal - New Terminal*).
-4. **Install the packages**, once: create a virtual environment - a private place for the packages of the
-   course - and install them:
+2. **Download the samples of the module** - one ZIP archive per module, from the course page
+   [kartelj.github.io/ekof_dss](https://kartelj.github.io/ekof_dss/) (the column *Download*), e.g.
+   `01-html-css-bootstrap.zip` - and unzip it (Windows: right click - *Extract All...*, macOS: double click).
+   The result is one folder with everything that the module needs. Download each archive when its module starts:
+   you get its latest version.
+3. **Open the folder** in VS Code (*File - Open Folder...*: the folder with `requirements.txt` in it), and open
+   a terminal (*Terminal - New Terminal*).
+4. **Install the packages**, once for every folder: create a virtual environment - a private place for the
+   packages - and install them:
 
 ```text
 python -m venv .venv
@@ -57,16 +61,22 @@ pip install -r requirements.txt
 
 The environment has to be activated (the second line) in every new terminal.
 On some systems the command is `python3` instead of `python`. If Windows PowerShell refuses to run the
-activation, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+activation, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. The programs of module 02
+need no packages.
+
+The whole course - lectures, all the samples and the solutions - is this repository: on GitHub the green button
+**Code**, then **Download ZIP**, or `git clone`. The samples are then in the folder `teaching-samples`.
 
 ## Running the samples
 
-Every sample from module 03 on is a folder with a file `main.py`. Go to the folder, and start it:
+A web application or a RESTful service is a folder with a file `main.py`. Start it in that folder:
 
 ```text
-cd teaching-samples/03-python-fastapi
 python main.py
 ```
+
+In modules 01 and 03 that folder is the folder of the module itself. In the other modules a sample is a
+sub-folder of the module - go there first, e.g. `cd 02-rest-service-actors-db` in the folder of module 06.
 
 Then open the address that the sample uses - `http://localhost:8000` for web applications,
 `http://localhost:8001/docs` for RESTful services. Stop a program with `Ctrl+C`.
@@ -91,8 +101,8 @@ Each module has its own `README.md` with the details.
 
 The folders whose names end with `-supabase` do the same things with a database in the cloud
 ([Supabase](https://supabase.com), a service built around PostgreSQL). They need a Supabase project of
-your own: see `teaching-samples/05-python-db-supabase/README.md`. Everything else in the course
-works without it.
+your own: see `teaching-samples/05-python-db-supabase/README.md`. Their archives also hold the file
+`.env.example`. Everything else in the course works without Supabase.
 
 ## The lectures
 
@@ -142,6 +152,15 @@ python tests/smoke_test.py
 
 starts every sample (in a temporary copy) and requests its pages. Use it after changing
 the samples, or after changing the versions of the packages in `requirements.txt`.
+
+It also checks that the archives of `downloads/` hold the current samples. After changing a sample,
+make the archives again, and commit them together with the change:
+
+```text
+python tools/make_zips.py
+```
+
+A module that has not started yet can be changed freely: the students download its archive when it starts.
 
 ## License
 

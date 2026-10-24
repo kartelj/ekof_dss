@@ -8,7 +8,7 @@ Developing Software Solutions
 
 - The introduction to Python (lecture 02-01) ran small programs in the terminal. This lecture goes through the procedural part of the language in more detail.
 - **Procedural programming**: a program is a sequence of statements, organised into functions. Classes and objects come in the next lecture.
-- The examples come from the sample application of this module. It is started with `python main.py` in the folder `teaching-samples/03-python-fastapi`, and opened at `http://localhost:8000`.
+- The examples come from the sample application of this module. It is started with `python main.py` in the folder `03-python-fastapi` (the archive of the module), and opened at `http://localhost:8000`.
 - What its pages write with `print()` appears in that terminal. Sample: `pages/append_clear.py`
 
 Note:
@@ -754,7 +754,7 @@ In incrementer.py the function show() only reads current_count, so it needs no g
 <!-- .slide: class="exercise" -->
 ## Exercise 5: a Reset button
 
-Work in a copy of the folder `teaching-samples/03-python-fastapi`.
+Work in a copy of the folder `03-python-fastapi` - e.g. unzip `03-python-fastapi.zip` once more, into another folder.
 
 1. In `pages/incrementer.py`, add a function for `POST /incrementer/reset`. It sets `current_count` back to 0 and redirects to `/incrementer` - like `increment_count`.
 2. In `templates/incrementer.html`, add a second form, with a button *Reset* that sends a POST to that address.

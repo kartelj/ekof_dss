@@ -16,12 +16,13 @@ A part of the title: the
 
 ## How to run it
 
-The program uses the database of the course, so build it first:
+The program works next to the database of the course. In your folder `05-python-db-sqlite` (the archive of the
+module), copy `film_catalogue.py` into the folder `database/VanityFair02`, build the databases, and start it there:
 
 ```text
-cd teaching-samples/05-python-db-sqlite/database
+cd database
 python create_databases.py
-cd ../../../exercises/05-03-sqlite-postgresql
+cd VanityFair02
 python film_catalogue.py
 ```
 

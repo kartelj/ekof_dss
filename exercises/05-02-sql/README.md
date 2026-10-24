@@ -11,18 +11,20 @@ a cinema keeps the screenings of the films of VanityFair02 in a new table, `scre
 
 ## How to run it
 
-Build a fresh VanityFair02 first (this also removes the table `screening` of an earlier attempt):
+In your folder `05-python-db-sqlite` (the archive of the module), build a fresh VanityFair02 first - this also
+removes the table `screening` of an earlier attempt:
 
 ```text
-cd teaching-samples/05-python-db-sqlite/database
+cd database
 python create_databases.py
 ```
 
-Then open the database in the shell `sqlite3`, from this folder, and execute the scripts in order:
+Then copy the three scripts of this solution into the folder `database/VanityFair02`, open the database there in
+the shell `sqlite3`, and execute the scripts in order:
 
 ```text
-cd exercises/05-02-sql
-sqlite3 ../../teaching-samples/05-python-db-sqlite/database/VanityFair02/VanityFair02.db
+cd VanityFair02
+sqlite3 VanityFair02.db
 .headers on
 .mode column
 .read screening.sql

@@ -4,18 +4,16 @@ a program for the terminal.
 
     python film_catalogue.py
 
-It works with the database of the course. Build it first:
+It works next to the database of the course: copy this file into the folder database/VanityFair02
+of the samples 05-python-db-sqlite. Build the database first, in the folder database:
 
-    cd teaching-samples/05-python-db-sqlite/database
     python create_databases.py
 """
 
 import sqlite3
 from pathlib import Path
 
-DATABASE_FILE = (
-    Path(__file__).parent / "../../teaching-samples/05-python-db-sqlite/database/VanityFair02/VanityFair02.db"
-).resolve()
+DATABASE_FILE = Path(__file__).parent / "VanityFair02.db"
 
 
 def show_films(connection, text=""):

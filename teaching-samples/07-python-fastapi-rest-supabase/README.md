@@ -7,7 +7,7 @@ browser  <-- HTML -->  web application  <-- JSON -->  RESTful service  <-- JSON 
 ```
 
 Before the first run, prepare your Supabase project and the file `.env` as described in
-`05-python-db-supabase/README.md`.
+[05-python-db-supabase/README.md](https://github.com/kartelj/ekof_dss/blob/main/teaching-samples/05-python-db-supabase/README.md); the file `.env.example` is in the main folder of these samples.
 
 The system consists of two programs. Start them in two terminals, the service first:
 

@@ -9,7 +9,9 @@ requests all the addresses that need no parameters and expects an answer without
 an error. The web applications of module 07 are tested together with their
 RESTful service, which is started on a free port.
 
-The solutions of the assignments (the folder exercises) are checked as well:
+The archives of the folder downloads must hold the current files of the samples
+(tools/make_zips.py makes them). The solutions of the assignments (the folder
+exercises) are checked as well:
 the programs run with the answers a user would type, the SQL scripts run on a
 course database, and the applications are requested like the samples.
 
@@ -186,13 +188,16 @@ def main() -> int:
             record(folder, ok, details)
 
         # --- the solutions of the assignments: programs, with the answers they ask for
-        for script, typed in [
-            ("02-01-python-intro/exam_results.py", "Ana\n93\nMarko\nabc\n47\nIvana\n78\n\n"),
-            ("03-02-python-procedural/report.py", ""),
-            ("03-03-python-oop/cinema.py", ""),
-            ("05-03-sqlite-postgresql/film_catalogue.py", "l\nq\n"),
+        # (the film catalogue works next to the database VanityFair02, as its README says)
+        vanity_fair_02_folder = samples / "05-python-db-sqlite/database/VanityFair02"
+        shutil.copy(exercises / "05-03-sqlite-postgresql/film_catalogue.py", vanity_fair_02_folder)
+        for script, path, typed in [
+            ("02-01-python-intro/exam_results.py", exercises / "02-01-python-intro/exam_results.py",
+             "Ana\n93\nMarko\nabc\n47\nIvana\n78\n\n"),
+            ("03-02-python-procedural/report.py", exercises / "03-02-python-procedural/report.py", ""),
+            ("03-03-python-oop/cinema.py", exercises / "03-03-python-oop/cinema.py", ""),
+            ("05-03-sqlite-postgresql/film_catalogue.py", vanity_fair_02_folder / "film_catalogue.py", "l\nq\n"),
         ]:
-            path = exercises / script
             ok, details = run(path.parent, [path.name], typed=typed)
             results.append((f"exercises/{script}", "ok" if ok else "FAILED", "" if ok else details))
 
@@ -229,6 +234,12 @@ def main() -> int:
             results.append((client, "ok" if ok else "FAILED", "" if ok else details))
         else:
             results.append((client, "skipped", "the port 8001 is in use"))
+
+    # --- the downloads: every archive of the folder downloads must hold the current files of its samples
+    check = subprocess.run([sys.executable, str(ROOT / "tools" / "make_zips.py"), "--check"], capture_output=True, text=True)
+    last_line = check.stdout.strip().splitlines()[-1] if check.stdout.strip() else ""
+    results.append(("downloads (the ZIP archives)", "ok" if check.returncode == 0 else "FAILED",
+                    "" if check.returncode == 0 else last_line))
 
     width = max(len(name) for name, _, _ in results)
     for name, outcome, details in results:

@@ -2,7 +2,7 @@
 The connection with the Supabase project.
 
 The address and the secret key of the project are read from the file .env
-(see the file .env.example in the root folder of the course).
+(see the file .env.example in the main folder of the samples).
 """
 
 import os

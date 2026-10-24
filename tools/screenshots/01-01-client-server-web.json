@@ -20,19 +20,19 @@
         "height": 250
     },
     {
-        "file": "web-github-download-zip.png",
-        "url": "https://github.com/kartelj/ekof_dss",
-        "width": 760,
-        "height": 600,
+        "file": "web-course-downloads.png",
+        "site": "index.html",
+        "width": 560,
+        "height": 330,
         "steps": [
             {
-                "click": "button:has-text('Code') >> nth=0"
+                "scroll": "h2:text-is('The course')"
             },
             {
-                "hover": "text=Download ZIP"
+                "hover": "a[href$='/01-html-css-bootstrap.zip'] >> nth=0"
             },
             {
-                "wait": 500
+                "wait": 300
             }
         ]
     }

@@ -5,7 +5,7 @@ Using a database in the cloud (Supabase) by sending HTTP requests to it.
 
 Before the first run: create the tables with database/create-tables.sql, and write
 the address and the secret key of your Supabase project into the file .env
-(see the file .env.example in the root folder of the course).
+(see the file .env.example in the main folder of the samples).
 Every run adds one row, so run the program several times and watch the table grow.
 """
 

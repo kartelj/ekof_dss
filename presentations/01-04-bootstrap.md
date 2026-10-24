@@ -71,7 +71,7 @@ The samples of this lecture: `http://localhost:8000/03-bootstrap/`
 Sample: `03-bootstrap/02-containers/01-container.html`
 
 Note:
-The server for the samples is started with "python main.py" in the folder teaching-samples/01-html-css-bootstrap.
+The server for the samples is started with "python main.py" in the folder 01-html-css-bootstrap (the archive 01-html-css-bootstrap.zip from the course page).
 The word "min" in a file name means minified: the same file without spaces and line breaks, so that it is smaller.
 The alternative to a CDN is to download the files and to keep them next to our own pages.
 Popper is used by the dropdown menus and the tooltips: it calculates where they appear on the page.

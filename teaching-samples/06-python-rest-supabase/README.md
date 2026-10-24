@@ -9,7 +9,7 @@ The same as `06-python-rest-sqlite`, with one difference: the service keeps the 
 | `02-rest-service-actors-supabase` | a service for actors, with the data in Supabase |
 
 Before the first run of the second sample, prepare your Supabase project and the file `.env` as described in
-`05-python-db-supabase/README.md`.
+[05-python-db-supabase/README.md](https://github.com/kartelj/ekof_dss/blob/main/teaching-samples/05-python-db-supabase/README.md); the file `.env.example` is in the main folder of these samples.
 
 ```text
 cd 02-rest-service-actors-supabase

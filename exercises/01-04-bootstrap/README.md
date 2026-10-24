@@ -18,8 +18,8 @@ The comments in the HTML follow the same numbers.
 
 ## How to open it
 
-Copy the two files into your folder of the samples, `teaching-samples/01-html-css-bootstrap/wwwroot/my`,
-start the server of the samples (`python main.py` in `teaching-samples/01-html-css-bootstrap`) and open
+Copy the two files into your folder of the samples, `01-html-css-bootstrap/wwwroot/my`,
+start the server of the samples (`python main.py` in the folder `01-html-css-bootstrap`) and open
 `http://localhost:8000/my/vanity-fair.html`. Look at it 380, 800 and 1200 pixels wide - the device toolbar of
 the developer tools sets the width exactly.
 

@@ -12,10 +12,10 @@ Developing Software Solutions
 - In this course Python builds the web applications, the services and the databases of the next modules.
 - This lecture: the basics of the language, with small programs that run in the terminal.
 
-Sample: `teaching-samples/02-python-intro` - one small program for every topic
+Samples: `02-python-intro.zip` from the page of the course - one small program for every topic. Unzip it, and open the folder `02-python-intro` in VS Code.
 
 Note:
-The samples of this lecture need only Python itself: no packages, no web server.
+The samples of this lecture need only Python itself: no packages, no web server - so no .venv either.
 Every "Sample:" line on the following slides names a file of the folder 02-python-intro. Start it during the lecture, and let the students change it.
 
 ---
@@ -103,7 +103,7 @@ Hello, world!
 Sample: `02-python-intro/01_hello.py`
 
 Note:
-First go to the folder: cd teaching-samples/02-python-intro
+The terminal of VS Code is already in the folder 02-python-intro, if that folder is open (File - Open Folder...).
 "No such file or directory" means that the terminal is in another folder, or that the name is misspelled.
 In VS Code a program can also be started with the triangle in the top right corner of the editor.
 
@@ -923,12 +923,12 @@ pip install -r requirements.txt
 
 - A **package** is a library that does not come with Python: FastAPI, Jinja2, SQLModel ... `pip` installs packages from the Python Package Index.
 - A **virtual environment** - the folder `.venv` - keeps the packages of one project apart from the rest of the computer.
-- `requirements.txt` lists the packages of the course, with their exact versions. The environment is created once, and activated in every new terminal.
+- `requirements.txt` lists the packages of the course, with their exact versions. The environment is created once for every folder of a module, and activated in every new terminal.
 
-![pip installs packages such as FastAPI, Jinja2 and SQLModel from the Python Package Index into the folder .venv - the virtual environment inside the folder of the course, next to requirements.txt and teaching-samples](images/python-venv.svg)
+![pip installs packages such as FastAPI, Jinja2 and SQLModel from the Python Package Index into the folder .venv - the virtual environment inside the folder of a module, e.g. 03-python-fastapi, next to requirements.txt and the files of the samples](images/python-venv.svg)
 
 Note:
-The commands are typed in the root folder of the course, where requirements.txt is. The programs of this module need no packages; the server of the samples of module 01 and everything from module 03 on do.
+The commands are typed in the folder of a module, where requirements.txt is - once for every folder. The programs of this module need no packages; the server of the samples of module 01 and everything from module 03 on do.
 An active environment is shown at the beginning of the prompt: (.venv).
 If Windows PowerShell refuses to run the activation script, the command Set-ExecutionPolicy -Scope CurrentUser RemoteSigned allows it.
 The students did these steps in the first lecture (The course on your computer); this slide explains what they mean. The README of the course repeats them.

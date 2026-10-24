@@ -51,7 +51,7 @@ pip install -r requirements.txt
 - A **virtual environment** (the folder `.venv`) keeps the packages of one project apart from the rest of the computer. It is created once, and activated in every new terminal.
 
 Note:
-The commands are typed in the folder of the course, where the file requirements.txt is. It lists the packages with their exact versions, so everybody gets the same ones. Python 3.12 or newer is needed.
+The commands are typed in the folder of the samples of the module - 03-python-fastapi, from the archive 03-python-fastapi.zip of the course page - where the file requirements.txt is: once for every folder, as in the first lecture. It lists the packages with their exact versions, so everybody gets the same ones. Python 3.12 or newer is needed.
 The file also installs python-multipart, which FastAPI needs for reading the data of forms, and the packages for the later parts of the course.
 On macOS and Linux the first command is often python3. After the activation, python works everywhere.
 A framework is a library that does the common work of one kind of programs. We do not call it: it calls our functions at the right moment.
@@ -61,8 +61,7 @@ A framework is a library that does the common work of one kind of programs. We d
 ## Starting an application
 
 ```bash
-cd teaching-samples/03-python-fastapi
-python main.py
+python main.py          # in the folder 03-python-fastapi
 ```
 
 ```text
@@ -81,7 +80,7 @@ Note:
 "main:app" means: the variable app in the file main.py.
 The lines of the terminal on the slide: the address of the server, the text written by print() in the function write of the page Append-clear, and the line of the request that called it. The other lines are left out.
 Demonstration: the page Append-clear calls print() in the functions of both of its buttons. Press the buttons and watch the terminal.
-Every step of the actors application is a separate application, started in its own folder. Two applications cannot share the port 8000: always stop the running one with Ctrl+C before the next one is started. If one is still running, the new one usually stops with the message "address already in use"; if there is no message, the browser keeps showing the old application.
+Every step of the actors application (the archive 04-python-fastapi-actors.zip) is a separate application, started in its own folder. Two applications cannot share the port 8000: always stop the running one with Ctrl+C before the next one is started. If one is still running, the new one usually stops with the message "address already in use"; if there is no message, the browser keeps showing the old application.
 
 ---
 

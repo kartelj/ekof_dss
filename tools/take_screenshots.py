@@ -16,6 +16,7 @@ What to take is described in tools/screenshots/<lecture>.json - a list of shots 
 
 Instead of "sample" and "path", a shot can have
     "url": "https://..."     a page of another site (the address bar shows it without https://)
+    "site": "index.html"     a page of the course site - this repository as GitHub Pages shows it
     "html": "<p>...</p>"     a piece of HTML, shown on an empty page ("bootstrap": true adds Bootstrap 4.5.2);
                              the picture is as high as the piece
     "terminal": "$ ..."      text, shown in a terminal window
@@ -28,8 +29,8 @@ and further
                              with the port 8000 - or "port": 8001 for the RESTful services)
     "title": "..."           the title of the terminal window
 The steps are {"fill": selector, "value": text}, {"select": selector, "value": option}, {"check": selector},
-{"click": selector}, {"hover": selector}, {"press": key} and {"wait": milliseconds}; a selector is anything
-that Playwright understands, e.g. "#name", "text=Save" or "button >> nth=1".
+{"click": selector}, {"hover": selector}, {"scroll": selector}, {"press": key} and {"wait": milliseconds};
+a selector is anything that Playwright understands, e.g. "#name", "text=Save" or "button >> nth=1".
 
 The samples are copied to a temporary folder and run there, so nothing in the repository changes
 (the databases that the samples create are thrown away). A web application of module 07 gets its
@@ -38,15 +39,19 @@ Playwright (python -m playwright install chromium).
 """
 
 import base64
+import functools
 import html
+import http.server
 import json
 import os
 import shutil
 import socket
+import socketserver
 import struct
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -61,6 +66,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SHOTS = ROOT / "tools" / "screenshots"
 IMAGES = ROOT / "presentations" / "images"
 SCALE = 2  # pixels of the picture per pixel of the page: sharp on large screens and projectors
+SITE = "kartelj.github.io/ekof_dss/"  # the address of the course site, shown for the pages of "site"
 
 BOOTSTRAP = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">'
 
@@ -110,6 +116,18 @@ class Samples:
     def __init__(self, folder: Path):
         self.folder = folder
         self.started: dict[str, tuple[subprocess.Popen, int]] = {}
+        self.site = None  # the web server of the course site, started when a shot needs it
+
+    def site_address(self) -> str:
+        """The course site: the files of the repository, sent as they are - as GitHub Pages does."""
+        if self.site is None:
+            class Quiet(http.server.SimpleHTTPRequestHandler):
+                def log_message(self, *args):
+                    pass
+
+            self.site = socketserver.ThreadingTCPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=str(ROOT)))
+            threading.Thread(target=self.site.serve_forever, daemon=True).start()
+        return f"http://127.0.0.1:{self.site.server_address[1]}"
 
     def address(self, sample: str) -> str:
         if sample not in self.started:
@@ -144,6 +162,8 @@ class Samples:
         for process, _ in self.started.values():
             process.terminate()
             process.wait()
+        if self.site is not None:
+            self.site.shutdown()
 
 
 def png_width(picture: bytes) -> int:
@@ -179,6 +199,8 @@ def do_steps(page: Page, steps: list[dict]) -> None:
             page.wait_for_timeout(300)
         elif "hover" in step:
             page.hover(step["hover"])
+        elif "scroll" in step:
+            page.locator(step["scroll"]).first.evaluate("element => element.scrollIntoView()")
         elif "press" in step:
             page.keyboard.press(step["press"])
             page.wait_for_load_state("networkidle")
@@ -203,6 +225,8 @@ def take(browser, samples: Samples, shot: dict) -> bytes:
     try:
         if "sample" in shot:
             page.goto(samples.address(shot["sample"]) + shot.get("path", "/"), wait_until="networkidle")
+        if "site" in shot:
+            page.goto(f"{samples.site_address()}/{shot['site']}", wait_until="networkidle")
         if "url" in shot:
             # big sites keep loading in the background, so "networkidle" never comes
             page.goto(shot["url"], wait_until="load")
@@ -226,10 +250,12 @@ def take(browser, samples: Samples, shot: dict) -> bytes:
         context.close()
 
     image = f'<img src="data:image/png;base64,{base64.b64encode(picture).decode()}" width="{png_width(picture) // SCALE}">'
-    if not shot.get("frame", ("sample" in shot or "url" in shot) and "element" not in shot and "html" not in shot):
+    if not shot.get("frame", ("sample" in shot or "url" in shot or "site" in shot) and "element" not in shot and "html" not in shot):
         return frame(browser, f'<div class="shot plain">{image}</div>', width)
     if "url" in shot:
         default = url.removeprefix("https://")
+    elif "site" in shot:
+        default = SITE + shot["site"].removesuffix("index.html")
     else:
         default = shown_address(url, shot.get("port", 8000))
     address = html.escape(shot.get("address", default))

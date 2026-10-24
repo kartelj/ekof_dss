@@ -126,12 +126,11 @@ The first part of the course uses static content. From the second part on, we wr
 
 ## The course on your computer
 
-From now on every lecture has exercises, and we do them on our own computers. Once, at the start, we need:
+From now on every lecture has exercises, and we do them on our own computers. We need:
 
-1. **the course** - the lectures, the samples and the exercises, in one folder;
-2. **Python** - the language of the course; it also runs the web server of the samples;
-3. **Visual Studio Code** - the editor in which we open that folder;
-4. **the packages** of the course - installed once, into the folder of the course.
+1. **Python** and **Visual Studio Code** - installed once;
+2. **the samples of the module** - one ZIP archive from the page of the course, unzipped into a folder;
+3. **the packages** of the course - installed once into that folder.
 
 Then, at every lecture: open the folder in VS Code, open a terminal, and start the server of the samples.
 
@@ -139,31 +138,7 @@ The next five slides show how, step by step.
 
 ---
 
-## 1. Download the course
-
-<div class="columns"><div>
-
-1. Open `github.com/kartelj/ekof_dss`.
-2. Click the green button **Code**, and then **Download ZIP**.
-3. Unzip the file `ekof_dss-main.zip`:
-   - Windows: right click - *Extract All...*
-   - macOS: double click.
-4. Move the folder `ekof_dss-main` to a place where you will find it again, e.g. *Documents*.
-
-No account on GitHub is needed.
-
-</div><div>
-
-![The page of the course on GitHub. The menu of the green button Code is open, and its last item is Download ZIP.](images/web-github-download-zip.png)
-
-</div></div>
-
-Note:
-When the course changes, download the ZIP again - and first copy your own files (e.g. the folder wwwroot/my) out of the old folder. Who knows git can clone the repository instead (git clone https://github.com/kartelj/ekof_dss.git) and get the changes with git pull.
-
----
-
-## 2. Install Python and Visual Studio Code
+## 1. Install Python and Visual Studio Code
 
 - **Python 3.12 or newer** - `python.org`, the page *Downloads*.<br>
   On Windows tick **Add python.exe to PATH** in the first window of the installer.
@@ -180,16 +155,38 @@ On macOS the command is `python3`. Any version from 3.12 on is fine.
 
 ---
 
-## 3. Open the folder in VS Code
+## 2. Download the samples of the module
 
-- *File - Open Folder...* and choose the folder `ekof_dss-main` - the one with `README.md` and `requirements.txt` in it. If VS Code asks whether you trust the authors: *Yes*.
-- *Terminal - New Terminal*: a terminal opens at the bottom of the window, already in the folder of the course.
+<div class="columns"><div>
 
-![The window of Visual Studio Code with the folder ekof_dss-main open: on the left its folders and files, in the middle the file README.md, and below the terminal, in which the server of the samples has been started.](images/web-vscode-course.svg)
+1. Open the page of the course, `kartelj.github.io/ekof_dss`.
+2. In the table *The course*, click `01-html-css-bootstrap.zip`.
+3. Unzip it - Windows: right click, *Extract All...*; macOS: double click. You get the folder `01-html-css-bootstrap`.
+4. Move the folder to a place where you will find it again, e.g. *Documents*.
+
+Every module has its own archive. Download it when the module starts: then you get its latest version.
+
+</div><div>
+
+![The page of the course: in the table The course, the column Download has an archive for every module, e.g. 01-html-css-bootstrap.zip for module 01](images/web-course-downloads.png)
+
+</div></div>
+
+Note:
+The whole course - all the lectures, samples and solutions - is the repository github.com/kartelj/ekof_dss (Code - Download ZIP, or git clone); the samples are in its folder teaching-samples. For the students one archive per module is simpler, and it always has the latest version of the module.
 
 ---
 
-## 4. The packages of the course - once
+## 3. Open the folder in VS Code
+
+- *File - Open Folder...* and choose the folder `01-html-css-bootstrap` - the one with `main.py` and `requirements.txt` in it. If unzipping has made a folder inside a folder, choose the inner one. If VS Code asks whether you trust the authors: *Yes*.
+- *Terminal - New Terminal*: a terminal opens at the bottom of the window, already in that folder.
+
+![The window of Visual Studio Code with the folder 01-html-css-bootstrap open: on the left its folders and files, in the middle the file main.py, and below the terminal, in which the server of the samples has been started.](images/web-vscode-course.svg)
+
+---
+
+## 4. The packages of the course - once for every folder
 
 In the terminal of VS Code:
 
@@ -199,9 +196,9 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-- The first line makes the folder `.venv`, a place for the packages of this course (on macOS: `python3 -m venv .venv`).
+- The first line makes the folder `.venv`, a place for the packages (on macOS: `python3 -m venv .venv`).
 - The second line *activates* it: the line of the terminal now begins with `(.venv)`. **Activate it again in every new terminal.**
-- The third line installs the packages, such as FastAPI. It takes a minute or two, and only once.
+- The third line installs the packages, such as FastAPI - a minute or two. The folders of the next modules need the same three lines; the second time it goes faster.
 
 Windows: if PowerShell answers *running scripts is disabled on this system*, type once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, and activate again.
 
@@ -210,7 +207,6 @@ Windows: if PowerShell answers *running scripts is disabled on this system*, typ
 ## 5. Start the server of the samples
 
 ```text
-cd teaching-samples/01-html-css-bootstrap
 python main.py
 ```
 
@@ -220,7 +216,7 @@ python main.py
 - The terminal writes one line for every request that the server receives.
 - `Ctrl+C` in the terminal stops the server.
 
-**At every lecture:** open the folder in VS Code, *New Terminal*, activate, `cd`, `python main.py`.
+**At every lecture:** open the folder in VS Code, *New Terminal*, activate, `python main.py`.
 
 </div><div>
 
@@ -247,7 +243,7 @@ Then stop the server with `Ctrl+C`, and reload the page. What does the browser s
 |---|---|
 | `python` is not recognized, or *command not found* | Windows: install Python again, with *Add python.exe to PATH*; macOS: `python3` |
 | `No module named 'uvicorn'` (or `'fastapi'`) | the line does not begin with `(.venv)`: activate the environment; or run the `pip install` of step 4 |
-| `can't open file '...main.py'` | the terminal is not in the folder of the sample: `cd teaching-samples/01-html-css-bootstrap` |
+| `can't open file '...main.py'` | VS Code has another folder open: *File - Open Folder...* and the folder with `main.py` in it |
 | `address already in use` | a server is already running at port 8000, e.g. in another terminal: stop it with `Ctrl+C` |
 
 - After `Ctrl+C` the browser says *This site can't be reached* (*localhost refused to connect*): no program listens at port 8000 any more. A client needs a server to talk to.
@@ -255,7 +251,7 @@ Then stop the server with `Ctrl+C`, and reload the page. What does the browser s
 </details>
 
 Note:
-Give this exercise time: everything after it depends on it. Students who are done can help their neighbours. The most frequent problems on Windows are a Python without PATH and PowerShell refusing the activation.
+Give this exercise time: everything after it depends on it. Students who are done can help their neighbours. The most frequent problems on Windows are a Python without PATH, PowerShell refusing the activation, and a folder inside a folder after unzipping.
 
 ---
 

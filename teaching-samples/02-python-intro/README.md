@@ -4,10 +4,10 @@ Small programs for the terminal, one topic each, in the order of the lecture
 *Introduction to Python* (`presentations/02-01-python-intro.md`).
 They need only Python itself - no packages, no web server.
 
-Open a terminal in this folder and start a program by its name:
+Open this folder in Visual Studio Code (*File - Open Folder...*) and its terminal (*Terminal - New Terminal*),
+and start a program by its name:
 
 ```text
-cd teaching-samples/02-python-intro
 python 01_hello.py
 ```
 

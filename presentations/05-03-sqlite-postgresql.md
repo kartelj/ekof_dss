@@ -37,7 +37,7 @@ PostgreSQL: the server usually listens on port 5432. Its command-line tool is ca
 ## The shell sqlite3
 
 ```bash
-cd teaching-samples/05-python-db-sqlite/database/VanityFair02
+cd database/VanityFair02          # in the folder 05-python-db-sqlite
 sqlite3 VanityFair02.db
 ```
 
@@ -129,7 +129,7 @@ A dot-command can be given in the same way: sqlite3 VanityFair02.db ".tables"
 ## Building the course databases
 
 ```bash
-cd teaching-samples/05-python-db-sqlite/database
+cd database                       # in the folder 05-python-db-sqlite
 python create_databases.py
 ```
 
@@ -172,7 +172,7 @@ Before building the databases again, leave the shell and close the other tools t
 <details><summary>Solution</summary>
 
 ```text
-cd teaching-samples/05-python-db-sqlite/database
+cd database
 python create_databases.py
 cd VanityFair02
 sqlite3 VanityFair02.db
@@ -683,7 +683,7 @@ supabase_key = os.environ.get("SUPABASE_SECRET_KEY")
 ```
 
 - A SQLite program needs the name of a file. A Supabase program needs the **address** of the project and a **key**.
-- Both are in the file `.env`, in the root folder of the course: a copy of `.env.example`, with the values of our own project.
+- Both are in the file `.env`, in the main folder of the samples: a copy of `.env.example`, with the values of our own project.
 - The secret key opens all the data of the project. It is never written into source code: source code is shared, shown to others and stored in git.
 - The file `.env` is never put into git: `.gitignore` names it.
 

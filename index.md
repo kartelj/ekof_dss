@@ -32,15 +32,19 @@ After the course, students are able to
 
 ## The course
 
-| Module | Topic | Lectures | Samples |
-|---|---|---|---|
-| 01 | The web: HTTP, HTML, CSS, Bootstrap | 4 | [01-html-css-bootstrap](teaching-samples/01-html-css-bootstrap/) |
-| 02 | Introduction to Python | 1 | [02-python-intro](teaching-samples/02-python-intro/) |
-| 03 | Web applications with FastAPI, and the Python language in detail | 3 | [03-python-fastapi](teaching-samples/03-python-fastapi/) |
-| 04 | One application, built step by step | - | [04-python-fastapi-actors](teaching-samples/04-python-fastapi-actors/) |
-| 05 | Databases: the relational model, SQL, SQLite and PostgreSQL | 3 | [05-python-db-sqlite](teaching-samples/05-python-db-sqlite/), [05-python-db-supabase](teaching-samples/05-python-db-supabase/) |
-| 06 | RESTful services | 2 | [06-python-rest-sqlite](teaching-samples/06-python-rest-sqlite/), [06-python-rest-supabase](teaching-samples/06-python-rest-supabase/) |
-| 07 | The complete system: web application + RESTful service + database | - | [07-python-fastapi-rest-sqlite](teaching-samples/07-python-fastapi-rest-sqlite/), [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/) |
+| Module | Topic | Lectures | Samples | Download |
+|---|---|---|---|---|
+| 01 | The web: HTTP, HTML, CSS, Bootstrap | 4 | [01-html-css-bootstrap](teaching-samples/01-html-css-bootstrap/) | [01-html-css-bootstrap.zip](https://kartelj.github.io/ekof_dss/downloads/01-html-css-bootstrap.zip) |
+| 02 | Introduction to Python | 1 | [02-python-intro](teaching-samples/02-python-intro/) | [02-python-intro.zip](https://kartelj.github.io/ekof_dss/downloads/02-python-intro.zip) |
+| 03 | Web applications with FastAPI, and the Python language in detail | 3 | [03-python-fastapi](teaching-samples/03-python-fastapi/) | [03-python-fastapi.zip](https://kartelj.github.io/ekof_dss/downloads/03-python-fastapi.zip) |
+| 04 | One application, built step by step | - | [04-python-fastapi-actors](teaching-samples/04-python-fastapi-actors/) | [04-python-fastapi-actors.zip](https://kartelj.github.io/ekof_dss/downloads/04-python-fastapi-actors.zip) |
+| 05 | Databases: the relational model, SQL, SQLite and PostgreSQL | 3 | [05-python-db-sqlite](teaching-samples/05-python-db-sqlite/), [05-python-db-supabase](teaching-samples/05-python-db-supabase/) | [05-python-db-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/05-python-db-sqlite.zip), [05-python-db-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/05-python-db-supabase.zip) |
+| 06 | RESTful services | 2 | [06-python-rest-sqlite](teaching-samples/06-python-rest-sqlite/), [06-python-rest-supabase](teaching-samples/06-python-rest-supabase/) | [06-python-rest-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/06-python-rest-sqlite.zip), [06-python-rest-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/06-python-rest-supabase.zip) |
+| 07 | The complete system: web application + RESTful service + database | - | [07-python-fastapi-rest-sqlite](teaching-samples/07-python-fastapi-rest-sqlite/), [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/) | [07-python-fastapi-rest-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-sqlite.zip), [07-python-fastapi-rest-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-supabase.zip) |
+
+**Download** the archive of a module when the module starts: unzipped, it is one folder with everything that the
+module needs - its samples and the list of the packages of the course. The column *Samples* shows the same files
+here, on GitHub.
 
 ### 01 - The web
 
@@ -53,7 +57,7 @@ CSS for the look, and Bootstrap - a ready-made style sheet - for pages that adap
   [Introduction to CSS](presentations/01-03-css.md) ·
   [Introduction to Bootstrap](presentations/01-04-bootstrap.md)
 - Samples: [01-html-css-bootstrap](teaching-samples/01-html-css-bootstrap/) - static pages, shown by a small
-  Python web server
+  Python web server; download: [01-html-css-bootstrap.zip](https://kartelj.github.io/ekof_dss/downloads/01-html-css-bootstrap.zip)
 
 ### 02 - Introduction to Python
 
@@ -62,7 +66,7 @@ loops, lists, dictionaries, functions, modules and errors. No previous programmi
 
 - Lecture: [Introduction to Python](presentations/02-01-python-intro.md)
 - Samples: [02-python-intro](teaching-samples/02-python-intro/) - eleven short programs, one topic each, and a
-  complete small program at the end
+  complete small program at the end; download: [02-python-intro.zip](https://kartelj.github.io/ekof_dss/downloads/02-python-intro.zip)
 
 ### 03 - Web applications with FastAPI
 
@@ -75,7 +79,7 @@ procedural and object-oriented programming - shown through the pages of one samp
   [Python: procedural programming](presentations/03-02-python-procedural.md) ·
   [Python: object-oriented programming](presentations/03-03-python-oop.md)
 - Samples: [03-python-fastapi](teaching-samples/03-python-fastapi/) - one web application with many small pages,
-  each page demonstrates one topic of the language
+  each page demonstrates one topic of the language; download: [03-python-fastapi.zip](https://kartelj.github.io/ekof_dss/downloads/03-python-fastapi.zip)
 
 ### 04 - One application, step by step
 
@@ -83,7 +87,7 @@ procedural and object-oriented programming - shown through the pages of one samp
 components, services, adding, deleting and searching. Every step is a complete application.
 The lectures of module 03 explain the ideas that the steps use.
 
-- Samples: [04-python-fastapi-actors](teaching-samples/04-python-fastapi-actors/)
+- Samples: [04-python-fastapi-actors](teaching-samples/04-python-fastapi-actors/); download: [04-python-fastapi-actors.zip](https://kartelj.github.io/ekof_dss/downloads/04-python-fastapi-actors.zip)
 
 ### 05 - Databases
 
@@ -96,7 +100,7 @@ and two database systems: SQLite (a file on our computer) and PostgreSQL (a serv
   [SQLite and PostgreSQL](presentations/05-03-sqlite-postgresql.md)
 - Samples: [05-python-db-sqlite](teaching-samples/05-python-db-sqlite/) - the SQL scripts of the lectures, and
   Python programs that use a database; [05-python-db-supabase](teaching-samples/05-python-db-supabase/) - the same
-  with a database in the cloud
+  with a database in the cloud; download: [05-python-db-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/05-python-db-sqlite.zip), [05-python-db-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/05-python-db-supabase.zip)
 
 ### 06 - RESTful services
 
@@ -107,7 +111,8 @@ FastAPI and SQLModel, with its data in a database.
   [Introduction to REST APIs](presentations/06-01-restful-api.md) ·
   [RESTful services with FastAPI](presentations/06-02-fastapi-rest.md)
 - Samples: [06-python-rest-sqlite](teaching-samples/06-python-rest-sqlite/),
-  [06-python-rest-supabase](teaching-samples/06-python-rest-supabase/)
+  [06-python-rest-supabase](teaching-samples/06-python-rest-supabase/); download: [06-python-rest-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/06-python-rest-sqlite.zip),
+  [06-python-rest-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/06-python-rest-supabase.zip)
 
 ### 07 - The complete system
 
@@ -116,7 +121,8 @@ from the RESTful service of module 06, and only the service talks to the databas
 The second half of the lecture [RESTful services with FastAPI](presentations/06-02-fastapi-rest.md) explains it.
 
 - Samples: [07-python-fastapi-rest-sqlite](teaching-samples/07-python-fastapi-rest-sqlite/),
-  [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/)
+  [07-python-fastapi-rest-supabase](teaching-samples/07-python-fastapi-rest-supabase/); download:
+  [07-python-fastapi-rest-sqlite.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-sqlite.zip), [07-python-fastapi-rest-supabase.zip](https://kartelj.github.io/ekof_dss/downloads/07-python-fastapi-rest-supabase.zip)
 
 ## How the course is passed
 
@@ -170,10 +176,10 @@ The lectures, the samples and the exercises of the course are its main material.
 
 ## Working with the course
 
-**Getting started.** Download the course - on GitHub the green button **Code**, then **Download ZIP** - and unzip
-it; install Python 3.12 or newer and Visual Studio Code; open the folder of the course in VS Code, and in its
-terminal install the packages of the course, once. The first lecture shows every step on its slides
-(*The course on your computer*), and the [README](README.md) lists them too. Every sample is then started with
+**Getting started.** Install Python 3.12 or newer and Visual Studio Code, once. For every module, download the
+archive of its samples (the column *Download* in the table above), unzip it, and open the folder in VS Code; in its
+terminal install the packages of the course - once for every folder. The first lecture shows every step on its
+slides (*The course on your computer*), and the [README](README.md) lists them too. A sample is then started with
 `python main.py` in its folder (the programs of module 02 with `python` and the name of the file).
 
 **The lectures as slides.** On GitHub a lecture is shown as one long page; as slides, the lectures are on the

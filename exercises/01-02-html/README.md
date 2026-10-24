@@ -17,10 +17,10 @@ The form needs the server of the samples, so copy this folder into the folder `w
 of the samples, under the name `festival`:
 
 ```text
-teaching-samples/01-html-css-bootstrap/wwwroot/festival/
+01-html-css-bootstrap/wwwroot/festival/
 ```
 
-Start the server (`python main.py` in `teaching-samples/01-html-css-bootstrap`) and open
+Start the server (`python main.py` in the folder `01-html-css-bootstrap`) and open
 `http://localhost:8000/festival/index.html`.
 
 ## What to check

@@ -11,7 +11,8 @@ use one Supabase project. Prepare it once:
 2. Open the **SQL Editor** of the project, paste the content of `database/create-tables.sql`, and run it.
    The script creates the tables `country` and `actor` with a few rows, and a function that joins them.
 3. Find the address of the project and its **secret key** (the dialog **Connect**, or **Settings > API Keys**).
-4. In the root folder of the course, copy the file `.env.example`, name the copy `.env`, and write the two values into it:
+4. Copy the file `.env.example` - it is in the main folder of these samples (in the repository: in its root folder) -
+   name the copy `.env`, and write the two values into it:
 
    ```text
    SUPABASE_URL=https://your-project.supabase.co

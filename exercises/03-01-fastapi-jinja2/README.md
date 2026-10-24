@@ -16,10 +16,10 @@ The task in brief: a new application with
 
 ## Running it
 
-With the virtual environment of the course activated:
+In the folder of the solution, in a terminal with an activated virtual environment of the course - for example
+the `.venv` of your folder `03-python-fastapi`:
 
 ```text
-cd exercises/03-01-fastapi-jinja2
 python main.py
 ```
 

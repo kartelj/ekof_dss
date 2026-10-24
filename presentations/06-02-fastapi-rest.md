@@ -795,6 +795,7 @@ In your copy of the service:
 Sample: `07-python-fastapi-rest-sqlite/02-complete-system-db/rest-service`
 
 Note:
+The samples of the complete system are the archive 07-python-fastapi-rest-sqlite.zip on the page of the course: one folder, with its own .venv, as every module.
 The service of module 07 offers the same operations as the one of module 06, but its work is divided. One visible difference: it checks the country itself, so an actor of country 99 is answered with 400 (There is no country with the id 99), not with 409.
 The files to open: routers/actor.py and repositories/actor_repository.py.
 The repository is handed over by FastAPI as well: ActorRepo = Annotated[ActorRepository, Depends(get_actor_repository)]. The function get_actor_repository in database.py needs a session, so FastAPI calls get_session first - a chain of dependencies.
@@ -1131,7 +1132,7 @@ Build the API of the films - the assignment of the previous lecture - with FastA
 *About 45 minutes.* A solution: [exercises/06-02-fastapi-rest](https://github.com/kartelj/ekof_dss/tree/main/exercises/06-02-fastapi-rest)
 
 Note:
-The genres and the films are in teaching-samples/05-python-db-sqlite/database/VanityFair02/insert-table-data.sql: title, genre_id, lasting and year of every film.
+The genres and the films are in 05-python-db-sqlite/database/VanityFair02/insert-table-data.sql: title, genre_id, lasting and year of every film.
 
 ---
 

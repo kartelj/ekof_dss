@@ -136,8 +136,9 @@ instead; a phone number could not - it changes, and a family may share one.
 
 ## Trying the model in SQLite
 
+In the folder of the two scripts:
+
 ```text
-cd exercises/05-01-relational-model
 sqlite3 library.db
 .read create-tables.sql
 .read insert-data.sql
