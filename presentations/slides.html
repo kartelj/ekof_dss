@@ -53,7 +53,36 @@
                 if (heading) {
                     document.title = heading.textContent + " - Developing Software Solutions";
                 }
+                // every block of code gets a button that copies the code
+                for (const block of document.querySelectorAll(".reveal pre")) {
+                    const button = document.createElement("button");
+                    button.className = "copy-code";
+                    button.textContent = "Copy";
+                    button.title = "Copy the code";
+                    button.addEventListener("click", () => copyCode(block.querySelector("code") || block, button));
+                    block.appendChild(button);
+                }
             });
+        }
+
+        function copyCode(code, button) {
+            const text = code.textContent.replace(/\n$/, "");
+            const done = () => {
+                button.textContent = "Copied";
+                setTimeout(() => button.textContent = "Copy", 1500);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done);
+            } else {
+                // the clipboard of a page opened over plain http from another computer: the older way
+                const area = document.createElement("textarea");
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand("copy");
+                area.remove();
+                done();
+            }
         }
     </script>
 </body>

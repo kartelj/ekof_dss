@@ -103,6 +103,47 @@
     background-color: #272822;
 }
 
+/* the button that copies the code of a block: shown when the mouse is over the block */
+
+.reveal pre {
+    position: relative;
+}
+
+.reveal .copy-code {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font: 14px/1.4 Arial, Helvetica, sans-serif;
+    color: #eee;
+    background-color: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 4px;
+    padding: 2px 9px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.reveal pre:hover .copy-code,
+.reveal .copy-code:focus {
+    opacity: 1;
+}
+
+.reveal .copy-code:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+/* on touch screens there is no mouse to move over the block */
+@media (hover: none) {
+    .reveal .copy-code {
+        opacity: .8;
+    }
+}
+
+.print-pdf .reveal .copy-code {
+    display: none;
+}
+
 /* tables and pictures */
 
 .reveal table {
