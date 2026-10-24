@@ -147,6 +147,46 @@ Sample: `03-bootstrap/02-containers/04-container-margin.html`
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: a page with Bootstrap
+
+In your folder `wwwroot/my`, make the page `bootstrap.html`:
+
+1. In the `<head>`: the viewport meta element and the `<link>` to Bootstrap - copy them from the slide *Adding Bootstrap to a page*.
+2. In the `<body>`: a `container` with a heading `<h1>` and two paragraphs.
+3. Give the container a border, a padding of size 3, and a margin of size 4 above it - with classes only, no CSS of your own.
+4. Make the window narrower and wider: the container changes its width in steps. Then change it to `container-fluid`.
+
+Check: in a window 800 pixels wide the container is 720 pixels wide - see the pane *Computed* of the developer tools. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Vanity Fair</title>
+</head>
+<body>
+    <div class="container border p-3 mt-4">
+        <h1>Vanity Fair</h1>
+        <p>A list of actors.</p>
+        <p>Made with Bootstrap.</p>
+    </div>
+</body>
+</html>
+```
+
+- The three `<script>` lines are not needed yet: nothing on this page reacts to clicks.
+- `container-fluid` always takes the full width of the window.
+
+</details>
+
+---
+
 ## The grid: 12 columns
 
 ![A row divided into 12 columns, and elements that take 12, 6, 4, 3, 2 or 8 and 4 of them](images/bootstrap-grid.svg)
@@ -224,6 +264,37 @@ A **breakpoint** is a width of the window at which the layout changes. Bootstrap
 ![Three columns: one under the other in a narrow window, side by side in a wide window](images/bootstrap-breakpoints.svg)
 
 Sample: `03-bootstrap/03-grids/03-grid-col-sm-manual.html` - make the window narrow.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 2: one, two or four in a line
+
+In the container of your page `bootstrap.html`, add a row with four columns: *Actors*, *Films*, *Directors* and *Awards*. Give every column the classes `border p-3`, so that you can see it.
+
+1. In a window narrower than 576 pixels: one column in a line.
+2. From 576 pixels: two columns in a line.
+3. From 992 pixels: all four in one line.
+
+Before you check: how many columns are in a line when the window is 800 pixels wide? And at 500 pixels?
+
+Check with the device toolbar of the developer tools, or by making the window narrower. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```html
+<div class="row">
+    <div class="col-sm-6 col-lg-3 border p-3">Actors</div>
+    <div class="col-sm-6 col-lg-3 border p-3">Films</div>
+    <div class="col-sm-6 col-lg-3 border p-3">Directors</div>
+    <div class="col-sm-6 col-lg-3 border p-3">Awards</div>
+</div>
+```
+
+- At 800 pixels: two in a line - `col-sm-6` holds, `col-lg-3` not yet. At 500 pixels: one in a line.
+- Below its smallest breakpoint a column takes the full width, so `col-12` is not needed - but `class="col-12 col-sm-6 col-lg-3"` is correct too.
+
+</details>
 
 ---
 
@@ -351,6 +422,47 @@ The table of the previous slide:
 ![The table in the browser: a dark header row, a grey striped first row, and a green second row](images/bootstrap-table.png)
 
 </div></div>
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: a page for a film
+
+A new page `film.html` in your folder `my`, with Bootstrap and a `container`:
+
+1. A `jumbotron` with the title *Fargo* as a `display-4` heading, and the text *A film by Joel and Ethan Coen, 1996.*
+2. A picture with rounded corners that becomes smaller in a narrow window. Copy `castle.jpg` from `03-bootstrap/05-images` into your folder, or use a picture of your own.
+3. A striped table with a dark header row: three actors and their roles. The row of the main role is green.
+4. Under the table, in red: *Not for children.*
+
+Check: make the window narrow - the picture shrinks with it. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```html
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Fargo</h1>
+        <p>A film by Joel and Ethan Coen, 1996.</p>
+    </div>
+    <img src="castle.jpg" class="img-fluid rounded" alt="A castle on a cliff">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr><th>Actor</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+            <tr class="table-success"><td>Frances McDormand</td><td>Marge Gunderson</td></tr>
+            <tr><td>William H. Macy</td><td>Jerry Lundegaard</td></tr>
+            <tr><td>Steve Buscemi</td><td>Carl Showalter</td></tr>
+        </tbody>
+    </table>
+    <p class="text-danger">Not for children.</p>
+</div>
+```
+
+- `img-fluid` - never wider than the container; `rounded` - the corners.
+
+</details>
 
 ---
 
@@ -489,6 +601,48 @@ The code of the slide *Navs, tabs and pagination*:
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: cards in a grid
+
+A new page `actors.html` in your folder `my`, with Bootstrap and a `container`:
+
+1. At the top, tabs: *Actors* (the active one) and *Directors*.
+2. Under them, three cards, side by side from 768 pixels, one under the other in a narrower window.
+3. In every card: the name of an actor as the title, with a badge that shows the number of his or her films; a sentence about the actor; a small button *Profile*, with an outline only.
+4. Under the cards, the pages 1, 2 and 3 of the list; the page 1 is the current one.
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```html
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item"><a class="nav-link active" href="#">Actors</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Directors</a></li>
+</ul>
+<div class="row">
+    <div class="col-md-4 mb-3">                <!-- the column decides how wide the card is -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">John Goodman <span class="badge badge-secondary">5</span></h4>
+                <p class="card-text">Known for the films of the Coen brothers.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+            </div>
+        </div>
+    </div>
+    <!-- two more columns, each with a card -->
+</div>
+<ul class="pagination">
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+</ul>
+```
+
+</details>
+
+---
+
 ## Navbars
 
 ```html
@@ -560,6 +714,53 @@ Sample: `03-bootstrap/08-advanced-elements/12-collapse-accordion.html`
 Note:
 Other components of this kind: dropdown menus (10-dropdowns.html, 11-dropdown-layouts.html), tabs that switch their content (the last example in 14-nav-tabs.html) and the accordion (the last example in 12-collapse-accordion.html).
 The dismissible alerts are in 02-alerts.html.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 5: why does the button do nothing?
+
+The `<head>` of the page `navbar.html` has the viewport meta element and the `<link>` to Bootstrap. Its `<body>`:
+
+```html
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Movies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="menu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-menu">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Actors</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Films</a></li>
+        </ul>
+    </div>
+</nav>
+```
+
+Below 768 pixels a click on the button with three lines does nothing. Find the three mistakes, correct them, and check: the links appear under *Movies*. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+1. The three `<script>` lines are missing - jQuery, Popper and Bootstrap. Without them nothing reacts to clicks.
+2. `data-target` needs the sign `#`, as a selector: `data-target="#menu"`.
+3. The `id` of the hidden part must be the one in `data-target`: `id="menu"`.
+
+```html
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+...
+<div class="collapse navbar-collapse" id="menu">
+...
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+```
+
+- The `<script>` lines can go into the `<head>`, as in the samples, or at the end of the `<body>`.
+
+</details>
+
+Note:
+The Console of the developer tools does not help here: in all these cases it shows no error, nothing happens at all. With the scripts added but the wrong data-target, the button still does nothing. Comparing the code with the sample 16-navbars.html, or with the slide Navbars, is the quickest way.
 
 ---
 
@@ -671,6 +872,47 @@ Validation - empty, and filled in:
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 6: a form for a new actor
+
+A page `actor-form.html` in your folder `my`, with Bootstrap and a `container`:
+
+1. A heading *New actor*, and a form that is sent to `/process-form`.
+2. *First name* and *Last name* side by side, in a `form-row`. Both are required.
+3. Under them, a drop-down list *Country* with three countries, as wide as the form.
+4. A green button *Save*.
+5. The form shows its checks at once: `was-validated`, and the message *Please fill out this field.* under both required fields.
+
+Check: an empty form cannot be sent, and the empty fields are red. A filled form arrives at `/process-form`, which shows the three pairs: `first_name`, `last_name` and `country`. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```html
+<form action="/process-form" class="was-validated">
+    <div class="form-row">
+        <div class="col form-group">
+            <label for="first">First name:</label>
+            <input type="text" class="form-control" id="first" name="first_name" required>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <!-- the same for the last name: id="last", name="last_name" -->
+    </div>
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <select class="form-control" id="country" name="country">
+            <option>Serbia</option> <option>USA</option> <option>France</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+```
+
+- The `name` of a field is the name in the pair that the browser sends; the `id` connects it with its `<label>`.
+
+</details>
+
+---
+
 ## Media queries
 
 A **media query** is a condition in front of a group of CSS rules. The rules are used only while the condition is true.
@@ -760,6 +1002,33 @@ When you look for help on the web, check which version the answer is written for
 - A ready-made look for text, images, tables and forms.
 - **Components** - alerts, buttons, cards, navbars - are a few elements with the right classes.
 - All the web applications that we write later in the course use Bootstrap 4.5.2.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the home page of Vanity Fair
+
+The page `vanity-fair.html` in your folder `my`: Bootstrap 4.5.2 with its scripts, and a style sheet of your own, `vanity-fair.css`, linked **after** Bootstrap.
+
+1. A dark navbar with the name *Vanity Fair* and the links *Actors*, *Films* and *About*. Below 768 pixels the links hide behind the button.
+2. Under it, an alert *Welcome to Vanity Fair!* that the user can close.
+3. A `jumbotron` with a large heading and one sentence.
+4. Six cards of actors: one in a line on a phone, two from 576 pixels, three from 992 pixels. Every card has a name, a sentence, a badge with the number of films and a button.
+
+The rest of the page is on the next slide.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the rest of the page
+
+5. A table of films with a dark header row, and one row in yellow.
+6. A form *Add an actor*: the name and the country side by side, both required and checked at once, sent to `/process-form`.
+7. A footer. In `vanity-fair.css`: its text is centred, and from 768 pixels on it is on the right - with a media query of your own.
+
+Check the page 380, 800 and 1200 pixels wide: the cards, the navbar and the footer change. Send the form once empty and once filled in. *About 45 minutes for the whole assignment.*
+
+A solution: [exercises/01-04-bootstrap](https://github.com/kartelj/ekof_dss/tree/main/exercises/01-04-bootstrap)
 
 ---
 

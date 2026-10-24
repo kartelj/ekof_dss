@@ -9,6 +9,10 @@ requests all the addresses that need no parameters and expects an answer without
 an error. The web applications of module 07 are tested together with their
 RESTful service, which is started on a free port.
 
+The solutions of the assignments (the folder exercises) are checked as well:
+the programs run with the answers a user would type, the SQL scripts run on a
+course database, and the applications are requested like the samples.
+
 The Supabase samples are tested only if SUPABASE_URL and SUPABASE_SECRET_KEY are
 set (in the environment or in the file .env) - be aware that they add rows to
 the tables of that project.
@@ -19,6 +23,7 @@ Run it after changing the samples, or after upgrading the packages in requiremen
 import os
 import shutil
 import socket
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -68,6 +73,11 @@ def free_port() -> int:
         return s.getsockname()[1]
 
 
+def port_is_free(port: int) -> bool:
+    with socket.socket() as s:
+        return s.connect_ex(("127.0.0.1", port)) != 0
+
+
 def run(folder: Path, arguments: list[str], env: dict | None = None, typed: str = "") -> tuple[bool, str]:
     """
     Runs Python in the given folder; returns whether it succeeded, and the last line it printed.
@@ -106,6 +116,9 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as temporary:
         samples = Path(temporary) / "teaching-samples"
         shutil.copytree(ROOT / "teaching-samples", samples, ignore=shutil.ignore_patterns("__pycache__", "*.db"))
+        # next to teaching-samples, as in the repository: some solutions use the databases of module 05
+        exercises = Path(temporary) / "exercises"
+        shutil.copytree(ROOT / "exercises", exercises, ignore=shutil.ignore_patterns("__pycache__", "*.db"))
 
         def record(folder: Path, ok: bool, details: str) -> None:
             results.append((str(folder.relative_to(samples)), "ok" if ok else "FAILED", details))
@@ -171,6 +184,51 @@ def main() -> int:
             else:
                 ok, details = run(folder, ["-c", CHECK_APPLICATION])
             record(folder, ok, details)
+
+        # --- the solutions of the assignments: programs, with the answers they ask for
+        for script, typed in [
+            ("02-01-python-intro/exam_results.py", "Ana\n93\nMarko\nabc\n47\nIvana\n78\n\n"),
+            ("03-02-python-procedural/report.py", ""),
+            ("03-03-python-oop/cinema.py", ""),
+            ("05-03-sqlite-postgresql/film_catalogue.py", "l\nq\n"),
+        ]:
+            path = exercises / script
+            ok, details = run(path.parent, [path.name], typed=typed)
+            results.append((f"exercises/{script}", "ok" if ok else "FAILED", "" if ok else details))
+
+        # --- SQL scripts: on a new database, or on a course database built above
+        vanity_fair_02 = samples / "05-python-db-sqlite/database/VanityFair02/VanityFair02.db"
+        for scripts, database in [
+            (["05-01-relational-model/create-tables.sql", "05-01-relational-model/insert-data.sql"], ":memory:"),
+            (["05-02-sql/screening.sql", "05-02-sql/queries.sql"], vanity_fair_02),
+        ]:
+            try:
+                with sqlite3.connect(database) as connection:
+                    for script in scripts:
+                        connection.executescript((exercises / script).read_text(encoding="utf-8"))
+                ok, details = True, ""
+            except sqlite3.Error as error:
+                ok, details = False, f"{script}: {error}"
+            results.append((f"exercises/{Path(scripts[0]).parent} (SQL)", "ok" if ok else "FAILED", details))
+
+        # --- applications and services
+        for main in sorted(exercises.rglob("main.py")):
+            if "FastAPI(" in main.read_text(encoding="utf-8"):
+                ok, details = run(main.parent, ["-c", CHECK_APPLICATION])
+                results.append((f"exercises/{main.parent.relative_to(exercises)}", "ok" if ok else "FAILED", details))
+
+        # the client of the films service calls the address localhost:8001
+        client = "exercises/06-02-fastapi-rest/client.py"
+        if port_is_free(8001):
+            service = start_service(exercises / "06-02-fastapi-rest", 8001)
+            try:
+                ok, details = run(exercises / "06-02-fastapi-rest", ["client.py"])
+            finally:
+                service.terminate()
+                service.wait()
+            results.append((client, "ok" if ok else "FAILED", "" if ok else details))
+        else:
+            results.append((client, "skipped", "the port 8001 is in use"))
 
     width = max(len(name) for name, _, _ in results)
     for name, outcome, details in results:

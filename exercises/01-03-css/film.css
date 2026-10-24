@@ -1,0 +1,81 @@
+/* The look of film.html - the assignment of the lecture Introduction to CSS. */
+
+/* 1. the font and the colour of the text: once, for the whole page (the elements inherit them) */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #333333;
+    background-color: white;
+}
+
+h1,
+h2 {
+    color: darkred;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* 2. the menu: the links are boxes in one line (the page has no other links) */
+a {
+    display: inline-block;
+    padding: 8px 16px;          /* 8px above and below, 16px on the left and on the right */
+    margin: 4px;
+    border: 2px solid darkred;
+    color: darkred;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: darkred;
+    color: white;
+}
+
+/* 3. the table: single lines, a grey header row, a row that lights up under the mouse */
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid grey;
+    padding: 6px 12px;          /* above and below, on the left and on the right */
+}
+
+th {
+    background-color: lightgrey;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: lightyellow;
+}
+
+/* 4. the facts: square markers, one fact highlighted */
+.facts {
+    list-style-type: square;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/* 5. the main part of the page: a box */
+#content {
+    background-color: #f7f3ea;
+    border: 1px solid #c8b99a;
+    padding: 1em 2em;           /* above and below, on the left and on the right */
+}
+
+/* 6. the footer: smaller, grey and centred */
+.footer {
+    font-size: 0.8em;
+    color: grey;
+    text-align: center;
+}

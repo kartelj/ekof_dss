@@ -90,6 +90,41 @@ Sample: `03-python-fastapi/pages/fetch_data.py` reads the file `sample-data/weat
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: repair the JSON
+
+This text should describe a film, but it is not valid JSON:
+
+```text
+{'title': "Fargo", "year": 1996, "actors": ["Frances McDormand", "William H. Macy",], "sequel": None}
+```
+
+1. Find the three mistakes.
+2. Write the corrected text into a Python program, as a string, and read it with `json.loads`.
+3. Print `type(film["actors"])`, `len(film["actors"])`, `film["year"] + 10` and `film["sequel"]`.
+
+The program prints `<class 'list'> 2 2006 None`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+import json
+
+text = '{"title": "Fargo", "year": 1996, "actors": ["Frances McDormand", "William H. Macy"], "sequel": null}'
+film = json.loads(text)
+print(type(film["actors"]), len(film["actors"]), film["year"] + 10, film["sequel"])
+```
+
+- The mistakes: single quotes around `title`, a comma after the last item of the array, `None` instead of `null`.
+- The Python string is written in single quotes, so the double quotes of the JSON can stay inside it.
+
+</details>
+
+Note:
+With the wrong text, json.loads raises JSONDecodeError and names the place of the first mistake, e.g. Expecting property name enclosed in double quotes: line 1 column 2 (char 1). The students can repair the mistakes one after another, guided by the messages.
+
+---
+
 ## What is REST?
 
 - **REST** stands for *Representational State Transfer*.
@@ -182,6 +217,33 @@ The fourth point of the uniform interface is known as HATEOAS: hypermedia as the
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: which constraint is broken?
+
+Each of these services breaks one of the six constraints. Which one?
+
+1. A mobile application opens the database file of the service, and reads the table `actor` by itself.
+2. `GET /api/actors/next` answers with the actor after the one that this client read last: the service keeps a note for every client.
+3. The answers say nothing about how long they may be kept, so a client asks for the list of countries again before every page.
+4. The service runs on three computers, and every client has to choose one of them by itself.
+5. Every answer is `200 OK`. Whether the request succeeded is written only in the body: `{"ok": false}`.
+
+*About 5 minutes.*
+
+<details><summary>Solution</summary>
+
+| | Broken constraint | Why |
+|---|---|---|
+| 1 | client-server | a client knows the service only through its interface - not its database |
+| 2 | statelessness | the service remembers the conversation; the request should say which actor: `/api/actors/5` |
+| 3 | cacheability | an answer should say whether, and how long, it may be kept |
+| 4 | layered system | the clients should see one address; what is behind it is not their business |
+| 5 | uniform interface | a message should describe itself: the status code tells how the request ended |
+
+</details>
+
+---
+
 ## Resources and their addresses
 
 - A **resource** is anything that the API works with: an actor, a country, the list of all actors.
@@ -258,6 +320,35 @@ Before the requests, actor 14 is *Streep Meril*. Before the `POST`, there is no 
 ![Every request is sent twice. After GET, PUT and DELETE the data is the same after the second request as after the first; only the answer to the second DELETE is 404 instead of 204. After two POST requests there are two new actors, 14 and 15.](images/rest-same-request-twice.svg)
 
 - The second `DELETE` gets another **answer**, but the **data** does not change. Idempotence is about the data.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: an API for films
+
+The database VanityFair02 has the tables `movie` and `genre`. Write the method and the address of each request:
+
+1. all the films;
+2. the film with id 4;
+3. a new film;
+4. the film 4 gets another year;
+5. the film 4 is deleted;
+6. all the genres.
+
+What is in the body of request 4? Which requests may a client simply send again if the answer does not arrive? *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+| | Request | | Request |
+|---|---|---|---|
+| 1 | `GET /api/movies` | 4 | `PUT /api/movies/4` |
+| 2 | `GET /api/movies/4` | 5 | `DELETE /api/movies/4` |
+| 3 | `POST /api/movies` | 6 | `GET /api/genres` |
+
+- The body of request 4 holds the **whole** film - all its values, with the new year - because `PUT` replaces the item.
+- All except the `POST`: `GET`, `PUT` and `DELETE` are idempotent. A second `POST` would create a second film.
+
+</details>
 
 ---
 
@@ -477,6 +568,38 @@ One request, one answer: the client waits for the answer before it sends the nex
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: predict the answers
+
+The service has 13 actors, with the ids 1 to 13; actor 9 is Tom Hanks. Write down the status code of every answer - and `Location`, where there is one:
+
+```text
+1. GET    /api/actors/9
+2. GET    /api/actors/90
+3. POST   /api/actors     {"last_name": "Cage", "first_name": "Nicolas", "country_id": 1,
+                           "date_of_birth": "1964-01-07"}
+4. PUT    /api/actors/14  {"actor_id": 15, "last_name": "Cage", "first_name": "Nicolas", "country_id": 1}
+5. POST   /api/actors     the body of request 3, but with "date_of_birth": "7 January 1964"
+6. DELETE /api/actors/14  - and then the same request once more
+```
+
+*About 10 minutes.* Exercise 5 checks the predictions on the real service.
+
+<details><summary>Solution</summary>
+
+| | Answer | Why |
+|---|---|---|
+| 1 | `200 OK` | the actor exists; the body is Tom Hanks |
+| 2 | `404 Not Found` | there is no actor 90 |
+| 3 | `201 Created`, `Location: /api/actors/14` | the service chooses the next id: 14 |
+| 4 | `400 Bad Request` | the address says 14, the body says 15 |
+| 5 | `422 Unprocessable Content` | the date is not written as year-month-day; nothing is saved |
+| 6 | `204 No Content`, then `404 Not Found` | after both requests the data is the same: no actor 14 |
+
+</details>
+
+---
+
 ## Reality check
 
 REST describes an ideal. Real APIs often differ from it in three ways.
@@ -564,6 +687,39 @@ In Windows PowerShell the word curl alone starts another command (Invoke-WebRequ
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 5: check your predictions
+
+1. Start the service `06-python-rest-sqlite/02-rest-service-actors-db`. If you have added actors already, stop it, delete the file `actors.db` in its folder, and start it again: it starts with 13 actors.
+2. Write the bodies of the requests 3, 4 and 5 of exercise 4 into the files `cage.json`, `cage14.json` and `cage-wrong.json`.
+3. Send the requests of exercise 4 with `curl -i` - or on the page `/docs` - and compare the status codes with your predictions.
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```bash
+curl -i http://localhost:8001/api/actors/9
+curl -i http://localhost:8001/api/actors/90
+curl -i -X POST http://localhost:8001/api/actors -H "Content-Type: application/json" -d "@cage.json"
+curl -i -X PUT http://localhost:8001/api/actors/14 -H "Content-Type: application/json" -d "@cage14.json"
+curl -i -X POST http://localhost:8001/api/actors -H "Content-Type: application/json" -d "@cage-wrong.json"
+curl -i -X DELETE http://localhost:8001/api/actors/14
+curl -i -X DELETE http://localhost:8001/api/actors/14
+```
+
+- The body of the `400`: `{"detail":"The id in the address and the actor_id in the body are different"}`.
+- The `422` says where the problem is: `"loc":["body","date_of_birth"]`.
+
+</details>
+
+Note:
+The curl commands must be typed in the folder of the JSON files, because of "@cage.json".
+With Python 3.12 the status line of the 422 says Unprocessable Entity, the older name of the same code.
+On Windows: every command in one line, and curl.exe in PowerShell.
+
+---
+
 ## Summary
 
 - A **web API** is for programs: requests and responses over HTTP, with the data as **JSON**.
@@ -573,6 +729,24 @@ In Windows PowerShell the word curl alone starts another command (Invoke-WebRequ
 - An API can be tried without writing a program: the browser, `curl`, the page `/docs`.
 
 Next lecture: we write such a service in Python, with FastAPI.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the API of the films
+
+Design a REST API for the films of the database VanityFair02, and write it down in a text file:
+
+1. The resources and their addresses: the films and the genres.
+2. The JSON of one film - *Fargo* - with the fields `movie_id`, `title`, `year`, `lasting` and `genre_id`.
+3. For each of the five operations on the films: the request (method, address, body) and the successful answer (status code, `Location`, body), in the form of the example slides of this lecture.
+4. For every operation at least one unsuccessful answer (`400`, `404` or `422`), and its reason.
+5. A table: which of the requests are safe, and which are idempotent?
+
+*About 40 minutes.* The next lecture builds this API. A solution: [exercises/06-01-restful-api](https://github.com/kartelj/ekof_dss/tree/main/exercises/06-01-restful-api)
+
+Note:
+The films of VanityFair02 are in teaching-samples/05-python-db-sqlite/database/VanityFair02/insert-table-data.sql. Fargo has the id 4, it is 98 minutes long, and its genre is 4 (crime).
 
 ---
 

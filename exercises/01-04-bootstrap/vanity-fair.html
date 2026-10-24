@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vanity Fair</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- our own rules come after Bootstrap, so that they win when both set the same property -->
+    <link rel="stylesheet" href="vanity-fair.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- 1. the navbar: below 768 pixels the links hide behind the button -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Vanity Fair</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav">
+                <li class="nav-item active"><a class="nav-link" href="#actors">Actors</a></li>
+                <li class="nav-item"><a class="nav-link" href="#films">Films</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <!-- 2. an alert that the user can close -->
+        <div class="alert alert-info alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Welcome to Vanity Fair!
+        </div>
+
+        <!-- 3. the jumbotron -->
+        <div class="jumbotron">
+            <h1 class="display-4">Vanity Fair</h1>
+            <p>The actors and the films of the Coen brothers.</p>
+        </div>
+
+        <!-- 4. six cards: one, two or three in a line -->
+        <h2 id="actors">Actors</h2>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Frances McDormand <span class="badge badge-secondary">2 films</span></h4>
+                        <p class="card-text">Marge Gunderson in Fargo.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">John Goodman <span class="badge badge-secondary">2 films</span></h4>
+                        <p class="card-text">Walter Sobchak in The Big Lebowski.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Steve Buscemi <span class="badge badge-secondary">2 films</span></h4>
+                        <p class="card-text">Carl Showalter in Fargo.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Holly Hunter <span class="badge badge-secondary">1 film</span></h4>
+                        <p class="card-text">Ed McDunnough in Raising Arizona.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Nicolas Cage <span class="badge badge-secondary">1 film</span></h4>
+                        <p class="card-text">H. I. McDunnough in Raising Arizona.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">William H. Macy <span class="badge badge-secondary">1 film</span></h4>
+                        <p class="card-text">Jerry Lundegaard in Fargo.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. the table of films -->
+        <h2 id="films">Films</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr><th>Title</th><th>Year</th><th>Genre</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Raising Arizona</td><td>1987</td><td>crime comedy</td></tr>
+                    <tr class="table-warning"><td>Fargo</td><td>1996</td><td>crime</td></tr>
+                    <tr><td>The Big Lebowski</td><td>1998</td><td>crime comedy</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 6. the form: two required fields side by side, checked at once -->
+        <h2>Add an actor</h2>
+        <form action="/process-form" class="was-validated">
+            <div class="form-row">
+                <div class="col-md form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-md form-group">
+                    <label for="country">Country:</label>
+                    <select class="form-control" id="country" name="country" required>
+                        <option value="">Choose a country</option>
+                        <option>France</option>
+                        <option>Serbia</option>
+                        <option>USA</option>
+                    </select>
+                    <div class="invalid-feedback">Please choose a country.</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+
+    <!-- 7. the footer: its alignment is set in vanity-fair.css -->
+    <div class="site-footer bg-dark text-white p-3 mt-4" id="about">
+        Vanity Fair - a sample page of the course Developing Software Solutions.
+    </div>
+</body>
+
+</html>

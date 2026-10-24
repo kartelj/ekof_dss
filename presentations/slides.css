@@ -197,6 +197,58 @@
     margin: .6em 0;
 }
 
+/* an exercise: a slide with a green title, written as
+       <!-- .slide: class="exercise" -->
+       ## Exercise 1: ...
+   its solution is hidden until a click on "Solution", and then it covers the slide below the title:
+       <details><summary>Solution</summary>
+       (markdown, with an empty line before and after it)
+       </details>
+   on GitHub the solution is a section that opens with a click */
+
+.reveal section.exercise h2 {
+    background-color: #2e7d32;
+}
+
+.reveal section.exercise h2::before {
+    content: "\270E  ";
+}
+
+.reveal details > summary {
+    display: inline-block;
+    font-size: .7em;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    border-radius: 6px;
+    padding: .1em .7em;
+    margin-top: .4em;
+    cursor: pointer;
+    list-style: none;
+}
+
+.reveal details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.reveal details[open] {
+    position: absolute;
+    top: 82px;
+    left: -12px;
+    width: calc(100% + 24px);
+    height: 610px;
+    overflow: auto;
+    background-color: #fff;
+    border-top: 4px solid #2e7d32;
+    box-sizing: border-box;
+    padding: 0 calc(.4em + 12px);
+    z-index: 10;
+}
+
+.reveal details[open] > summary {
+    color: #fff;
+    background-color: #2e7d32;
+}
+
 /* the number of the slide: bottom left, so that it is not under the navigation arrows */
 
 .reveal .slide-number {

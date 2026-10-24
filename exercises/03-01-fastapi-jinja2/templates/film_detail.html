@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ film.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ film.title }}</h1>
+
+<p>Year: {{ film.year }}</p>
+<p>Director: {{ film.director or "unknown" }}</p>
+
+<p><a href="/films">Back to the list</a></p>
+{% endblock %}

@@ -62,6 +62,13 @@
                     button.addEventListener("click", () => copyCode(block.querySelector("code") || block, button));
                     block.appendChild(button);
                 }
+                // after a click on a button or on "Solution" the keys move the slides again
+                document.addEventListener("click", event => {
+                    const clicked = event.target.closest("summary, button");
+                    if (clicked) {
+                        setTimeout(() => clicked.blur());
+                    }
+                });
             });
         }
 

@@ -132,6 +132,11 @@ python -m http.server 8080
 `http://localhost:8080/presentations/` - keys: arrows or space for the next slide, `Esc` for an overview of all the
 slides, `F` for full screen, `S` for the speaker notes.
 
+**Exercises.** The lectures and the practice go together: after every topic a lecture has an exercise on what it
+has shown so far (the slides with a green title; the button *Solution* shows a solution, on GitHub it is a section
+that opens with a click), and every lecture ends with a larger assignment. The solutions of the assignments are in
+the folder [exercises](exercises/).
+
 **The Supabase samples** (the folders whose names end with `-supabase`) need a free Supabase project of your own -
 see [05-python-db-supabase](teaching-samples/05-python-db-supabase/). Everything else works without it.
 

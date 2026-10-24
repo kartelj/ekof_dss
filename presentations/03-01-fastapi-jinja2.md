@@ -172,6 +172,54 @@ In the sample 02-actors-display these two lines are in two files: the heading is
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: your first application
+
+1. Make a new folder `my-site`, and in it the folder `templates`.
+2. In `my-site/main.py` write the smallest application, with `title = "My site"` and `film` - your favourite film - instead of `actor`. The template `index.html` shows the title as a heading, and the sentence *My favourite film: ...*
+3. Add the route `/about` with the template `about.html`: *This site was made by ...* and your name.
+4. Add `import uvicorn` to the imports, and these two lines at the end. Start it with `python main.py`.
+
+```python
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=8000, reload=True)
+```
+
+Check: `localhost:8000` and `localhost:8000/about` show your texts, `localhost:8000/contact` shows `{"detail":"Not Found"}`. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+title = "My site"
+film = "Fargo"
+
+@app.get("/")
+def index(request: Request):
+    return templates.TemplateResponse(request, "index.html", {"title": title, "film": film})
+
+@app.get("/about")
+def about(request: Request):
+    return templates.TemplateResponse(request, "about.html", {"name": "Ana"})
+```
+
+```html
+<!-- templates/index.html -->
+<h1>{{ title }}</h1>
+<p>My favourite film: {{ film }}</p>
+
+<!-- templates/about.html -->
+<p>This site was made by {{ name }}.</p>
+```
+
+- The beginning of `main.py` - the imports, `app` and `templates` - is the same as on the slide *The smallest application*.
+
+</details>
+
+Note:
+Typical mistakes: the folder templates is not next to main.py (the page answers "Internal Server Error", the terminal says TemplateNotFound); the virtual environment is not activated (ModuleNotFoundError: No module named 'fastapi'); another application still runs on the port 8000 ("address already in use").
+
+---
+
 ## Attributes and filters
 
 ```html
@@ -299,6 +347,49 @@ Escaping is switched on by Jinja2Templates of FastAPI for the templates whose na
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: a list of films
+
+In `my-site`:
+
+1. In `main.py`, send this list of dictionaries to `index.html` under the name `films`:
+
+```python
+films = [{"title": "Fargo", "year": 1996}, {"title": "Amélie", "year": 2001}, {"title": "Heat", "year": 1995}]
+```
+
+2. In `index.html`: the sentence *3 films* (the filter `length`), then a list: every title in capital letters, with its year; after a film made before 2000 the words *- a classic*; for an empty list *No films yet.*
+3. Add the film `<i>Up</i>` from 2009. What does the page show?
+
+Expected: `FARGO (1996) - a classic`, `AMÉLIE (2001)`, `HEAT (1995) - a classic`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+    return templates.TemplateResponse(request, "index.html", {"title": title, "film": film, "films": films})
+```
+
+```html
+<p>{{ films | length }} films</p>
+<ul>
+    {% for f in films %}
+    <li>{{ f.title | upper }} ({{ f.year }}){% if f.year < 2000 %} - a classic{% endif %}</li>
+    {% else %}
+    <li>No films yet.</li>
+    {% endfor %}
+</ul>
+```
+
+- `f.title` works for a dictionary too: Jinja2 looks for the key `title`.
+- The new film is shown as the text `<I>UP</I> (2009)`: the tags are escaped, and `upper` has changed them too.
+
+</details>
+
+Note:
+To see the text "No films yet.", the students can write films = [] for a moment.
+
+---
+
 ## The layout: what all the pages share
 
 ```html
@@ -392,6 +483,77 @@ The first component appears in step 02 (02-actors-display). The macro of the sam
 A macro sees its parameters, but not the other values of the page. An included template (the menu) sees all of them.
 The values inside a macro are escaped as everywhere else. The HTML that the macro produces is not escaped again when it is put into the page.
 A component can use another component: in step 07 Actors uses ActorDetail. A layout can use a component too: from step 10 on, the layout shows AppMessages.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: a layout and a component
+
+In `my-site`:
+
+1. `templates/layout.html`: a whole HTML page with the block `title` (by default *My site*) inside `<title>`, a menu with the links *Home* (`/`) and *About* (`/about`), the block `content`, and the footer *Made in the DSS course*.
+2. `index.html` and `about.html` extend the layout. `about.html` sets the title *About*.
+3. The component `FilmItem(film)` in `templates/components/film.html` makes one `<li>` of the list. The loop of `index.html` uses it.
+
+Check: both pages have the menu and the footer; on the page About the tab of the browser says *About*; the list looks as before. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}My site{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about">About</a>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>Made in the DSS course</footer>
+</body>
+</html>
+```
+
+```html
+{% extends "layout.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<p>This site was made by {{ name }}.</p>
+{% endblock %}
+```
+
+</div><div>
+
+```html
+{% macro FilmItem(film) %}
+<li>
+    {{ film.title | upper }} ({{ film.year }})
+    {% if film.year < 2000 %} - a classic{% endif %}
+</li>
+{% endmacro %}
+```
+
+```html
+{% extends "layout.html" %}
+{% from "components/film.html" import FilmItem %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+...
+    {% for f in films %}
+    {{ FilmItem(f) }}
+    {% else %}
+...
+{% endblock %}
+```
+
+</div></div>
+
+</details>
 
 ---
 
@@ -552,6 +714,47 @@ With Python 3.12 the status line says 422 Unprocessable Entity - the older name 
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: the square of a number
+
+In `my-site`, with the layout of Exercise 3:
+
+1. The route `GET /square` with the parameter `n: int = 0`. Its page `square.html` has a GET form with the field `n` and a button, and the sentence *The square of 7 is 49.*
+2. The route `GET /square/{n}`: the same page, for the number in the path.
+3. Try `/square?n=7`, `/square/12`, `/square?n=abc` and `/square/abc`.
+
+Expected: *The square of 7 is 49.* and *The square of 12 is 144.* For `abc` the answer is `422`, with the JSON message *Input should be a valid integer* - once for the `"query"`, once for the `"path"`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+@app.get("/square")
+def square(request: Request, n: int = 0):
+    return templates.TemplateResponse(request, "square.html", {"n": n, "result": n * n})
+
+@app.get("/square/{n}")
+def square_in_path(request: Request, n: int):
+    return templates.TemplateResponse(request, "square.html", {"n": n, "result": n * n})
+```
+
+```html
+{% extends "layout.html" %}
+
+{% block content %}
+<form method="get" action="/square">
+    Number: <input name="n" value="{{ n }}" />
+    <button>Square</button>
+</form>
+<p>The square of {{ n }} is {{ result }}.</p>
+{% endblock %}
+```
+
+- Without `= 0`, the address `/square` alone would get 422. `my-site` has no page *Invalid input*: FastAPI answers with JSON.
+
+</details>
+
+---
+
 ## Buttons: every button has its function
 
 ```html
@@ -643,6 +846,52 @@ The status code has to be given: without it RedirectResponse answers 307, and th
 If the POST function returned the page itself, a refresh would send the form again (the browser asks first), and the counter would be increased once more.
 A second advantage: every page is built in one place only, in its function show.
 Demonstration of the problem: the address /process-form of the first part of the course answers a POST with the page itself. Send the form of 01-html/06-forms/04-form-text-area.html and refresh the result: the browser asks whether the form should be sent again.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 5: a poll
+
+In `my-site`:
+
+1. The page `GET /poll`: the question *Do you like Python?* and the line `Yes: 0 No: 0`. The two numbers are global variables.
+2. One POST form with two buttons: *Yes* sends it to `/poll/yes`, *No* to `/poll/no`. Each function adds 1 to its number, and redirects to `/poll` with the status 303.
+3. Press *Yes*, *Yes*, *No*. Then press F5. Open the page in a second browser. Then add an empty line to `main.py` and save it.
+
+Expected: `Yes: 2 No: 1`; F5 changes nothing; the second browser shows the same numbers; after the save both are 0 again. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+yes_votes = 0
+no_votes = 0
+
+@app.get("/poll")
+def poll(request: Request):
+    return templates.TemplateResponse(request, "poll.html", {"yes": yes_votes, "no": no_votes})
+
+@app.post("/poll/yes")
+def vote_yes():
+    global yes_votes
+    yes_votes = yes_votes + 1
+    return RedirectResponse("/poll", status_code=status.HTTP_303_SEE_OTHER)
+```
+
+```html
+<h1>Do you like Python?</h1>
+<p>Yes: {{ yes }} No: {{ no }}</p>
+<form method="post">
+    <button formaction="/poll/yes">Yes</button>
+    <button formaction="/poll/no">No</button>
+</form>
+```
+
+- `vote_no` is the same, with `no_votes`.
+
+</details>
+
+Note:
+A frequent mistake: the function changes the number without global. Python then reports UnboundLocalError (the answer is 500 Internal Server Error), because the name yes_votes is local in the whole function.
 
 ---
 
@@ -770,6 +1019,72 @@ The mistake that stops the restart is usually a SyntaxError, for example a missi
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 6: a new page in a copy of `03-python-fastapi`
+
+1. `pages/greeting.py`: the route `GET /greeting` with the parameter `name: str = "stranger"`.
+2. `templates/greeting.html` extends `layout.html`: a GET form with the field `name`, and *Hello, Ana!*
+3. Register the page: the import and `include_router` in `main.py`, the line `("Greeting", "/greeting")` in the section *Basics* of `MENU` (`templating.py`).
+4. A mistake on purpose: `"greetings.html"` in `greeting.py`. Read the page and the terminal, then correct it.
+
+Expected: *Greeting* in the menu; `/greeting?name=Ana` shows *Hello, Ana!*, `/greeting` *Hello, stranger!*; the mistake gives the page *An error has occurred* with `TemplateNotFound`. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```python
+# pages/greeting.py
+from fastapi import APIRouter, Request
+
+from templating import templates
+
+router = APIRouter()
+
+
+@router.get("/greeting")
+def show(request: Request, name: str = "stranger"):
+    return templates.TemplateResponse(
+        request, "greeting.html", {"name": name}
+    )
+```
+
+```python
+# main.py
+from pages import (
+    ...
+    greeting,
+    ...
+)
+app.include_router(greeting.router)
+```
+
+</div><div>
+
+```html
+{% extends "layout.html" %}
+
+{% block title %}Greeting{% endblock %}
+
+{% block content %}
+<h1>Greeting</h1>
+<form method="get" action="/greeting">
+    Your name:
+    <input name="name" value="{{ name }}" />
+    <button>Greet me</button>
+</form>
+<p>Hello, {{ name }}!</p>
+{% endblock %}
+```
+
+- The terminal shows the same error at its last line: `jinja2.exceptions.TemplateNotFound`.
+
+</div></div>
+
+</details>
+
+---
+
 ## Going further: htmx
 
 - In this lecture every click loads a whole new page.
@@ -835,6 +1150,39 @@ Things to try, with the application 03-python-fastapi running:
 3. Change 42 into 100 in pages/incrementer.py, save the file, and watch the terminal. The application restarts, and the counter starts from 100.
 4. Type abc into a field of the page Min Max 5 (section Branches) and press a button.
 5. Add the line print("increased") to the function increment_count: before the line with return, and with the same indentation as that line. Press the button and watch the terminal.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: a small film site
+
+A new application, started with `python main.py`, that uses the whole lecture:
+
+1. A **layout**: the name of the site, a menu *Home - Films - Add a film*, a footer, and the style sheet `static/css/site.css`. Every page extends it, and sets its title.
+2. `/`: how many films there are (`| length`).
+3. `/films`: the films of a global list of dictionaries (title, year, director). The **component** `FilmItem` shows each one as a link to `/films/0`, `/films/1` ... (`loop.index0`).
+4. `/films/{film_id}`: one film. For a number that does not exist: `raise HTTPException(status_code=404, detail="Film not found")`.
+5. `/films/add`: a **POST** form (title, year, director). The film is added to the list, then **Post/Redirect/Get** to `/films`.
+
+*About 45 minutes.*
+
+Note:
+The route GET /films/add has to be written before /films/{film_id}: otherwise FastAPI tries to turn "add" into a number and answers 422.
+HTTPException is imported from fastapi, like Form.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: how to check it
+
+- The home page says that there are 3 films, the page *Films* lists them, and every title leads to its own page.
+- Add *Heat*, 1995, Michael Mann: it is the last film of the list, and its address is `/films/3`.
+- Press F5 on the list after adding: the film is **not** added a second time.
+- `/films/99` answers `{"detail":"Film not found"}` with the status 404.
+- The year `abc` is refused with the status 422.
+- Restart the program: the list has the three films of the beginning again.
+
+A solution, with a short description: [exercises/03-01-fastapi-jinja2](https://github.com/kartelj/ekof_dss/tree/main/exercises/03-01-fastapi-jinja2)
 
 ---
 

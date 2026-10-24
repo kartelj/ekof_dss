@@ -124,6 +124,37 @@ The first part of the course uses static content. From the second part on, we wr
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: a web server of your own
+
+1. Make a new folder, for example `myweb`, and in it a text file `hello.txt` with one sentence.
+2. In a terminal, in that folder: `python -m http.server 8000` (on macOS `python3`).
+3. Open `http://localhost:8000`, and then click `hello.txt`.
+4. Look at the terminal: which requests has the server received, with which status codes?
+5. Open `http://localhost:8001`. What happens, and why?
+6. Is the list of files static or dynamic content? And `hello.txt`?
+
+The browser first shows *Directory listing for /* with `hello.txt`, then your sentence. Stop the server with `Ctrl+C`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```text
+"GET / HTTP/1.1" 200 -
+"GET /favicon.ico HTTP/1.1" 404 -
+"GET /hello.txt HTTP/1.1" 200 -
+```
+
+- Three requests: the list of files, the little icon of the site - the browser asks for it by itself, and there is none, so `404` - and the file.
+- At port 8001 the browser cannot connect at all (*This site can't be reached*): no program listens there. That is not a `404` - there is nobody to answer.
+- The list is **dynamic**: the server writes it at the moment of the request, from the files in the folder. Add a file and reload - it appears. `hello.txt` is **static**: it is sent exactly as it is stored.
+
+</details>
+
+Note:
+At the start of every line, the server also writes the address of the client (::1 or 127.0.0.1) and the time. If port 8000 is taken, any other port works, e.g. 8080.
+
+---
+
 ## The request - response cycle
 
 - The client always speaks first; the server only answers.
@@ -195,6 +226,54 @@ Both are plain text: a first line, the headers, an empty line, and the body.
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: read the messages
+
+A form was sent, and this is the whole conversation:
+
+<div class="columns"><div>
+
+```http
+POST /process-form HTTP/1.1
+Host: localhost:8000
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33
+
+first_name=Holly&last_name=Hunter
+```
+
+</div><div>
+
+```http
+HTTP/1.1 200 OK
+server: uvicorn
+content-length: 1742
+content-type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+...
+```
+
+</div></div>
+
+1. To which server, and to which port, does the request go?
+2. What does the client want to do, and with which resource?
+3. What does the body of the request contain? Why has a `GET` for a page usually no body?
+4. Did it work? What has the server sent back, and how long is it?
+
+Write the answers down, then compare. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+1. To `localhost`, port `8000` - the header `Host`.
+2. `POST`: it sends data to the resource `/process-form`, which should do something with it.
+3. Two pairs *name=value*, `first_name=Holly` and `last_name=Hunter` - the values typed into a form. `Content-Length` is their length: 33 characters. A `GET` only asks for something, so it has nothing to send.
+4. Yes - `200 OK`. The body is an HTML page (`text/html`), 1742 bytes long.
+
+</details>
+
+---
+
 ## Status codes
 
 The first digit tells the kind of the answer.
@@ -232,6 +311,41 @@ A URL (*Uniform Resource Locator*) is the address of a resource on the web.
 
 - If the port is left out, `http` uses port 80 and `https` uses port 443.
 - The query is the usual way to send a few values with a `GET` request.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: status codes and addresses
+
+**Which status code** do you expect?
+
+1. The address has a typing mistake.
+2. The page is found and sent.
+3. The server program has a bug, and stops while it is answering.
+4. The server sends the browser to another address.
+
+**Take the address apart** - scheme, host, port, path, query, fragment:
+
+```text
+https://shop.example.com:8443/search/lamps?colour=red&page=2#results
+```
+
+Which port does `https://www.ekof.bg.ac.rs/` use? *About 5 minutes.*
+
+<details><summary>Solution</summary>
+
+1. `404 Not Found` - a `4xx`: the mistake is the client's.
+2. `200 OK`.
+3. `500 Internal Server Error` - a `5xx`: the server has failed.
+4. A `3xx`, for example `301 Moved Permanently` or `303 See Other`.
+
+| scheme | host | port | path | query | fragment |
+|---|---|---|---|---|---|
+| `https` | `shop.example.com` | `8443` | `/search/lamps` | `colour=red&page=2` | `results` |
+
+- `https://www.ekof.bg.ac.rs/` gives no port, so `https` uses its usual port, 443.
+
+</details>
 
 ---
 
@@ -289,6 +403,33 @@ Then open `http://localhost:8000` and:
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: count the requests
+
+The server of the samples is running. Open the developer tools, the tab *Network*, and then these addresses:
+
+1. `http://localhost:8000/01-html/03-images/03-img-out-of-current-dir/index.html` -
+   how many requests does the page make, and of which types?
+2. `http://localhost:8000/01-html/03-images/04-img-broken/index.html` -
+   which status codes do you see? What does the page show instead of the pictures?
+3. `http://localhost:8000/01-html` - without the `/` at the end.
+   Which two requests are made, with which status codes?
+
+Compare with the lines in the terminal of the server. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+1. Five: the page itself (`text/html`) and four pictures (`image/jpeg`): `images/lake.jpg`, `images/mountain.jpg`, `images/caste.jpg` and `../lake2.jpg`. The terminal also shows `/favicon.ico` - the little icon of the site; our server answers it with `204 No Content`.
+2. `200` for the page, and `404 Not Found` for all four pictures: their names are wrong. Instead of each picture, the page shows a small icon of a broken picture and a word: *Lake*, *Mountain*, *Castle*, *Lake 2*.
+3. `GET /01-html` gets `307 Temporary Redirect` with the header `location: /01-html/`. The browser then asks for `GET /01-html/` and gets `200 OK` - the list of the folder. A `3xx`: *look elsewhere*.
+
+</details>
+
+Note:
+If the pictures come from the cache of the browser after a reload (Network shows "memory cache"), tick Disable cache in the tab Network and reload again.
+
+---
+
 ## Summary
 
 - The web is a conversation between **clients** and **servers**.
@@ -296,6 +437,35 @@ Then open `http://localhost:8000` and:
 - HTTP is **stateless** - every request stands on its own.
 - A **URL** tells which protocol to use, which server to ask, and which resource to ask for.
 - During development the client and the server are on the same computer: `http://localhost:8000`.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: one conversation, in detail
+
+The server of the samples is running. With `curl -v`, the tab *Network* and the terminal of the server, find out - and write down - the following:
+
+1. `curl -v` for `/01-html/01-basic-elements/04-headers.html`: the request line, the status line, `content-type` and `content-length`. Compare the length with the size of the file.
+2. The same for the picture `/01-html/03-images/lake2.jpg` - add `-o lake.jpg`, so that the picture goes into a file.
+3. `curl -v` for `/01-html`: what does curl show, and what does the browser do with the same address? Then try `curl -v -L`.
+4. A wrong address: the status, the type and the text of the body.
+
+*The assignment continues on the next slide.*
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: one conversation, in detail (2)
+
+5. Send the form of `01-html/06-forms/01-form-text-submit.html`. Find its request in *Network*: the method, the address, the status. Where are your values?
+6. Reload `03-img-out-of-current-dir/index.html` three times. Which requests reach the server each time?
+7. `curl -v https://example.com`: which port is used, and which version of HTTP?
+
+For every answer, write which line of the output, or which column of *Network*, shows it.
+
+*About 40 minutes altogether.*
+
+Answers: [exercises/01-01-client-server-web](https://github.com/kartelj/ekof_dss/tree/main/exercises/01-01-client-server-web)
 
 ---
 

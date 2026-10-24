@@ -131,6 +131,55 @@ The group default holds the routes without tags. The service of the actors has t
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: the wind
+
+In a copy of the folder `06-python-rest-sqlite/01-rest-service-new`, change `main.py`:
+
+1. Add to `WeatherForecast` the field `wind_kmh`, a whole number; `get_weather_forecast` gives it a random value from 0 to 100.
+2. Add a calculated field `windy`: `True` when the wind is stronger than 50 km/h.
+3. Add the route `GET /weatherforecast/today`: one forecast, for today, with random values, and a docstring.
+
+On `/docs` the new operation shows the docstring, and *Execute* gives **one** object, not an array:
+
+```json
+{"date":"2026-10-24","temperature_c":8,"summary":"Chilly","wind_kmh":2,"temperature_f":46,"windy":false}
+```
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+    wind_kmh: int                               # in the class WeatherForecast, after summary
+
+    @computed_field                             # in the class, after temperature_f
+    @property
+    def windy(self) -> bool:
+        return self.wind_kmh > 50
+
+@app.get("/weatherforecast/today")
+def get_weather_today() -> WeatherForecast:
+    """Returns the forecast for today (the values are random)."""
+    return WeatherForecast(
+        date=datetime.date.today(),
+        temperature_c=random.randint(-20, 54),
+        summary=random.choice(SUMMARIES),
+        wind_kmh=random.randint(0, 100),
+    )
+```
+
+- `get_weather_forecast` passes `wind_kmh=random.randint(0, 100)` as well.
+- The return type is `WeatherForecast`, not a list - so the answer is a JSON object.
+
+</details>
+
+Note:
+Both samples of module 06 use the port 8001: stop one before starting the other.
+Without the value in get_weather_forecast, the old route answers 500: the field wind_kmh has no default value, and the terminal shows the ValidationError.
+
+---
+
 ## Routes for a resource
 
 ```python
@@ -274,6 +323,39 @@ Note:
 The schema is drawn from the class ActorData, and its description from the docstring of the class.
 The page names the code 422 with its older name, Unprocessable Entity. Above the answer, the page also shows the request as a curl command; it is left out of the picture.
 The body of wrong.json gives the answer of the previous slide, with both errors; on the page the body of the answer then gets its own scroll bar.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 2: accepted or refused?
+
+Which of these bodies of `POST /api/actors` does `ActorData` accept (`201`), and which get `422` - with which `loc`?
+
+```text
+1. {"last_name": "Cage", "first_name": "Nicolas", "country_id": 1}
+2. {"last_name": "Cage", "first_name": "Nicolas", "country_id": "1"}
+3. {"last_name": "Cage", "country_id": 1}
+4. {"last_name": "Cage", "first_name": "Nicolas", "country_id": 1.5}
+5. {"last_name": "Cage", "first_name": "Nicolas", "country_id": 1, "date_of_birth": "1964-1-7"}
+6. the body of 1, with a last_name of 51 letters
+```
+
+Then check your answers on the page `/docs` of `02-rest-service-actors-db`: *Try it out* on `POST /api/actors`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+| | Answer | `loc` | Why |
+|---|---|---|---|
+| 1 | `201` | | `date_of_birth` may be left out |
+| 2 | `201` | | the text `"1"` is converted into the number 1 |
+| 3 | `422` | `body`, `first_name` | a required field is missing: *Field required* |
+| 4 | `422` | `body`, `country_id` | 1.5 is not a whole number |
+| 5 | `422` | `body`, `date_of_birth` | the month and the day have two digits: `1964-01-07` |
+| 6 | `422` | `body`, `last_name` | *String should have at most 50 characters* |
+
+- Every accepted body adds an actor; the answer `201` gives its address in `Location`.
+
+</details>
 
 ---
 
@@ -472,6 +554,43 @@ The answer 204 consists of the status line and the headers.
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 3: the actors of a country
+
+Copy the folder `06-python-rest-sqlite/02-rest-service-actors-db` to a folder of your own. In `routers/countries.py`, add the operation `GET /api/countries/{country_id}/actors`: the actors of one country.
+
+1. If there is no such country, the answer is `404` with the detail `Country not found`.
+2. Otherwise: read all the actors, and return those whose `country_id` is the one from the path, as `ActorData` objects.
+
+Check: `/api/countries/3/actors` gives Nicole Kidman, `/api/countries/4/actors` gives `[]`, and `/api/countries/9/actors` gives `404`. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+from models.actor import Actor, ActorData
+
+
+# GET: api/countries/1/actors
+@router.get("/{country_id}/actors")
+def get_country_actors(country_id: int, session: SessionDep) -> list[ActorData]:
+    """Returns the actors of one country."""
+    if session.get(Country, country_id) is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Country not found")
+
+    actors = session.exec(select(Actor)).all()
+    return [ActorData.model_validate(actor) for actor in actors if actor.country_id == country_id]
+```
+
+- `if` at the end of a list comprehension keeps only some elements. A `for` loop with an `if` and `append` does the same.
+- An empty list is a correct answer: Italy exists, it only has no actors. `404` means that the country does not exist.
+
+</details>
+
+Note:
+The solution reads all the actors and chooses in Python. SQL can choose the rows itself, and read fewer of them: select(Actor).where(Actor.country_id == country_id).
+
+---
+
 ## The database is created at start
 
 ```python
@@ -638,6 +757,34 @@ POST and PUT have the field Request body instead: there the JSON of the actor is
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: a nickname
+
+In your copy of the service:
+
+1. Add to `ActorData` the field `nickname`: a text of at most 30 characters, which may be left out.
+2. Save, and open `/api/actors`. What happens, and why? Then stop the service, delete `actors.db`, and start it again.
+3. `POST` an actor with `"nickname": "Nic"`: `201`, `Location: /api/actors/14`, and the nickname is in the body.
+4. `POST` one with a nickname of 31 characters (`422`), and one with `"country_id": 99` (`409`).
+5. `PUT /api/actors/14` with `"nickname": "Nick"`: `204`. Read the actor 14 - has the nickname changed?
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+    nickname: str | None = Field(default=None, max_length=30)    # models/actor.py, in ActorData
+
+    actor.nickname = data.nickname                               # routers/actors.py, in put_actor
+```
+
+- Step 2: `500 Internal Server Error`. The table was created before the field existed, and `create_all` does not change a table that exists. The terminal says: *no such column: actor.nickname*.
+- Step 5: the answer is `204`, but the nickname stays `"Nic"` - until `put_actor` copies it, with the second line above. `post_actor` needs no change: `Actor.model_validate(data)` takes all the fields.
+
+</details>
+
+---
+
 ## A larger service in layers
 
 ![The service in layers: the client talks to a router, the router calls a repository, the repository uses the models to reach the database. ActorDTO travels between the client and the repository, Actor between the repository and the table.](images/fastapi-rest-layers.svg)
@@ -767,6 +914,46 @@ The class RestCountryService has a method _report like the one of RestActorServi
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 5: a client in Python
+
+Start the service `02-rest-service-actors-db` with a new database (delete `actors.db` first). Write a program `client.py` that uses `httpx2`:
+
+1. reads all the countries, and prints the code and the name of each one;
+2. adds the country Spain, with the code `ES`, and prints the status code and the header `Location`;
+3. tries to delete the country 1, and prints the status code and the `detail` of the answer.
+
+The program prints the five countries, then `201 /api/countries/6` and `409 The database refused the change, ...` *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+import httpx2
+
+URL = "http://localhost:8001/api/countries"
+
+response = httpx2.get(URL)
+response.raise_for_status()
+for country in response.json():
+    print(country["code"], country["name"])
+
+response = httpx2.post(URL, json={"name": "Spain", "code": "ES"})
+print(response.status_code, response.headers["Location"])
+
+response = httpx2.delete(URL + "/1")
+print(response.status_code, response.json()["detail"])
+```
+
+- The answer `409` is not an exception for `httpx2`: the program reads its code and its body like any other answer.
+
+</details>
+
+Note:
+Every run adds Spain once more: the second run prints ES in the list, and 201 /api/countries/7.
+The names of headers are not case-sensitive: response.headers["location"] works too.
+
+---
+
 ## One contract, two sources of data
 
 ```python
@@ -846,6 +1033,41 @@ The page *Actors*, step by step:
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 6: one change, two programs
+
+Start the complete system `07-python-fastapi-rest-sqlite/02-complete-system-db`, with a new database: the `rest-service` first, then the `web-app`.
+
+1. On the page *Actors* add the actor Nicolas Cage, United States of America.
+2. Ask the service for him with `curl`: which `id` did he get? Which fields does the DTO add?
+3. Change his first name to Nick with a `PUT` to the service - the body, an `ActorDTO`, goes into the file `nick.json`. Reload the page *Actors*.
+4. Stop the service, and reload the page once more. What is shown, with which status code?
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```bash
+curl http://localhost:8001/api/actors/14
+curl -i -X PUT http://localhost:8001/api/actors/14 -H "Content-Type: application/json" -d "@nick.json"
+```
+
+```json
+{"id": 14, "last_name": "Cage", "first_name": "Nick", "country_id": 1}
+```
+
+- Step 2: the `id` is 14. The key is called `id`, and the DTO adds `country_code` (`"US"`) and `country_name`.
+- Step 3: `204`, and the page shows *Nick Cage*: the web application has no data of its own - it asks the service every time.
+- Step 4: the page *The RESTful service is not available*, with the status `503`.
+
+</details>
+
+Note:
+A new database: delete the file actors.db in the folder rest-service before starting it. The service starts with 13 actors.
+The page shows the first name before the last name: Nick Cage.
+
+---
+
 ## CORS
 
 ```python
@@ -892,6 +1114,45 @@ The header Origin is added by the browser itself, to every request of JavaScript
 - A larger service is built in **layers**, with **DTO** classes for the data that travels.
 - A program becomes a **client** with `httpx2`: `get`, `post`, `put`, `delete`, `response.json()`.
 - The **complete system**: browser - web application - RESTful service - database. Only the service touches the database.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: a service for films
+
+Build the API of the films - the assignment of the previous lecture - with FastAPI, SQLModel and SQLite. Start from a copy of `02-rest-service-actors-db`.
+
+1. Two tables: `genre` (`genre_id`, `name`) and `movie` (`movie_id`, `title` - at most 100 characters, `year` - may be missing, `lasting` - 90 if not given, `genre_id` - a foreign key).
+2. `/api/genres`: all the genres, and one genre (or `404`).
+3. `/api/movies`: all five operations, with the answers of this lecture - and `409` for a film of a genre that does not exist.
+4. At the first start: the seven genres and the ten films of VanityFair02, in their order.
+5. Bonus: `GET /api/genres/{genre_id}/movies`, and a program `client.py` that prints every film with the name of its genre.
+
+*About 45 minutes.* A solution: [exercises/06-02-fastapi-rest](https://github.com/kartelj/ekof_dss/tree/main/exercises/06-02-fastapi-rest)
+
+Note:
+The genres and the films are in teaching-samples/05-python-db-sqlite/database/VanityFair02/insert-table-data.sql: title, genre_id, lasting and year of every film.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: check your service
+
+With a new database, these requests must give these answers:
+
+| Request | Answer |
+|---|---|
+| `GET /api/movies/4` | `200`: `{"movie_id":4,"title":"Fargo","year":1996,"lasting":98,"genre_id":4}` |
+| `GET /api/movies/99` | `404`: `{"detail":"Movie not found"}` |
+| `POST /api/movies` with `{"title": "Burn After Reading", "year": 2006, "genre_id": 5}` | `201`, `Location: /api/movies/11`, and `"lasting":90` in the body |
+| `PUT /api/movies/11` with `"movie_id": 12` in the body | `400` |
+| `POST /api/movies` with `"genre_id": 99` | `409` |
+| `DELETE /api/movies/11`, twice | `204`, then `404` |
+| `GET /api/genres/7/movies` (the bonus) | `200`: `[]` - there is no film of science fiction |
+
+Note:
+The PUT must send a valid film (title and genre_id), otherwise the answer is 422 before the ids are compared.
+The service of the solution is called MoviesRestService, and it keeps its data in movies.db.
 
 ---
 

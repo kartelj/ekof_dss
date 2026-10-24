@@ -144,6 +144,38 @@ SQL is more tolerant than the model: a table without a primary key may contain e
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: what is wrong with this table?
+
+The table `book` of a small library, as somebody typed it:
+
+| title | authors | copies | year |
+|---|---|---|---|
+| Good Omens | Terry Pratchett, Neil Gaiman | 2 | 1990 |
+| Mort | Terry Pratchett | two | 1987 |
+| Mort | Terry Pratchett | two | 1987 |
+| Coraline | Neil Gaiman | 1 | |
+
+1. Which rules of a table does it break? Find three.
+2. What should the empty field hold, and why?
+
+*About 5 minutes.*
+
+<details><summary>Solution</summary>
+
+1. The three broken rules:
+   - `authors` of *Good Omens* holds a list - every field must hold **one** value;
+   - `two` is a text in a column of numbers - all the values of a column are of one type;
+   - *Mort* is there twice - no two rows may be the same.
+2. **NULL**: the year is not known. An empty text, or 0, would be a value - and a wrong one.
+
+</details>
+
+Note:
+A good follow-up question: how would we tell the two copies of Mort apart, if they really were two physical books? With a column that identifies a copy - which leads to the primary key on the next slide.
+
+---
+
 ## Primary key
 
 - The **primary key** of a table is a column - or a group of columns - whose value identifies exactly one row.
@@ -224,6 +256,37 @@ SQLite checks foreign keys only if the check is switched on for the connection: 
 ![The country_id of every actor points to a row of country. A new actor with the country_id 9 is refused, because there is no such country; deleting Serbia is refused, because the actor Živojinović still refers to it.](images/db-referential-integrity.svg)
 
 The green arrows are the foreign keys of the three actors. Both changes in red are refused.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 2: keys at work
+
+The tables `country` and `actor` of the slide *Foreign key*. The changes come one after another. Which of them does the DBMS refuse, and why?
+
+1. A new country: `country_id` 3, `Australia`, `AU`.
+2. A new actor: Kidman, Nicole, with `country_id` 3.
+3. A new country with `country_id` 2: `Spain`, `ES`.
+4. Robert De Niro gets `country_id` 7.
+5. The country Serbia is deleted.
+6. The actor Živojinović is deleted - and then Serbia.
+
+*About 5 minutes.* Expected: three changes are refused.
+
+<details><summary>Solution</summary>
+
+| | | Why |
+|---|---|---|
+| 1 | accepted | a new key |
+| 2 | accepted | country 3 exists - since the change 1 |
+| 3 | **refused** | the primary key 2 already belongs to Serbia |
+| 4 | **refused** | there is no country 7: referential integrity |
+| 5 | **refused** | the actor Živojinović still refers to Serbia |
+| 6 | accepted | nothing refers to an actor; then nothing refers to Serbia any more |
+
+- The order matters: change 2 is accepted only because change 1 came first.
+
+</details>
 
 ---
 
@@ -335,6 +398,37 @@ A foreign key holds one value, so this relationship needs a table of its own. On
 
 Note:
 The primary key of the junction table is the pair of its two foreign keys: the same actor cannot be entered twice for the same film.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: which kind of relationship?
+
+For every pair: one-to-one, one-to-many or many-to-many? Optional or mandatory, on each side?
+
+1. a film and its genre, in VanityFair02 (remember *science fiction*);
+2. a film and its directors (remember *No Country for Old Men*);
+3. an order in a web shop and its invoice - an order is invoiced once, when it is paid;
+4. a student and a course - the student gets a grade in the course.
+
+For pair 4, draw the physical model: in which table is the grade?
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+1. **One-to-many.** A genre has zero or many films (science fiction has none); a film has one and only one genre - `genre_id` is `NOT NULL`.
+2. **Many-to-many.** Ethan and Joel Coen directed *No Country for Old Men* together, and Joel Coen directed many films.
+3. **One-to-one.** An invoice belongs to one and only one order; an order has zero or one invoice - it is not paid yet.
+4. **Many-to-many**, with a junction table:
+
+```text
+student (student_id, name)    enrollment (student_id, course_id, grade)    course (course_id, name)
+```
+
+- The grade is a fact about the pair, like `role` in `movie_actor`: it goes into the junction table.
+
+</details>
 
 ---
 
@@ -487,6 +581,42 @@ The columns `genre` and `states` became foreign keys: `genre_id` and `state_id`.
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: normalize a web shop
+
+A web shop keeps its purchases in one table:
+
+| purchase_id | date | customer | city | products |
+|---|---|---|---|---|
+| 1 | 2026-10-01 | Ana | Belgrade | pen, notebook |
+| 2 | 2026-10-02 | Marko | Novi Sad | pen |
+| 3 | 2026-10-05 | Ana | Belgrade | backpack |
+
+1. **1NF**: write the table with one value in every field. What is its key now?
+2. **2NF**: which columns describe only a part of the key? Move them.
+3. **3NF**: which column describes another non-key column? Move it.
+
+*About 15 minutes.* Expected at the end: four tables, with 2, 3, 3 and 4 rows.
+
+<details><summary>Solution</summary>
+
+1. One row for every purchase and product: 4 rows. The key is the pair (`purchase_id`, `product`).
+2. `date`, `customer` and `city` describe the purchase alone. They move to `purchase` (key `purchase_id`); the pairs stay in `purchase_product`.
+3. `city` describes the customer, not the purchase: it moves to `customer`. Every product gets a row of its own in `product`, so that its name is written once.
+
+```text
+customer (customer_id, name, city)              2 rows: Ana Belgrade, Marko Novi Sad
+purchase (purchase_id, date, customer_id)       3 rows
+product (product_id, name)                      3 rows: pen, notebook, backpack
+purchase_product (purchase_id, product_id)      4 rows
+```
+
+- The table is not called `order`: that is a reserved word of SQL.
+
+</details>
+
+---
+
 ## The keys, written in SQL
 
 ```sql
@@ -558,6 +688,48 @@ A designer may also keep such a column on purpose, for simplicity or for speed. 
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 5: VanityFair03 on paper
+
+Three films of VanityFair01, with their actors:
+
+| movie_id | title | actors |
+|---|---|---|
+| 1 | Raising Arizona | Nicolas Cage, Holly Hunter, William Forsythe, John Goodman |
+| 4 | Fargo | Frances McDormand, William H. Macy, Steve Buscemi, Peter Stormare |
+| 5 | The Big Lebowski | Jeff Bridges, John Goodman, Julianne Moore, Steve Buscemi |
+
+1. Write the rows of the table `actor` (`actor_id`, `name`) - every actor once.
+2. Write the rows of the junction table `movie_actor` (`movie_id`, `actor_id`).
+3. Which actors play in more than one of these films?
+
+*About 10 minutes.* Expected: 10 actors, 12 pairs.
+
+<details><summary>Solution</summary>
+
+```text
+actor                         movie_actor
+actor_id  name                movie_id  actor_id
+       1  Nicolas Cage               1         1
+       2  Holly Hunter               1         2
+       3  William Forsythe           1         3
+       4  John Goodman               1         4
+       5  Frances McDormand          4         5
+       6  William H. Macy            4         6
+       7  Steve Buscemi              4         7
+       8  Peter Stormare             4         8
+       9  Jeff Bridges               5         9
+      10  Julianne Moore             5         4
+                                     5        10
+                                     5         7
+```
+
+- John Goodman (1 and 5) and Steve Buscemi (4 and 5): each is written once in `actor`, and twice in `movie_actor`.
+
+</details>
+
+---
+
 ## Summary
 
 - A **DBMS** stores the data permanently, guards their integrity and serves many users at once. We use SQLite and PostgreSQL.
@@ -566,6 +738,43 @@ A designer may also keep such a column on purpose, for simplicity or for speed. 
 - The **E-R model** describes entities and relationships: one-to-one, one-to-many, many-to-many; optional or mandatory.
 - **Normalization** stores every fact once: one value in every field (1NF); every non-key column describes the whole key (2NF) and nothing but the key (3NF).
 - From VanityFair01 to VanityFair02: genres and states became tables, connected to `movie` by foreign keys.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the loans of a library
+
+A small library keeps its loans in one spreadsheet:
+
+| loan | member | phone | book | title | authors | loaned | returned |
+|---|---|---|---|---|---|---|---|
+| 1 | Ana Petrović | 064 111 222 | B-101 | Good Omens | Pratchett, Gaiman | 2026-10-01 | 2026-10-15 |
+| 2 | Marko Ilić | 065 333 444 | B-102 | Mort | Pratchett | 2026-10-03 | |
+| 3 | Ana Petrović | 064 111 222 | B-103 | Coraline | Gaiman | 2026-10-16 | |
+| 4 | Jelena Kostić | 063 555 666 | B-101 | Good Omens | Pratchett, Gaiman | 2026-10-20 | |
+
+1. What is wrong with it? Name the redundancy, and an example of each anomaly: update, insertion, deletion.
+2. Normalize it step by step - 1NF, 2NF, 3NF - and write the tables after every step.
+
+The assignment continues on the next slide.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the model of the library
+
+3. Draw the E-R diagram of your tables in the crow's foot notation: the keys, the relationships, and how many on each side.
+4. Write the physical model: for every table its columns, the primary key, the foreign keys, and the columns that allow NULL.
+5. Move the four loans into your tables. Check: 3 members, 3 books, 2 authors, 4 pairs of a book and an author, 4 loans.
+
+**Bonus:** write the `CREATE TABLE` statements, as on the slide *The keys, written in SQL*.
+
+*About 40 minutes.*
+
+A solution: [exercises/05-01-relational-model](https://github.com/kartelj/ekof_dss/tree/main/exercises/05-01-relational-model)
+
+Note:
+The trap of step 2: after 1NF the key is the pair (loan, author), but the authors are facts about the book, not about the loan - the authors of Good Omens are the same for loans 1 and 4. The solution explains it.
 
 ---
 

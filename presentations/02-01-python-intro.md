@@ -107,6 +107,44 @@ In VS Code a program can also be started with the triangle in the top right corn
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: your first program
+
+1. Start the interactive prompt (`python`) and calculate how many minutes a week has: 7 days of 24 hours of 60 minutes. Leave the prompt with `exit()`.
+2. In a folder of your own, create the file `hello_me.py`: a comment, and two lines with `print()` - your name, and the same calculation.
+3. Start it in the terminal. With your name instead of Ana, it writes:
+
+```text
+python hello_me.py
+Hello, I am Ana.
+A week has 10080 minutes.
+```
+
+*About 5 minutes.*
+
+<details><summary>Solution</summary>
+
+```text
+>>> 7 * 24 * 60
+10080
+```
+
+```python
+# my first program
+print("Hello, I am Ana.")
+print("A week has", 7 * 24 * 60, "minutes.")
+```
+
+- `print()` separates its values with spaces: the text, the number and the text again.
+- The calculation is done when the line is executed; the file contains only the expression.
+
+</details>
+
+Note:
+Typical problems: the terminal is not in the folder of the file ("No such file or directory"), the file was saved as hello_me.py.txt, or a quote is missing (SyntaxError). On macOS the command may be python3.
+
+---
+
 ## Variables
 
 ```python
@@ -219,6 +257,42 @@ Typing three instead of 3 stops the program with an error - a slide later in thi
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: minutes into hours
+
+Write `minutes.py`. It asks for a number of minutes, and writes them as hours and minutes, and as hours with two decimals:
+
+```text
+Minutes: 135
+135 minutes = 2 h 15 min
+That is 2.25 hours.
+```
+
+- Use `//` for the whole hours, and `%` for the minutes that are left.
+- Try 59 and 600 as well. They give `0 h 59 min` and `0.98 hours`, `10 h 0 min` and `10.00 hours`.
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+minutes = int(input("Minutes: "))
+hours = minutes // 60
+rest = minutes % 60
+print(f"{minutes} minutes = {hours} h {rest} min")
+print(f"That is {minutes / 60:.2f} hours.")
+```
+
+- `input()` gives a text. Without `int()` the program stops at `//`: a text cannot be divided.
+- `//` and `%` are the whole part and the remainder of the division by 60; `/` gives the hours with decimals.
+
+</details>
+
+Note:
+Without int() the message is: TypeError: unsupported operand type(s) for //: 'str' and 'int'. A good moment to show that the last line of the message names the problem.
+
+---
+
 ## Comparisons and logical values
 
 ```python
@@ -268,6 +342,53 @@ Sample: `02-python-intro/04_if.py`
 Note:
 The sample has all the grades, from 10 down to 6, and the scale of the faculty: 51 points for a 6, 61 for a 7, and so on.
 elif and else are optional. A forgotten colon or a wrong indentation is reported as an error before the program starts.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: the price of a ticket
+
+Write `ticket.py`. It asks for the age of a visitor and writes the price of a ticket:
+
+| Age | Ticket |
+|---|---|
+| under 7 | free |
+| 7 to 17 | 300 RSD |
+| 65 and more | 400 RSD |
+| all the others | 600 RSD |
+
+An age under 0 or over 120 gets the answer `That is not an age.`
+
+```text
+Age: 15
+Ticket: 300 RSD
+```
+
+Check also 5, 30, 70 and -3. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+age = int(input("Age: "))
+
+if age < 0 or age > 120:
+    print("That is not an age.")
+elif age < 7:
+    print("Ticket: free")
+elif age < 18:
+    print("Ticket: 300 RSD")
+elif age >= 65:
+    print("Ticket: 400 RSD")
+else:
+    print("Ticket: 600 RSD")
+```
+
+- Only the block of the first true condition is executed. That is why `age < 7` is checked before `age < 18`: a child of 5 is younger than 18 too.
+
+</details>
+
+Note:
+A frequent mistake: separate if statements instead of elif. Then the age 5 gets two or three lines (free, 300 RSD, and the else of the last if).
 
 ---
 
@@ -346,6 +467,47 @@ Year 3: the value is exactly 1157.625. When a number is exactly halfway, Python 
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 4: a multiplication table
+
+Write `table.py`:
+
+1. It asks for a number and writes its multiplication table, from 1 to 10, with `for` and `range`.
+2. Then, with `while`, it adds 1 + 2 + 3 + ... until the sum is greater than 100, and writes how many numbers it took.
+
+```text
+Number: 7
+7 x 1 = 7
+7 x 2 = 14
+...
+7 x 10 = 70
+14 numbers, the sum is 105
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+number = int(input("Number: "))
+for i in range(1, 11):
+    print(f"{number} x {i} = {number * i}")
+
+total = 0
+count = 0
+while total <= 100:
+    count = count + 1
+    total = total + count
+print(f"{count} numbers, the sum is {total}")
+```
+
+- `range(1, 11)` gives 1 to 10: the end is not included.
+- The condition is checked before every repetition: after the 13th number the sum is 91, after the 14th it is 105, and the loop stops.
+
+</details>
+
+---
+
 ## Lists
 
 ```python
@@ -414,6 +576,52 @@ Sample: `02-python-intro/07_dictionaries.py`
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 5: a week of temperatures
+
+Write `week.py`, which begins with the list `temperatures = [12, 15, 9, 21, 18, 7, 14]`:
+
+1. Write the average with one decimal (the format `:.1f`), the highest and the lowest temperature.
+2. With `for` and `if`, count the days warmer than 15 degrees.
+3. Make a dictionary of three countries and their capitals. Ask for a country, and write its capital - or say that you do not know it. Check with `in`.
+
+```text
+Average: 13.7
+Highest: 21, lowest: 7
+Warmer than 15: 2 days
+Country: France
+The capital of France is Paris.
+```
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+temperatures = [12, 15, 9, 21, 18, 7, 14]
+print(f"Average: {sum(temperatures) / len(temperatures):.1f}")
+print(f"Highest: {max(temperatures)}, lowest: {min(temperatures)}")
+
+warm = 0
+for t in temperatures:
+    if t > 15:
+        warm = warm + 1
+print(f"Warmer than 15: {warm} days")
+
+capitals = {"Serbia": "Belgrade", "France": "Paris", "Italy": "Rome"}
+country = input("Country: ")
+if country in capitals:
+    print(f"The capital of {country} is {capitals[country]}.")
+else:
+    print(f"I do not know the capital of {country}.")
+```
+
+- `warm` counts: it starts at 0 and grows by 1 for every warm day. Without the check with `in`, an unknown country gives a `KeyError`.
+
+</details>
+
+---
+
 ## Functions
 
 ```python
@@ -472,6 +680,52 @@ Sample: `02-python-intro/08_functions.py`
 Note:
 The output: 45 points - grade 5, 58 points - grade 6, 77 points - grade 8, 93 points - grade 10.
 Compare with 04_if.py: the same scale, but now as a function that returns the grade instead of printing it.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 6: find the bug
+
+This program should write `Area: 12`, but it writes `Area: None`:
+
+```python
+def area(width, height):
+    result = width * height
+
+print("Area:", area(3, 4))
+```
+
+1. Find the mistake, and correct it.
+2. Add a function `perimeter(width, height)`, and write the perimeter of the same rectangle:
+
+```text
+Area: 12
+Perimeter: 14
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+def area(width, height):
+    return width * height
+
+
+def perimeter(width, height):
+    return 2 * (width + height)
+
+
+print("Area:", area(3, 4))
+print("Perimeter:", perimeter(3, 4))
+```
+
+- The function calculated the area, but did not give it back. Without `return` a call gives back `None` - the value that means "nothing".
+
+</details>
+
+Note:
+Ask first: which value does the call area(3, 4) have? Many students expect 12, because the multiplication is in the function.
 
 ---
 
@@ -571,6 +825,43 @@ Sample: `02-python-intro/10_errors.py`
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 7: read the errors
+
+Each of these three pieces stops a program. Before you run them, write down the name of the error that each one gives:
+
+```python
+print("Total: " + 15)                       # 1
+
+prices = [1250, 899, 2400]
+print(prices[3])                            # 2
+
+quantity = int("12,5")                      # 3
+```
+
+1. Type them into the interactive prompt, one by one. In the prompt an error does not end the session.
+2. Compare the messages with your answers, and correct every piece so that it works.
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```text
+1. TypeError: can only concatenate str (not "int") to str
+2. IndexError: list index out of range
+3. ValueError: invalid literal for int() with base 10: '12,5'
+```
+
+```python
+print("Total: " + str(15))      # or: print("Total:", 15)
+print(prices[2])                # three elements have the indexes 0, 1 and 2 - or prices[-1]
+quantity = float("12.5")        # a point, and float: 12.5 is not a whole number
+```
+
+</details>
+
+---
+
 ## A complete program
 
 ```python
@@ -663,6 +954,60 @@ Everything in those modules is built from the pieces of this lecture: variables,
 - An error message is read from the bottom up; `try` - `except` catches an error.
 
 Next: web applications with FastAPI.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the results of an exam
+
+Write `exam_results.py`, a program that collects the results of an exam:
+
+1. It asks for the name and the points of every student. An empty name (just Enter) ends the input.
+2. Points are a whole number from 0 to 100. For anything else the program says so and asks again: a function `read_points`, with `try` - `except` inside a loop.
+3. A function `grade(points)` returns the grade: 51 points for a 6, 61 for a 7 ... 91 for a 10, less than 51 is a 5.
+4. At the end: a table with the name, the points and the grade of every student, how many passed, the average of the points with one decimal, and the best student. Without any student: `No results.`
+
+*About 40 minutes.* An example run is on the next slide.
+The solution: [exercises/02-01-python-intro](https://github.com/kartelj/ekof_dss/tree/main/exercises/02-01-python-intro)
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: an example run
+
+<div class="columns"><div>
+
+```text
+Name: Ana
+Points: 93
+Name: Marko
+Points: abc
+Points are a whole number from 0 to 100.
+Points: 47
+Name: Ivana
+Points: 78
+Name:
+```
+
+</div><div>
+
+```text
+Ana                93    10
+Marko              47     5
+Ivana              78     8
+Passed: 2 of 3
+Average: 72.7 points
+Best: Ana (93 points)
+```
+
+</div></div>
+
+- The user types the names and the points; the empty name after Ivana ends the input.
+- The columns of the table come from the widths of the f-strings, as in the shopping list: `{name:15}` and `{points:5}`.
+- Build it step by step: first the input loop and a list of dictionaries, then the functions, then the table.
+
+Note:
+A possible extension for fast students: a second table, sorted by points (sorted() with a key is not yet known - they can count the grades instead: how many 10s, 9s ...).
 
 ---
 

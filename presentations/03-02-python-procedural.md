@@ -205,6 +205,46 @@ A bool can be kept in a variable like any other value: pages/while_loop_power.py
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: predict, then check
+
+Write down on paper what each line gives. Then start the interactive prompt (`python`), type `from decimal import Decimal`, and check your answers line by line.
+
+```python
+17 // 5
+-17 // 5
+17 % 5
+10 / 5
+0.1 * 3 == 0.3
+Decimal("0.1") * 3
+18 <= 20 < 65
+not (5 > 3 and 2 > 4)
+type(10 / 5)
+```
+
+*About 5 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+17 // 5                  # 3
+-17 // 5                 # -4               rounded down: -3.4 becomes -4, not -3
+17 % 5                   # 2
+10 / 5                   # 2.0              / always gives a float
+0.1 * 3 == 0.3           # False            0.1 * 3 is 0.30000000000000004
+Decimal("0.1") * 3       # Decimal('0.3')   exact
+18 <= 20 < 65            # True             18 <= 20 and 20 < 65
+not (5 > 3 and 2 > 4)    # True             the parentheses are False
+type(10 / 5)             # <class 'float'>
+```
+
+</details>
+
+Note:
+The two surprises are -17 // 5 and 0.1 * 3 == 0.3. Ask the students who got them right to explain them to the others.
+
+---
+
 ## Strings
 
 ```python
@@ -310,6 +350,53 @@ Demo: type abc, and then 2.5, as the argument of the factorial. The page says "n
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: names and dates
+
+Write `texts.py`, which begins with two texts:
+
+```python
+full_name = "  ana petrović  "
+date = "2026-10-02"
+```
+
+1. Remove the spaces at both ends, and write the name in capital letters.
+2. Write the initials. `split(" ")` gives the two words, and `[0]` is the first character of a word.
+3. From the date, write the day and the month without the leading zero (hint: `int()`), and the year in 10 years.
+
+```text
+ANA PETROVIĆ
+A.P.
+2.10.2026.
+In 10 years: 2036
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+full_name = "  ana petrović  "
+date = "2026-10-02"
+
+name = full_name.strip()
+print(name.upper())
+
+parts = name.split(" ")
+print(f"{parts[0][0].upper()}.{parts[1][0].upper()}.")
+
+d = date.split("-")
+print(f"{int(d[2])}.{int(d[1])}.{d[0]}.")
+print(f"In 10 years: {int(d[0]) + 10}")
+```
+
+- Every method gives back a new text: `name = full_name.strip()` keeps the result.
+- `int("02")` is 2: the zero disappears when the text becomes a number. `d[0] + 10` would be a `TypeError`.
+
+</details>
+
+---
+
 ## Branching: if / elif / else
 
 ```python
@@ -356,6 +443,55 @@ match shape:
 - `match` is available from Python 3.10 on.
 
 Sample: `pages/geometry.py` (with `if` - `elif` - `else`), `pages/geometry_2.py` (with `match`)
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: the seasons
+
+Write `season.py`. It asks for the number of a month, and writes the season and the half of the year:
+
+1. Find the season with `match`: `case 12 | 1 | 2:` is winter, then come spring, summer and autumn. `case _:` takes everything else - that is not a month.
+2. Choose the half with a conditional expression: `"first" if ... else "second"`.
+
+```text
+Month (1-12): 4
+4: spring, the first half of the year
+
+Month (1-12): 13
+13 is not a month.
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+month = int(input("Month (1-12): "))
+
+match month:
+    case 12 | 1 | 2:
+        season = "winter"
+    case 3 | 4 | 5:
+        season = "spring"
+    case 6 | 7 | 8:
+        season = "summer"
+    case 9 | 10 | 11:
+        season = "autumn"
+    case _:
+        season = "not a month"
+
+half = "first" if month <= 6 else "second"
+if season == "not a month":
+    print(f"{month} is not a month.")
+else:
+    print(f"{month}: {season}, the {half} half of the year")
+```
+
+</details>
+
+Note:
+The same with if - elif needs conditions such as month == 12 or month == 1 or month == 2 - a good moment to compare the two forms.
 
 ---
 
@@ -453,6 +589,62 @@ print(n, total)           # 9 25    (25 is 1 + 3 + 5 + 7 + 9)
 - `break` leaves the loop at once. The program goes on with the first statement after the loop.
 - `continue` ends only the current repetition: the loop goes on with the next one.
 - Both work in `while` and in `for` loops, and they are almost always inside an `if`.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 4: find the bugs
+
+<div class="columns"><div>
+
+```python
+# should write 55, the sum of 1 to 10,
+# but writes 45
+total = 0
+for i in range(1, 10):
+    total += i
+print(total)
+```
+
+</div><div>
+
+```python
+# should write 3, 2, 1 and Start!,
+# but it never stops
+n = 3
+while n > 0:
+    print(n)
+print("Start!")
+```
+
+</div></div>
+
+1. Find and correct both mistakes. Ctrl+C stops the second program.
+2. Then write a `for` loop with `range` and `continue` that writes the numbers from 1 to 20 that are divisible by 3 but not by 2: 3, 9 and 15, one per line.
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+for i in range(1, 11):      # the end is not included: 11, not 10
+```
+
+```python
+while n > 0:
+    print(n)
+    n -= 1                  # without it, n stays 3 and the condition is always true
+```
+
+```python
+for n in range(1, 21):
+    if n % 2 == 0:
+        continue            # an even number: go on with the next n
+    if n % 3 == 0:
+        print(n)
+```
+
+</details>
 
 ---
 
@@ -556,6 +748,45 @@ Sample: `pages/incrementer.py`, `pages/hello_world.py`, `pages/function_guessing
 
 Note:
 In incrementer.py the function show() only reads current_count, so it needs no global statement; increment_count() assigns to it, so it does. The state is kept in the memory of the running application: it is shared by all visitors, and it is lost when the application is restarted. Later in the course the data moves to a database.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 5: a Reset button
+
+Work in a copy of the folder `teaching-samples/03-python-fastapi`.
+
+1. In `pages/incrementer.py`, add a function for `POST /incrementer/reset`. It sets `current_count` back to 0 and redirects to `/incrementer` - like `increment_count`.
+2. In `templates/incrementer.html`, add a second form, with a button *Reset* that sends a POST to that address.
+3. Start the application, press *Increase* three times, then *Reset*: the page shows `Current count: 0`.
+4. Remove the line `global current_count` from your function, and try again. What happens now - and why?
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+@router.post("/incrementer/reset")
+def reset_count():
+    global current_count
+
+    current_count = 0
+
+    return RedirectResponse("/incrementer", status_code=status.HTTP_303_SEE_OTHER)
+```
+
+```html
+<form action="/incrementer/reset" method="post">
+    <button class="btn btn-outline-secondary">Reset</button>
+</form>
+```
+
+- Without `global` there is no error, but the count is not reset: `current_count = 0` creates a local variable, which disappears when the function returns.
+
+</details>
+
+Note:
+Step 4 is the point of the exercise: a quiet mistake, without any message. Compare with increment_count, where the missing global gives an UnboundLocalError, because the old value is read first.
 
 ---
 
@@ -718,6 +949,54 @@ print(total)                # 1250
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 6: the totals of a table
+
+Write `totals.py`, which begins with the list `sales` of the previous slide:
+
+1. A function `row_totals(table)` returns a list with the sum of every row: the total of every shop.
+2. A function `column_totals(table)` returns a list with the sum of every column: the total of every month.
+3. Write the number of the best shop, and its total. The shops are numbered from 1.
+
+```text
+[405, 245, 600]
+[400, 440, 410]
+The best shop: 3 (600)
+```
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+def row_totals(table):
+    result = []
+    for row in table:
+        result.append(sum(row))
+    return result
+
+def column_totals(table):
+    result = [0] * len(table[0])        # one total for every column
+    for row in table:
+        for i in range(len(row)):
+            result[i] += row[i]
+    return result
+
+totals = row_totals(sales)
+print(totals)
+print(column_totals(sales))
+
+best = 0                                # the index of the best shop so far
+for i in range(len(totals)):
+    if totals[i] > totals[best]:
+        best = i
+print(f"The best shop: {best + 1} ({totals[best]})")
+```
+
+</details>
+
+---
+
 ## Tuples
 
 ```python
@@ -763,6 +1042,50 @@ for key, value in forecast.items():
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 7: the stock
+
+Write `stock.py`, which begins with a dictionary and a list of tuples (product, quantity):
+
+```python
+stock = {"notebook": 12, "pen": 0, "backpack": 3}
+orders = [("pen", 2), ("notebook", 5), ("ruler", 1), ("backpack", 4)]
+```
+
+Go through the orders and write one line for each. Change the stock only when the order can be fulfilled. At the end, write the dictionary.
+
+```text
+pen: not in stock
+notebook: 5 sold, 7 left
+ruler: unknown product
+backpack: only 3 left
+{'notebook': 7, 'pen': 0, 'backpack': 3}
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+for product, quantity in orders:
+    if product not in stock:
+        print(f"{product}: unknown product")
+    elif stock[product] == 0:
+        print(f"{product}: not in stock")
+    elif quantity > stock[product]:
+        print(f"{product}: only {stock[product]} left")
+    else:
+        stock[product] -= quantity
+        print(f"{product}: {quantity} sold, {stock[product]} left")
+print(stock)
+```
+
+- `for product, quantity in orders` unpacks every tuple. `not in` checks first, so `stock["ruler"]` never gives a `KeyError`.
+
+</details>
+
+---
+
 ## Summary
 
 - A Python program is a text file. The interpreter executes its statements one by one, and the indentation marks the blocks.
@@ -773,6 +1096,60 @@ for key, value in forecast.items():
 - Lists, tuples and dictionaries hold many values under one name.
 
 Next lecture: classes and objects.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: a report of the sales
+
+A shop writes every sale into a journal: `2026-10-01;notebook;3;1250.00` - the date, the product, the quantity and the price of one piece. In the program, the journal is a list of such texts (next slide).
+
+1. A module `sales.py` with three functions, with type hints and docstrings:
+    - `parse(line)` returns a tuple (date, product, quantity as an `int`, price as a `Decimal`), or `None` if the line does not have four parts, or its quantity is not a whole number;
+    - `quantities(sales)` and `amounts(sales)` return dictionaries: the pieces sold, and the quantity times the price, added up for every product.
+2. A program `report.py` imports the module and writes the lines that are not valid, with their numbers. Then it writes a table of the products in alphabetical order, the total, and the product with the most pieces sold.
+
+*About 45 minutes.* The solution: [exercises/03-02-python-procedural](https://github.com/kartelj/ekof_dss/tree/main/exercises/03-02-python-procedural)
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the journal and the report
+
+<div class="columns"><div>
+
+```python
+journal = [
+    "2026-10-01;notebook;3;1250.00",
+    "2026-10-01;pen;10;120.50",
+    "2026-10-02;backpack;1;4500.00",
+    "2026-10-02;notebook;two;1250.00",
+    "2026-10-02;pen;4",
+    "2026-10-03;notebook;2;1250.00",
+]
+```
+
+</div><div>
+
+```text
+Skipped line 4: 2026-10-02;notebook;two;1250.00
+Skipped line 5: 2026-10-02;pen;4
+
+backpack         1     4,500.00
+notebook         5     6,250.00
+pen             10     1,205.00
+Total:                11,955.00
+Most sold: pen (10 pieces)
+```
+
+</div></div>
+
+- `"2026-10-02;pen;4".split(";")` has only three parts. `int("two")` gives a `ValueError`: catch it with `try` - `except`, as in the introduction to Python.
+- The columns come from the formats `:12`, `:5` and `:12,.2f`. `sorted()` of a dictionary gives its keys in alphabetical order.
+- `enumerate(journal, start=1)` numbers the lines from 1.
+
+Note:
+A possible extension: the amount of every day (a third dictionary, with the date as the key), or the journal read from a text file - files are not a topic of this lecture, so give the students open() and readlines() as a hint.
 
 ---
 

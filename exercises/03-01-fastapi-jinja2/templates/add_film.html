@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Add a film{% endblock %}
+
+{% block content %}
+<h1>Add a film</h1>
+
+<form action="/films/add" method="post">
+    <p>Title: <input name="title" required></p>
+    <p>Year: <input name="year" required></p>
+    <p>Director: <input name="director"></p>
+    <button>Add</button>
+</form>
+{% endblock %}

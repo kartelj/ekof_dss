@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Welcome</h1>
+
+{% if films %}
+<p>There are {{ films | length }} films on this site. The last one added is <em>{{ films[-1].title }}</em>.</p>
+{% else %}
+<p>There are no films yet.</p>
+{% endif %}
+
+<p><a href="/films">See all the films</a> or <a href="/films/add">add a film</a>.</p>
+{% endblock %}

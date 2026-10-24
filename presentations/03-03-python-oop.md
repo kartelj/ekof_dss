@@ -183,6 +183,53 @@ The number in the default text is the address of the object in memory; it is dif
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: the class Film
+
+1. In a new file `films.py`, the class `Film` with the attributes `title`, `year` and `rating`.
+2. The method `age(self, this_year: int) -> int`, and `__str__` that gives the text `Fargo (1996) 8.1`.
+3. A list of three films. Print every film with its age in 2026, then the average rating, rounded to two decimals.
+
+Expected output:
+
+```text
+Fargo (1996) 8.1 - 30 years old
+Heat (1995) 8.3 - 31 years old
+Amélie (2001) 8.3 - 25 years old
+Average: 8.23
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+class Film:
+    def __init__(self, title: str, year: int, rating: float):
+        self.title = title
+        self.year = year
+        self.rating = rating
+
+    def age(self, this_year: int) -> int:
+        return this_year - self.year
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.year}) {self.rating}"
+
+films = [Film("Fargo", 1996, 8.1), Film("Heat", 1995, 8.3), Film("Amélie", 2001, 8.3)]
+total = 0
+for f in films:
+    print(f, "-", f.age(2026), "years old")
+    total += f.rating
+print("Average:", round(total / len(films), 2))
+```
+
+- `print(f, ...)` uses `__str__`. Without it, each line would begin with `<__main__.Film object at ...>`.
+
+</details>
+
+---
+
 ## Variables hold references to objects
 
 ```python
@@ -320,6 +367,73 @@ One row of the table for every object; the column *Temp. (F)* is the property `t
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 2: products from JSON
+
+```python
+text = """[{"name": "Tea", "net_price": 100}, {"name": "Coffee", "net_price": 250},
+           {"name": "Cocoa", "net_price": 180}]"""
+```
+
+1. The class `Product` with `name`, `net_price`, and the property `gross_price`: the price with 20 % VAT, `net_price * 120 / 100`.
+2. With `json.loads`, make a list of `Product` objects out of the text.
+3. The function `find(products, name) -> Product | None`. Print the gross price of *Coffee*, and *No such product* for *Milk*.
+4. Guess before you run it: what does the last line print?
+
+```python
+p = find(products, "Tea")
+p.net_price = 120
+print(products[0].gross_price)
+```
+
+Expected: `Coffee: 300.0`, `No such product: Milk` and `144.0`. *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```python
+class Product:
+    def __init__(self, name: str, net_price: int):
+        self.name = name
+        self.net_price = net_price
+
+    @property
+    def gross_price(self) -> float:
+        return self.net_price * 120 / 100
+
+
+def find(products, name) -> Product | None:
+    for p in products:
+        if p.name == name:
+            return p
+    return None
+```
+
+</div><div>
+
+```python
+products = []
+for item in json.loads(text):
+    product = Product(item["name"], item["net_price"])
+    products.append(product)
+
+for name in ["Coffee", "Milk"]:
+    found = find(products, name)
+    if found is not None:
+        print(f"{name}: {found.gross_price}")
+    else:
+        print("No such product:", name)
+```
+
+- `144.0`: `p` and `products[0]` are two names for **one** object, and the property is calculated again from the new net price.
+
+</div></div>
+
+</details>
+
+---
+
 ## "Private" attributes
 
 ```python
@@ -428,6 +542,67 @@ print(a is b)         # False
 
 Note:
 A field without a default value must be given when an object is created. Such fields are written before the fields that have a default value.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: a shelf of books
+
+1. The data class `Book` with the fields `title: str`, `author: str` and `year: int`.
+2. The class `Shelf`: the class attribute `capacity = 3`, the internal list `_books`, and the property `count`.
+3. The method `add(book)`: a book that is already on the shelf (an equal one) is refused with *Already on the shelf: ...*, a book that does not fit with *The shelf is full: ...*; any other book is added.
+
+```python
+shelf = Shelf()
+shelf.add(Book("Dune", "Frank Herbert", 1965))
+shelf.add(Book("Dune", "Frank Herbert", 1965))
+shelf.add(Book("Emma", "Jane Austen", 1815))
+shelf.add(Book("Ulysses", "James Joyce", 1922))
+shelf.add(Book("Hamlet", "William Shakespeare", 1603))
+print(shelf.count)
+```
+
+Expected: `Already on the shelf: Dune`, `The shelf is full: Hamlet` and `3`. *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```python
+@dataclass
+class Book:
+    title: str
+    author: str
+    year: int
+
+class Shelf:
+    capacity = 3            # the same for all shelves
+
+    def __init__(self):
+        self._books = []    # for internal use
+
+    @property
+    def count(self) -> int:
+        return len(self._books)
+```
+
+</div><div>
+
+```python
+    def add(self, book: Book):
+        if book in self._books:     # compares with ==
+            print("Already on the shelf:", book.title)
+        elif self.count == self.capacity:
+            print("The shelf is full:", book.title)
+        else:
+            self._books.append(book)
+```
+
+- The two *Dune* objects are equal because `@dataclass` has written `__eq__`. With an ordinary class, `in` would not find the second one.
+
+</div></div>
+
+</details>
 
 ---
 
@@ -568,6 +743,71 @@ circle = Circle(1)         # TypeError: Can't instantiate abstract class Circle 
 - An abstract class cannot be instantiated. It exists only to be a base class.
 - A derived class must define **every** abstract method - otherwise it is abstract as well.
 - The mistake is reported when the object is created, not later, when somebody calls `area()`.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 4: cinema tickets
+
+1. The abstract class `Ticket` with the attributes `film` and `price`, the abstract method `final_price()`, and the ordinary method `describe()`, which returns `Fargo: 600` - the film and the final price.
+2. Derived classes: `RegularTicket` (the price), `StudentTicket` (half of it, with `//`), and `VipTicket`, which gets one more value in `__init__`, `extra`, and adds it to the price.
+3. Print every ticket of this list with `describe()`, and the total. Then try `Ticket("Heat", 600)`.
+
+```python
+tickets = [RegularTicket("Fargo", 600), StudentTicket("Fargo", 600), VipTicket("Heat", 600, 400)]
+```
+
+Expected: `Fargo: 600`, `Fargo: 300`, `Heat: 1000`, `Total: 1900`, and then `TypeError: Can't instantiate abstract class Ticket ...` *About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```python
+class Ticket(ABC):
+    def __init__(self, film: str, price: int):
+        self.film = film
+        self.price = price
+
+    @abstractmethod
+    def final_price(self) -> int:
+        ...
+
+    def describe(self) -> str:
+        return f"{self.film}: {self.final_price()}"
+
+class RegularTicket(Ticket):
+    def final_price(self) -> int:
+        return self.price
+
+class StudentTicket(Ticket):
+    def final_price(self) -> int:
+        return self.price // 2
+```
+
+</div><div>
+
+```python
+class VipTicket(Ticket):
+    def __init__(self, film, price, extra):
+        super().__init__(film, price)
+        self.extra = extra
+
+    def final_price(self) -> int:
+        return self.price + self.extra
+
+total = 0
+for t in tickets:
+    print(t.describe())
+    total += t.final_price()
+print("Total:", total)
+```
+
+- `describe()` is written once, in `Ticket`. It calls `final_price()` of the class of each object.
+
+</div></div>
+
+</details>
 
 ---
 
@@ -749,6 +989,65 @@ print(len(Basket(prices)))             # 3
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 5: the length of a film
+
+1. The class `Duration` with the attribute `minutes`. `__repr__` gives `1h 38min`, `+` adds two durations, `<` compares them.
+2. With the dictionary below: add up all the durations; sort the durations; sort the titles by their durations - `sorted` with `key=lambda ...`.
+
+```python
+films = {"Fargo": Duration(98), "Heat": Duration(170), "Amélie": Duration(122)}
+```
+
+Expected output:
+
+```text
+6h 30min
+[1h 38min, 2h 2min, 2h 50min]
+['Fargo', 'Amélie', 'Heat']
+```
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div>
+
+```python
+class Duration:
+    def __init__(self, minutes: int):
+        self.minutes = minutes
+
+    def __repr__(self) -> str:
+        h, m = self.minutes // 60, self.minutes % 60
+        return f"{h}h {m}min"
+
+    def __add__(self, other):
+        return Duration(self.minutes + other.minutes)
+
+    def __lt__(self, other) -> bool:
+        return self.minutes < other.minutes
+```
+
+</div><div>
+
+```python
+total = Duration(0)
+for d in films.values():
+    total = total + d
+print(total)
+print(sorted(films.values()))
+print(sorted(films, key=lambda title: films[title]))
+```
+
+- `sorted(films)` goes through the keys - the titles. The lambda gives the duration of a title, and the durations are compared with `__lt__`.
+
+</div></div>
+
+</details>
+
+---
+
 ## Exceptions: errors are objects too
 
 ```python
@@ -840,6 +1139,68 @@ KeyboardInterrupt is raised when the user presses Ctrl+C in the terminal. It is 
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 6: a hall that refuses
+
+1. The exception class `SoldOutError`; the class `Hall` with the attribute `free` (free seats).
+2. The method `book(count)`: for `count <= 0` it raises a `ValueError`, for more than `free` seats a `SoldOutError`; otherwise it takes the seats.
+3. A hall with 5 seats: book 2, 0, 4 and 3 tickets in a loop, and catch the two kinds of errors separately. The expected output:
+
+```text
+Booked 2
+Refused: The number of tickets must be positive
+Sold out: Only 3 seats are free
+Booked 3
+Free seats: 0
+```
+
+And with one `except Exception as error` instead of the two? *About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+<div class="columns"><div style="flex: 1.35">
+
+```python
+class SoldOutError(Exception):
+    pass
+
+class Hall:
+    def __init__(self, seats: int):
+        self.free = seats
+
+    def book(self, count: int):
+        if count <= 0:
+            raise ValueError(
+                "The number of tickets must be positive")
+        if count > self.free:
+            raise SoldOutError(
+                f"Only {self.free} seats are free")
+        self.free -= count
+```
+
+</div><div>
+
+```python
+hall = Hall(5)
+for wanted in [2, 0, 4, 3]:
+    try:
+        hall.book(wanted)
+        print("Booked", wanted)
+    except SoldOutError as error:
+        print("Sold out:", error)
+    except ValueError as error:
+        print("Refused:", error)
+print("Free seats:", hall.free)
+```
+
+- With one `except Exception`, both errors are caught - both classes are derived from `Exception` - but the program can no longer tell a wrong number from a full hall.
+
+</div></div>
+
+</details>
+
+---
+
 ## Objects in the rest of the course
 
 The applications that we are going to build use objects in these ways:
@@ -865,6 +1226,24 @@ The pages will know only an abstract class of the actor service; the derived cla
 - An **interface** can be declared by inheritance (an abstract base class), left unwritten (duck typing) or written down as a `Protocol`.
 - **Functions** are objects that can be stored and passed on - the basis of events and listeners.
 - **Exceptions** are objects as well: `raise` reports a problem, `try` - `except` handles it.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: the cinema
+
+A program `cinema.py` that uses the whole lecture:
+
+1. The **data class** `Film` (title, year, minutes) with the **property** `duration` (`1h 38min`). The films are read from a **JSON** file. `find_film(films, title)` returns a film or `None`.
+2. The **abstract class** `Ticket` with the class attribute `base_price = 500`, the abstract method `price()`, and `__str__` (`Fargo (500)`). **Derived classes**: `RegularTicket`, `StudentTicket` (half) and `PremiereTicket` (double). Tickets are compared with `<` by their price.
+3. The class `Cinema`: a "private" list of sold tickets, `capacity = 4`, `sell(ticket)`, the property `income`, `len(cinema)`, **listeners** called at every sale, and **its own exception** `SoldOutError` when the hall is full.
+
+Then: sell six tickets - one of them for a film that does not exist, one of them too many - and print the prices sorted, and the income. *About 45 minutes.*
+
+A solution, with the expected output: [exercises/03-03-python-oop](https://github.com/kartelj/ekof_dss/tree/main/exercises/03-03-python-oop)
+
+Note:
+The orders of the solution are pairs (class, title): a class is called like a function, so (StudentTicket, "Fargo") becomes StudentTicket(film) once the film has been found.
 
 ---
 

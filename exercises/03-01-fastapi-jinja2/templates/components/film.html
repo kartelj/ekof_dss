@@ -1,0 +1,4 @@
+{# one film in a list: its title is a link to its page #}
+{% macro FilmItem(film, number) %}
+<li><a href="/films/{{ number }}">{{ film.title }}</a> ({{ film.year }})</li>
+{% endmacro %}

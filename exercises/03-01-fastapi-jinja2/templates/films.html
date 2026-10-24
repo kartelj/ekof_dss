@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% from "components/film.html" import FilmItem %}
+
+{% block title %}All films{% endblock %}
+
+{% block content %}
+<h1>All films</h1>
+
+<ul>
+    {% for film in films %}
+    {{ FilmItem(film, loop.index0) }}
+    {% else %}
+    <li><em>No films yet.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

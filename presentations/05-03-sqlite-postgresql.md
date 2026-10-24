@@ -160,6 +160,43 @@ Before building the databases again, leave the shell and close the other tools t
 
 ---
 
+<!-- .slide: class="exercise" -->
+## Exercise 1: in the shell
+
+1. Build the course databases, and open VanityFair02 in the shell. Which tables and views are there? Show the `CREATE` statement of `genre`.
+2. In the folder `VanityFair02`, write the script `my-queries.sql` with two queries: the number of films of every state, with the name of the state; and the Yugoslav films of the view `vw_movie_profit`. Execute it with `.read`.
+3. Without opening the shell: the number of films, with one command.
+
+*About 10 minutes.* Expected: four names; France 3, United States of America 6, Yugoslavia 1; one Yugoslav film; 10.
+
+<details><summary>Solution</summary>
+
+```text
+cd teaching-samples/05-python-db-sqlite/database
+python create_databases.py
+cd VanityFair02
+sqlite3 VanityFair02.db
+.tables
+.schema genre
+.headers on
+.mode column
+.read my-queries.sql
+.quit
+sqlite3 -header -column VanityFair02.db "SELECT COUNT(*) AS films FROM movie;"
+```
+
+```sql
+SELECT s.name, COUNT(*) AS films
+FROM movie AS m INNER JOIN state AS s ON s.state_id = m.state_id
+GROUP BY s.name;
+
+SELECT title, short_name FROM vw_movie_profit WHERE code = 'YUG';
+```
+
+</details>
+
+---
+
 ## SQLite is different: flexible types
 
 ```sql
@@ -262,6 +299,37 @@ ALTER TABLE state ADD CONSTRAINT uq_state_code UNIQUE (code);   -- syntax error
 Note:
 The last two statements are correct PostgreSQL.
 The copying must be done carefully when other tables refer to the table: the foreign key check is switched off during the work, and everything is done in one transaction.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 2: SQLite's surprises
+
+In a new session of the shell, with VanityFair02:
+
+1. How are the year, the IMDb score and the profit of *Fargo* really stored? Use `typeof()`.
+2. Add a film with the year `'soon'`. Is it accepted? What does `SELECT MAX(year) FROM movie` answer now?
+3. Is the foreign key check switched on? Add a film with `state_id` 9, and then find it with `PRAGMA foreign_key_check;`.
+4. Build the databases again.
+
+*About 10 minutes.*
+
+<details><summary>Solution</summary>
+
+```sql
+SELECT typeof(year), typeof(imdb_score), typeof(profit) FROM movie WHERE title = 'Fargo';
+INSERT INTO movie (title, genre_id, state_id, year) VALUES ('A film from the future', 1, 1, 'soon');
+SELECT MAX(year) FROM movie;
+PRAGMA foreign_keys;
+INSERT INTO movie (title, genre_id, state_id) VALUES ('A film from nowhere', 1, 9);
+PRAGMA foreign_key_check;
+```
+
+- 1: `integer`, `real`, `integer` - the profit 0 is a whole number, so `NUMERIC` stores it as an integer.
+- 2: accepted, and `MAX(year)` answers `soon`: in the order of SQLite every text comes after every number.
+- 3: `PRAGMA foreign_keys` answers 0, the film is accepted, and the check reports the row 12 of `movie`, whose parent in `state` is missing.
+
+</details>
 
 ---
 
@@ -368,6 +436,51 @@ execute() accepts only one statement, so a second statement smuggled in after a 
 ![The value nothing' OR 'a' = 'a pasted into the statement: its quote ends the text, and the condition becomes title = 'nothing' OR 'a' = 'a', which is true for all 10 films. Sent as a parameter, the same value fills the place of the question mark as one value: no film has this title, 0 rows.](images/sqlite-injection.svg)
 
 The statement and the value of the previous slide.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 3: the films of a state, from Python
+
+Write the program `films.py` in the folder `VanityFair02`. It:
+
+1. asks for the code of a state, with `input()`;
+2. prints the year and the title of every film of that state, sorted by year, and then the number of films;
+3. sends the code as a parameter. The query joins `movie` and `state`.
+
+Expected: `FRA` gives 3 films, the first `1991 Delicatessen`; `ITA` gives 0 films. Try `x' OR 'a' = 'a` as well: 0 films.
+
+*About 15 minutes.*
+
+<details><summary>Solution</summary>
+
+```python
+import sqlite3
+
+connection = sqlite3.connect("VanityFair02.db")
+connection.row_factory = sqlite3.Row
+
+code = input("The code of a state: ")
+cursor = connection.execute(
+    """
+    SELECT m.title, m.year
+    FROM movie AS m INNER JOIN state AS s ON s.state_id = m.state_id
+    WHERE s.code = ?
+    ORDER BY m.year
+    """,
+    (code,),
+)
+rows = cursor.fetchall()
+for row in rows:
+    print(row["year"], row["title"])
+print(len(rows), "films")
+connection.close()
+```
+
+</details>
+
+Note:
+fra gives 0 films too: = compares texts exactly. A frequent mistake: (code) instead of (code,) - without the comma it is not a tuple.
 
 ---
 
@@ -496,6 +609,49 @@ The message is one long line in the terminal. It is followed by the INSERT state
 The error appears at session.commit(), not when the object is made: a table class does not check its values, and the INSERT is sent only at the commit.
 After the refresh the sample prints: created_at=datetime.datetime(2026, 10, 2, 17, 0, 34, 273466, tzinfo=datetime.timezone.utc) - two hours less than the clock in Belgrade showed.
 A date of birth is not a moment: datetime.date has no time zone.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Exercise 4: a model class for genres
+
+Write the program `genres.py` in the folder `VanityFair02`:
+
+1. a model class `Genre` for the existing table `genre`, with `genre_id`, `name` and `short_name` - SQLModel names the table after the class, in lower case;
+2. an engine for `VanityFair02.db`, and a session that prints every genre;
+3. a new genre `documentary`, with the short name `DOC`: add it, commit it, refresh it, and print it.
+
+*About 15 minutes.* Expected: 7 genres, then an object with `genre_id=8`. The next run: 8 genres, and `genre_id=9`.
+
+<details><summary>Solution</summary>
+
+```python
+from sqlmodel import Field, Session, SQLModel, create_engine, select
+
+
+class Genre(SQLModel, table=True):
+    genre_id: int | None = Field(default=None, primary_key=True)
+    name: str
+    short_name: str
+
+
+engine = create_engine("sqlite:///VanityFair02.db")
+
+with Session(engine) as session:
+    for genre in session.exec(select(Genre)).all():
+        print(genre.genre_id, genre.name, genre.short_name)
+
+    documentary = Genre(name="documentary", short_name="DOC")
+    session.add(documentary)
+    session.commit()
+    session.refresh(documentary)
+    print(documentary)
+```
+
+</details>
+
+Note:
+create_all is not needed: the table exists already. Afterwards python create_databases.py removes the new genres.
 
 ---
 
@@ -700,6 +856,26 @@ The moment created_at comes back from PostgreSQL with its time zone, and model_v
 - **Supabase** is PostgreSQL in the cloud: an address, a key, HTTP requests. The secret key stays in `.env`.
 
 Next: we write a RESTful service - and put a database behind it.
+
+---
+
+<!-- .slide: class="exercise" -->
+## Assignment: a film catalogue
+
+Write `film_catalogue.py`, a program for the terminal over VanityFair02 - like the shopping list of the introduction to Python. Its commands:
+
+- **list** - every film with its year, the name of its genre and the code of its state, sorted by year;
+- **search** - the films whose title contains a typed text;
+- **add** - asks for the title, the year, the short name of the genre and the code of the state, and prints the new `movie_id`;
+- **delete** - asks for a `movie_id`, shows the title, and deletes the film after a confirmation;
+- **quit**.
+
+The rules: every value is a parameter; the foreign keys are checked; every change is committed; a year that is not a number is asked again; an unknown genre or state adds nothing.
+
+*About 40 minutes.* Check: `the` finds 4 films. A solution: [exercises/05-03-sqlite-postgresql](https://github.com/kartelj/ekof_dss/tree/main/exercises/05-03-sqlite-postgresql)
+
+Note:
+The solution uses sqlite3. A good extension for the fast students: the same program with SQLModel and three model classes, Movie, Genre and State.
 
 ---
 

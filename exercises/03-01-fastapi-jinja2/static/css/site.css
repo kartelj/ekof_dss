@@ -1,0 +1,33 @@
+/* the look of all the pages of the film site */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1em;
+    color: #222;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #9b1c31;
+    padding: .8em 0;
+}
+
+nav a {
+    margin-left: 1em;
+}
+
+h1 {
+    color: #9b1c31;
+}
+
+footer {
+    margin-top: 3em;
+    border-top: 1px solid #ccc;
+    padding-top: .5em;
+    color: #777;
+    font-size: .85em;
+}

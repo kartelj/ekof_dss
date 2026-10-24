@@ -1,0 +1,20 @@
+/* Our own rules for vanity-fair.html. The file is linked after Bootstrap, so these rules win
+   over the rules of Bootstrap that are equally specific. */
+
+/* the name of the site in the navbar a little larger than Bootstrap makes it */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* the footer: centred on narrow screens ... */
+.site-footer {
+    text-align: center;
+}
+
+/* ... and on the right from 768 pixels on - mobile first */
+@media (min-width: 768px) {
+    .site-footer {
+        text-align: right;
+    }
+}

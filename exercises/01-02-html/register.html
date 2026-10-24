@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration - Lakeside Film Festival</title>
+</head>
+
+<body>
+    <h1>Registration</h1>
+
+    <form action="/process-form" method="post">
+        <table>
+            <tr> <td>Name:</td> <td><input type="text" name="name"></td> </tr>
+            <tr> <td>E-mail:</td> <td><input type="text" name="email"></td> </tr>
+            <tr>
+                <td>Day:</td>
+                <td>
+                    <input type="radio" name="day" value="friday" checked> Friday
+                    <input type="radio" name="day" value="saturday"> Saturday
+                    <input type="radio" name="day" value="sunday"> Sunday
+                </td>
+            </tr>
+            <tr>
+                <td>Films:</td>
+                <td>
+                    <input type="checkbox" name="raising_arizona" value="yes"> Raising Arizona
+                    <input type="checkbox" name="fargo" value="yes"> Fargo
+                    <input type="checkbox" name="big_lebowski" value="yes"> The Big Lebowski
+                </td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>
+                    <select name="city">
+                        <option value="belgrade" selected>Belgrade</option>
+                        <option value="novi-sad">Novi Sad</option>
+                        <option value="nis">Niš</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td><textarea name="comment" rows="4" cols="40"></textarea></td>
+            </tr>
+        </table>
+        <input type="submit" value="Register">
+    </form>
+
+    <p><a href="index.html">Home</a></p>
+</body>
+
+</html>
